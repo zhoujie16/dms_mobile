@@ -32,7 +32,8 @@ export default {
   },
   onReady() {
     console.log("login onReady");
-    // this.testLogin();
+    // this.testLogin();  
+    console.log(this);
   },
   methods: {
     async testLogin() {

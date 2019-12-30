@@ -55,6 +55,9 @@ export default {
     console.log("导航栏按钮点击事件", btn);
     this.isShowDrawer = !this.isShowDrawer;
   },
+  onReady() {
+    console.log('tabbar1 ready', this)
+  },
   data() {
     return {
       isShowDrawer: false,
@@ -104,6 +107,11 @@ export default {
           url: "/static/demo/60x60.png",
           text: "提醒",
           path: "/pages/index/index"
+        },
+        {
+          url: "/static/demo/60x60.png",
+          text: "Demo",
+          path: "/pages/demo/base-demo"
         }
       ]
     };

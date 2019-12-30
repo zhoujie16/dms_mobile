@@ -1,8 +1,8 @@
 <template>
-  <view class="y-lab-wrap">
-    <view class="y-lab-inner" :class="{ 'y-lab-inner2': row > 1 }">
-      <view class="y-lab-title">{{ label }}</view>
-      <view class="y-lab-content">
+  <view class="m-lab-wrap">
+    <view class="m-lab-inner" :class="{ 'm-lab-inner2': row > 1 }">
+      <view class="m-lab-title">{{ label }}</view>
+      <view class="m-lab-content">
         <slot></slot>
       </view>
     </view>
@@ -29,22 +29,23 @@ export default {
 </script>
 
 <style>
-.y-lab-wrap {
+.m-lab-wrap {
+  color: #333;
   font-size: 32rpx;
 }
 
-.y-lab-inner {
+.m-lab-inner {
   display: flex;
   flex-direction: row;
   align-items: center;
   /* border-bottom: solid 1px #999999; */
 }
 
-.y-lab-inner2 {
+.m-lab-inner2 {
   display: block;
 }
 
-.y-lab-title {
+.m-lab-title {
   flex: 1;
   display: flex;
   flex-direction: row;
@@ -53,7 +54,7 @@ export default {
   height: 100rpx;
 }
 
-.y-lab-content {
+.m-lab-content {
   flex: 2;
   display: flex;
   flex-direction: row;
@@ -61,7 +62,7 @@ export default {
   align-items: center;
 }
 
-.y-lab-inner2 .y-lab-content {
+.m-lab-inner2 .m-lab-content {
   justify-content: flex-start;
 }
 </style>

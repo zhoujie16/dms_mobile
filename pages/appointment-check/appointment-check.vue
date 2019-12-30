@@ -15,7 +15,7 @@
 import { AjaxScrollData } from "@/api/test/index.js";
 import ScrollCell from "@/pages/customer-reception/components/scroll-cell.vue";
 import SwiperPage from "@/pages/appointment-check/components/swiper-page.vue";
-import SearchForm from "./../customer-reception/components/search-form";
+import SearchForm from "@/pages/appointment-check/components/search-form.vue";
 
 export default {
   components: {

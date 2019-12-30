@@ -1,15 +1,19 @@
 <template>
-  <view>
-    <!-- 搜索 -->
-    <view class="top-filter">
-      <TopFilter></TopFilter>
-    </view>
-    <!-- 列表 -->
-    <BaseScroll :top="100" :fetchApi="fetchApi" :fetchParams="fetchParams" @listChange="arr=>{this.dataSource = arr}">
-      <view @click="scrollCellClick" v-for="(data, i) in dataSource" :key="i">
+  <view class="page-wrap">
+    <search-filter ref="searchFilter">
+      <SearchForm @confirm="searchFormConfirm"></SearchForm>
+    </search-filter>
+    <BaseScroll :top="100" :fetchApi="fetchApi" :fetchParams="fetchParams" @listChange="
+        arr => {
+          this.dataSource = arr;
+        }
+      ">
+      <view class="base-scroll-inner" @click="scrollCellClick" v-for="(data, i) in dataSource" :key="i">
         <ScrollCell :cell="data"></ScrollCell>
       </view>
     </BaseScroll>
+    <MCheckboxPopup ref="MCheckboxPopup"></MCheckboxPopup>
+    <MDatePickerPopup ref="MDatePickerPopup"></MDatePickerPopup>
   </view>
 </template>
 
@@ -19,40 +23,44 @@
    * @Date: 2019-06-20 10:00:00
    * @Last Modified: 2019-06-20 10:00:00 zhoujie
    **/
-  import BaseScroll from '@/components/base-scroll/base-scroll.vue'
-  import {
-    AjaxScrollData
-  } from "@/api/test/index.js";
-  import TopFilter from "./components/TopFilter";
-  import ScrollCell from './components/ScrollCell.vue'
 
+  import { AjaxScrollData } from "@/api/test/index.js";
+  import SearchForm from './components/search-form.vue'
+  import ScrollCell from './components/scroll-cell.vue'
   export default {
     components: {
-      TopFilter,
-      BaseScroll,
-      ScrollCell
+      ScrollCell,
+      SearchForm
     },
     data() {
       return {
         fetchApi: AjaxScrollData,
         fetchParams: {},
-        dataSource: [],
+        dataSource: []
       };
     },
     methods: {
       // 列表点击事件
       scrollCellClick(cell) {
         console.log("cellClick", cell);
+        return;
         uni.navigateTo({
-          url: '/pages/demo/detail-demo'
+          url: "/pages/demo/detail-demo"
         });
+      },
+      // 表单查询
+      searchFormConfirm() {
+        console.log("searchFormConfirm");
+        this.$refs.searchFilter.hideDrawer();
+        this.fetchParams = { t: new Date().getTime() };
       }
     }
   };
 </script>
 
 <style lang="scss">
-  .menu {
-    height: 100rpx;
+  .page-wrap {
+    height: 100vh;
+    background-color: $uni-bg-color-page;
   }
 </style>

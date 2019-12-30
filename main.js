@@ -21,6 +21,9 @@ Vue.prototype.$auth = Auth;
 import Util from "@/common/util.js";
 Vue.prototype.$util = Util;
 
+import moment from "moment";
+Vue.prototype.$moment = moment;
+
 // 绑定数据校验
 import Validate from "@/common/validate.js";
 Vue.prototype.$validate = Validate;
@@ -135,8 +138,12 @@ Vue.component("MInput", MInput);
 import MCheckbox from "@/components/search-filter/m-checkbox.vue";
 Vue.component("MCheckbox", MCheckbox);
 
-import MDatePicker from "@/components/search-filter/m-date-picker.vue";
-Vue.component("MDatePicker", MDatePicker);
+
+import MCheckboxPopup from "@/components/search-filter/m-checkbox-popup.vue";
+Vue.component("MCheckboxPopup", MCheckboxPopup);
+
+import MDatePickerPopup from "@/components/search-filter/m-date-picker-popup.vue";
+Vue.component("MDatePickerPopup", MDatePickerPopup);
 
 /** 绑定公共组件 E */
 

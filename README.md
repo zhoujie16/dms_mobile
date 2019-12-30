@@ -1,5 +1,5 @@
 # dms_service_mob
-
+https://gitcyx.yycsy.com/dms/dms_service_mob
 #### 介绍
 #### 软件架构
 软件架构说明

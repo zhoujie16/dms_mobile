@@ -103,24 +103,24 @@
 		width: 280px;
 		bottom: 0;
 		background-color: #ffffff;
-		transition: opacity 0.3s ease;
+		transition: transform 0.3s ease;
 	}
 
 	.uni-drawer--left {
 		left: 0;
-    opacity: 0;
-		/* transform: translateX(-280px); */
+    /* opacity: 0; */
+		transform: translateX(-280px);
 	}
 
 	.uni-drawer--right {
 		right: 0;
-    opacity: 0;
-		/* transform: translateX(280px); */
+    /* opacity: 0; */
+		transform: translateX(280px);
 	}
 
 	.uni-drawer__content--visible {
-		/* transform: translateX(0px); */
-    opacity: 1;
+		transform: translateX(0px);
+    /* opacity: 1; */
 	}
 
 
