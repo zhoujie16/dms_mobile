@@ -1,0 +1,153 @@
+{
+  "pages": [
+    //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
+    {
+      "path": "pages/login/login",
+      "style": {
+        "navigationBarTitleText": "登录"
+      }
+    },
+    {
+      "path": "pages/index/index",
+      "style": {
+        "navigationBarTitleText": "概览页面"
+      }
+    },
+    {
+      "path": "pages/tabBar/tabPage1/tabPage1",
+      "text": "首页",
+      "style": {
+        "navigationBarTitleText": "首页",
+        "app-plus": {
+          "titleNView": {
+            "buttons": [
+              {
+                "float": "left",
+                "text": "\ue123"
+              }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "path": "pages/tabBar/tabPage2/tabPage2",
+      "text": "文档",
+      "style": {
+        "navigationBarTitleText": "文档"
+      }
+    },
+    {
+      "path": "pages/tabBar/tabPage3/tabPage3",
+      "text": "报表",
+      "style": {
+        "navigationBarTitleText": "报表"
+      }
+    },
+    {
+      "path": "pages/tabBar/tabPage4/tabPage4",
+      "text": "提醒",
+      "style": {
+        "navigationBarTitleText": "提醒"
+      }
+    },
+    {
+      "path": "pages/demo/base-demo",
+      "style": {
+        "navigationBarTitleText": "概览页面"
+      }
+    },
+    {
+      "path": "pages/demo/detail-demo",
+      "style": {
+        "navigationBarTitleText": "概览页面"
+      }
+    },
+    {
+      "path": "pages/appointment-check/appointment-check",
+      "style": {
+        "navigationBarTitleText": "预约检查"
+      }
+    },
+    {
+      "path": "pages/customer-reception/customer-reception",
+      "style": {
+        "navigationBarTitleText": "客户接待"
+      }
+    },
+    {
+      "path": "pages/rapid-order/rapid-order",
+      "style": {
+        "navigationBarTitleText": "快速工单"
+      }
+    },
+    {
+      "path": "pages/progress-query/progress-query",
+      "style": {
+        "navigationBarTitleText": "进度查询"
+      }
+    },
+    {
+      "path": "pages/vehicle-inspection/vehicle-inspection",
+      "style": {
+        "navigationBarTitleText": "车辆检查"
+      }
+    },
+    {
+      "path": "pages/vehicles-delivery/vehicles-delivery",
+      "style": {
+        "navigationBarTitleText": "交车"
+      }
+    },
+    {
+      "path": "pages/customer-reception/customer-detail",
+      "style": {
+        "navigationBarTitleText": "接待详情"
+      }
+    }
+  ],
+  "tabBar": {
+    "color": "#333333",
+    "selectedColor": "#333333",
+    "backgroundColor": "#ffffff",
+    "list": [
+      {
+        "pagePath": "pages/tabBar/tabPage1/tabPage1",
+        "text": "首页",
+        "iconPath": "static/tabBar/homepage.png",
+        "selectedIconPath": "static/tabBar/homepage_fill.png",
+        "style": {}
+      },
+      {
+        "pagePath": "pages/tabBar/tabPage2/tabPage2",
+        "text": "文档",
+        "iconPath": "static/tabBar/homepage.png",
+        "selectedIconPath": "static/tabBar/homepage_fill.png",
+        "style": {}
+      },
+      {
+        "pagePath": "pages/tabBar/tabPage3/tabPage3",
+        "text": "报表",
+        "iconPath": "static/tabBar/homepage.png",
+        "selectedIconPath": "static/tabBar/homepage_fill.png",
+        "style": {}
+      },
+      {
+        "pagePath": "pages/tabBar/tabPage4/tabPage4",
+        "text": "提醒",
+        "iconPath": "static/tabBar/homepage.png",
+        "selectedIconPath": "static/tabBar/homepage_fill.png",
+        "style": {}
+      }
+    ]
+  },
+  "globalStyle": {
+    "navigationBarTextStyle": "white",
+    "navigationBarTitleText": "uni-app",
+    "navigationBarBackgroundColor": "#1B365E",
+    "backgroundColor": "#2B4D86",
+    "app-plus": {
+      "bounce": "none"
+    }
+  }
+}

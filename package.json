@@ -1,0 +1,13 @@
+{
+  "name": "dms_app_mobile",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@gitee.com:zhoujie16/dms_app_mobile.git",
+  "author": "zhoujie <zhoujie16m@163.com>",
+  "license": "MIT",
+  "dependencies": {
+    "crypto-js": "^3.1.9-1",
+    "moment": "^2.24.0",
+    "wx-jsencrypt": "^3.0.0-rc.1.4"
+  }
+}

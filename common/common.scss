@@ -1,0 +1,100 @@
+/* 改所有标签样式  border-box*/
+view,
+scroll-view,
+swiper,
+movable-area,
+movable-view,
+cover-view,
+cover-image,
+icon,
+text,
+rich-text,
+progress,
+button,
+checkbox,
+editor,
+form,
+input,
+label,
+picker,
+picker-view,
+radio,
+switch,
+textarea,
+navigator,
+image,
+video {
+  box-sizing: border-box;
+}
+
+/** 布局样式 S */
+.m-page-fixed {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+
+.m-flex {
+  display: flex;
+  flex-direction: row;
+}
+
+.m-flex-item {
+  flex: 1;
+}
+
+.m-row {
+  flex-direction: row;
+}
+
+.m-column {
+  flex-direction: column;
+}
+
+.m-justify-start {
+  justify-content: flex-start;
+}
+
+.m-justify-center {
+  justify-content: center;
+}
+
+.m-justify-end {
+  justify-content: flex-end;
+}
+.m-justify-between{
+  justify-content: space-between;
+}
+.m-justify-around{
+  justify-content: space-around;
+}
+
+.m-align-center {
+  align-items: center;
+}
+
+.m-align-start {
+  align-items: flex-start;
+}
+
+.m-align-end {
+  align-items: flex-end;
+}
+
+.m-ellipsis-1 {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.m-height-60{
+  height: 60rpx;
+}
+.m-height-80{
+  height: 80rpx;
+}
+.m-height-100{
+  height: 100rpx;
+}
+/** 布局样式 E */

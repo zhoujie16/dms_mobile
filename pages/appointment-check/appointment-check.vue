@@ -1,0 +1,64 @@
+<template>
+  <!-- 预约检查 -->
+  <view class="page-warp">
+    <search-filter ref="searchFilter">
+      <SearchForm @confirm="searchFormConfirm"></SearchForm>
+    </search-filter>
+    <SwiperPage
+      :fetchParams="fetchParams"
+      height="calc(100vh - 100rpx)"
+    ></SwiperPage>
+  </view>
+</template>
+
+<script>
+import { AjaxScrollData } from "@/api/test/index.js";
+import ScrollCell from "@/pages/customer-reception/components/scroll-cell.vue";
+import SwiperPage from "@/pages/appointment-check/components/swiper-page.vue";
+import SearchForm from "./../customer-reception/components/search-form";
+
+export default {
+  components: {
+    SwiperPage,
+    ScrollCell,
+    SearchForm
+  },
+  data() {
+    return {
+      fetchApi: AjaxScrollData,
+      fetchParams: {},
+      dataSource: []
+    };
+  },
+  methods: {
+    // 列表点击事件
+    scrollCellClick(cell) {
+      console.log("cellClick", cell);
+      uni.navigateTo({
+        url: "/pages/customer-reception/customer-detail"
+      });
+    },
+    // 表单查询
+    searchFormConfirm() {
+      console.log("searchFormConfirm");
+      this.$refs.searchFilter.hideDrawer();
+      this.fetchParams = {
+        t: new Date().getTime()
+      };
+    }
+  }
+};
+</script>
+
+<style lang="scss">
+.page-wrap {
+  height: 100vh;
+  background-color: $uni-bg-color-page;
+}
+.swiper-page {
+  height: 600rpx;
+}
+.swiper-item-wrap {
+  height: 100%;
+}
+</style>
