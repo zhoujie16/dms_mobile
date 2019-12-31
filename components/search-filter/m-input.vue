@@ -14,7 +14,8 @@ export default {
   components: {},
   props: {
     label: {
-      type: String
+      type: String,
+      default: '标题'
     },
     value: {
       type: String

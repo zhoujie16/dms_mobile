@@ -1,40 +1,44 @@
 # dms_service_mob
-https://gitcyx.yycsy.com/dms/dms_service_mob
-#### 介绍
-#### 软件架构
-软件架构说明
+```
+git地址：https://gitcyx.yycsy.com/dms/dms_service_mob
+```
 
+#### 介绍
+
+dms移动app，
 
 #### 安装教程
 
-1.  xxxx
-2.  xxxx
-3.  xxxx
+- 使用 HBudlidX 打开项目
+- 安装插件：工具 >> 插件安装
+  - prettier
+  - scss/sass编译
+- 安装依赖  yarn install  或 npm install 
+- 安装微信开发者工具  https://developers.weixin.qq.com/miniprogram/dev/devtools/download.html
+  - 设置 >> 安全设置 >> 服务端口 >> 开启
+- 安装手机模拟器
+  - Mac 安装 Xcode
+  - Windows 安装 网易mumu: http://mumu.163.com
+- 使用 HBudlidX 运行： 
+  - 打开手机模拟器端口（Mac无需操作）：7555
+  - 菜单 >> 运行 >> 运行到手机模拟器
+  - 菜单 >> 运行 >> 运行到小程序模拟器
+
+
 
 #### 使用说明
 
 ##### 编辑器配置
 
-```
-# EditorConfig is awesome: http://EditorConfig.org  
+在 HBuilderX 设置中打开 启用.editorconfig支持 开关
 
-# top-most EditorConfig file  
-root = true  
+##### 复制 prettier  配置
 
-# Unix-style newlines with a newline ending every file  
-[*]  
-charset = utf-8
-end_of_line = lf  
-insert_final_newline = true  
-indent_style = space  
-indent_size = 2
-```
+复制以下配置代码，粘贴到 插件配置中
 
+工具 >> 插件配置 >> formator-prettier >> prettier.config.js
 
-
-##### prettier 配置
-
-```
+```javascript
 module.exports = {
 	printWidth: 100,
 	tabWidth: 2,
@@ -67,18 +71,4 @@ module.exports = {
 		".yml": "yaml",
 	}
 }
-
 ```
-
-
-
-1.  xxxx
-2.  xxxx
-3.  xxxx
-
-#### 参与贡献
-
-1.  Fork 本仓库
-2.  新建 Feat_xxx 分支
-3.  提交代码
-4.  新建 Pull Request
