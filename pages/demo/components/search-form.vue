@@ -17,11 +17,7 @@
         v-model="xsgw4"
         :itemList="itemList_xsgw4"
       ></MCheckbox>
-      <MLabel v-model="cph" label="日期选择" :row="2">
-        <button @click="test2" size="mini" type="default" class="submit-btn">
-          {{ val_test2 ? val_test2 : '日期选择' }}
-        </button>
-      </MLabel>
+      <MDatePicker v-model="dateTest"></MDatePicker>
       <view class="btn-v">
         <button @click="formSubmit" type="primary" class="submit-btn">查询</button>
       </view>
@@ -87,40 +83,20 @@ export default {
       itemList_xsgw4: [...testArr],
       val_test1: '',
       val_test11: '',
-      val_test2: ''
+      val_test2: '',
+      dateTest: []
     };
+  },
+  watch: {
+    dateTest(dateTest) {
+      console.log('dateTest change', dateTest);
+    }
   },
   methods: {
     // 查询按钮事件
     formSubmit() {
       console.log('formSubmit');
       this.$emit('confirm');
-    },
-    test1() {
-      this.$root.$refs.MCheckboxPopup.showPicker({
-        single: true,
-        itemList: this.itemList_xsgw,
-        value: []
-      }).then(value => {
-        console.log('选择的结果', value);
-        this.val_test1 = value.join(',');
-      });
-    },
-    test11() {
-      this.$root.$refs.MCheckboxPopup.showPicker({
-        single: false,
-        itemList: this.itemList_xsgw,
-        value: []
-      }).then(value => {
-        console.log('选择的结果', value);
-        this.val_test11 = value.join(',');
-      });
-    },
-    test2() {
-      this.$root.$refs.MDatePickerPopup.showPicker().then(value => {
-        console.log('选择的结果', value);
-        this.val_test2 = value.join(' 至 ');
-      });
     }
   }
 };

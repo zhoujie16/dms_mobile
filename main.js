@@ -145,6 +145,10 @@ Vue.component("MCheckboxPopup", MCheckboxPopup);
 import MDatePickerPopup from "@/components/search-filter/m-date-picker-popup.vue";
 Vue.component("MDatePickerPopup", MDatePickerPopup);
 
+import MDatePicker from "@/components/search-filter/m-date-picker.vue";
+Vue.component("MDatePicker", MDatePicker);
+
+
 /** 绑定公共组件 E */
 
 Vue.config.productionTip = false;
