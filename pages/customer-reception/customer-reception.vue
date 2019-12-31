@@ -13,7 +13,12 @@
         }
       "
     >
-      <view class="base-scroll-inner" @click="scrollCellClick" v-for="(data, i) in dataSource" :key="i">
+      <view
+        class="base-scroll-inner"
+        @click="scrollCellClick"
+        v-for="(data, i) in dataSource"
+        :key="i"
+      >
         <ScrollCell :cell="data"></ScrollCell>
       </view>
     </BaseScroll>
@@ -22,9 +27,9 @@
 
 <script>
 // import searchFilter from '@/components/search-filter/search-filter.vue'
-import searchForm from "@/pages/customer-reception/components/search-form.vue";
-import { AjaxScrollData } from "@/api/test/index.js";
-import scrollCell from "@/pages/customer-reception/components/scroll-cell.vue";
+import searchForm from '@/pages/customer-reception/components/search-form.vue';
+import { AjaxScrollData } from '@/api/test/index.js';
+import scrollCell from '@/pages/customer-reception/components/scroll-cell.vue';
 
 export default {
   components: {
@@ -42,15 +47,15 @@ export default {
   methods: {
     // 列表点击事件
     scrollCellClick(cell) {
-      console.log("cellClick", cell);
+      console.log('cellClick', cell);
       return;
       uni.navigateTo({
-        url: "/pages/customer-reception/customer-detail"
+        url: '/pages/customer-reception/customer-detail'
       });
     },
     // 表单查询
     searchFormConfirm() {
-      console.log("searchFormConfirm");
+      console.log('searchFormConfirm');
       this.$refs.searchFilter.hideDrawer();
       this.fetchParams = { t: new Date().getTime() };
     }
@@ -59,7 +64,7 @@ export default {
 </script>
 
 <style lang="scss">
-.page-wrap{
+.page-wrap {
   height: 100vh;
   background-color: $uni-bg-color-page;
 }

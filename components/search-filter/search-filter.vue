@@ -2,22 +2,18 @@
   <view class="search-filter-wrap">
     <view class="search-filter-wrap-inner">
       <view class="search-button" @click="showDrawer">筛选</view>
-      <view class="camera-btn">
-        <uni-icons type="camera" size="30"></uni-icons>
-      </view>
+      <view class="camera-btn"><uni-icons type="camera" size="30"></uni-icons></view>
     </view>
     <uni-drawer :visible="isShowDrawer" mode="right" @close="closeDrawer">
       <!-- 表单展示 -->
-      <scroll-view class="scroll-view-h" scroll-y>
-        <slot></slot>
-      </scroll-view>
+      <scroll-view class="scroll-view-h" scroll-y><slot></slot></scroll-view>
     </uni-drawer>
   </view>
 </template>
 
 <script>
 export default {
-  name: "search-filter",
+  name: 'search-filter',
   components: {},
   data() {
     return {
@@ -31,11 +27,11 @@ export default {
     },
     // 抽屉组件关闭
     closeDrawer() {
-      console.log("抽屉组件关闭");
+      console.log('抽屉组件关闭');
       this.isShowDrawer = false;
     },
     hideDrawer() {
-      console.log("抽屉组件关闭");
+      console.log('抽屉组件关闭');
       this.isShowDrawer = false;
     }
   }
@@ -43,7 +39,7 @@ export default {
 </script>
 
 <style lang="scss">
-.search-filter-wrap{
+.search-filter-wrap {
   background-color: $uni-bg-color-navbar;
   color: $uni-text-color-inverse;
 }

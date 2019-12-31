@@ -20,12 +20,10 @@
         "navigationBarTitleText": "首页",
         "app-plus": {
           "titleNView": {
-            "buttons": [
-              {
-                "float": "left",
-                "text": "\ue123"
-              }
-            ]
+            "buttons": [{
+              "float": "left",
+              "text": "\ue123"
+            }]
           }
         }
       }
@@ -110,8 +108,7 @@
     "color": "#333333",
     "selectedColor": "#333333",
     "backgroundColor": "#ffffff",
-    "list": [
-      {
+    "list": [{
         "pagePath": "pages/tabBar/tabPage1/tabPage1",
         "text": "首页",
         "iconPath": "static/tabBar/homepage.png",

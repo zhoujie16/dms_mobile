@@ -2,20 +2,18 @@
   <view class="m-lab-wrap">
     <view class="m-lab-inner" :class="{ 'm-lab-inner2': row > 1 }">
       <view class="m-lab-title">{{ label }}</view>
-      <view class="m-lab-content">
-        <slot></slot>
-      </view>
+      <view class="m-lab-content"><slot></slot></view>
     </view>
   </view>
 </template>
 
 <script>
 export default {
-  name: "m-label",
+  name: 'm-label',
   props: {
     label: {
       type: String,
-      default: "标题"
+      default: '标题'
     },
     row: {
       type: Number,

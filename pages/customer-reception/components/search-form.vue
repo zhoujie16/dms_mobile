@@ -2,9 +2,7 @@
   <view>
     <view class="form-demo-wrap" @touchmove.prevent>
       <view class="btn-v">
-        <button @click="formSubmit" type="primary" class="submit-btn">
-          查询
-        </button>
+        <button @click="formSubmit" type="primary" class="submit-btn">查询</button>
       </view>
     </view>
   </view>
@@ -13,14 +11,12 @@
 export default {
   components: {},
   data() {
-    return {
-       
-    };
+    return {};
   },
   methods: {
     formSubmit() {
-      console.log("formSubmit");
-      this.$emit("confirm");
+      console.log('formSubmit');
+      this.$emit('confirm');
     }
   }
 };

@@ -18,12 +18,12 @@
 
 <script>
 export default {
-  name: "m-input",
+  name: 'm-input',
   components: {},
   props: {
     label: {
       type: String,
-      default: "label"
+      default: 'label'
     },
     value: {
       type: Array,
@@ -60,17 +60,17 @@ export default {
   },
   methods: {
     checkbosItemClick(item) {
-      console.log("选项点击", item);
+      console.log('选项点击', item);
       if (this.single) {
         let _val = this.value;
         const index = _val.indexOf(item.value);
-        this.$emit("input", [item.value]);
+        this.$emit('input', [item.value]);
         if (index !== -1) {
           _val = [];
         } else {
           _val = [item.value];
         }
-        this.$emit("input", _val);
+        this.$emit('input', _val);
       } else {
         const _val = this.value;
         const index = _val.indexOf(item.value);
@@ -79,7 +79,7 @@ export default {
         } else {
           _val.push(item.value);
         }
-        this.$emit("input", _val);
+        this.$emit('input', _val);
       }
     }
   }

@@ -34,7 +34,7 @@ export default {
   },
   watch: {
     fetchParams() {
-      console.log("watch fetchParams");
+      console.log('watch fetchParams');
       if (this.mescroll) {
         this.mescroll.scrollTo(0);
         this.mescroll.triggerDownScroll();
@@ -61,7 +61,7 @@ export default {
         },
         noMoreSize: 5, // 配置列表的总数量要大于等于5条才显示'-- END --'的提示
         empty: {
-          tip: "暂无相关数据"
+          tip: '暂无相关数据'
         }
       }
     };
@@ -72,7 +72,7 @@ export default {
     },
     setDataList(arr) {
       this.dataList = arr; //追加新数据
-      this.$emit("listChange", arr);
+      this.$emit('listChange', arr);
     },
     sleep(timeLen) {
       return new Promise(resolve => {
@@ -81,7 +81,7 @@ export default {
     },
     /** 下拉刷新的回调 */
     async downCallback(mescroll) {
-      console.log("下拉刷新");
+      console.log('下拉刷新');
       await this.sleep(500);
       mescroll.resetUpScroll();
     },
@@ -89,7 +89,7 @@ export default {
     async upCallback(mescroll) {
       let pageNum = mescroll.num; // 页码, 默认从1开始
       let pageSize = mescroll.size; // 页长, 默认每页10条
-      console.log("上拉加载", {
+      console.log('上拉加载', {
         pageNum,
         pageSize
       });
@@ -111,7 +111,7 @@ export default {
       const params = { ...this.fetchParams, pageNum, pageSize };
       const res = await this.fetchApi(params);
       if (!res) {
-        console.log("baseScroll 请求数据失败");
+        console.log('baseScroll 请求数据失败');
         return;
       }
       const _res = {
@@ -125,8 +125,7 @@ export default {
 </script>
 
 <style lang="scss">
-.mescroll-uni{
-  
+.mescroll-uni {
 }
 .menu {
   height: 100rpx;

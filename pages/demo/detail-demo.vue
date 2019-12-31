@@ -8,36 +8,30 @@
     <MLabel label="故障描述">无</MLabel>
     <MLabel label="维修技术">王工</MLabel>
     <MLabel label="备注 " :row="2">
-      备注 备注 备注 备注 备注 备注 备注 备注 备注 备注 备注 备注 备注 备注 备注 备注 备注 备注  备注 备注 备注 备注 备注 备注 备注 备注 备注 备注 备注 备注 备注 备注 备注 备注 备注 备注
+      备注 备注 备注 备注 备注 备注 备注 备注 备注 备注 备注 备注 备注 备注 备注 备注 备注 备注 备注
+      备注 备注 备注 备注 备注 备注 备注 备注 备注 备注 备注 备注 备注 备注 备注 备注 备注
     </MLabel>
     <button class="button" type="primary">按钮</button>
-    
   </view>
 </template>
 
-<script> 
-  export default {
-    components: { 
-    },
-    data() {
-      return {
-
-      }
-    },
-    methods: {
-
-    }
-  }
+<script>
+export default {
+  components: {},
+  data() {
+    return {};
+  },
+  methods: {}
+};
 </script>
 
 <style>
-  .image{
-    margin: 30rpx;
-    width: 690rpx;
-    height: 388.125rpx;
-  }
-  .button{
-    margin: 30rpx;
-  }
-
+.image {
+  margin: 30rpx;
+  width: 690rpx;
+  height: 388.125rpx;
+}
+.button {
+  margin: 30rpx;
+}
 </style>

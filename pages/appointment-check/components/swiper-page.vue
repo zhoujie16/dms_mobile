@@ -8,8 +8,9 @@
         :key="i"
         :class="{ active: curIndex === i }"
         @click="changeTab(i)"
-        >{{ tab }}</view
       >
+        {{ tab }}
+      </view>
     </view>
     <swiper class="swiper-wrap" :current="curIndex" @change="swiperChange">
       <!--全部 -->
@@ -24,11 +25,7 @@
             }
           "
         >
-          <view
-            @click="scrollCellClick"
-            v-for="(data, i) in dataSource_0"
-            :key="i"
-          >
+          <view @click="scrollCellClick" v-for="(data, i) in dataSource_0" :key="i">
             <ScrollCell :cell="data"></ScrollCell>
           </view>
         </baseScroll>
@@ -44,11 +41,7 @@
             }
           "
         >
-          <view
-            @click="scrollCellClick"
-            v-for="(data, i) in dataSource_1"
-            :key="i"
-          >
+          <view @click="scrollCellClick" v-for="(data, i) in dataSource_1" :key="i">
             <ScrollCell :cell="data"></ScrollCell>
           </view>
         </baseScroll>
@@ -64,11 +57,7 @@
             }
           "
         >
-          <view
-            @click="scrollCellClick"
-            v-for="(data, i) in dataSource_2"
-            :key="i"
-          >
+          <view @click="scrollCellClick" v-for="(data, i) in dataSource_2" :key="i">
             <ScrollCell :cell="data"></ScrollCell>
           </view>
         </baseScroll>
@@ -78,8 +67,8 @@
 </template>
 
 <script>
-import { AjaxScrollData } from "@/api/test/index.js";
-import ScrollCell from "./scroll-cell";
+import { AjaxScrollData } from '@/api/test/index.js';
+import ScrollCell from './scroll-cell';
 
 export default {
   components: {
@@ -88,7 +77,7 @@ export default {
   props: {
     height: {
       type: String,
-      default: "800rpx"
+      default: '800rpx'
     },
     fetchParams: {
       type: Object
@@ -96,7 +85,7 @@ export default {
   },
   data() {
     return {
-      tabs: ["未进场", "已进场", "已取消"],
+      tabs: ['未进场', '已进场', '已取消'],
       curIndex: 0, // 当前tab的下标
       fetchApi: AjaxScrollData,
       fetchParams_0: {},
@@ -122,7 +111,7 @@ export default {
       this.curIndex = i;
     },
     scrollCellClick() {
-      console.log("scrollCellClick");
+      console.log('scrollCellClick');
     }
   }
 };
@@ -131,9 +120,8 @@ export default {
 <style lang="scss">
 .swiper-page-wrap {
   position: relative;
-  
 }
-.swiper-wrap{
+.swiper-wrap {
   background-color: $uni-bg-color-page;
 }
 
@@ -141,7 +129,7 @@ export default {
   z-index: 10;
   /* css变量 */
   width: 100%;
-  height: 80rpx; 
+  height: 80rpx;
   background-color: $uni-bg-color-navbar;
   color: $uni-text-color-grey;
   border-bottom: 1upx solid $uni-color-primary;
@@ -150,8 +138,8 @@ export default {
     font-size: 28rpx;
   }
   .active {
-    border-bottom: 2rpx solid #FFFFFF;
-    color: #FFFFFF;
+    border-bottom: 2rpx solid #ffffff;
+    color: #ffffff;
   }
 }
 

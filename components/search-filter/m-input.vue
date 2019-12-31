@@ -2,12 +2,7 @@
   <view>
     <MLabel :label="label">
       <view>
-        <input
-          :value="value"
-          @input="inputHandle"
-          class="y-input"
-          :placeholder="placeholder"
-        />
+        <input :value="value" @input="inputHandle" class="y-input" :placeholder="placeholder" />
       </view>
     </MLabel>
   </view>
@@ -15,7 +10,7 @@
 
 <script>
 export default {
-  name: "m-input",
+  name: 'm-input',
   components: {},
   props: {
     label: {
@@ -26,7 +21,7 @@ export default {
     },
     placeholder: {
       type: String,
-      default: "请输入"
+      default: '请输入'
     }
   },
   data() {
@@ -34,7 +29,7 @@ export default {
   },
   methods: {
     inputHandle(e) {
-      this.$emit("input", e.target.value);
+      this.$emit('input', e.target.value);
     }
   }
 };
