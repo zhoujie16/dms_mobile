@@ -1,0 +1,144 @@
+<template>
+  <view class="drawer-wrap">
+    <view class="user-panel">
+      <view class="user-panel-inner">
+        <image class="user-icon" src="../../../static/demo/60x60.png" mode="scaleToFill"></image>
+        <text class="user-name">Admin</text>
+        <text class="user-desc">系统管理员</text>
+      </view>
+    </view>
+    <view class="menu-wrap">
+      <view class="menu-item" @click="menuClickUser">
+        <image
+          class="menu-item-icon"
+          src="../../../static/demo/60x60.png"
+          mode="scaleToFill"
+        ></image>
+        <text class="menu-item-text">个人名片</text>
+      </view>
+      <view class="menu-item" @click="menuClickupdate">
+        <image
+          class="menu-item-icon"
+          src="../../../static/demo/60x60.png"
+          mode="scaleToFill"
+        ></image>
+        <text class="menu-item-text">版本更新</text>
+      </view>
+      <view class="menu-item" @click="menuClickPassord">
+        <image
+          class="menu-item-icon"
+          src="../../../static/demo/60x60.png"
+          mode="scaleToFill"
+        ></image>
+        <text class="menu-item-text">修改密码</text>
+      </view>
+      <view class="menu-item" @click="menuClickPhone">
+        <image
+          class="menu-item-icon"
+          src="../../../static/demo/60x60.png"
+          mode="scaleToFill"
+        ></image>
+        <text class="menu-item-text">客服热线</text>
+      </view>
+      <view class="menu-item" @click="menuClickBook">
+        <image
+          class="menu-item-icon"
+          src="../../../static/demo/60x60.png"
+          mode="scaleToFill"
+        ></image>
+        <text class="menu-item-text">操作手册</text>
+      </view>
+      <view class="menu-item" @click="menuClickQuit">
+        <image
+          class="menu-item-icon"
+          src="../../../static/demo/60x60.png"
+          mode="scaleToFill"
+        ></image>
+        <text class="menu-item-text">退出</text>
+      </view>
+    </view>
+  </view>
+</template>
+
+<script>
+export default {
+  methods: {
+    async menuClickUser() {},
+    async menuClickupdate() {},
+    async menuClickPassord() {},
+    async menuClickPhone() {},
+    async menuClickBook() {},
+    async menuClickQuit() {
+      const [err, res] = await uni.showModal({
+        title: '提示',
+        content: '是否退出当前账号'
+      });
+      if (res.confirm) {
+        // 退出
+        uni.getSubNVueById("drawer").close();
+        await uni.reLaunch({
+          url:'/pages/login/login'
+        })
+      }
+    }
+  }
+};
+</script>
+
+<style lang="scss">
+.drawer-wrap {
+}
+.user-panel {
+  padding-top: 80rpx;
+  height: 480rpx;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: rgb(60, 80, 100);
+  color: #ffffff;
+}
+.user-panel-inner {
+  height: 500rpx;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.user-icon {
+  width: 150rpx;
+  height: 150rpx;
+  margin-bottom: 20rpx;
+  border-radius: 75rpx;
+}
+.user-name {
+  color: #dddddd;
+  font-size: 30rpx;
+  margin-bottom: 20rpx;
+}
+.user-desc {
+  color: #dddddd;
+  font-size: 30rpx;
+}
+
+.menu-wrap {
+  flex: 1;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 100rpx 0;
+  background-color: rgb(53, 59, 78);
+  color: #ffffff;
+}
+.menu-item {
+  height: 100rpx;
+  padding: 0 60rpx;
+  flex-direction: row;
+}
+.menu-item-icon {
+  width: 40rpx;
+  height: 40rpx;
+}
+.menu-item-text {
+  padding-left: 30rpx;
+  font-size: 34rpx;
+  color: #dddddd;
+}
+</style>

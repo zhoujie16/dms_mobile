@@ -21,11 +21,6 @@
         </uni-grid-item>
       </uni-grid>
     </view>
-    <uni-drawer :visible="isShowDrawer" mode="left" @close="closeDrawer">
-      <!-- 左侧菜单 -->
-      <!-- ahhaha -->
-      <DrawerLeft></DrawerLeft>
-    </uni-drawer>
   </view>
 </template>
 
@@ -33,9 +28,8 @@
 import uniGrid from '@/libs/uni-ui/uni-grid/uni-grid.vue';
 import uniGridItem from '@/libs/uni-ui/uni-grid-item/uni-grid-item.vue';
 import uniNoticeBar from '@/libs/uni-ui/uni-notice-bar/uni-notice-bar.vue';
-import MenuItem from '../components/MenuItem.vue';
-import UniDrawer from '@/libs/uni-ui/uni-drawer/uni-drawer.vue';
-import DrawerLeft from '@/pages/tabBar/components/DrawerLeft.vue';
+import MenuItem from '../components/menu-item.vue';
+import UniDrawer from '@/libs/uni-ui/uni-drawer/uni-drawer.vue'; 
 
 export default {
   components: {
@@ -43,13 +37,12 @@ export default {
     uniGridItem,
     uniNoticeBar,
     MenuItem,
-    UniDrawer,
-    DrawerLeft
+    UniDrawer, 
   },
   // 导航栏按钮点击事件
   onNavigationBarButtonTap(btn) {
-    console.log('导航栏按钮点击事件', btn);
-    this.isShowDrawer = !this.isShowDrawer;
+    console.log('导航栏按钮点击事件', btn); 
+    uni.getSubNVueById("drawer").show("slide-in-left", 200);
   },
   onReady() {
     console.log('tabbar1 ready', this);
@@ -119,10 +112,7 @@ export default {
       uni.navigateTo({
         url: item.path
       });
-    },
-    closeDrawer() {
-      this.isShowDrawer = false;
-    }
+    }, 
   }
 };
 </script>

@@ -22,9 +22,17 @@
           "titleNView": {
             "buttons": [{
               "float": "left",
-              "text": "\ue123"
+              "text": "Menu"
             }]
-          }
+          },
+          "subNVues": [{
+            "id": "drawer",
+            "type": "popup",
+            "path": "pages/tabBar/components/drawer-left.nvue",
+            "style": {
+              "width": "80%"
+            }
+          }]
         }
       }
     },
