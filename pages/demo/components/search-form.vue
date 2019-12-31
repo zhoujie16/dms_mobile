@@ -4,16 +4,19 @@
       <MInput v-model="cph" label="车牌号"></MInput>
       <MCheckbox label="选择顾问 单选" v-model="xsgw" :itemList="itemList_xsgw" single></MCheckbox>
       <MCheckbox label="选择顾问 多选" v-model="xsgw2" :itemList="itemList_xsgw2"></MCheckbox>
-      <MLabel v-model="cph" label="弹窗选择 单选" :row="2">
-        <button @click="test1" size="mini" type="default" class="submit-btn">
-          {{ val_test1 ? val_test1 : '弹窗选择' }}
-        </button>
-      </MLabel>
-      <MLabel v-model="cph" label="弹窗选择 多选" :row="2">
-        <button @click="test11" size="mini" type="default" class="submit-btn">
-          {{ val_test11 ? val_test11 : '弹窗选择' }}
-        </button>
-      </MLabel>
+      <MCheckbox
+        label="弹窗选择 单选"
+        type="popup"
+        v-model="xsgw3"
+        :itemList="itemList_xsgw3"
+        single
+      ></MCheckbox>
+      <MCheckbox
+        label="弹窗选择 多选"
+        type="popup"
+        v-model="xsgw4"
+        :itemList="itemList_xsgw4"
+      ></MCheckbox>
       <MLabel v-model="cph" label="日期选择" :row="2">
         <button @click="test2" size="mini" type="default" class="submit-btn">
           {{ val_test2 ? val_test2 : '日期选择' }}
@@ -78,6 +81,10 @@ export default {
       itemList_xsgw: [...testArr],
       xsgw2: [],
       itemList_xsgw2: [...testArr],
+      xsgw3: [],
+      itemList_xsgw3: [...testArr],
+      xsgw4: [],
+      itemList_xsgw4: [...testArr],
       val_test1: '',
       val_test11: '',
       val_test2: ''

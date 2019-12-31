@@ -1,45 +1,32 @@
 <template>
   <view class="">
-    <MLabel :label="label" :row="2">
-      <view class="y-checkbox-inner">
-        <uni-tag
-          class="y-checkbox-item"
-          size="small"
-          :text="item.text"
-          :type="item.isSelect ? 'primary' : 'default'"
-          @click="checkbosItemClick(item)"
-          v-for="(item, i) in itemList_1"
-          :key="i"
-        ></uni-tag>
-      </view>
-    </MLabel>
+    <view class="y-checkbox-inner">
+      <uni-tag
+        class="y-checkbox-item"
+        size="small"
+        :text="item.text"
+        :type="item.isSelect ? 'primary' : 'default'"
+        @click="checkbosItemClick(item)"
+        v-for="(item, i) in itemList_1"
+        :key="i"
+      ></uni-tag>
+    </view>
   </view>
 </template>
 
 <script>
 export default {
-  name: 'm-input',
+  name: 'm-checkbox-inner',
   components: {},
   props: {
-    label: {
-      type: String,
-      default: 'label'
-    },
     value: {
-      type: Array,
-      default() {
-        return [];
-      }
+      type: Array
     },
     itemList: {
-      type: Array,
-      default() {
-        return [];
-      }
+      type: Array
     },
     single: {
-      type: Boolean,
-      default: false
+      type: Boolean
     }
   },
   data() {

@@ -1,29 +1,40 @@
 <template>
   <view class="">
     <MLabel :label="label" :row="2">
-      <view class="y-checkbox-inner">
-        <uni-tag
-          class="y-checkbox-item"
-          size="small"
-          :text="item.text"
-          :type="item.isSelect ? 'primary' : 'default'"
-          @click="checkbosItemClick(item)"
-          v-for="(item, i) in itemList_1"
-          :key="i"
-        ></uni-tag>
-      </view>
+      <MCheckboxInner
+        v-if="type == 'inner'"
+        :value="value"
+        :itemList="itemList"
+        :single="single"
+        @input="input"
+      ></MCheckboxInner>
+      <button
+        v-if="type == 'popup'"
+        @click="showPopupClick"
+        size="mini"
+        type="default"
+        class="submit-btn"
+      >
+        {{ val_test1 ? val_test1 : '弹窗选择' }}
+      </button>
     </MLabel>
   </view>
 </template>
 
 <script>
+import MCheckboxInner from './m-checkbox-inner.vue';
+
 export default {
   name: 'm-input',
-  components: {},
+  components: { MCheckboxInner },
   props: {
+    type: {
+      type: String,
+      default: 'inner'
+    },
     label: {
       type: String,
-      default: 'label'
+      default: '选择'
     },
     value: {
       type: Array,
@@ -43,61 +54,32 @@ export default {
     }
   },
   data() {
-    return {};
+    return {
+      val_test1: ''
+    };
   },
-  computed: {
-    itemList_1() {
-      const itemList_1 = this.itemList.map(item => {
-        const isSelect = this.value.indexOf(item.value) !== -1;
-        return {
-          text: item.text,
-          value: item.value,
-          isSelect
-        };
-      });
-      return itemList_1;
-    }
-  },
+  computed: {},
   methods: {
-    checkbosItemClick(item) {
-      console.log('选项点击', item);
-      if (this.single) {
-        let _val = this.value;
-        const index = _val.indexOf(item.value);
-        this.$emit('input', [item.value]);
-        if (index !== -1) {
-          _val = [];
-        } else {
-          _val = [item.value];
-        }
-        this.$emit('input', _val);
-      } else {
-        const _val = this.value;
-        const index = _val.indexOf(item.value);
-        if (index !== -1) {
-          _val.splice(index, 1);
-        } else {
-          _val.push(item.value);
-        }
-        this.$emit('input', _val);
-      }
+    input(value) {
+      this.$emit('input', value);
+    },
+    showPopupClick() {
+      this.$root.$refs.MCheckboxPopup.showPicker({
+        single: this.single,
+        itemList: this.itemList,
+        value: []
+      }).then(value => {
+        console.log('选择的结果', value);
+        this.val_test1 = value.join(',');
+        this.input(value);
+      });
     }
   }
 };
 </script>
 
-<style>
-.y-checkbox-inner {
-  /* #ifndef APP-NVUE */
-  display: flex;
-  /* #endif */
-  flex-direction: row;
-  position: relative;
-  align-items: center;
-  flex-wrap: wrap;
-}
-
-.y-checkbox-item {
-  margin: 0 30rpx 30rpx 0;
+<style lang="scss">
+.submit-btn {
+  width: 100%;
 }
 </style>
