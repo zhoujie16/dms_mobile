@@ -113,6 +113,7 @@ export default {
 
 <style lang="scss">
 .page-wrap {
+  padding-bottom: 200rpx;
 }
 .car-info-panel {
   padding: 0 40rpx;

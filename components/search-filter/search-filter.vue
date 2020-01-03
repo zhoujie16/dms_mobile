@@ -2,7 +2,7 @@
   <view class="search-filter-wrap">
     <view class="search-filter-wrap-inner">
       <view class="search-button" @click="showDrawer">筛选</view>
-      <view class="camera-btn"><uni-icons type="camera" size="30"></uni-icons></view>
+      <view class="camera-btn"><uni-icons type="camera" size="30" color="#ffffff"></uni-icons></view>
     </view>
     <uni-drawer :visible="isShowDrawer" mode="right" @close="closeDrawer">
       <!-- 表单展示 -->

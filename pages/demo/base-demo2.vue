@@ -2,6 +2,7 @@
 	<view>
 		<button @click="showPopup1" type="primary">MPopup center</button>
     <button @click="showPopup2" type="primary">MPopup bottom</button>
+    <FaIcon type="home" size="22" color="#666"></FaIcon>
     <MPopup ref="mPopup1" type="center" title="标题1">
       弹窗内容 center 
     </MPopup>

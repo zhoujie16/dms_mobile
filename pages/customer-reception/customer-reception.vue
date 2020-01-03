@@ -13,15 +13,19 @@
         }
       "
     >
-      <view
-        class="base-scroll-inner"
-        @click="scrollCellClick"
-        v-for="(data, i) in dataSource"
-        :key="i"
-      >
-        <ScrollCell :cell="data"></ScrollCell>
+      <view style="padding: 20rpx;">
+        <ScrollCell
+          @click="scrollCellClick(data)"
+          v-for="(data, i) in dataSource"
+          :key="i"
+          :cell="data"
+        ></ScrollCell>
       </view>
     </BaseScroll>
+    <view class="popup-group">
+      <MFadBtn type="right">新增</MFadBtn>
+      
+    </view>
   </view>
 </template>
 
@@ -48,7 +52,6 @@ export default {
     // 列表点击事件
     scrollCellClick(cell) {
       console.log('cellClick', cell);
-      return;
       uni.navigateTo({
         url: '/pages/customer-reception/customer-detail'
       });

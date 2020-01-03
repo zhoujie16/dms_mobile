@@ -112,10 +112,14 @@
       }
     }, {
       "path": "pages/demo/base-demo2",
-      "style": {}
+      "style": {
+        "navigationBarTitleText": "demo2"
+      }
     }, {
       "path": "pages/rapid-order/order-detail",
-      "style": {}
+      "style": {
+        "navigationBarTitleText": "新建工单"
+      }
     }, {
       "path": "pages/tabBar/tabPage3/report-detail",
       "style": {
@@ -130,6 +134,11 @@
       "path": "pages/qcReport/qcReport-detail",
       "style": {
         "navigationBarTitleText": "服务报表说明"
+      }
+    }, {
+      "path": "pages/customer-reception/customer-add",
+      "style": {
+        "navigationBarTitleText": "客户接待"
       }
     }
   ],

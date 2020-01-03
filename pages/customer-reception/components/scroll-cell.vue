@@ -1,18 +1,30 @@
 <template>
   <view class="list-cell-wrap">
     <view class="list-cell-wrap-inner">
-      <view class="scroll-cell-title" @click="cellTitleClick">
-        <view class="m-flex m-align-center m-height-80">姓名</view>
-        <view class="m-flex m-justify-around m-align-center">
-          <view class="m-height-80" style="flex: 0 0 200rpx;">沪ADC10086</view>
-          <view class="m-height-80" style="flex: 1;text-align: right;">2019-12-12 12:12:12</view>
+      <view class="list-cell-title" @click="cellTitleClick">
+        <view class="name">张全蛋</view>
+        <view class="info">
+          <view class="info-lab">沪ADC10083</view>
+          <view class="info-text">2020-01-01 16:16</view>
         </view>
       </view>
-      <view class="scroll-cell-content" v-if="isShowDetail">
-        <m-label label="预检单号"><view>YJ1111111111111</view></m-label>
-        <m-label label="工单号"><view>YJ1111111111111</view></m-label>
-        <m-label label="接待车型"><view>YJ1111111111111</view></m-label>
-        <m-label label="接待顾问"><view>YJ1111111111111</view></m-label>
+      <view class="list-cell-content" v-if="isShowDetail" @click="cellClick">
+        <view class="info-item">
+          <view class="info-item-lab">预检单号：</view>
+          <view class="info-item-text">YJ2001020002</view>
+        </view>
+        <view class="info-item">
+          <view class="info-item-lab">工单号：</view>
+          <view class="info-item-text">YJ2001020002</view>
+        </view>
+        <view class="info-item">
+          <view class="info-item-lab">接待车型：</view>
+          <view class="info-item-text">全新福克斯三厢 1.6MT</view>
+        </view>
+        <view class="info-item">
+          <view class="info-item-lab">接待顾问：</view>
+          <view class="info-item-text">王大锤</view>
+        </view>
       </view>
     </view>
   </view>
@@ -37,6 +49,9 @@ export default {
     change() {},
     cellTitleClick() {
       this.isShowDetail = !this.isShowDetail;
+    },
+    cellClick(){
+      this.$emit('click')
     }
   }
 };
@@ -44,14 +59,47 @@ export default {
 
 <style lang="scss">
 .list-cell-wrap {
-  padding: 20rpx;
-  color: $uni-text-color-inverse;
 }
 
 .list-cell-wrap-inner {
   width: 100%;
-  padding: 30rpx;
-  border-radius: 20rpx;
-  border: 1px solid #999999;
+  border-radius: 10rpx;
+  overflow: hidden;
+  background-color: #ffffff;
+  margin-bottom: 30rpx;
+}
+.list-cell-title {
+  padding: 10rpx 20rpx;
+  .name {
+    padding: 10rpx 0;
+    font-weight: 500;
+  }
+  .info {
+    color: #999999;
+    padding: 10rpx 0;
+    display: flex;
+    .info-lab {
+      flex: 0 0 200rpx;
+    }
+    .info-text {
+      flex: 1 1 auto;
+      text-align: right;
+    }
+  }
+}
+.list-cell-content {
+  background-color: #eeeeee;
+  padding: 10rpx 20rpx;
+  .info-item {
+    padding: 10rpx 0;
+    display: flex;
+    .info-item-lab {
+      flex: 0 0 200rpx;
+      color: #999999;
+    }
+    .info-item-text {
+      flex: 1 1 auto;
+    }
+  }
 }
 </style>
