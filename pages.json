@@ -116,6 +116,21 @@
     }, {
       "path": "pages/rapid-order/order-detail",
       "style": {}
+    }, {
+      "path": "pages/tabBar/tabPage3/report-detail",
+      "style": {
+        "navigationBarTitleText": "服务报表"
+      }
+    }, {
+      "path": "pages/qcReport/qcReport",
+      "style": {
+        "navigationBarTitleText": "服务报表"
+      }
+    }, {
+      "path": "pages/qcReport/qcReport-detail",
+      "style": {
+        "navigationBarTitleText": "服务报表说明"
+      }
     }
   ],
   "tabBar": {

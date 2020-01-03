@@ -90,7 +90,7 @@ export default {
         {
           url: '/static/demo/60x60.png',
           text: 'QC',
-          path: '/pages/index/index'
+          path: '/pages/qcReport/qcReport' 
         },
         {
           url: '/static/demo/60x60.png',

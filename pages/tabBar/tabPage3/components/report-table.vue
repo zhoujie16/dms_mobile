@@ -18,8 +18,8 @@
 </template>
 
 <script>
-  import { AjaxScrollData } from '@/api/test/index.js';
-  
+import { AjaxScrollData } from '@/api/test/index.js';
+
 export default {
   data() {
     return {};
