@@ -141,6 +141,9 @@ Vue.component("MCheckbox", MCheckbox);
 import MPopup from "@/components/m-popup/m-popup.vue";
 Vue.component("MPopup", MPopup);
 
+import MFadBtn from '@/components/m-fad-btn/m-fad-btn.vue'
+Vue.component("MFadBtn", MFadBtn);
+
 import MCheckboxPopup from "@/components/search-filter/m-checkbox-popup.vue";
 Vue.component("MCheckboxPopup", MCheckboxPopup);
 

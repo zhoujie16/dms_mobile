@@ -2,8 +2,7 @@
   <view class="">
     <view class="y-checkbox-inner">
       <uni-tag
-        class="y-checkbox-item"
-        size="small"
+        class="y-checkbox-item" 
         :text="item.text"
         :type="item.isSelect ? 'primary' : 'default'"
         @click="checkbosItemClick(item)"
@@ -85,6 +84,6 @@ export default {
 }
 
 .y-checkbox-item {
-  margin: 0 30rpx 30rpx 0;
+  margin: 0 20rpx 20rpx 0;
 }
 </style>

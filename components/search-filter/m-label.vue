@@ -1,6 +1,6 @@
 <template>
   <view class="m-lab-wrap">
-    <view class="m-lab-inner" :class="{ 'm-lab-inner2': row > 1 }">
+    <view class="m-lab-inner" :class="{ 'm-lab-inner2': row > 1, border: border }">
       <view class="m-lab-title">{{ label }}</view>
       <view class="m-lab-content"><slot></slot></view>
     </view>
@@ -18,6 +18,10 @@ export default {
     row: {
       type: Number,
       default: 1
+    },
+    border: {
+      type: Boolean,
+      default: true
     }
   },
   data() {
@@ -26,7 +30,7 @@ export default {
 };
 </script>
 
-<style>
+<style lang="scss">
 .m-lab-wrap {
   color: #333;
   font-size: 32rpx;
@@ -36,7 +40,9 @@ export default {
   display: flex;
   flex-direction: row;
   align-items: center;
-  /* border-bottom: solid 1px #999999; */
+}
+.m-lab-inner.border {
+  border-bottom: solid 1rpx #dddddd;
 }
 
 .m-lab-inner2 {

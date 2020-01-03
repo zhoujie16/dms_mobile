@@ -42,7 +42,7 @@ export default {
 }
 
 .y-input {
-  padding: 6rpx 26rpx;
-  background-color: #f4f4f4;
+  padding: 5rpx 26rpx;
+  background-color: #f9f9f9;
 }
 </style>
