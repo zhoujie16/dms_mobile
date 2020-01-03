@@ -101,6 +101,11 @@ export default {
           url: '/static/demo/60x60.png',
           text: 'Demo',
           path: '/pages/demo/base-demo'
+        },
+        {
+          url: '/static/demo/60x60.png',
+          text: 'Demo2',
+          path: '/pages/demo/base-demo2'
         }
       ]
     };

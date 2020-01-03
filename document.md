@@ -127,7 +127,50 @@ export default {
 |      |      |      |
 |      |      |      |
 
+## m-popup
 
+| 属性  | 类型   | 必填 | 默认值 | 可选值          | 描述 |
+| ----- | ------ | ---- | ------ | --------------- | ---- |
+| title | String |      |        |                 |      |
+| type  | String |      | center | center , bottom |      |
+
+| 事件 | 说明 | 回调 |
+| ---- | ---- | ---- |
+|      |      |      |
+|      |      |      |
+
+```
+this.$refs.mPopup.open();  // 打开
+this.$refs.mPopup.close(); // 关闭
+```
+
+
+
+```vue
+<template>
+	<view>
+		<button @click="showPopup" type="primary">MPopup</button>
+    <MPopup ref="mPopup" type="center">
+      弹窗内容
+    </MPopup>
+	</view>
+</template>
+
+<script>
+	export default {
+		data() {
+			return {
+				 
+			};
+		},
+    methods:{
+      showPopup(){
+        this.$refs.mPopup.open();
+      }
+    }
+	}
+</script>
+```
 
 
 

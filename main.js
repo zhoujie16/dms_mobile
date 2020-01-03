@@ -138,6 +138,8 @@ Vue.component("MInput", MInput);
 import MCheckbox from "@/components/search-filter/m-checkbox.vue";
 Vue.component("MCheckbox", MCheckbox);
 
+import MPopup from "@/components/m-popup/m-popup.vue";
+Vue.component("MPopup", MPopup);
 
 import MCheckboxPopup from "@/components/search-filter/m-checkbox-popup.vue";
 Vue.component("MCheckboxPopup", MCheckboxPopup);
