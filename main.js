@@ -148,6 +148,17 @@ Vue.component("MDatePickerPopup", MDatePickerPopup);
 import MDatePicker from "@/components/search-filter/m-date-picker.vue";
 Vue.component("MDatePicker", MDatePicker);
 
+import TTable from "@/components/base-table/t-table.vue";
+Vue.component("t-table", TTable);
+
+import TTr from "@/components/base-table/t-tr.vue";
+Vue.component("t-tr", TTr);
+
+import TTh from "@/components/base-table/t-th.vue";
+Vue.component("t-th", TTh);
+
+import TTd from "@/components/base-table/t-td.vue"
+Vue.component("t-td", TTd);
 
 /** 绑定公共组件 E */
 

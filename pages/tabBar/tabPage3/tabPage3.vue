@@ -1,21 +1,19 @@
 <template>
   <!-- 报表 -->
-  <view class="page-warp">
-     <SwiperPage :fetchParams="fetchParams" height="calc(100vh)"></SwiperPage>
-  </view>
+  <view class="page-warp"><SwiperPage :fetchParams="fetchParams" height="calc(100vh)"></SwiperPage></view>
 </template>
 
 <script>
-  import { AjaxScrollData } from '@/api/test/index.js';
-  import SwiperPage from '@/pages/tabBar/tabPage3/components/swiper-page.vue';
-  
+import { AjaxScrollData } from '@/api/test/index.js';
+import SwiperPage from '@/pages/tabBar/tabPage3/components/swiper-page.vue';
+
 export default {
   components: {
     SwiperPage
   },
   data() {
     return {
-      fetchParams:{}
+      fetchParams: {}
     };
   },
   methods: {}

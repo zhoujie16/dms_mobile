@@ -109,7 +109,7 @@ export default {
     justify-content: space-between;
     align-items: center;
     line-height: 140rpx;
-    color: #ffffff;
+    color: $uni-text-color-inverse;
     .r-icon-box {
       display: inline-block;
       width: 100rpx;
