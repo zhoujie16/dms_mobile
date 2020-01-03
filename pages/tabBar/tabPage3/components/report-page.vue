@@ -1,60 +1,60 @@
 <template>
   <view>
     <view class="uni-flex uni-row">
-      <view class="flex-item flex-item-V r-content" @click="tabUrl">
-          <text class="count">0</text>
-          <text>昨日进厂台次</text>
+      <view class="flex-item flex-item-V r-content" @click="tabUrl(reportData.factoryText)">
+        <text class="count">{{ reportData.factoryCount }}</text>
+        <text>{{ reportData.factoryText }}</text>
       </view>
 
-      <view class="flex-item flex-item-V r-content">
-        <text class="count">0</text>
-        <text>昨日结算台次</text>
+      <view class="flex-item flex-item-V r-content" @click="tabUrl(reportData.settleText)">
+        <text class="count">{{ reportData.settleCount }}</text>
+        <text>{{ reportData.settleText }}</text>
       </view>
     </view>
     <view class="uni-flex uni-row">
-      <view class="flex-item flex-item-V r-content">
-        <text class="count">0</text>
-        <text>昨日机修台次</text>
+      <view class="flex-item flex-item-V r-content" @click="tabUrl(reportData.machineText)">
+        <text class="count">{{ reportData.machineCount }}</text>
+        <text>{{ reportData.machineText }}</text>
       </view>
-      <view class="flex-item flex-item-V r-content">
-        <text class="count">0</text>
-        <text>昨日饭喷台次</text>
+      <view class="flex-item flex-item-V r-content" @click="tabUrl(reportData.BPEXText)">
+        <text class="count">{{ reportData.BPEXCount }}</text>
+        <text>{{ reportData.BPEXText }}</text>
       </view>
     </view>
     <view class="uni-flex uni-row">
-      <view class="flex-item flex-item-V r-content">
-        <text class="count">0</text>
-        <text>昨日保养台次</text>
+      <view class="flex-item flex-item-V r-content" @click="tabUrl(reportData.maintenanceText)">
+        <text class="count">{{ reportData.maintenanceCount }}</text>
+        <text>{{ reportData.maintenanceText }}</text>
       </view>
     </view>
     <view class="r-padding uni-common-mt">
-      <label class="r-list-cell">
+      <label class="r-list-cell" @click="tabUrl(reportData.incomeText)">
         <view>
           <text class="r-icon-box"><uni-icons type="chat" size="30" color="#FFFFFF"></uni-icons></text>
-          昨日收入
+          {{ reportData.incomeText }}
         </view>
-        <view class="r-list-count">0</view>
+        <view class="r-list-count">{{ reportData.incomeMoney }}</view>
       </label>
-      <label class="r-list-cell">
+      <label class="r-list-cell" @click="tabUrl(reportData.manHourText)">
         <view>
           <text class="r-icon-box"><uni-icons type="chat" size="30" color="#FFFFFF"></uni-icons></text>
-          昨日工时收入
+          {{ reportData.manHourText }}
         </view>
-        <view class="r-list-count">0</view>
+        <view class="r-list-count">{{ reportData.manHourMoney }}</view>
       </label>
-      <label class="r-list-cell">
+      <label class="r-list-cell" @click="tabUrl(reportData.partText)">
         <view>
           <text class="r-icon-box"><uni-icons type="chat" size="30" color="#FFFFFF"></uni-icons></text>
-          昨日零件收入
+          {{ reportData.partText }}
         </view>
-        <view class="r-list-count">0</view>
+        <view class="r-list-count">{{ reportData.partMoney }}</view>
       </label>
-      <label class="r-list-cell">
+      <label class="r-list-cell" @click="tabUrl(reportData.flowText)">
         <view>
           <text class="r-icon-box"><uni-icons type="chat" size="30" color="#FFFFFF"></uni-icons></text>
-          昨日快流件收入
+          {{ reportData.flowText }}
         </view>
-        <view class="r-list-count">0</view>
+        <view class="r-list-count">{{ reportData.flowMoney }}</view>
       </label>
     </view>
   </view>
@@ -62,13 +62,14 @@
 
 <script>
 export default {
+  props: ['reportData'],
   data() {
     return {};
   },
-  methods:{
-    tabUrl(){
+  methods: {
+    tabUrl(val) {
       uni.navigateTo({
-          url: '/pages/tabBar/tabPage3/report-detail'
+        url: `/pages/tabBar/tabPage3/report-detail?type=${val}`
       });
     }
   }
