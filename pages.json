@@ -110,14 +110,14 @@
       "style": {
         "navigationBarTitleText": "接待详情"
       }
+    }, {
+      "path": "pages/demo/base-demo2",
+      "style": {}
+    }, {
+      "path": "pages/rapid-order/order-detail",
+      "style": {}
     }
-      ,{
-            "path" : "pages/tabBar/tabPage3/report-detail",
-            "style" : {
-              "navigationBarTitleText": "服务报表"
-            }
-        }
-    ],
+  ],
   "tabBar": {
     "color": "#333333",
     "selectedColor": "#333333",
