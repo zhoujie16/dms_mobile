@@ -100,7 +100,7 @@
 		/* #endif */
 		position: absolute;
 		top: 0;
-		width: 280px;
+		width: 600rpx;
 		bottom: 0;
 		background-color: #ffffff;
 		transition: transform 0.3s ease;
@@ -109,13 +109,13 @@
 	.uni-drawer--left {
 		left: 0;
     /* opacity: 0; */
-		transform: translateX(-280px);
+		transform: translateX(-600rpx);
 	}
 
 	.uni-drawer--right {
 		right: 0;
     /* opacity: 0; */
-		transform: translateX(280px);
+		transform: translateX(600rpx);
 	}
 
 	.uni-drawer__content--visible {

@@ -177,6 +177,11 @@ Vue.component("CollapsePanel", CollapsePanel);
 import SwiperTab from '@/components/swiper-tab/swiper-tab.vue'
 Vue.component("SwiperTab", SwiperTab);
 
+import NavBarSelect from '@/components/nav-bar-select/nav-bar-select.vue'
+Vue.component("NavBarSelect", NavBarSelect);
+
+import NavBarSelectItem from '@/components/nav-bar-select/nav-bar-select-item.vue'
+Vue.component("NavBarSelectItem", NavBarSelectItem);
 /** 绑定公共组件 E */
 
 Vue.config.productionTip = false;

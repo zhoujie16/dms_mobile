@@ -16,7 +16,7 @@ export default {
 
 <style lang="scss">
 .m-fad-btn {
-  z-index: 999999;
+  z-index: 88;
   height: 90rpx;
   border-radius: 50rpx;
   width: 400rpx;
