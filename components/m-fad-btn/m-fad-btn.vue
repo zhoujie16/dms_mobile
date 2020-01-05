@@ -1,6 +1,6 @@
 <template>
   <!-- 底部悬浮按钮 -->
-  <view class="m-fad-btn" :class="[type]"><slot></slot></view>
+  <view @click="$emit('click')" class="m-fad-btn" :class="[type]"><slot></slot></view>
 </template>
 
 <script>

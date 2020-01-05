@@ -23,8 +23,7 @@
       </view>
     </BaseScroll>
     <view class="popup-group">
-      <MFadBtn type="right">新增</MFadBtn>
-      
+      <MFadBtn @click="addBtnClick" type="right">新增</MFadBtn>
     </view>
   </view>
 </template>
@@ -61,6 +60,12 @@ export default {
       console.log('searchFormConfirm');
       this.$refs.searchFilter.hideDrawer();
       this.fetchParams = { t: new Date().getTime() };
+    },
+    // 新增客户接待
+    async addBtnClick(){
+      await uni.navigateTo({
+        url: '/pages/customer-reception/customer-add'
+      });
     }
   }
 };

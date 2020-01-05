@@ -48,11 +48,8 @@
 </template>
 
 <script>
-import CollapsePanel from './components/collapse-panel.vue';
 export default {
-  components: {
-    CollapsePanel
-  },
+  components: {},
   data() {
     return {
       // 工单类型 选项

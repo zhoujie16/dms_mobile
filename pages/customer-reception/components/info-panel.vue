@@ -1,8 +1,9 @@
 <template>
+  <!-- 信息面板 -->
   <view class="collapse-panel-wrap">
     <view class="collapse-panel-inner">
-      <view class="collapse-panel-title" @click="cellTitleClick">{{ title }}</view>
-      <view class="collapse-panel-content" v-if="isShowDetail"><slot></slot></view>
+      <view class="collapse-panel-title">{{ title }}</view>
+      <view class="collapse-panel-content"><slot></slot></view>
     </view>
   </view>
 </template>
@@ -19,23 +20,21 @@ export default {
   },
   mounted() {},
   data() {
-    return {
-      isShowDetail: true
-    };
+    return {};
   },
   methods: {
-    change() {},
-    cellTitleClick() {
-      this.isShowDetail = !this.isShowDetail;
-    }
+    change() {}
   }
 };
 </script>
 
 <style lang="scss">
 .collapse-panel-wrap {
-  border-bottom: solid 30rpx #dddddd;
-  padding-bottom: 40rpx;
+  background-color: #ffffff;
+  border-radius: 20rpx;
+  overflow: hidden;
+  padding-bottom: 20rpx;
+  margin-bottom: 30rpx;
   .collapse-panel-inner {
     .collapse-panel-title {
       font-weight: 600;

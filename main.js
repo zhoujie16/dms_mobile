@@ -135,6 +135,9 @@ Vue.component("MLabel", MLabel);
 import MInput from "@/components/search-filter/m-input.vue";
 Vue.component("MInput", MInput);
 
+import MSwitch from "@/components/search-filter/m-switch.vue";
+Vue.component("MSwitch", MSwitch);
+
 import MCheckbox from "@/components/search-filter/m-checkbox.vue";
 Vue.component("MCheckbox", MCheckbox);
 
@@ -167,6 +170,12 @@ Vue.component("t-th", TTh);
 
 import TTd from "@/components/base-table/t-td.vue"
 Vue.component("t-td", TTd);
+
+import CollapsePanel from '@/components/collapse-panel/collapse-panel.vue';
+Vue.component("CollapsePanel", CollapsePanel);
+
+import SwiperTab from '@/components/swiper-tab/swiper-tab.vue'
+Vue.component("SwiperTab", SwiperTab);
 
 /** 绑定公共组件 E */
 
