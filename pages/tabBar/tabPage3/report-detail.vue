@@ -6,7 +6,7 @@
       <text class="r-title">{{ type }}</text>
       <reportTable></reportTable>
     </view>
-    <view class="r-box" v-else><reportBar></reportBar></view>
+    <view class="r-box" v-else><reportBar :type='type'></reportBar></view>
   </view>
 </template>
 

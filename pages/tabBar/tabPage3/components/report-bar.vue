@@ -1,12 +1,15 @@
 <template>
-  <view><canvas canvas-id="canvasColumn" id="canvasColumn" class="charts" @touchstart="touchColumn"></canvas></view>
+  <view class="qiun-charts"><canvas canvas-id="canvasColumn" id="canvasColumn" class="charts" @touchstart="touchColumn"></canvas></view>
 </template>
 
 <script>
 import { AjaxScrollData } from '@/api/test/index.js';
-import uCharts from '@/libs/u-chart/u-charts.js';
+import uCharts from '@/libs/uni-ui/u-charts/u-charts.js';
+var _self;
 var canvaColumn = null;
+
 export default {
+  props:['type'],
   data() {
     return {
       cWidth: '',
@@ -16,7 +19,7 @@ export default {
     };
   },
   mounted() {
-    console.log("进入柱状图页面")
+    console.log('进入页面');
     _self = this;
     this.cWidth = uni.upx2px(750);
     this.cHeight = uni.upx2px(500);
@@ -24,27 +27,23 @@ export default {
   },
   methods: {
     getServerData() {
-      let Column={categories:[],series:[]};
-      let chartData = {
-        categories: ['2012', '2013', '2014', '2015', '2016', '2017'],
+      _self.serverData = {
+        categories: ['wyl2', '于东京', 'hwls', 'WYS2', 'WYS1', '赵兰'],
         series: [
           {
-            name: '成交量1',
-            data: [15, { value: 20, color: '#f04864' }, 45, 37, 43, 34]
-          },
-          {
-            name: '成交量2',
-            data: [30, { value: 40, color: '#facc14' }, 25, 14, 34, 18]
+            name: _self.type,
+            // data: [15, { value: 20, color: '#f04864' }, 45, 37, 43, 34]
+            data: [1, 1, 2, 1, 1, 1]
           }
         ]
       };
-      _self.serverData = chartData;
-      Column.categories = chartData.categories;
-      Column.series = chartData.series;
+      let Column = { categories: [], series: [] };
+      //这里我后台返回的是数组，所以用等于，如果您后台返回的是单条数据，需要push进去
+      Column.categories = _self.serverData.categories;
+      Column.series = _self.serverData.series;
       _self.showColumn('canvasColumn', Column);
     },
     showColumn(canvasId, chartData) {
-      console.log(chartData,'---chartData')
       canvaColumn = new uCharts({
         $this: _self,
         canvasId: canvasId,
@@ -54,15 +53,28 @@ export default {
         background: '#FFFFFF',
         pixelRatio: _self.pixelRatio,
         animation: true,
+        // rotate:true,
         categories: chartData.categories,
         series: chartData.series,
         xAxis: {
           disableGrid: true
+          // disabled:true
+          // disableGrid:false,
         },
+
         yAxis: {
-          //disabled:true
+          type: 'grid',
+          gridColor: '#CCC',
+          gridType: 'dash',
+          dashLength: 8,
+          min:0,
+          max:10,
+          // disableGrid: true,
+          // disableGrid: true
+          // disabled:true
         },
         dataLabel: true,
+        labelFontColor: '#FFFFFF',
         width: _self.cWidth * _self.pixelRatio,
         height: _self.cHeight * _self.pixelRatio,
         extra: {
@@ -73,7 +85,17 @@ export default {
         }
       });
     },
-    touchColumn(e) {}
+    touchColumn(e) {
+      canvaColumn.showToolTip(e, {
+        format: function(item, category) {
+          if (typeof item.data === 'object') {
+            return category + ' ' + item.name + ':' + item.data.value;
+          } else {
+            return category + ' ' + item.name + ':' + item.data;
+          }
+        }
+      });
+    }
   }
 };
 </script>
@@ -86,7 +108,7 @@ page {
 }
 .qiun-padding {
   padding: 2%;
-  width: 96%;
+  width: 100%;
 }
 .qiun-wrap {
   display: flex;
@@ -118,12 +140,12 @@ page {
   color: #000000;
 }
 .qiun-charts {
-  width: 750upx;
+  // width: 750upx;
   height: 500upx;
   background-color: #ffffff;
 }
 .charts {
-  width: 750upx;
+  // width: 750upx;
   height: 500upx;
   background-color: #ffffff;
 }
