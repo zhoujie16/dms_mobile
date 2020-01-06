@@ -21,7 +21,7 @@
         "app-plus": {
           "titleNView": {
             "buttons": [{
-              "type":"menu",
+              "type": "menu",
               "float": "left"
             }]
           },
@@ -164,17 +164,32 @@
       }
     },
     {
-     "path" : "pages/services-tools/service-check",
-     "style" : {
-       "navigationBarTitleText": "检查工具"
-     }
-    },{
-        "path" : "pages/services-tools/research-questionnaire",
-        "style" : {
-          "navigationBarTitleText": "调研问卷"
-        }
+      "path": "pages/services-tools/service-check",
+      "style": {
+        "navigationBarTitleText": "检查工具"
+      }
+    }, {
+      "path": "pages/services-tools/research-questionnaire",
+      "style": {
+        "navigationBarTitleText": "调研问卷"
+      }
+    }, {
+      "path": "pages/vehicle-inspection/vehicle-detail",
+      "style": {
+        "navigationBarTitleText": "车辆检查"
+      }
+    }, {
+      "path": "pages/vehicle-inspection/components/advise",
+      "style": {
+        "navigationBarTitleText": "建议"
+      }
+    }, {
+      "path": "pages/vehicle-inspection/components/preview",
+      "style": {
+        "navigationBarTitleText": "预览"
+      }
     }
-    ],
+  ],
   "tabBar": {
     "color": "#333333",
     "selectedColor": "#333333",
