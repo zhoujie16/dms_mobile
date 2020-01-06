@@ -188,6 +188,11 @@
       "style": {
         "navigationBarTitleText": "预览"
       }
+    }, {
+      "path": "pages/services-tools/insurance-report",
+      "style": {
+        "navigationBarTitleText": "车险上报"
+      }
     }
   ],
   "tabBar": {
