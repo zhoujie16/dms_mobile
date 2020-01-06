@@ -85,7 +85,7 @@ export default {
         {
           url: '/static/demo/60x60.png',
           text: '服务工具',
-          path: '/pages/index/index'
+          path: '/pages/services-tools/index'
         },
         {
           url: '/static/demo/60x60.png',

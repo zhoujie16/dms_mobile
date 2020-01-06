@@ -156,8 +156,14 @@
       "style": {
         "navigationBarTitleText": "客户接待"
       }
+    },
+    {
+      "path": "pages/services-tools/index",
+      "style": {
+        "navigationBarTitleText": "服务工具"
+      }
     }
-  ],
+    ],
   "tabBar": {
     "color": "#333333",
     "selectedColor": "#333333",
