@@ -182,6 +182,10 @@ Vue.component("NavBarSelect", NavBarSelect);
 
 import NavBarSelectItem from '@/components/nav-bar-select/nav-bar-select-item.vue'
 Vue.component("NavBarSelectItem", NavBarSelectItem);
+
+import MPicker from '@/components/search-filter/m-picker.vue';
+Vue.component("MPicker", MPicker);
+
 /** 绑定公共组件 E */
 
 Vue.config.productionTip = false;
