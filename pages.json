@@ -162,6 +162,17 @@
       "style": {
         "navigationBarTitleText": "服务工具"
       }
+    },
+    {
+     "path" : "pages/services-tools/service-check",
+     "style" : {
+       "navigationBarTitleText": "检查工具"
+     }
+    },{
+        "path" : "pages/services-tools/research-questionnaire",
+        "style" : {
+          "navigationBarTitleText": "调研问卷"
+        }
     }
     ],
   "tabBar": {
