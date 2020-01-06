@@ -11,13 +11,13 @@
         <view class="date-picker-item" @click="datePickerItem(4)">自定义</view>
       </view>
     </uni-popup>
-    <uni-calendar
+    <!-- <uni-calendar
       v-if="isShowPopup"
       ref="calendar"
       :insert="false"
       :range="true"
       @confirm="confirmCalendar"
-    ></uni-calendar>
+    ></uni-calendar> -->
   </view>
 </template>
 
@@ -41,7 +41,7 @@ export default {
         };
       });
     },
-    datePickerItem(index) {
+    async datePickerItem(index) {
       const moment = this.$moment;
       if (index === 1) {
         // 当天
@@ -63,18 +63,25 @@ export default {
         this.confirm([date_s, date_e]);
       } else if (index === 4) {
         // 自定义
-        this.$refs.calendar.open();
+        // this.$refs.calendar.open();
+        const res_p = await this.$root.$refs.MPage.$refs.MPicker.showPicker({
+          mode: 'range',
+          startYear: '2018',
+          endYear: '2020',
+          defaultVal: ['2018-01-01', '2020-01-01']
+        });
+        this.confirm(res_p);
       }
       this.$refs.popup.close();
-    },
-    confirmCalendar(val) {
-      console.log('确认日期', val);
-      const range = val.range;
-      const { before, after } = range;
-      if (before && after) {
-        this.confirm([before, after]);
-      }
     }
+    // confirmCalendar(val) {
+    //   console.log('确认日期', val);
+    //   const range = val.range;
+    //   const { before, after } = range;
+    //   if (before && after) {
+    //     this.confirm([before, after]);
+    //   }
+    // }
   }
 };
 </script>

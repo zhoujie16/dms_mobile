@@ -1,5 +1,5 @@
 <template>
-  <view class="page-wrap">
+  <MPage ref="MPage">
     <search-filter ref="searchFilter">
       <SearchForm @confirm="searchFormConfirm"></SearchForm>
     </search-filter>
@@ -22,9 +22,7 @@
         <ScrollCell :cell="data"></ScrollCell>
       </view>
     </BaseScroll>
-    <MCheckboxPopup ref="MCheckboxPopup"></MCheckboxPopup>
-    <MDatePickerPopup ref="MDatePickerPopup"></MDatePickerPopup>
-  </view>
+  </MPage>
 </template>
 
 <script>

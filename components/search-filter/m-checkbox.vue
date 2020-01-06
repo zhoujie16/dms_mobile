@@ -64,7 +64,7 @@ export default {
       this.$emit('input', value);
     },
     showPopupClick() {
-      this.$root.$refs.MCheckboxPopup.showPicker({
+      this.$root.$refs.MPage.$refs.MCheckboxPopup.showPicker({
         single: this.single,
         itemList: this.itemList,
         value: []

@@ -37,7 +37,7 @@ export default {
       this.$emit('input', value);
     },
     showPopupClick() {
-      this.$root.$refs.MDatePickerPopup.showPicker().then(value => {
+      this.$root.$refs.MPage.$refs.MDatePickerPopup.showPicker().then(value => {
         console.log('选择的结果', value);
         this.val_test2 = value.join(' 至 ');
         this.input(value);

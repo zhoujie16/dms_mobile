@@ -186,6 +186,9 @@ Vue.component("NavBarSelectItem", NavBarSelectItem);
 import MPicker from '@/components/search-filter/m-picker.vue';
 Vue.component("MPicker", MPicker);
 
+import MPage from '@/components/m-page/m-page.vue';
+Vue.component("MPage", MPage);
+
 /** 绑定公共组件 E */
 
 Vue.config.productionTip = false;

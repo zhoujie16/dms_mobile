@@ -1059,7 +1059,7 @@
 <style lang="scss">
 	.w-picker{
 		position: relative;
-		z-index: 888;
+		z-index: 1001;
 		.mask {
 		  position: fixed;
 		  z-index: 1000;
