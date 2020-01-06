@@ -1,5 +1,10 @@
 <template>
   <view class="page-wrap">
+    <view class="topFilter">  
+    <search-filter ref="searchFilter">
+      <SearchForm @confirm="searchFormConfirm"></SearchForm>
+    </search-filter>
+    </view>
     <NavBarSelect class="top">
       <NavBarSelectItem @click='showAll' title="全部"></NavBarSelectItem>
       <NavBarSelectItem title="创建时间"></NavBarSelectItem>
@@ -13,31 +18,27 @@
           <baseScroll
             :top="0"
             :fetchApi="fetchApi"
-            :fetchParams="fetchParams_0"
+            :fetchParams="fetchParams"
             @listChange="
               arr => {
-                this.dataSource_0 = arr;
+                this.dataSource = arr;
               }
             "
           >
-            <view @click="scrollCellClick" v-for="(data, i) in dataSource_0" :key="i">
+            <view @click="scrollCellClick" v-for="(data, i) in dataSource" :key="i">
               <view class="content">
-                <view class="m-flex m-align-center m-height-80 content-top">未提交</view>
+                <view class="m-flex m-align-center m-height-80 content-top">已上报 2019/11/27 11:32</view>
                 <view class="m-flex m-justify-around m-align-center">
-                  <view class="m-height-80 content-left">检查类别</view>
-                  <view class="m-height-80" style="flex: 1;text-align: left;">5S检查</view>
+                  <view class="m-height-80 content-left">车主姓名</view>
+                  <view class="m-height-80" style="flex: 1;text-align: left;">石玉林</view>
                 </view>
                 <view class="m-flex m-justify-around m-align-center">
-                  <view class="m-height-80 content-left">任务名称</view>
-                  <view class="m-height-80" style="flex: 1;text-align: left;">5S检查-201912</view>
+                  <view class="m-height-80 content-left">车牌号</view>
+                  <view class="m-height-80" style="flex: 1;text-align: left;">渝A023ME</view>
                 </view>
                 <view class="m-flex m-justify-around m-align-center">
-                  <view class="m-height-80 content-left">审核状态</view>
-                  <view class="m-height-80" style="flex: 1;text-align: left;">未上报</view>
-                </view>
-                <view class="m-flex m-justify-around m-align-center">
-                  <view class="m-height-80 content-left">服务经理</view>
-                  <view class="m-height-80" style="flex: 1;text-align: left;">QWE2</view>
+                  <view class="m-height-80 content-left">VIN</view>
+                  <view class="m-height-80" style="flex: 1;text-align: left;">LJXDJ3CB8JTU39588</view>
                 </view>
               </view>
             </view>
@@ -53,14 +54,21 @@ export default {
   data() {
     return {
       fetchApi: AjaxScrollData,
-      dataSource_0: []
+      dataSource: [],
+      fetchParams: {}
     };
   },
   methods: {
     showAll() {
       this.$refs.mPopup2.open()
     },
-    showSearchFilter() {}
+    showSearchFilter() {},
+    // 表单查询
+    searchFormConfirm() {
+      console.log('searchFormConfirm');
+      this.$refs.searchFilter.hideDrawer();
+      this.fetchParams = { t: new Date().getTime() };
+    }
   }
 };
 </script>
@@ -70,20 +78,21 @@ export default {
     position: relative;
     height: 100%;
   }
-.container {
-  padding: 20rpx;
-  margin-top: 44rpx;
+.topFilter{
+  position: absolute;
+  top: 0;
+  z-index: 99;
+  width: 100%;
 }
 .top {
   position: fixed;
-  top: 0;
-  z-index: 999;
-  margin-bottom: 44rpx;
+  top: 55px;
+  z-index: 9;
   background-color: #FFFFFF;
 }
 .swiper-wrap{
   position: absolute;
-  top: 80rpx;
+  top: 180rpx;
   right: 0;
   bottom: 0;
   left: 0;

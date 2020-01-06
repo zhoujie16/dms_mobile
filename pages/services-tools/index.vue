@@ -11,7 +11,7 @@
       </view>
     </view>
     <view class="uni-flex uni-row">
-      <view class="flex-item right">
+      <view class="flex-item right" @click="insuranceClick">
         <image class="servicesImage" src="../../static/demo/60x60.png" mode=""></image>
         <text class="text">增值业务</text>
       </view>
@@ -27,26 +27,32 @@ export default {
     return {};
   },
   methods: {
-   servicesChange() {
-     uni.navigateTo({
-       url: `/pages/services-tools/service-check`
-     })
-   },
-   // 调研问卷 pages/services-tools/research-questionnaire
-   questionnaireChange() {
-     uni.navigateTo({
-       url: `/pages/services-tools/research-questionnaire`
-     })
-   }
+    servicesChange() {
+      uni.navigateTo({
+        url: `/pages/services-tools/service-check`
+      });
+    },
+    // 调研问卷 pages/services-tools/research-questionnaire
+    questionnaireChange() {
+      uni.navigateTo({
+        url: `/pages/services-tools/research-questionnaire`
+      });
+    },
+    // 增值业务
+    insuranceClick() {
+      uni.navigateTo({
+        url: '/pages/services-tools/insurance-report'
+      });
+    }
   }
 };
 </script>
 
 <style lang="scss">
- .main{
-   height: 100%;
-    background-color: #F7F7F7;
-  }
+.main {
+  height: 100%;
+  background-color: #f7f7f7;
+}
 .flex-item {
   width: 50%;
   height: 310rpx;
@@ -72,22 +78,22 @@ export default {
 }
 
 .servicesImage {
-    width: 180rpx;
-    height: 180rpx;
-    margin-top: 20rpx;
-    margin-bottom: 40rpx;
-  }
-
-.left{
-    background-color: #FFFFFF;
+  width: 180rpx;
+  height: 180rpx;
+  margin-top: 20rpx;
+  margin-bottom: 40rpx;
 }
 
-.center{
-  background-color: #FFFFFF;
+.left {
+  background-color: #ffffff;
 }
 
-.right{
-  background-color: #FFFFFF;
+.center {
+  background-color: #ffffff;
+}
+
+.right {
+  background-color: #ffffff;
 }
 
 .flex-item-V {
