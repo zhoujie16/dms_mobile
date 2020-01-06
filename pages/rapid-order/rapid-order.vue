@@ -8,7 +8,7 @@
     </NavBarSelect>
     <view class="search-filter">
       <search-filter ref="searchFilter">
-        <!-- <SearchForm @confirm="searchFormConfirm"></SearchForm> -->
+        <SearchForm @confirm="searchFormConfirm"></SearchForm>
       </search-filter>
     </view>
     <MFadBtn @click.native="addOrderBtnClick">新建工单</MFadBtn>
@@ -16,14 +16,18 @@
     <MPopup ref="mPopup_addorder" type="center" title="新建工单">
       <OrderCell v-for="item in [1, 2]" @click.native="orderCellClick"></OrderCell>
     </MPopup>
+    <MCheckboxPopup ref="MCheckboxPopup"></MCheckboxPopup>
+    <MDatePickerPopup ref="MDatePickerPopup"></MDatePickerPopup>
   </view>
 </template>
 
 <script>
 import OrderCell from './components/order-cell.vue';
+import SearchForm from './components/search-form.vue';
 export default {
   components: {
-    OrderCell
+    OrderCell,
+    SearchForm
   },
   data() {
     return {};
