@@ -1,14 +1,19 @@
 <template>
-  <view><DemoPage></DemoPage></view>
+	<view>
+		概览页面
+	</view>
 </template>
 
 <script>
-export default {
-  components: {},
-  data() {
-    return {};
-  }
-};
+	export default {
+		data() {
+			return {
+				
+			};
+		}
+	}
 </script>
 
-<style lang="scss"></style>
+<style lang="scss">
+
+</style>
