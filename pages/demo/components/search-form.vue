@@ -54,13 +54,10 @@ export default {
       itemList_xsgw3: [...testArr],
       xsgw4: [],
       itemList_xsgw4: [...testArr],
-      val_test1: '',
-      val_test11: '',
-      val_test2: '',
-      dateTest: '',
+      dateTest: [],
       value_kg: false,
-      value_date1: '2020-01-01',
-      value_date2: '2018-01-01,2020-01-01'
+      value_date1: ['2020-01-06'],
+      value_date2: ['2018-01-06', '2020-01-06']
     };
   },
   methods: {

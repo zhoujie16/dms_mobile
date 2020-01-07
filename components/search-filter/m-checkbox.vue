@@ -15,7 +15,7 @@
         type="default"
         class="submit-btn"
       >
-        {{ value ? value : '弹窗选择' }}
+        {{ tipInfo }}
       </button>
     </MLabel>
   </view>
@@ -50,13 +50,24 @@ export default {
       default: false
     }
   },
+  mounted() {
+    console.log('m-checkbox mounted', this.$util.typeOf(this.value), this.value);
+  },
   data() {
     return {};
   },
-  computed: {},
+  computed: {
+    tipInfo() {
+      if (this.value.length == 0) {
+        return '请选择';
+      } else {
+        return this.value.join(',');
+      }
+    }
+  },
   methods: {
     input(value) {
-      console.log('选择的结果', value);
+      console.log('选择的结果', this.$util.typeOf(value), value);
       this.$emit('input', value);
     },
     showPopupClick() {

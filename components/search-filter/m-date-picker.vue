@@ -2,7 +2,7 @@
   <view class="">
     <MLabel :label="label" :row="2">
       <button @click="showPopupClick" size="mini" type="default" class="submit-btn">
-        {{ value ? value : '日期选择' }}
+        {{ tipInfo }}
       </button>
     </MLabel>
   </view>
@@ -20,21 +20,30 @@ export default {
       default: '日期选择'
     },
     value: {
-      type: String
+      type: Array
     }
   },
   data() {
     return {};
   },
-  computed: {},
+  computed: {
+    tipInfo() {
+      if (this.value) {
+        const str = this.value.join(',');
+        return str || '选择';
+      } else {
+        return '选择';
+      }
+    }
+  },
   methods: {
     input(value) {
+      console.log('选择的结果', this.$util.typeOf(value), value);
       this.$emit('input', value);
     },
     showPopupClick() {
       this.$root.$refs.MPage.MDatePickerPopup.showPicker().then(value => {
-        console.log('选择的结果', value);
-        this.input(value.join(','));
+        this.input(value);
       });
     }
   }
