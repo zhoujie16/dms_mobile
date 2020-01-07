@@ -63,6 +63,7 @@ export default {
             _result = [result.result];
           }
           reslove(_result);
+          this.mode = '';
         };
       });
     },
