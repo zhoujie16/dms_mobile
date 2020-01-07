@@ -186,6 +186,9 @@ Vue.component("NavBarSelectItem", NavBarSelectItem);
 import MPicker from '@/components/search-filter/m-picker.vue';
 Vue.component("MPicker", MPicker);
 
+import MPickerPopup from '@/components/search-filter/m-picker-popup.vue';
+Vue.component("MPickerPopup", MPickerPopup);
+
 import MPage from '@/components/m-page/m-page.vue';
 Vue.component("MPage", MPage);
 

@@ -64,7 +64,7 @@ export default {
       } else if (index === 4) {
         // 自定义
         // this.$refs.calendar.open();
-        const res_p = await this.$root.$refs.MPage.$refs.MPicker.showPicker({
+        const res_p = await this.$root.$refs.MPage.MPickerPopup.showPicker({
           mode: 'range',
           startYear: '2018',
           endYear: '2020',

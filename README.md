@@ -26,13 +26,11 @@ dms移动app，
 
 
 
-#### 使用说明
-
 ##### 编辑器配置
 
 在 HBuilderX 设置中打开 启用.editorconfig支持 开关
 
-##### 复制 prettier  配置
+##### 复制 prettier  配置（保持代码风格统一）
 
 复制以下配置代码，粘贴到 插件配置中
 
@@ -72,3 +70,4 @@ module.exports = {
 	}
 }
 ```
+

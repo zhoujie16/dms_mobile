@@ -17,7 +17,10 @@
         v-model="xsgw4"
         :itemList="itemList_xsgw4"
       ></MCheckbox>
-      <MDatePicker v-model="dateTest"></MDatePicker>
+      <MSwitch label="开关" v-model="value_kg"></MSwitch>
+      <MDatePicker label="日期或日期范围选择" v-model="dateTest"></MDatePicker>
+      <MPicker label="单独日期选择" mode="date" v-model="value_date1"></MPicker>
+      <MPicker label="单独日期范围选择" mode="range" v-model="value_date2"></MPicker>
       <view class="btn-v">
         <button @click="formSubmit" type="primary" class="submit-btn">查询</button>
       </view>
@@ -26,46 +29,16 @@
 </template>
 <script>
 const testArr = [
-  {
-    text: '顾问1',
-    value: 1
-  },
-  {
-    text: '顾问2',
-    value: 2
-  },
-  {
-    text: '顾问3',
-    value: 3
-  },
-  {
-    text: '顾问4',
-    value: 4
-  },
-  {
-    text: '顾问5',
-    value: 5
-  },
-  {
-    text: '顾问6',
-    value: 6
-  },
-  {
-    text: '顾问7',
-    value: 7
-  },
-  {
-    text: '顾问8',
-    value: 8
-  },
-  {
-    text: '顾问9',
-    value: 9
-  },
-  {
-    text: '顾问10',
-    value: 10
-  }
+  { text: '顾问1', value: 1 },
+  { text: '顾问2', value: 2 },
+  { text: '顾问3', value: 3 },
+  { text: '顾问4', value: 4 },
+  { text: '顾问5', value: 5 },
+  { text: '顾问6', value: 6 },
+  { text: '顾问7', value: 7 },
+  { text: '顾问8', value: 8 },
+  { text: '顾问9', value: 9 },
+  { text: '顾问10', value: 10 }
 ];
 export default {
   components: {},
@@ -84,13 +57,11 @@ export default {
       val_test1: '',
       val_test11: '',
       val_test2: '',
-      dateTest: []
+      dateTest: '',
+      value_kg: false,
+      value_date1: '2020-01-01',
+      value_date2: '2018-01-01,2020-01-01'
     };
-  },
-  watch: {
-    dateTest(dateTest) {
-      console.log('dateTest change', dateTest);
-    }
   },
   methods: {
     // 查询按钮事件

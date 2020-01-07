@@ -1,11 +1,11 @@
 <template>
   <!-- 预约检查 -->
-  <view class="page-warp">
+  <MPage ref="MPage">
     <search-filter ref="searchFilter">
       <SearchForm @confirm="searchFormConfirm"></SearchForm>
     </search-filter>
     <SwiperPage :fetchParams="fetchParams" height="calc(100vh - 100rpx)"></SwiperPage>
-  </view>
+  </MPage>
 </template>
 
 <script>

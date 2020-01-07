@@ -1,77 +1,87 @@
 <template>
-  <view class="m-picker-wrap">
-    <!-- 多级联动 -->
-    <view v-if="mode === 'range'">
-      <w-picker
-        mode="range"
-        startDate="2017"
-        endYear="2030"
-        :defaultVal="rangeDval"
-        :current="false"
-        @confirm="onConfirm"
-        ref="picker"
-        themeColor="#f00"
-      ></w-picker>
-    </view>
-    <view v-if="mode === 'date'">
-      <w-picker
-        mode="date"
-        :startYear="startYear"
-        :endYear="endYear"
-        :defaultVal="defaultVal"
-        :current="false"
-        @confirm="onConfirm"
-        :disabledAfter="false"
-        ref="picker"
-      ></w-picker>
-    </view>
+  <view class="">
+    <MLabel :label="label" :row="2">
+      <button @click="showPopupClick" size="mini" type="default" class="submit-btn">
+        {{ value ? value : '选择' }}
+      </button>
+    </MLabel>
   </view>
 </template>
 
 <script>
-import WPicker from '@/libs/w-picker/w-picker.vue';
 export default {
   name: 'm-picker',
-  components: {
-    WPicker
+  props: {
+    mode: {
+      type: String,
+      default: 'date'
+    },
+    label: {
+      type: String,
+      default: '选择'
+    },
+    value: {
+      type: String
+    }
   },
   data() {
-    this.confirm = () => {};
     return {
-      mode: '',
-      startYear: '',
-      endYear: '',
-      defaultVal: '',
-      rangeDval: []
+      val_test: []
     };
   },
+  computed: {},
   methods: {
-    showPicker({ mode, startYear, endYear, defaultVal }) {
-      return new Promise(reslove => {
-        this.mode = mode;
-        this.startYear = startYear;
-        this.endYear = endYear;
-        this.rangeDval = defaultVal;
-        this.$nextTick(() => {
-          this.$refs.picker.show();
-        });
-        this.confirm = result => {
-          let _result = result;
-          if (this.mode == 'range') {
-            _result = [result.from, result.to];
-          } else if (this.mode == 'date') {
-            _result = result.result;
-          }
-          reslove(_result);
-        };
-      });
+    emitInput(value) {
+      console.log('input', value);
+      this.$emit('input', value);
     },
-    onConfirm(result) {
-      console.log(result);
-      this.confirm(result);
+    showPopupClick() {
+      const mode = this.mode;
+      if (mode == 'date') {
+        this.showPopupDate();
+      } else if (mode == 'range') {
+        this.showPopupRange();
+      }
+    },
+    // 单独日期选择 date
+    async showPopupDate() {
+      const params = {
+        mode: 'date',
+        startYear: '2016',
+        endYear: '2020',
+        defaultVal: this.value
+      };
+      const res = await this.$root.$refs.MPage.MPickerPopup.showPicker({
+        mode: 'date',
+        startYear: '2017',
+        endYear: '2010',
+        defaultVal: '2020-01-02'
+      });
+      this.emitInput(res.join(','));
+    },
+    // 单独日期范围选择 range
+    async showPopupRange() {
+      const params = {
+        mode: 'date',
+        startYear: '2016',
+        endYear: '2020',
+        defaultVal: this.value
+      };
+      const res = await this.$root.$refs.MPage.MPickerPopup.showPicker({
+        mode: 'range',
+        startYear: '2018',
+        endYear: '2020',
+        defaultVal: this.value ? this.value.split(',') : []
+      });
+      this.emitInput(res.join(','));
     }
   }
 };
 </script>
 
-<style lang="scss"></style>
+<style lang="scss">
+.submit-btn {
+  width: 100%;
+}
+</style>
+yle>

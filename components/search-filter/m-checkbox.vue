@@ -15,7 +15,7 @@
         type="default"
         class="submit-btn"
       >
-        {{ val_test1 ? val_test1 : '弹窗选择' }}
+        {{ value ? value : '弹窗选择' }}
       </button>
     </MLabel>
   </view>
@@ -37,10 +37,7 @@ export default {
       default: '选择'
     },
     value: {
-      type: Array,
-      default() {
-        return [];
-      }
+      type: Array
     },
     itemList: {
       type: Array,
@@ -54,23 +51,20 @@ export default {
     }
   },
   data() {
-    return {
-      val_test1: ''
-    };
+    return {};
   },
   computed: {},
   methods: {
     input(value) {
+      console.log('选择的结果', value);
       this.$emit('input', value);
     },
     showPopupClick() {
-      this.$root.$refs.MPage.$refs.MCheckboxPopup.showPicker({
+      this.$root.$refs.MPage.MCheckboxPopup.showPicker({
         single: this.single,
         itemList: this.itemList,
         value: []
       }).then(value => {
-        console.log('选择的结果', value);
-        this.val_test1 = value.join(',');
         this.input(value);
       });
     }

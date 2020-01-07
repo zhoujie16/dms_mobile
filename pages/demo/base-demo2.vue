@@ -26,7 +26,7 @@ export default {
     },
     async showPopup3() {
       //  日期选择
-      const res_p = await this.$root.$refs.MPage.$refs.MPicker.showPicker({
+      const res_p = await this.$root.$refs.MPage.MPickerPopup.showPicker({
         mode: 'date',
         startYear: '2017',
         endYear: '2010',
@@ -35,7 +35,7 @@ export default {
       console.log('res_p', res_p);
     },
     async showPopup4() {
-      const res_p = await this.$root.$refs.MPage.$refs.MPicker.showPicker({
+      const res_p = await this.$root.$refs.MPage.MPickerPopup.showPicker({
         mode: 'range',
         startYear: '2017',
         endYear: '2010',
