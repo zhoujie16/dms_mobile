@@ -231,3 +231,16 @@ this.$refs.mPopup.close(); // 关闭
 | type   | String   | 否   | center | center,left,righ | 位置     |
 | @click | Function | 否   |        |                  | 绑定事件 |
 
+
+
+## nav-date-range-picker
+
+顶部时间范围选择
+
+```vue
+<NavDateRangePicker @change="dateRangeChange"></NavDateRangePicker>
+```
+
+| 属性    | 类型     | 必填 | 默认值 | 可选值 | 描述                                       |
+| ------- | -------- | ---- | ------ | ------ | ------------------------------------------ |
+| @change | Function | 否   |        |        | 查询事件 dateRangeChange(array[start,end]) |

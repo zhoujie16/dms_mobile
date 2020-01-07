@@ -1,5 +1,6 @@
 <template>
   <MPage ref="MPage">
+    <NavDateRangePicker></NavDateRangePicker>
     <button @click="showPopup1" type="primary">MPopup center</button>
     <button @click="showPopup2" type="primary">MPopup bottom</button>
     <button @click="showPopup3" type="primary">MPicker 日期</button>

@@ -192,6 +192,9 @@ Vue.component("MPickerPopup", MPickerPopup);
 import MPage from '@/components/m-page/m-page.vue';
 Vue.component("MPage", MPage);
 
+import NavDateRangePicker from '@/components/nav-date-range-picker/nav-date-range-picker.vue';
+Vue.component("NavDateRangePicker", NavDateRangePicker);
+
 /** 绑定公共组件 E */
 
 Vue.config.productionTip = false;
