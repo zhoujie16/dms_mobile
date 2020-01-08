@@ -1,26 +1,103 @@
 <template>
   <view>
-    <view class="uni-flex uni-row">
-      <view class="flex-item1 label-pad">灯光：</view>
-      <view class="flex-item2 label-pad">*</view>
-      <view class="flex-item3 label-pad"><button size="mini" plain="true" :class="data1==='normal'?'btn-primary':'btn-gary'" @click="rowClick('normal')">正常</button></view>
-      <view class="flex-item3 label-pad"><button size="mini" plain="true" :class="data1==='warn'?'btn-warn':'btn-gary'" @click="rowClick('warn')">观察</button></view>
-      <view class="flex-item3 label-pad"><button size="mini" plain="true" :class="data1==='error'?'btn-error':'btn-gary'"  @click="rowClick('error')">异常</button></view>
-      <view class="flex-item4"><uni-icons type="camera" size="30" color="#CCCCCC"></uni-icons></view>
+    <view v-for="item in rowData" :key="item.text">
+      <view class="uni-flex uni-row margin-bottom" v-if="item.type === 'checkbox'">
+        <view class="flex-item1 label-pad">{{ item.text }}：</view>
+        <view class="flex-item2 label-pad">
+          <text class="verticalMiddle">{{ item.flag ? '*' : '' }}</text>
+        </view>
+        <view class="flex-item3 label-pad">
+         <uni-tag :inverted="true" text="正常" :type="item.data === 'primary' ? 'primary' : 'default'" class="tag-pad verticalMiddle" @click="rowClick(item.text, 'primary')" />
+        </view>
+        <view :class="item.isLook ? 'flex-item3 label-pad' : 'flex-item3 label-pad v-hidden'">
+          <uni-tag :inverted="true" text="观察" :type="item.data === 'warning' ? 'warning' : 'default'" class="tag-pad verticalMiddle" @click="rowClick(item.text, 'warning')" />
+        </view>
+        <view class="flex-item3 label-pad">
+          <uni-tag :inverted="true" text="异常" :type="item.data === 'error' ? 'error' : 'default'" class="tag-pad verticalMiddle" @click="rowClick(item.text, 'error')" />
+        </view>
+        <view class="flex-item4"><uni-icons class="verticalMiddle" type="camera" size="30" color="#CCCCCC"></uni-icons></view>
+      </view>
+      <view class="uni-flex uni-row margin-bottom" v-else-if="item.type === 'percent'">
+        <view class="flex-item1 label-pad">{{ item.text }}：</view>
+        <view class="flex-item2 label-pad">
+          <text class="verticalMiddle">{{ item.flag ? '*' : '' }}</text>
+        </view>
+        <view class="flex-item5 label-pad">
+          <input class="verticalMiddle sub-input" type="number" :placeholder="item.placeholder" :value="item.data" />
+          <text class="location verticalMiddle">%</text>
+        </view>
+        <view class="flex-item4"><uni-icons class="verticalMiddle" type="camera" size="30" color="#CCCCCC"></uni-icons></view>
+      </view>
+      <view class="uni-flex uni-row margin-bottom" v-else-if="item.type === 'millimeter'">
+        <view class="flex-item1 label-pad">{{ item.text }}：</view>
+        <view class="flex-item2 label-pad">
+          <text class="verticalMiddle">{{ item.flag ? '*' : '' }}</text>
+        </view>
+        <view class="flex-item5 label-pad">
+          <input class="verticalMiddle sub-input" type="number" :placeholder="item.placeholder" :value="item.data" />
+          <text class="location verticalMiddle">mm</text>
+        </view>
+        <view class="flex-item4"><uni-icons class="verticalMiddle" type="camera" size="30" color="#CCCCCC"></uni-icons></view>
+      </view>
+      <view class="uni-flex uni-row margin-bottom" v-else-if="item.type === 'dateType'">
+        <view class="flex-item1 label-pad">{{ item.text }}：</view>
+        <view class="flex-item2 label-pad">
+          <text class="verticalMiddle">{{ item.flag ? '*' : '' }}</text>
+        </view>
+        <view class="flex-item5 label-pad">
+          <!-- <input class="verticalMiddle sub-input" type="number" :placeholder="item.placeholder" :value="item.data" />
+          <text class="location verticalMiddle">mm</text> -->
+          <picker class="sub-input" mode="date" :value="item.data" :start="startDate" :end="endDate" @change="bindDateChange">
+            <view >{{ item.data }}</view>
+          </picker>
+        </view>
+        <view class="flex-item4"><uni-icons class="verticalMiddle" type="camera" size="30" color="#CCCCCC"></uni-icons></view>
+      </view>
     </view>
   </view>
 </template>
 
 <script>
 export default {
+  props: ['rowData'],
   data() {
-    return {
-      data1:'normal'
-    };
+    return {};
   },
-  methods:{
-    rowClick(el){
-      this.data1 = el;
+  computed: {
+    startDate() {
+      return this.getDate('start');
+    },
+    endDate() {
+      return this.getDate('end');
+    }
+  },
+  methods: {
+    rowClick(key, el) {
+      this.rowData.forEach(x => {
+        if (x.text == key) {
+          x.data = el;
+        } else {
+          return;
+        }
+      });
+    },
+    getDate(type) {
+      const date = new Date();
+      let year = date.getFullYear();
+      let month = date.getMonth() + 1;
+      let day = date.getDate();
+
+      if (type === 'start') {
+        year = year - 60;
+      } else if (type === 'end') {
+        year = year + 2;
+      }
+      month = month > 9 ? month : '0' + month;
+      day = day > 9 ? day : '0' + day;
+      return `${year}-${month}-${day}`;
+    },
+    bindDateChange: function(e) {
+      this.date = e.target.value;
     }
   }
 };
@@ -28,57 +105,57 @@ export default {
 
 <style lang="scss" scoped>
 .flex-item1 {
-  width: 20%;
+  width: 24%;
   text-align: center;
   line-height: 60rpx;
 }
 .flex-item2 {
   width: 3%;
   color: #ff0000;
-  line-height: 60rpx;
+  display: flex;
 }
 .flex-item3 {
-  width: 21%;
+  width: 20%;
+  display: flex;
 }
 .flex-item4 {
-  width: 14%;
+  width: 13%;
   text-align: center;
+  display: flex;
+}
+.flex-item5 {
+  width: 60%;
+  display: flex;
+  position: relative;
 }
 .label-pad {
   margin-right: 2%;
 }
-.btn-gary {
-  display: block;
-  line-height: 2.3;
-  font-size: 13px;
-  padding: 0;
-  color: #CCCCCC;
-  border: 2rpx solid #CCCCCC;
+.sub-input {
+  width: 100%;
+  border: 2rpx solid #cccccc;
+  height: 60rpx;
+  border-radius: 10rpx;
+  padding: 0 60rpx 0 10rpx;
 }
-
-.btn-primary {
-  display: block;
-  line-height: 2.3;
-  font-size: 13px;
-  padding: 0;
-  color: #0099cc;
-  border: 2rpx solid #0099cc;
+.location {
+  position: absolute;
+  // top: 0;
+  right: 30rpx;
+  line-height: 60rpx;
+  color: #cccccc;
 }
-.btn-warn {
-  display: block;
-  line-height: 2.3;
-  font-size: 13px;
+.tag-pad {
   padding: 0;
-  color: #ffcc00;
-  border: 2rpx solid #ffcc00;
+  width: 100%;
 }
-.btn-error {
-  display: block;
-  line-height: 2.3;
-  font-size: 13px;
-  padding: 0;
-  color: #ff6666;
-  border: 2rpx solid #ff6666;
+.verticalMiddle {
+  align-self: center;
 }
-
+.margin-bottom {
+  margin-bottom: 10rpx;
+}
+.v-hidden {
+  visibility: hidden;
+}
 </style>

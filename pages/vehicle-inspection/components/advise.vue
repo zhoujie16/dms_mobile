@@ -52,7 +52,7 @@ export default {
 };
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .page-wrap {
   min-height: 100vh;
   background-color: $uni-bg-color-page;

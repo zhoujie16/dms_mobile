@@ -41,7 +41,7 @@ export default {
   data() {
     return {
       tabs: ['预捡查看', '内饰检查', '发动机舱', '底盘四轮'],
-      curIndex: 1 // 当前tab的下标
+      curIndex: 3 // 当前tab的下标
     };
   },
   methods: {
