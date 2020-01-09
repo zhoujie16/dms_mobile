@@ -1,0 +1,115 @@
+<template>
+	<view class="page-wrap">
+    <view class="list-cell-title">
+      <view class="left">
+        <view class="info-item" style="height: 40px;line-height: 40px;font-size: 20px;">
+          张全蛋
+        </view>
+        <view class="info-item">
+          13602558446
+        </view>
+      </view>
+      <view class="right">
+        <uni-icons type="phone" size="30"></uni-icons>
+      </view>
+    </view>
+		<view class="list-cell-content">
+		  <view class="info-item">
+		    <view class="info-item-lab">车牌号：</view>
+		    <view class="info-item-text">YJ2001020002</view>
+		  </view>
+      <view class="info-item">
+        <view class="info-item-lab">车架号：</view>
+        <view class="info-item-text">YJ2001020002</view>
+      </view>
+      <view class="info-item">
+        <view class="info-item-lab">工单号：</view>
+        <view class="info-item-text">YJ2001020002</view>
+      </view>
+		  <view class="info-item">
+		    <view class="info-item-lab">维修项目：</view>
+		    <view class="info-item-text">机电维修</view>
+		  </view>
+		  <view class="info-item">
+		    <view class="info-item-lab">送修人电话：</view>
+		    <view class="info-item-text">13826576765</view>
+		  </view>
+		  <view class="info-item">
+		    <view class="info-item-lab">故障描述：</view>
+		    <view class="info-item-text">无</view>
+		  </view>
+      <view class="info-item">
+        <view class="info-item-lab">维修技师：</view>
+        <view class="info-item-text">YJ2</view>
+      </view>
+		    <view class="check">车辆检查</view>
+		</view>
+	</view>
+</template>
+
+<script>
+	export default {
+		data() {
+			return {
+				
+			};
+		}
+	}
+</script>
+
+<style lang="scss">
+  .page-wrap{
+    height: 100%;
+    padding: 0 20rpx 0 20rpx;
+    background-color: #2B4D86;
+  }
+  .list-cell-title {
+    padding: 30rpx 20rpx;
+    height: 15%;
+    background-color: pink;
+
+    .left {
+      float: left;
+      height: 90px;
+      // background-color: blue;
+      width: 70%;
+    }
+    .right{
+      float: right;
+      margin-top: 20px;
+      font-size: 24px;
+    }
+  }
+.list-cell-content {
+  background-color: #eeeeee;
+  padding: 10rpx 20rpx;
+  height: 75%;
+  .info-item {
+    padding: 10rpx 0;
+    display: flex;
+    height: 50px;
+    line-height: 50px;
+    border-bottom: 1px solid #ccc;
+    .info-item-lab {
+      flex: 0 0 200rpx;
+      color: #999999;
+    }
+    .info-item-text {
+      flex: 1 1 auto;
+      text-align: right;
+      padding-right: 10rpx;
+    }
+  }
+}
+  .check {
+    width: 70%;
+    height: 88rpx;
+    line-height: 88rpx;
+    margin: 16px 50rpx;
+    text-align: center;
+    background-color: #2B4D86;
+    border-radius: 15rpx;
+    color: #09BB07;
+    border: 1rpx solid #09BB07;
+  }
+</style>

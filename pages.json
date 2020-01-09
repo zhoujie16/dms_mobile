@@ -194,7 +194,17 @@
         "navigationBarTitleText": "车险上报"
       }
     }
-  ],
+      ,{
+            "path" : "pages/progress-query/components/scroll-cell",
+            "style" : {}
+        }
+        ,{
+            "path" : "pages/progress-query/repair-check",
+            "style" : {
+              "navigationBarTitleText": "维修检查"
+            }
+        }
+    ],
   "tabBar": {
     "color": "#333333",
     "selectedColor": "#333333",
