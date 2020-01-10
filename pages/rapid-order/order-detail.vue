@@ -1,6 +1,6 @@
 <template>
   <!-- 工单详情 -->
-  <view class="page-wrap">
+  <MPage ref="MPage">
     <!-- 车辆信息 -->
     <view class="car-info-panel">
       <view class="user">
@@ -36,15 +36,14 @@
     </CollapsePanel>
     <!-- 底部悬浮按钮 -->
     <MFadBtn @click.native="addWxxmBtnClick">添加维修项目</MFadBtn>
+    <view style="height: 200rpx;"></view>
     <!-- 弹出层 -->
     <view class="popup-group">
-      <MCheckboxPopup ref="MCheckboxPopup"></MCheckboxPopup>
-      <MDatePickerPopup ref="MDatePickerPopup"></MDatePickerPopup>
       <!-- 维修历史 -->
       <MPopup ref="mPopup_wxls" type="bottom" title="维修历史">维修历史</MPopup>
       <MPopup ref="mPopup_jkxx" type="bottom" title="监控信息">监控信息</MPopup>
     </view>
-  </view>
+  </MPage>
 </template>
 
 <script>
@@ -109,9 +108,6 @@ export default {
 </script>
 
 <style lang="scss">
-.page-wrap {
-  padding-bottom: 200rpx;
-}
 .car-info-panel {
   padding: 0 40rpx;
   border-bottom: solid 20rpx #eeeeee;

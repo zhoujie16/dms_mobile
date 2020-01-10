@@ -1,6 +1,8 @@
 <template>
   <view class="grid-item-box">
-    <image :src="item.url" class="image" mode="widthFix" />
+    <view class="icon-wrap">
+       <fa-icon class="icon" :type="item.icon" size="30" color="#fff"></fa-icon>
+    </view>
     <text class="text">{{ item.text }}</text>
   </view>
 </template>
@@ -34,10 +36,13 @@ export default {
   color: $uni-text-color-inverse;
 }
 
-.image {
+.icon-wrap {
   width: 90rpx;
   margin-top: 20rpx;
   margin-bottom: 40rpx;
   height: 90rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 </style>

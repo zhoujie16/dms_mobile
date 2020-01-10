@@ -4,7 +4,8 @@
     {
       "path": "pages/login/login",
       "style": {
-        "navigationBarTitleText": "登录"
+        "navigationBarTitleText": "登录",
+        "navigationStyle": "custom"
       }
     },
     {
@@ -193,28 +194,24 @@
       "style": {
         "navigationBarTitleText": "车险上报"
       }
+    }, {
+      "path": "pages/progress-query/components/scroll-cell",
+      "style": {}
+    }, {
+      "path": "pages/progress-query/repair-check",
+      "style": {
+        "navigationBarTitleText": "维修检查"
+      }
+    }, {
+      "path": "pages/vehicles-delivery/components/scroll-cell",
+      "style": {}
+    }, {
+      "path": "pages/vehicles-delivery/delivery-details",
+      "style": {
+        "navigationBarTitleText": "交车详情"
+      }
     }
-      ,{
-            "path" : "pages/progress-query/components/scroll-cell",
-            "style" : {}
-        }
-        ,{
-            "path" : "pages/progress-query/repair-check",
-            "style" : {
-              "navigationBarTitleText": "维修检查"
-            }
-        }
-        ,{
-            "path" : "pages/vehicles-delivery/components/scroll-cell",
-            "style" : {}
-        }
-        ,{
-            "path" : "pages/vehicles-delivery/delivery-details",
-            "style" : {
-              "navigationBarTitleText": "交车详情"
-            }
-        }
-    ],
+  ],
   "tabBar": {
     "color": "#333333",
     "selectedColor": "#333333",

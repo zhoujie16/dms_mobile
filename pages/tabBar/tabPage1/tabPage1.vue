@@ -10,9 +10,7 @@
       text=" 这是 通告栏，这是 通告栏  这是 通告栏，这是 通告栏"
     ></uni-notice-bar>
     <!-- 头图 -->
-    <view>
-      <image class="header-img" src="../../../static/demo/pp.jpg" mode="widthFix"></image>
-    </view>
+    <HomeHeader></HomeHeader>
     <!-- 菜单 -->
     <view class="menu-wrap">
       <uni-grid :column="3" :highlight="true" @change="gridItemClick">
@@ -29,7 +27,8 @@ import uniGrid from '@/libs/uni-ui/uni-grid/uni-grid.vue';
 import uniGridItem from '@/libs/uni-ui/uni-grid-item/uni-grid-item.vue';
 import uniNoticeBar from '@/libs/uni-ui/uni-notice-bar/uni-notice-bar.vue';
 import MenuItem from '../components/menu-item.vue';
-import UniDrawer from '@/libs/uni-ui/uni-drawer/uni-drawer.vue'; 
+import UniDrawer from '@/libs/uni-ui/uni-drawer/uni-drawer.vue';
+import HomeHeader from './components/home-header.vue';
 
 export default {
   components: {
@@ -37,12 +36,13 @@ export default {
     uniGridItem,
     uniNoticeBar,
     MenuItem,
-    UniDrawer, 
+    UniDrawer,
+    HomeHeader
   },
   // 导航栏按钮点击事件
   onNavigationBarButtonTap(btn) {
-    console.log('导航栏按钮点击事件', btn); 
-    uni.getSubNVueById("drawer").show("slide-in-left", 200);
+    console.log('导航栏按钮点击事件', btn);
+    uni.getSubNVueById('drawer').show('slide-in-left', 200);
   },
   onReady() {
     console.log('tabbar1 ready', this);
@@ -52,58 +52,58 @@ export default {
       isShowDrawer: false,
       list: [
         {
-          url: '/static/demo/60x60.png',
+          icon: 'search',
           text: '预约检查',
           path: '/pages/appointment-check/appointment-check'
         },
         {
-          url: '/static/demo/60x60.png',
+          icon: 'handshake-o',
           text: '客户接待',
           // path: '/pages/demo/base-demo'
           path: '/pages/customer-reception/customer-reception'
         },
         {
-          url: '/static/demo/60x60.png',
+          icon: 'file-text',
           text: '快速工单',
           path: '/pages/rapid-order/rapid-order'
         },
         {
-          url: '/static/demo/60x60.png',
+          icon: 'spinner',
           text: '进度查询',
           path: '/pages/progress-query/progress-query'
         },
         {
-          url: '/static/demo/60x60.png',
+          icon: 'calendar-check-o',
           text: '车辆检查',
           path: '/pages/vehicle-inspection/vehicle-inspection'
         },
         {
-          url: '/static/demo/60x60.png',
+          icon: 'car',
           text: '交车',
           path: '/pages/vehicles-delivery/vehicles-delivery'
         },
         {
-          url: '/static/demo/60x60.png',
+          icon: 'cogs',
           text: '服务工具',
           path: '/pages/services-tools/index'
         },
         {
-          url: '/static/demo/60x60.png',
+          icon: 'tasks',
           text: 'QC',
-          path: '/pages/qcReport/qcReport' 
+          path: '/pages/qcReport/qcReport'
         },
         {
-          url: '/static/demo/60x60.png',
+          icon: 'bell-o',
           text: '提醒',
           path: '/pages/index/index'
         },
         {
-          url: '/static/demo/60x60.png',
+          icon: 'desktop',
           text: 'Demo',
           path: '/pages/demo/base-demo'
         },
         {
-          url: '/static/demo/60x60.png',
+          icon: 'desktop',
           text: 'Demo2',
           path: '/pages/demo/base-demo2'
         }
@@ -117,7 +117,7 @@ export default {
       uni.navigateTo({
         url: item.path
       });
-    }, 
+    }
   }
 };
 </script>
@@ -129,11 +129,5 @@ export default {
 /* 通知 */
 .notice-bar {
   margin: 10rpx 0;
-}
-
-/* 头图 */
-.header-img {
-  width: 750rpx;
-  height: 421.875rpx;
 }
 </style>
