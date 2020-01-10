@@ -1,15 +1,20 @@
 <template>
   <view class="page-wrap">
+		<MPage ref="MPage">
+		 <NavDateRangePicker @change="dateRangeChange"></NavDateRangePicker>
+		 <view class="menu-wrap">
+		   <uni-grid :column="2" :showBorder="false" :highlight="true" @change="detailUrl">
+		     <uni-grid-item v-for="(item, index) in list" :key="index">
+		       <view class="wrap-text">{{ item.title }}</view>
+		     </uni-grid-item>
+		   </uni-grid>
+		 </view>
+		 
+		</MPage>
     <!-- <view class="box" @click="detailUrl">
       预约率
     </view> -->
-    <view class="menu-wrap">
-      <uni-grid :column="2" :showBorder="false" :highlight="true" @change="detailUrl">
-        <uni-grid-item v-for="(item, index) in list" :key="index">
-          <view class="wrap-text">{{ item.title }}</view>
-        </uni-grid-item>
-      </uni-grid>
-    </view>
+    
   </view>
 </template>
 
@@ -50,7 +55,10 @@ export default {
       uni.navigateTo({
         url: `/pages/qcReport/qcReport-detail`
       });
-    }
+    },
+		dateRangeChange(){
+			
+		}
   }
 };
 </script>
