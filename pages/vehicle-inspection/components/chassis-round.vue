@@ -3,12 +3,12 @@
   <view class="page-wrap">
     <view class="container">
       <view class="content">
-        <view class="subContent"><VChoose :rowData="formData"></VChoose></view>
+        <view class="subContent"><VChoose :rowData="formData" @change="(val)=>{ this.formData = val }"></VChoose></view>
       </view>
       <view class="content">
         <view class="m-flex m-align-center m-height-80 content-top" style="justify-content: space-between">
-          <text>轮胎</text>
-          <text><uni-icons :type="isshow1" size="30" color="#CCCCCC" @click="showClick(isshow1, 1)"></uni-icons></text>
+          <view>轮胎</view>
+          <view><uni-icons :type="isshow1" size="30" color="#CCCCCC" @click="showClick(isshow1, 1)"></uni-icons></view>
         </view>
         <view class="subContent">
           <VChoose :rowData="formData1"></VChoose>
@@ -17,8 +17,8 @@
       </view>
       <view class="content">
         <view class="m-flex m-align-center m-height-80 content-top" style="justify-content: space-between">
-          <text>刹车片</text>
-          <text><uni-icons :type="isshow2" size="30" color="#CCCCCC" @click="showClick(isshow2, 2)"></uni-icons></text>
+          <view>刹车片</view>
+          <view><uni-icons :type="isshow2" size="30" color="#CCCCCC" @click="showClick(isshow2, 2)"></uni-icons></view>
         </view>
         <view class="subContent">
           <VChoose :rowData="formData3"></VChoose>
@@ -127,10 +127,31 @@ export default {
         },
         {
           type: 'dateType',
+          text: '胎龄左前',
+          flag: false,
+          data: '',
+          placeholder: '胎龄左前'
+        },
+        {
+          type: 'dateType',
+          text: '胎龄右前',
+          flag: false,
+          data: '',
+          placeholder: '胎龄右前'
+        },
+        {
+          type: 'dateType',
+          text: '胎龄左后',
+          flag: false,
+          data: '',
+          placeholder: '胎龄左后'
+        },
+        {
+          type: 'dateType',
           text: '胎龄右后',
           flag: false,
           data: '',
-          placeholder: '胎纹'
+          placeholder: '胎龄右后'
         },
         {
           type: 'checkbox',

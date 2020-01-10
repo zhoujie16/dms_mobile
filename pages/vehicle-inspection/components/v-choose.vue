@@ -45,11 +45,10 @@
           <text class="verticalMiddle">{{ item.flag ? '*' : '' }}</text>
         </view>
         <view class="flex-item5 label-pad">
-          <!-- <input class="verticalMiddle sub-input" type="number" :placeholder="item.placeholder" :value="item.data" />
-          <text class="location verticalMiddle">mm</text> -->
-          <picker class="sub-input" mode="date" :value="item.data" :start="startDate" :end="endDate" @change="bindDateChange">
-            <view >{{ item.data }}</view>
-          </picker>
+          <!-- <view  class="sub-input" @click="showPopup3(item.text)" >{{item.data}}</view> -->
+          <input class="verticalMiddle sub-input" disabled="true" @click="showPopup3(item.text)" :placeholder="item.placeholder" :value="item.data" />
+          
+          <!-- <button @click="showPopup3" type="primary">MPicker 日期</button> -->
         </view>
         <view class="flex-item4"><uni-icons class="verticalMiddle" type="camera" size="30" color="#CCCCCC"></uni-icons></view>
       </view>
@@ -61,15 +60,14 @@
 export default {
   props: ['rowData'],
   data() {
-    return {};
+    return {
+      
+    };
   },
   computed: {
-    startDate() {
-      return this.getDate('start');
-    },
-    endDate() {
-      return this.getDate('end');
-    }
+   startDateInfo() {
+     return this.startDate || '开始时间';
+   },
   },
   methods: {
     rowClick(key, el) {
@@ -82,24 +80,24 @@ export default {
       });
       this.$emit('change',this.rowData)
     },
-    getDate(type) {
-      const date = new Date();
-      let year = date.getFullYear();
-      let month = date.getMonth() + 1;
-      let day = date.getDate();
-
-      if (type === 'start') {
-        year = year - 60;
-      } else if (type === 'end') {
-        year = year + 2;
-      }
-      month = month > 9 ? month : '0' + month;
-      day = day > 9 ? day : '0' + day;
-      return `${year}-${month}-${day}`;
-    },
-    bindDateChange: function(e) {
-      this.date = e.target.value;
-    }
+   async showPopup3(el) {
+     //  日期选择
+     const res_p = await this.$root.$refs.MPage.MPickerPopup.showPicker({
+       mode: 'date',
+       startYear: '2016',
+       endYear: '2020'
+     });
+     console.log('res_p', res_p[0]);
+     this.rowData.forEach(x => {
+       if (x.text == el) {
+         x.data = res_p[0];
+       } else {
+         return;
+       }
+     });
+     this.$emit('change',this.rowData)
+   },
+    
   }
 };
 </script>

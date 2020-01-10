@@ -1,4 +1,5 @@
 <template>
+  <MPage ref="MPage">
   <view class="swiper-page-wrap">
     <SwiperTab height="calc(100vh - 80rpx);" :tabs="tabs" :curIndex="curIndex" @change="changeTab">
       <swiper class="swiper-wrap" :current="curIndex" @change="swiperChange">
@@ -24,6 +25,7 @@
        <view class="flex-item ">保存</view>
     </view>
   </view>
+   </MPage>
 </template>
 
 <script>
