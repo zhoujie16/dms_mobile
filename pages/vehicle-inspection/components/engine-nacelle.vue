@@ -7,8 +7,10 @@
       </view>
       <view class="content">
         <view class="m-flex m-align-center m-height-80 content-top" style="justify-content: space-between">
-          <text>新能源汽车</text>
-          <text><uni-icons :type="isshow?'arrowup':'arrowdown'" size="30" color="#CCCCCC" @click='showClick'></uni-icons></text>
+          <view>新能源汽车</view>
+          <view>
+            <uni-icons :type="isshow?'arrowup':'arrowdown'" size="30" color="#CCCCCC" @click="showClick"></uni-icons>
+          </view>
         </view>
         <view class="subContent" v-if="isshow">
          <VChoose :rowData="formData1"></VChoose>
