@@ -2,12 +2,20 @@
   <view class="page-wrap">
     <NavBarSelect class="top">
       <NavBarSelectItem @click='showAll' title="全部"></NavBarSelectItem>
-      <NavBarSelectItem title="创建时间"></NavBarSelectItem>
-      <NavBarSelectItem @click="showSearchFilter" title="上报时间"></NavBarSelectItem>
+      <NavBarSelectItem title="创建时间" @click="showCreateTime"></NavBarSelectItem>
+      <NavBarSelectItem @click="showCreateTime" title="上报时间"></NavBarSelectItem>
     </NavBarSelect>
-    <MPopup ref="mPopup2" type="bottom" title="请选择检查单状态">
-      弹窗内容 bottom
-    </MPopup>
+    <MPage ref="MPage">
+      <MPopup ref="mPopup2" type="bottom" title="请选择检查单状态">
+        <view class="timeContent">
+          <view class="time">全部</view>
+          <view class="time">未提交</view>
+          <view class="time">已提交</view>
+          <view class="time">审核完成</view>
+        </view>
+          <view class="close">关闭</view>
+      </MPopup>
+    </MPage>
     <swiper class="swiper-wrap" :current="curIndex" @change="swiperChange">
         <swiper-item>
           <baseScroll
@@ -60,7 +68,16 @@ export default {
     showAll() {
       this.$refs.mPopup2.open()
     },
-    showSearchFilter() {}
+    showSearchFilter() {},
+    async showCreateTime() {
+      const res_p = await this.$root.$refs.MPage.MPickerPopup.showPicker({
+        mode: 'range',
+        startYear: '2017',
+        endYear: '2010',
+        defaultVal: ['2019-12-30', '2020-01-07']
+      });
+      console.log('res_p', res_p);
+    }
   }
 };
 </script>
@@ -110,4 +127,23 @@ export default {
   color: #c0c0c0;
   font-size: 28rpx;
 }
+
+  .timeContent {
+    .time {
+      height: 70rpx;
+      line-height: 70rpx;
+      border-bottom: 1rpx solid #ccc;
+      font-size: 30rpx;
+      padding-left: 5rpx;
+      text-align: center;
+      color: #0A98D5;
+    }
+  }
+  .close {
+    height: 70rpx;
+    line-height: 70rpx;
+    text-align: center;
+    font-size: 30rpx;
+    color: #0A98D5;
+  }
 </style>

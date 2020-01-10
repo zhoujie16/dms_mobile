@@ -118,7 +118,7 @@
     {
       "path": "pages/vehicles-delivery/vehicles-delivery",
       "style": {
-        "navigationBarTitleText": "交车"
+        "navigationBarTitleText": "交车查询"
       }
     },
     {
@@ -202,6 +202,16 @@
             "path" : "pages/progress-query/repair-check",
             "style" : {
               "navigationBarTitleText": "维修检查"
+            }
+        }
+        ,{
+            "path" : "pages/vehicles-delivery/components/scroll-cell",
+            "style" : {}
+        }
+        ,{
+            "path" : "pages/vehicles-delivery/delivery-details",
+            "style" : {
+              "navigationBarTitleText": "交车详情"
             }
         }
     ],

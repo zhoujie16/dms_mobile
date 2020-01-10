@@ -117,9 +117,11 @@ export default {
 }
 .swiper-page-wrap {
   position: relative;
+  height: 44rpx;
 }
 .swiper-wrap {
-  background-color: $uni-bg-color-page;
+  background-color: #EEEEEE;
+  padding: 10rpx;
 }
 
 .top-warp {

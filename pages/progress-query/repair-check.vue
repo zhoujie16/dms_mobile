@@ -2,15 +2,16 @@
 	<view class="page-wrap">
     <view class="list-cell-title">
       <view class="left">
-        <view class="info-item" style="height: 40px;line-height: 40px;font-size: 20px;">
-          张全蛋
+        <view class="info-item" style="height: 40px;line-height: 40px;font-size: 30px;margin-bottom: 10px;
+">
+          张一
         </view>
         <view class="info-item">
           13602558446
         </view>
       </view>
       <view class="right">
-        <uni-icons type="phone" size="30"></uni-icons>
+        <uni-icons type="phone" size="30" color="white"></uni-icons>
       </view>
     </view>
 		<view class="list-cell-content">
@@ -61,13 +62,13 @@
   .page-wrap{
     height: 100%;
     padding: 0 20rpx 0 20rpx;
-    background-color: #2B4D86;
+    background-color: $uni-bg-color-page;
   }
   .list-cell-title {
     padding: 30rpx 20rpx;
     height: 15%;
-    background-color: pink;
-
+    background-color: $uni-bg-color-page;
+    color: #FFFFFF;
     .left {
       float: left;
       height: 90px;
@@ -81,7 +82,7 @@
     }
   }
 .list-cell-content {
-  background-color: #eeeeee;
+  background-color: $uni-bg-color-page;
   padding: 10rpx 20rpx;
   height: 75%;
   .info-item {
@@ -92,12 +93,15 @@
     border-bottom: 1px solid #ccc;
     .info-item-lab {
       flex: 0 0 200rpx;
-      color: #999999;
+      color: #CCCCCC;
+      font-size: 30rpx;
     }
     .info-item-text {
       flex: 1 1 auto;
       text-align: right;
       padding-right: 10rpx;
+      color: #FFFFFF;
+      font-size: 32rpx;
     }
   }
 }
@@ -105,11 +109,11 @@
     width: 70%;
     height: 88rpx;
     line-height: 88rpx;
-    margin: 16px 50rpx;
+    margin: 30rpx 80rpx;
     text-align: center;
-    background-color: #2B4D86;
-    border-radius: 15rpx;
+    background-color:$uni-bg-color-page;
+    border-radius: 25rpx;
     color: #09BB07;
-    border: 1rpx solid #09BB07;
+    border: 4rpx solid #09BB07;
   }
 </style>
