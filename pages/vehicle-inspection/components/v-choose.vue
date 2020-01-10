@@ -80,6 +80,7 @@ export default {
           return;
         }
       });
+      this.$emit('change',this.rowData)
     },
     getDate(type) {
       const date = new Date();

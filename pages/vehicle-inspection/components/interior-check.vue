@@ -2,7 +2,7 @@
   <view class="page-wrap">
     <view class="container">
       <view class="content">
-        <view class="subContent"><VChoose :rowData="formData"></VChoose></view>
+        <view class="subContent"><VChoose :rowData="formData" @change="(val)=>{ this.formData = val }"></VChoose></view>
       </view>
       <view class="content">
         <view class="m-flex m-align-center m-height-80 content-top">内饰检查</view>
