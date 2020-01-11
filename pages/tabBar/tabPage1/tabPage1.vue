@@ -97,16 +97,16 @@ export default {
           text: '提醒',
           path: '/pages/index/index'
         },
-        {
-          icon: 'desktop',
-          text: 'Demo',
-          path: '/pages/demo/base-demo'
-        },
-        {
-          icon: 'desktop',
-          text: 'Demo2',
-          path: '/pages/demo/base-demo2'
-        }
+        // {
+        //   icon: 'desktop',
+        //   text: 'Demo',
+        //   path: '/pages/demo/base-demo'
+        // },
+        // {
+        //   icon: 'desktop',
+        //   text: 'Demo2',
+        //   path: '/pages/demo/base-demo2'
+        // }
       ]
     };
   },

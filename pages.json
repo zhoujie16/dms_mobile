@@ -226,22 +226,22 @@
       {
         "pagePath": "pages/tabBar/tabPage2/tabPage2",
         "text": "文档",
-        "iconPath": "static/tabBar/homepage.png",
-        "selectedIconPath": "static/tabBar/homepage_fill.png",
+        "iconPath": "static/tabBar/document.png",
+        "selectedIconPath": "static/tabBar/document_fill.png",
         "style": {}
       },
       {
         "pagePath": "pages/tabBar/tabPage3/tabPage3",
         "text": "报表",
-        "iconPath": "static/tabBar/homepage.png",
-        "selectedIconPath": "static/tabBar/homepage_fill.png",
+        "iconPath": "static/tabBar/dynamic.png",
+        "selectedIconPath": "static/tabBar/dynamic_fill.png",
         "style": {}
       },
       {
         "pagePath": "pages/tabBar/tabPage4/tabPage4",
         "text": "提醒",
-        "iconPath": "static/tabBar/homepage.png",
-        "selectedIconPath": "static/tabBar/homepage_fill.png",
+        "iconPath": "static/tabBar/remind.png",
+        "selectedIconPath": "static/tabBar/remind_fill.png",
         "style": {}
       }
     ]

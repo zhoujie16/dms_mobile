@@ -1,15 +1,23 @@
 <template>
-  <view><button @click="test" type="primary">test</button></view>
+  <MPage ref="MPage">
+    <DocCell @click.native="test"></DocCell>
+  </MPage>
 </template>
 
 <script>
+  import DocCell from './components/doc-cell.vue'
+  
 export default {
-  components: {},
+  components: {
+    DocCell
+  },
   data() {
     return {};
   },
   methods: {
     async test() {
+      // const r = require('/static')
+      // return
       uni.showLoading({
         title: '正在下载文档',
         mask: true

@@ -1,30 +1,30 @@
 <template>
   <view class="page-wrap">
-    <SearchFilter ref="searchFilter">
-      <searchForm @confirm="searchFormConfirm"></searchForm>
-    </SearchFilter>
-    <BaseScroll
-      :top="100"
-      :fetchApi="fetchApi"
-      :fetchParams="fetchParams"
-      @listChange="
-        arr => {
-          this.dataSource = arr;
-        }
-      "
-    >
-      <view style="padding: 20rpx;">
-        <ScrollCell
-          @click="scrollCellClick(data)"
-          v-for="(data, i) in dataSource"
-          :key="i"
-          :cell="data"
-        ></ScrollCell>
-      </view>
-    </BaseScroll>
-    <view class="popup-group">
-      <MFadBtn @click="addBtnClick" type="right">新增</MFadBtn>
-    </view>
+    <MPage ref="MPage">
+      <SearchFilter ref="searchFilter">
+        <searchForm @confirm="searchFormConfirm"></searchForm>
+      </SearchFilter>
+      <BaseScroll
+        :top="100"
+        :fetchApi="fetchApi"
+        :fetchParams="fetchParams"
+        @listChange="
+          arr => {
+            this.dataSource = arr;
+          }
+        "
+      >
+        <view style="padding: 20rpx;">
+          <ScrollCell
+            @click="scrollCellClick(data)"
+            v-for="(data, i) in dataSource"
+            :key="i"
+            :cell="data"
+          ></ScrollCell>
+        </view>
+      </BaseScroll>
+      <view class="popup-group"><MFadBtn @click="addBtnClick" type="right">新增</MFadBtn></view>
+    </MPage>
   </view>
 </template>
 
@@ -62,7 +62,7 @@ export default {
       this.fetchParams = { t: new Date().getTime() };
     },
     // 新增客户接待
-    async addBtnClick(){
+    async addBtnClick() {
       await uni.navigateTo({
         url: '/pages/customer-reception/customer-add'
       });
@@ -71,9 +71,4 @@ export default {
 };
 </script>
 
-<style lang="scss">
-.page-wrap {
-  height: 100vh;
-  background-color: $uni-bg-color-page;
-}
-</style>
+<style lang="scss"></style>

@@ -2,7 +2,7 @@
   <view class="drawer-wrap">
     <view class="user-panel">
       <view class="user-panel-inner">
-        <image class="user-icon" src="../../../static/demo/60x60.png" mode="scaleToFill"></image>
+        <image class="user-icon" src="/static/home/mine.png" mode="scaleToFill"></image>
         <text class="user-name">Admin</text>
         <text class="user-desc">系统管理员</text>
       </view>
@@ -11,7 +11,7 @@
       <view class="menu-item" @click="menuClickUser">
         <image
           class="menu-item-icon"
-          src="../../../static/demo/60x60.png"
+          src="/static/home/mine.png"
           mode="scaleToFill"
         ></image>
         <text class="menu-item-text">个人名片</text>
@@ -19,7 +19,7 @@
       <view class="menu-item" @click="menuClickupdate">
         <image
           class="menu-item-icon"
-          src="../../../static/demo/60x60.png"
+          src="/static/home/refresh.png"
           mode="scaleToFill"
         ></image>
         <text class="menu-item-text">版本更新</text>
@@ -27,7 +27,7 @@
       <view class="menu-item" @click="menuClickPassord">
         <image
           class="menu-item-icon"
-          src="../../../static/demo/60x60.png"
+          src="/static/home/lock.png"
           mode="scaleToFill"
         ></image>
         <text class="menu-item-text">修改密码</text>
@@ -35,7 +35,7 @@
       <view class="menu-item" @click="menuClickPhone">
         <image
           class="menu-item-icon"
-          src="../../../static/demo/60x60.png"
+          src="/static/home/customerservice.png"
           mode="scaleToFill"
         ></image>
         <text class="menu-item-text">客服热线</text>
@@ -43,7 +43,7 @@
       <view class="menu-item" @click="menuClickBook">
         <image
           class="menu-item-icon"
-          src="../../../static/demo/60x60.png"
+          src="/static/home/activity.png"
           mode="scaleToFill"
         ></image>
         <text class="menu-item-text">操作手册</text>
@@ -51,7 +51,7 @@
       <view class="menu-item" @click="menuClickQuit">
         <image
           class="menu-item-icon"
-          src="../../../static/demo/60x60.png"
+          src="/static/home/prompt.png"
           mode="scaleToFill"
         ></image>
         <text class="menu-item-text">退出</text>
@@ -137,7 +137,7 @@ export default {
   height: 40rpx;
 }
 .menu-item-text {
-  padding-left: 30rpx;
+  padding-left: 20rpx;
   font-size: 34rpx;
   color: #dddddd;
 }

@@ -4,7 +4,7 @@
     <search-filter ref="searchFilter">
       <SearchForm @confirm="searchFormConfirm"></SearchForm>
     </search-filter>
-    <SwiperPage :fetchParams="fetchParams" height="calc(100vh - 100rpx)"></SwiperPage>
+    <SwiperPage :fetchParams="fetchParams"></SwiperPage>
   </MPage>
 </template>
 
@@ -48,14 +48,5 @@ export default {
 </script>
 
 <style lang="scss">
-.page-wrap {
-  height: 100vh;
-  background-color: $uni-bg-color-page;
-}
-.swiper-page {
-  height: 600rpx;
-}
-.swiper-item-wrap {
-  height: 100%;
-}
+
 </style>

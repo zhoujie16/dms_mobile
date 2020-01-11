@@ -1,6 +1,6 @@
 @@ -1,121 +0,0 @@
 <template>
-  <view class="swiper-page-wrap">
+  <MPage ref="MPage">
     <SwiperTab height="calc(100vh - 80rpx);" :tabs="tabs" :curIndex="curIndex" @change="changeTab">
       <swiper class="swiper-wrap" :current="curIndex" @change="swiperChange">
         <!--全部 -->
@@ -26,7 +26,7 @@
         </swiper-item>
       </swiper>
     </SwiperTab>
-  </view>
+  </MPage>
 </template>
 
 <script>
@@ -35,7 +35,7 @@ import CustomerDemandPanel from './components/customer-demand-panel.vue';
 import VehicleFacePanel from './components/vehicle-face-panel.vue';
 import DetailPreviewPanel from './components/detail-preview-panel.vue';
 export default {
-  components:{
+  components: {
     CustomerInfoPanel,
     CustomerDemandPanel,
     VehicleFacePanel,
@@ -77,7 +77,7 @@ export default {
   left: 0;
   height: initial;
 }
-.swiper-scroll-wrap{
+.swiper-scroll-wrap {
   height: 100%;
 }
 </style>

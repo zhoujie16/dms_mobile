@@ -20,7 +20,9 @@
 <script>
 export default {
   name: 'swiper-tab-wrap',
-  mounted() {},
+  mounted() {
+    
+  },
   props: {
     tabs: {
       type: Array,
