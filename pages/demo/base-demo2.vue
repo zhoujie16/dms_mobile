@@ -1,20 +1,21 @@
 <template>
   <MPage ref="MPage">
     <NavDateRangePicker @change="dateRangeChange"></NavDateRangePicker>
-    <button @click="showPopup1" type="primary">MPopup center</button>
-    <button @click="showPopup2" type="primary">MPopup bottom</button>
-    <button @click="showPopup3" type="primary">MPicker 日期</button>
-    <button @click="showPopup4" type="primary">MPicker 日期区间</button>
-    <!--  -->
+    <view style="padding: 20rpx;">
+      <button class="test-btn" type="primary" @click="showPopup1">MPopup center</button>
+      <button class="test-btn" type="primary" @click="showPopup2">MPopup bottom</button>
+      <button class="test-btn" type="primary" @click="showPopupSelector">MPicker 单选</button>
+      <button class="test-btn" type="primary" @click="showPopup3">MPicker 日期</button>
+      <button class="test-btn" type="primary" @click="showPopup4">MPicker 日期区间</button>
+    </view>
     <MPopup ref="mPopup1" type="center" title="标题1">弹窗内容 center</MPopup>
     <MPopup ref="mPopup2" type="bottom" title="标题2">弹窗内容 bottom</MPopup>
   </MPage>
 </template>
 
-<script> 
+<script>
 export default {
-  components: { 
-  },
+  components: {},
   data() {
     return {};
   },
@@ -24,6 +25,15 @@ export default {
     },
     showPopup2() {
       this.$refs.mPopup2.open();
+    },
+    // 单选 Demo
+    async showPopupSelector() {
+      const res_p = await this.$root.$refs.MPage.MPickerPopup.showPicker({
+        mode: 'selector',
+        selectList: [{ label: '1', value: '1' }, { label: '2', value: '2' }],
+        defaultVal: '2'
+      });
+      console.log('res_p', res_p);
     },
     async showPopup3() {
       //  日期选择
@@ -48,4 +58,8 @@ export default {
 };
 </script>
 
-<style lang="scss"></style>
+<style lang="scss">
+.test-btn {
+  margin-bottom: 20rpx;
+}
+</style>

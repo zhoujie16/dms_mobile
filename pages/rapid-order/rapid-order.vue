@@ -63,6 +63,12 @@ export default {
     };
   },
   methods: {
+    searchFormConfirm() {
+      this.$refs.searchFilter.hideDrawer();
+      this.fetchParams = {
+        t: new Date().getTime()
+      };
+    },
     // 新建工单按钮
     addOrderBtnClick() {
       this.$refs.mPopup_addorder.open();
@@ -85,11 +91,23 @@ export default {
       });
     },
     // 选择 交车状况
-    async showPickerSelect() {},
+    async showPickerSelect() {
+      const res = await this.$root.$refs.MPage.MPickerPopup.showPicker({
+        mode: 'selector',
+        selectList: [{ label: '是', value: '1' }, { label: '否', value: '2' }],
+        defaultVal: '1'
+      });
+      this.fetchParams = {
+        t: new Date().getTime()
+      };
+    },
     // 选择 开单日期
     async showPickerDate() {
       const res_date = await this.$root.$refs.MPage.MDatePickerPopup.showPicker();
       console.log('选择的日期', res_date);
+      this.fetchParams = {
+        t: new Date().getTime()
+      };
     }
   }
 };

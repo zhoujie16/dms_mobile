@@ -1,25 +1,38 @@
 <template>
   <view class="m-picker-wrap">
-    <!-- 多级联动 -->
+    <!-- 单选 -->
+    <view v-if="mode === 'selector'">
+      <w-picker
+        v-if="selectList.length != 0"
+        mode="selector"
+        :defaultVal="defaultVal"
+        @confirm="onConfirm"
+        ref="picker"
+        themeColor="#f00"
+        :selectList="selectList"
+      ></w-picker>
+    </view>
+    <!-- 日期区间 -->
     <view v-if="mode === 'range'">
       <w-picker
         mode="range"
         startDate="2017"
         endYear="2030"
-        :defaultVal="rangeDval"
+        :defaultVal="defaultVal"
         :current="false"
         @confirm="onConfirm"
         ref="picker"
         themeColor="#f00"
       ></w-picker>
     </view>
+    <!-- 日期选择 -->
     <view v-if="mode === 'date'">
       <w-picker
         mode="date"
         :startYear="startYear"
         :endYear="endYear"
         :defaultVal="defaultVal"
-        :current="false"
+        :current="true"
         @confirm="onConfirm"
         :disabledAfter="false"
         ref="picker"
@@ -39,36 +52,52 @@ export default {
     this.confirm = () => {};
     return {
       mode: '',
+      // 单选参数
+      selectList: [],
+      // 日期参数
+      // 日期区间参数
       startYear: '',
       endYear: '',
-      defaultVal: '',
-      rangeDval: []
+      defaultVal: ''
     };
   },
   methods: {
-    showPicker({ mode, startYear, endYear, defaultVal }) {
+    showPicker({ mode, selectList, startYear, endYear, defaultVal }) {
       return new Promise(reslove => {
         this.mode = mode;
-        this.startYear = startYear;
-        this.endYear = endYear;
-        this.rangeDval = defaultVal;
+        if (mode == 'selector') {
+          this.selectList = selectList;
+          this.defaultVal = defaultVal;
+        } else if (mode == 'date') {
+          this.startYear = startYear;
+          this.endYear = endYear;
+          this.defaultVal = defaultVal;
+        } else if (mode == 'range') {
+          this.startYear = startYear;
+          this.endYear = endYear;
+          this.defaultVal = defaultVal;
+        }
         this.$nextTick(() => {
           this.$refs.picker.show();
         });
         this.confirm = result => {
+          console.log('m-picker-popup result', result);
           let _result = result;
-          if (this.mode == 'range') {
+          if (this.mode == 'selector') {
+            _result = [result.result];
+          } else if (this.mode == 'range') {
             _result = [result.from, result.to];
           } else if (this.mode == 'date') {
             _result = [result.result];
           }
-          reslove(_result);
-          this.mode = '';
+          setTimeout(() => {
+            this.mode = '';
+            reslove(_result);
+          }, 300);
         };
       });
     },
     onConfirm(result) {
-      console.log(result);
       this.confirm(result);
     }
   }

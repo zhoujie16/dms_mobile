@@ -9,6 +9,7 @@
 </template>
 
 <script>
+//  https://ext.dcloud.net.cn/plugin?id=273#rating
 export default {
   name: 'm-picker',
   props: {
@@ -39,7 +40,7 @@ export default {
   },
   methods: {
     emitInput(value) {
-      console.log('input', this.$util.typeOf(value), value);
+      console.log('m-picker input', this.$util.typeOf(value), value);
       this.$emit('input', value);
     },
     showPopupClick() {
@@ -49,6 +50,16 @@ export default {
       } else if (mode == 'range') {
         this.showPopupRange();
       }
+    },
+    // 单选
+    async showPopupSelector(){
+      const params = {
+        mode: 'selector',
+        selectList: [{label:"1",value:"1"},{label:"2",value:"2"}],
+        defaultVal: '2'
+      };
+      const res = await this.$root.$refs.MPage.MPickerPopup.showPicker(params);
+      this.emitInput(res);
     },
     // 单独日期选择 date
     async showPopupDate() {
