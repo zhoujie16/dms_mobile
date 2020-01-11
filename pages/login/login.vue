@@ -71,10 +71,10 @@ export default {
   .login-inner {
     width: 100%;
     height: 100%;
-    padding: 0 80rpx; 
-    .logo-wrap{
+    padding: 0 80rpx;
+    .logo-wrap {
       margin: 20vh 0 10vh 0;
-      .logo-inner{
+      .logo-inner {
         width: 100%;
         text-align: center;
         line-height: 100rpx;
@@ -115,6 +115,7 @@ export default {
       display: flex;
       justify-content: center;
       align-items: center;
+      border-radius: 40rpx;
     }
   }
 }

@@ -10,7 +10,10 @@
 </template>
 ```
 
-
+| 属性 | 类型   | 必填 | 默认值  | 描述                                |
+| ---- | ------ | ---- | ------- | ----------------------------------- |
+| type | Number | 0    | default | 页面背景色，可选值 primary  default |
+|      |        |      |         |                                     |
 
 ## base-scroll
 
@@ -25,28 +28,28 @@
 
 ```vue
 <template>
-  <view class="page-wrap">
+  <MPage ref="MPage" type="primary">
     <BaseScroll
-      :top="100"
-      :fetchApi="fetchApi"
-      :fetchParams="fetchParams"
-      @listChange="
-        arr => {
-          this.dataSource = arr;
-        }
-      "
-    >
-      <!-- 自行循环列表，数据源是 dataSource -->
-      <view
-        class="base-scroll-inner"
-        @click="scrollCellClick"
-        v-for="(data, i) in dataSource"
-        :key="i"
-      >
-        <ScrollCell :cell="data"></ScrollCell>
-      </view>
-    </BaseScroll>
-  </view>
+        :top="100"
+        :fetchApi="fetchApi"
+        :fetchParams="fetchParams"
+        @listChange="
+          arr => {
+            this.dataSource = arr;
+          }
+        "
+      > 
+        <!-- 自行循环列表，数据源是 dataSource -->
+        <view class="base-scroll-inner" style="padding: 0 20rpx;">
+          <ScrollCell
+            class="base-scroll-inner"
+            @click="scrollCellClick"
+            v-for="(data, i) in dataSource"
+            :key="i"
+          ></ScrollCell>
+        </view>
+      </BaseScroll>
+  </MPage>
 </template>
 
 <script>
@@ -194,7 +197,9 @@ this.$refs.mPopup.close(); // 关闭
 
 ## m-date-picker
 
-日期选择组件，
+日期选择组件，弹窗选择日期，当天，最近7天，最近一个月，自定义范围
+
+###### 组件调用方法
 
 ```vue
 <MDatePicker label="选择时间" v-model="dateTest"></MDatePicker>
@@ -204,6 +209,15 @@ this.$refs.mPopup.close(); // 关闭
 | ------- | ------ | ---- | ------ | ------ | ------------------------------------------------------------ |
 | label   | String |      |        |        | 标题                                                         |
 | v-model | Array  |      |        |        | 日期：['2020-01-01'] ，日期范围：['2020-01-01','2020-01-10'] |
+
+###### js调用方法
+
+```js
+const res_date = await this.$root.$refs.MPage.MDatePickerPopup.showPicker();
+console.log('选择的日期', res_date); // 结果: ['2020-01-01','2020-01-11']
+```
+
+
 
 ## m-picker
 

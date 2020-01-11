@@ -11,13 +11,6 @@
         <view class="date-picker-item" @click="datePickerItem(4)">自定义</view>
       </view>
     </uni-popup>
-    <!-- <uni-calendar
-      v-if="isShowPopup"
-      ref="calendar"
-      :insert="false"
-      :range="true"
-      @confirm="confirmCalendar"
-    ></uni-calendar> -->
   </view>
 </template>
 

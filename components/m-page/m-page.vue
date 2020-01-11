@@ -1,5 +1,5 @@
 <template>
-  <view class="m-page-wrap">
+  <view class="m-page-wrap" :class="type">
     <slot></slot>
     <view class="m-page-popup-group">
       <MPickerPopup ref="MPickerPopup"></MPickerPopup>
@@ -12,6 +12,13 @@
 <script>
 export default {
   name: 'm-page',
+  props:{
+    // 页面背景色，可选值 primary  default
+    type:{
+      type: String,
+      default: 'default'
+    }
+  },
   data() {
     return {};
   },
@@ -32,5 +39,11 @@ export default {
   /* #ifdef H5 */
   height: calc(100vh - 88rpx);
   /* #endif */
+  &.default{
+    background-color: #ffffff;
+  }
+  &.primary{
+    background-color: $uni-bg-color-page;
+  }
 }
 </style>
