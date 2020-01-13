@@ -155,7 +155,18 @@
     }, {
       "path": "pages/customer-reception/customer-add",
       "style": {
-        "navigationBarTitleText": "客户接待"
+        "navigationBarTitleText": "客户接待",
+        "app-plus": {
+          "titleNView": {
+            "buttons": [{
+              "type": "none",
+              "text": "保存",
+              "width": "50px",
+              "fontSize": "16px",
+              "float": "right"
+            }]
+          }
+        }
       }
     },
     {

@@ -14,6 +14,14 @@ Vue.prototype.$store = store;
 import AppConfig from "@/config/config.js";
 Vue.prototype.$appConfig = AppConfig;
 
+Vue.prototype.$sleep = timeout => {
+  return new Promise((resolve, resject) => {
+    setTimeout(() => {
+      resolve();
+    }, timeout);
+  });
+};
+
 import Auth from "@/common/auth.js";
 Vue.prototype.$auth = Auth;
 

@@ -1,31 +1,29 @@
 <template>
-  <view class="page-wrap">
-    <MPage ref="MPage">
-      <SearchFilter ref="searchFilter">
-        <searchForm @confirm="searchFormConfirm"></searchForm>
-      </SearchFilter>
-      <BaseScroll
-        :top="100"
-        :fetchApi="fetchApi"
-        :fetchParams="fetchParams"
-        @listChange="
-          arr => {
-            this.dataSource = arr;
-          }
-        "
-      >
-        <view style="padding: 20rpx;">
-          <ScrollCell
-            @click="scrollCellClick(data)"
-            v-for="(data, i) in dataSource"
-            :key="i"
-            :cell="data"
-          ></ScrollCell>
-        </view>
-      </BaseScroll>
-      <view class="popup-group"><MFadBtn @click="addBtnClick" type="right">新增</MFadBtn></view>
-    </MPage>
-  </view>
+  <MPage ref="MPage" type="primary">
+    <SearchFilter ref="searchFilter">
+      <searchForm @confirm="searchFormConfirm"></searchForm>
+    </SearchFilter>
+    <BaseScroll
+      :top="100"
+      :fetchApi="fetchApi"
+      :fetchParams="fetchParams"
+      @listChange="
+        arr => {
+          this.dataSource = arr;
+        }
+      "
+    >
+      <view style="padding: 20rpx;">
+        <ScrollCell
+          @click="scrollCellClick(data)"
+          v-for="(data, i) in dataSource"
+          :key="i"
+          :cell="data"
+        ></ScrollCell>
+      </view>
+    </BaseScroll>
+    <view class="popup-group"><MFadBtn @click="addBtnClick" type="right">新增</MFadBtn></view>
+  </MPage>
 </template>
 
 <script>
