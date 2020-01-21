@@ -1,21 +1,20 @@
 <template>
-  <view class="page-wrap">
-		<MPage ref="MPage">
-		 <NavDateRangePicker @change="dateRangeChange"></NavDateRangePicker>
-		 <view class="menu-wrap">
-		   <uni-grid :column="2" :showBorder="false" :highlight="true" @change="detailUrl">
-		     <uni-grid-item v-for="(item, index) in list" :key="index">
-		       <view class="wrap-text">{{ item.title }}</view>
-		     </uni-grid-item>
-		   </uni-grid>
-		 </view>
-		 
-		</MPage>
-    <!-- <view class="box" @click="detailUrl">
+  <MPage ref="MPage">
+    <view class="page-wrap">
+      <NavDateRangePicker @change="dateRangeChange"></NavDateRangePicker>
+      <view class="menu-wrap">
+        <uni-grid :column="2" :showBorder="false" :highlight="true" @change="detailUrl">
+          <uni-grid-item v-for="(item, index) in list" :key="index">
+            <view class="wrap-text">{{ item.title }}</view>
+          </uni-grid-item>
+        </uni-grid>
+      </view>
+
+      <!-- <view class="box" @click="detailUrl">
       预约率
     </view> -->
-    
-  </view>
+    </view>
+  </MPage>
 </template>
 
 <script>
@@ -56,9 +55,7 @@ export default {
         url: `/pages/qcReport/qcReport-detail`
       });
     },
-		dateRangeChange(){
-			
-		}
+    dateRangeChange() {}
   }
 };
 </script>
@@ -67,11 +64,10 @@ export default {
 .page-wrap {
   height: 100vh;
   background-color: $uni-bg-color-page;
-  .wrap-text{
+  .wrap-text {
     text-align: center;
     line-height: 30vh;
     color: $uni-text-color-inverse;
   }
 }
-
 </style>
