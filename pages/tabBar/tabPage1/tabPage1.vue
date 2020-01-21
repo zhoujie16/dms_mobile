@@ -89,7 +89,7 @@ export default {
         },
         {
           icon: 'tasks',
-          text: 'QC',
+          text: '报表',
           path: '/pages/qcReport/qcReport'
         },
         {
