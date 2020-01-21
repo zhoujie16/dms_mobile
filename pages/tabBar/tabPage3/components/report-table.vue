@@ -1,19 +1,6 @@
 <template>
   <view>
-    <t-table border="4">
-      <t-tr color="#FFFFFF">
-        <t-th>服务顾问</t-th>
-        <t-th>数量</t-th>
-      </t-tr>
-      <t-tr color="#FFFFFF">
-        <t-td>WJS</t-td>
-        <t-td>9</t-td>
-      </t-tr>
-      <t-tr color="#FFFFFF">
-        <t-td>WJS</t-td>
-        <t-td>9</t-td>
-      </t-tr>
-    </t-table>
+    <z-table :tableData="baseTableData" :columns="baseColumns"></z-table>
   </view>
 </template>
 
@@ -22,7 +9,47 @@ import { AjaxScrollData } from '@/api/test/index.js';
 
 export default {
   data() {
-    return {};
+    return {
+      baseTableData: [
+        {
+          name: '张三',
+          age: 18,
+          gender: '男'
+        },
+        {
+          name: '赵四',
+          age: 16,
+          gender: '女'
+        },
+        {
+          name: '王五',
+          age: 20,
+          gender: '男'
+        },
+        {
+          name: '李六',
+          age: 18,
+          gender: '女'
+        }
+      ],
+      baseColumns: [
+        {
+          title: '姓名',
+          key: 'name',
+          width: 200
+        },
+        {
+          title: '性别',
+          key: 'gender',
+          width: 200
+        },
+        {
+          title: '年龄',
+          key: 'age',
+          width: 200
+        }
+      ]
+    };
   }
 };
 </script>

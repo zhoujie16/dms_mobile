@@ -104,31 +104,32 @@ export default {
 
 <style lang="scss" scoped>
 .flex-item1 {
-  width: 24%;
+  flex: 0 0 140rpx;
   text-align: center;
   line-height: 60rpx;
 }
 .flex-item2 {
-  width: 3%;
+  flex: 0 0 40rpx;
   color: #ff0000;
   display: flex;
 }
 .flex-item3 {
-  width: 20%;
+  flex: 1;
   display: flex;
+  padding: 0 4rpx;
 }
 .flex-item4 {
-  width: 13%;
+  flex: 0 0 10rpx;
   text-align: center;
   display: flex;
 }
 .flex-item5 {
-  width: 60%;
+  flex: 1;
   display: flex;
   position: relative;
 }
 .label-pad {
-  margin-right: 2%;
+  // margin-right: 2%;
 }
 .sub-input {
   width: 100%;
@@ -145,7 +146,7 @@ export default {
   color: #cccccc;
 }
 .tag-pad {
-  padding: 0;
+  // padding: 0;
   width: 100%;
 }
 .verticalMiddle {

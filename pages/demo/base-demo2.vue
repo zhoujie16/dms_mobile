@@ -10,6 +10,7 @@
     </view>
     <MPopup ref="mPopup1" type="center" title="标题1">弹窗内容 center</MPopup>
     <MPopup ref="mPopup2" type="bottom" title="标题2">弹窗内容 bottom</MPopup>
+    <z-table :tableData="baseTableData" :columns="baseColumns"></z-table>
   </MPage>
 </template>
 
@@ -17,7 +18,47 @@
 export default {
   components: {},
   data() {
-    return {};
+    return {
+      baseTableData: [
+        {
+          name: '张三',
+          age: 18,
+          gender: ''
+        },
+        {
+          name: '赵四',
+          age: 16,
+          gender: '女'
+        },
+        {
+          name: '王五',
+          age: 20,
+          gender: '男'
+        },
+        {
+          name: '李六',
+          age: 18,
+          gender: '女'
+        }
+      ],
+      baseColumns: [
+        {
+          title: '姓名',
+          key: 'name',
+          width: 100
+        },
+        {
+          title: '性别',
+          key: 'gender',
+          width: 100
+        },
+        {
+          title: '年龄',
+          key: 'age',
+          width: 100
+        }
+      ]
+    };
   },
   methods: {
     showPopup1() {

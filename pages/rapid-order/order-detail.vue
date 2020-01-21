@@ -40,15 +40,21 @@
     <!-- 弹出层 -->
     <view class="popup-group">
       <!-- 维修历史 -->
-      <MPopup ref="mPopup_wxls" type="bottom" title="维修历史">维修历史</MPopup>
-      <MPopup ref="mPopup_jkxx" type="bottom" title="监控信息">监控信息</MPopup>
+      <MPopup ref="mPopup_wxls" type="bottom" title="维修历史" @confirm="confirm_wxls">
+      </MPopup>
+      <MPopup ref="mPopup_jkxx" type="bottom" title="监控信息" @confirm="confirm_jkxx">
+        <AmonitorInfo></AmonitorInfo>
+      </MPopup>
     </view>
   </MPage>
 </template>
 
 <script>
+  import AmonitorInfo from './components/monitor-info.vue'
 export default {
-  components: {},
+  components: {
+    AmonitorInfo
+  },
   data() {
     return {
       // 工单类型 选项
@@ -102,7 +108,13 @@ export default {
     btnClick_jkxx() {
       this.$refs.mPopup_jkxx.open();
     },
-    addWxxmBtnClick() {}
+    addWxxmBtnClick() {},
+    confirm_wxls(){
+      
+    },
+    confirm_jkxx(){
+      
+    }
   }
 };
 </script>
