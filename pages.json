@@ -222,7 +222,15 @@
         "navigationBarTitleText": "交车详情"
       }
     }
-  ],
+      ,{
+            "path" : "pages/web-view-page/web-view-page",
+            "style" : {}
+        }
+        ,{
+            "path" : "pages/demo/u-charts-demo",
+            "style" : {}
+        }
+    ],
   "tabBar": {
     "color": "#333333",
     "selectedColor": "#333333",

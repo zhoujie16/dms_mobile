@@ -76,5 +76,15 @@ class Util {
     });
     return [err, res]
   }
+  /**
+   * 打开 H5 链接
+   */
+  async openLocalWeb({
+    url
+  }) {
+    const [err, res] = await uni.navigateTo({
+      url: '/pages/web-view-page/web-view-page?url=' + encodeURIComponent(url)
+    });
+  }
 }
 export default new Util();

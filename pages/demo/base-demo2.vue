@@ -7,10 +7,10 @@
       <button class="test-btn" type="primary" @click="showPopupSelector">MPicker 单选</button>
       <button class="test-btn" type="primary" @click="showPopup3">MPicker 日期</button>
       <button class="test-btn" type="primary" @click="showPopup4">MPicker 日期区间</button>
+      <button class="test-btn" type="primary" @click="openlocalWeb">打开本地网页</button>
     </view>
     <MPopup ref="mPopup1" type="center" title="标题1">弹窗内容 center</MPopup>
     <MPopup ref="mPopup2" type="bottom" title="标题2">弹窗内容 bottom</MPopup>
-    <z-table :tableData="baseTableData" :columns="baseColumns"></z-table>
   </MPage>
 </template>
 
@@ -94,6 +94,12 @@ export default {
         defaultVal: ['2019-12-30', '2020-01-07']
       });
       console.log('res_p', res_p);
+    },
+    // 打开本地网页
+    async openlocalWeb() {
+      this.$util.openLocalWeb({
+        url:'/hybrid/html/index.html#/'
+      })
     }
   }
 };
