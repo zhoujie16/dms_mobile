@@ -16,8 +16,11 @@ export default {
   },
   methods: {
     async test() {
+      this.$util.openLocalWeb({
+        url:'/hybrid/html/index.html#/pdf-reader'
+      })
       // const r = require('/static')
-      // return
+      return
       uni.showLoading({
         title: '正在下载文档',
         mask: true

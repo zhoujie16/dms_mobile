@@ -1,11 +1,16 @@
 <template>
-  <div class="home">
+  <div class="page-wrap">
     home
   </div>
 </template>
 
 <script>
 export default {
-  name: "home"
+  name: "",
+  mounted() {},
+  data() {
+    return {};
+  },
+  methods: {}
 };
 </script>

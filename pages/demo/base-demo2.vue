@@ -98,7 +98,7 @@ export default {
     // 打开本地网页
     async openlocalWeb() {
       this.$util.openLocalWeb({
-        url:'/hybrid/html/index.html#/'
+        url:'/hybrid/html/index.html#/pdf-reader'
       })
     }
   }

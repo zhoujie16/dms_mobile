@@ -7,5 +7,15 @@ module.exports = {
     }
   },
   publicPath: "./",
-  outputDir: "html"
+  outputDir: "html",
+  // 添加 loader
+  chainWebpack: config => {
+    // GraphQL Loader
+    config.module
+      .rule("url")
+      .test(/\.pdf$/)
+      .use("url-loader")
+      .loader("url-loader")
+      .end();
+  }
 };

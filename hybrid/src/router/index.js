@@ -13,6 +13,11 @@ const routes = [
     path: "/about",
     name: "about",
     component: () => import("@/pages/about")
+  },
+  {
+    path: "/pdf-reader",
+    name: "pdf-reader",
+    component: () => import("@/pages/pdf-reader")
   }
 ];
 
