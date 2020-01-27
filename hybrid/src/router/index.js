@@ -18,6 +18,11 @@ const routes = [
     path: "/pdf-reader",
     name: "pdf-reader",
     component: () => import("@/pages/pdf-reader")
+  },
+  {
+    path: "/e-charts-demo",
+    name: "e-charts-demo",
+    component: () => import("@/pages/e-charts-demo")
   }
 ];
 

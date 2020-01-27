@@ -1,6 +1,7 @@
 /**
  * 公共方法
  */
+
 class Util {
   constructor(arg) {}
   /**

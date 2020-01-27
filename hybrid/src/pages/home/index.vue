@@ -7,6 +7,9 @@
 <script>
 export default {
   name: "",
+  beforeMount() {
+    window.document.title = "标题";
+  },
   mounted() {},
   data() {
     return {};

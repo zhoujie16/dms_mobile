@@ -28,6 +28,10 @@ Vue.prototype.$sleep = timeout => {
   });
 };
 
+
+import { Toast } from 'vant';
+Vue.prototype.$toast = Toast
+
 new Vue({
   router,
   store,

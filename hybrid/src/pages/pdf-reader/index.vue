@@ -1,4 +1,5 @@
 <template>
+  <!-- pdf 文档阅读页面 -->
   <div class="page-wrap">
     <div id="pdf-demo"></div>
   </div>
@@ -6,9 +7,13 @@
 
 <script>
 import Pdfh5 from "pdfh5";
+import "pdfh5/css/pdfh5.css";
 
 export default {
-  name: "",
+  name: "pdfh5",
+  beforeMount() {
+    window.document.title = "文档阅读";
+  },
   mounted() {
     this.readPdf();
   },
@@ -17,11 +22,17 @@ export default {
   },
   methods: {
     async readPdf() {
-      const pdfurl = require("../../assets/pdf/demo.pdf");
+      const pdfName = this.$route.query.pdf;
+      if (!pdfName) {
+        this.$toast.fail("打开文档出错");
+        return;
+      }
+      const pdfurl = require(`../../assets/pdf/${pdfName}.pdf`);
       const pdfBlob = this.$util.dataURItoBlob(pdfurl.default);
       const pdfArrbuff = await this.$util.blobToArrayBuffer(pdfBlob);
       this.pdfh5 = new Pdfh5("#pdf-demo", {
-        data: pdfArrbuff
+        data: pdfArrbuff,
+        renderType: "canvas"
       });
     }
   }
@@ -29,5 +40,8 @@ export default {
 </script>
 
 <style scoped lang="scss">
-// @import "pdfh5/css/pdfh5.css";
+#pdf-demo {
+  width: 100vw;
+  height: 100vh;
+}
 </style>

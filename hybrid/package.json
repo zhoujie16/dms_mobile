@@ -9,6 +9,7 @@
   "dependencies": {
     "axios": "^0.19.2",
     "core-js": "^3.4.4",
+    "echarts": "^4.6.0",
     "moment": "^2.24.0",
     "pdfh5": "^1.2.22",
     "vant": "^2.4.3",

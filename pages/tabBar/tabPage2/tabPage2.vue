@@ -1,6 +1,7 @@
 <template>
   <MPage ref="MPage">
     <DocCell @click.native="test"></DocCell>
+    <DocCell @click.native="test2"></DocCell>
   </MPage>
 </template>
 
@@ -17,23 +18,13 @@ export default {
   methods: {
     async test() {
       this.$util.openLocalWeb({
-        url:'/hybrid/html/index.html#/pdf-reader'
+        url:'/hybrid/html/index.html#/pdf-reader?pdf=default'
+      }) 
+    },
+    async test2(){
+      this.$util.openLocalWeb({
+        url:'/hybrid/html/index.html#/pdf-reader?pdf=demo'
       })
-      // const r = require('/static')
-      return
-      uni.showLoading({
-        title: '正在下载文档',
-        mask: true
-      });
-      const [err, res] = await uni.downloadFile({
-        url:
-          'https://www.forddms.com/APPtest/%E7%A6%8F%E7%89%B9%E4%BF%9D%E9%99%A9%E6%89%8B%E5%86%8C9-9%20V2.pdf#viewer.action=download'
-      });
-      uni.hideLoading();
-      const filePath = res.tempFilePath;
-      await uni.openDocument({
-        filePath: filePath
-      });
     }
   }
 };

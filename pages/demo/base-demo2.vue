@@ -8,6 +8,8 @@
       <button class="test-btn" type="primary" @click="showPopup3">MPicker 日期</button>
       <button class="test-btn" type="primary" @click="showPopup4">MPicker 日期区间</button>
       <button class="test-btn" type="primary" @click="openlocalWeb">打开本地网页</button>
+      <button class="test-btn" type="primary" @click="openUChartsDemo">e-charts-H5</button>
+      <button class="test-btn" type="primary" @click="openUChartsDemo2">e-charts-renderjs</button>
     </view>
     <MPopup ref="mPopup1" type="center" title="标题1">弹窗内容 center</MPopup>
     <MPopup ref="mPopup2" type="bottom" title="标题2">弹窗内容 bottom</MPopup>
@@ -98,8 +100,18 @@ export default {
     // 打开本地网页
     async openlocalWeb() {
       this.$util.openLocalWeb({
-        url:'/hybrid/html/index.html#/pdf-reader'
-      })
+        url: '/hybrid/html/index.html#/about'
+      });
+    },
+    async openUChartsDemo() {
+      this.$util.openLocalWeb({
+        url: '/hybrid/html/index.html#/e-charts-demo'
+      });
+    },
+    async openUChartsDemo2() {
+      uni.navigateTo({
+        url: '/pages/demo/e-charts-demo'
+      });
     }
   }
 };
