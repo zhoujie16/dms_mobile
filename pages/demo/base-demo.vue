@@ -1,74 +1,39 @@
 <template>
   <MPage ref="MPage">
-    <search-filter ref="searchFilter">
-      <SearchForm @confirm="searchFormConfirm"></SearchForm>
-    </search-filter>
-    <BaseScroll
-      :top="100"
-      :fetchApi="fetchApi"
-      :fetchParams="fetchParams"
-      @listChange="
-        arr => {
-          this.dataSource = arr;
-        }
-      "
-    >
-      <view
-        class="base-scroll-inner"
-        @click="scrollCellClick"
-        v-for="(data, i) in dataSource"
-        :key="i"
-      >
-        <ScrollCell :cell="data"></ScrollCell>
-      </view>
-    </BaseScroll>
+    <view class="page-inner">
+      <button v-for="item in btnList" @click="openDemo(item.path)" class="demo-btn" type="primary">{{ item.title }}</button>
+    </view>
   </MPage>
 </template>
 
 <script>
-/**
- * @Author: zhoujie
- * @Date: 2019-06-20 10:00:00
- * @Last Modified: 2019-06-20 10:00:00 zhoujie
- **/
-
-import { AjaxScrollData } from '@/api/test/index.js';
-import SearchForm from './components/search-form.vue';
-import ScrollCell from './components/scroll-cell.vue';
 export default {
-  components: {
-    ScrollCell,
-    SearchForm
-  },
+  components: {},
   data() {
     return {
-      fetchApi: AjaxScrollData,
-      fetchParams: {},
-      dataSource: []
+      btnList: [
+        {
+          title: 'scroll demo',
+          path: '/pages/demo/scroll-demo'
+        }
+      ]
     };
   },
   methods: {
-    // 列表点击事件
-    scrollCellClick(cell) {
-      console.log('cellClick', cell);
-      return;
-      uni.navigateTo({
-        url: '/pages/demo/detail-demo'
+    async openDemo(path) {
+      const [err, res] = await uni.navigateTo({
+        url: path
       });
-    },
-    // 表单查询
-    searchFormConfirm() {
-      console.log('searchFormConfirm');
-      this.$refs.searchFilter.hideDrawer();
-      this.fetchParams = { t: new Date().getTime() };
     }
   }
 };
 </script>
 
 <style lang="scss">
-.page-wrap {
-  height: 100vh;
-  background-color: $uni-bg-color-page;
+.page-inner {
+  padding: 20rpx;
+}
+.demo-btn{
+  margin-bottom: 20rpx;
 }
 </style>

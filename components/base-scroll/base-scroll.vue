@@ -1,16 +1,6 @@
 <template>
   <view class="base-scroll-wrap">
-    <mescroll-uni
-      class="mescroll-uni"
-      :top="top"
-      @init="scrollInit"
-      :down="downOption"
-      @down="downCallback"
-      :up="upOption"
-      @up="upCallback"
-    >
-      <slot />
-    </mescroll-uni>
+    <mescroll-uni class="mescroll-uni" :top="top" @init="scrollInit" :down="downOption" @down="downCallback" :up="upOption" @up="upCallback"><slot /></mescroll-uni>
   </view>
 </template>
 
@@ -125,14 +115,7 @@ export default {
 </script>
 
 <style lang="scss">
-.mescroll-uni {
-}
-.menu {
-  height: 100rpx;
-}
-
-.list-cell-wrap {
-  height: 200rpx;
-  padding: 0 10rpx;
+.base-scroll-wrap {
+  height: 100%;
 }
 </style>

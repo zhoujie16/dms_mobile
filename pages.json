@@ -230,7 +230,11 @@
       "path": "pages/demo/e-charts-demo",
       "style": {}
     }
-  ],
+      ,{
+            "path" : "pages/demo/scroll-demo",
+            "style" : {}
+        }
+    ],
   "tabBar": {
     "color": "#333333",
     "selectedColor": "#333333",
