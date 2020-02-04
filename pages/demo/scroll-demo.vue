@@ -1,8 +1,10 @@
 <template>
-  <MPage ref="MPage">
-    <search-filter ref="searchFilter"><SearchForm @confirm="searchFormConfirm"></SearchForm></search-filter>
+  <MPage ref="MPage" type="primary">
+    <search-filter ref="searchFilter">
+      <SearchForm @confirm="searchFormConfirm"></SearchForm>
+    </search-filter>
     <BaseScroll
-      :top="100"
+      :height="scrollHeight"
       :fetchApi="fetchApi"
       :fetchParams="fetchParams"
       @listChange="
@@ -11,7 +13,14 @@
         }
       "
     >
-      <view class="base-scroll-inner" @click="scrollCellClick" v-for="(data, i) in dataSource" :key="i"><ScrollCell :cell="data"></ScrollCell></view>
+      <view style="padding: 20rpx;">
+        <ScrollCell
+          @click="scrollCellClick(data)"
+          v-for="(data, i) in dataSource"
+          :key="i"
+          :cell="data"
+        ></ScrollCell>
+      </view>
     </BaseScroll>
   </MPage>
 </template>
@@ -31,8 +40,10 @@ export default {
     ScrollCell,
     SearchForm
   },
+  mounted() {},
   data() {
     return {
+      scrollHeight: uni.getSystemInfoSync().windowHeight - 50 + 'px',
       fetchApi: AjaxScrollData,
       fetchParams: {},
       dataSource: []

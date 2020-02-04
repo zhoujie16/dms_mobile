@@ -1,6 +1,17 @@
 <template>
-  <view class="base-scroll-wrap">
-    <mescroll-uni class="mescroll-uni" :top="top" @init="scrollInit" :down="downOption" @down="downCallback" :up="upOption" @up="upCallback"><slot /></mescroll-uni>
+  <view class="base-scroll-wrap" :style="{ heihgt: height }">
+    <mescroll-uni
+      class="mescroll-uni"
+      :fixed="false"
+      :height="height"
+      @init="scrollInit"
+      :down="downOption"
+      @down="downCallback"
+      :up="upOption"
+      @up="upCallback"
+    >
+      <slot />
+    </mescroll-uni>
   </view>
 </template>
 
@@ -8,9 +19,11 @@
 export default {
   components: {},
   props: {
-    top: {
-      type: Number,
-      default: 0
+    height: {
+      type: [String, Number],
+      default() {
+        return uni.getSystemInfoSync().windowHeight + 'px';
+      }
     },
     dataSource: {
       type: Array
@@ -114,8 +127,4 @@ export default {
 };
 </script>
 
-<style lang="scss">
-.base-scroll-wrap {
-  height: 100%;
-}
-</style>
+<style lang="scss"></style>

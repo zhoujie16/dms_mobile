@@ -1,7 +1,9 @@
 <template>
   <MPage ref="MPage">
     <view class="page-inner">
-      <button v-for="item in btnList" @click="openDemo(item.path)" class="demo-btn" type="primary">{{ item.title }}</button>
+      <button v-for="item in btnList" @click="item.clickFn" class="demo-btn" type="primary">
+        {{ item.title }}
+      </button>
     </view>
   </MPage>
 </template>
@@ -14,18 +16,40 @@ export default {
       btnList: [
         {
           title: 'scroll demo',
-          path: '/pages/demo/scroll-demo'
+          clickFn: async () => {
+            const [err, res] = await uni.navigateTo({
+              url: '/pages/demo/scroll-demo'
+            });
+          }
+        },
+        {
+          title: '打开本地网页',
+          clickFn: async () => {
+            this.$util.openLocalWeb({
+              url: '/hybrid/html/index.html#/about'
+            });
+          }
+        },
+        {
+          title: 'e-charts-H5',
+          clickFn: async () => {
+            this.$util.openLocalWeb({
+              url: '/hybrid/html/index.html#/e-charts-demo'
+            });
+          }
+        },
+        {
+          title: 'e-charts-renderjs',
+          clickFn: async () => {
+            uni.navigateTo({
+              url: '/pages/demo/e-charts-demo'
+            })
+          }
         }
       ]
     };
   },
-  methods: {
-    async openDemo(path) {
-      const [err, res] = await uni.navigateTo({
-        url: path
-      });
-    }
-  }
+  methods: {}
 };
 </script>
 
@@ -33,7 +57,7 @@ export default {
 .page-inner {
   padding: 20rpx;
 }
-.demo-btn{
+.demo-btn {
   margin-bottom: 20rpx;
 }
 </style>
