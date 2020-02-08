@@ -4,7 +4,7 @@
       <searchForm @confirm="searchFormConfirm"></searchForm>
     </SearchFilter>
     <BaseScroll
-      :top="100"
+      :height="scrollHeight"
       :fetchApi="fetchApi"
       :fetchParams="fetchParams"
       @listChange="
@@ -27,18 +27,17 @@
 </template>
 
 <script>
-// import searchFilter from '@/components/search-filter/search-filter.vue'
 import searchForm from '@/pages/customer-reception/components/search-form.vue';
 import { AjaxScrollData } from '@/api/test/index.js';
 import scrollCell from '@/pages/customer-reception/components/scroll-cell.vue';
 
 export default {
   components: {
-    // searchFilter,
     scrollCell,
     searchForm
   },
   data() {
+    this.scrollHeight = uni.getSystemInfoSync().windowHeight - 50 + 'px';
     return {
       fetchApi: AjaxScrollData,
       fetchParams: {},
