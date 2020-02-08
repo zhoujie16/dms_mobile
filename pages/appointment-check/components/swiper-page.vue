@@ -1,7 +1,7 @@
 @@ -1,121 +0,0 @@
 <template>
   <view class="swiper-page-wrap">
-    <SwiperTab height="calc(100vh - 180rpx);" :tabs="tabs" :curIndex="curIndex" @change="changeTab">
+    <SwiperTab :height="swiperTabHeight" :tabs="tabs" :curIndex="curIndex" @change="changeTab">
       <swiper class="swiper-wrap" :current="curIndex" @change="swiperChange">
         <!--全部 -->
         <swiper-item>
@@ -81,6 +81,7 @@ export default {
     }
   },
   data() {
+    this.swiperTabHeight = uni.getSystemInfoSync().windowHeight - 90 + 'px';
     return {
       tabs: ['未进场', '已进场', '已取消'],
       curIndex: 0, // 当前tab的下标

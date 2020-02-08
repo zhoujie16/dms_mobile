@@ -1,7 +1,7 @@
 <template>
   <!-- 报表 -->
   <view class="page-warp">
-		<SwiperTab height="calc(100vh - 80rpx);" :tabs="tabs" :curIndex="curIndex" @change="changeTab">
+		<SwiperTab :height="swiperTabHeight" :tabs="tabs" :curIndex="curIndex" @change="changeTab">
 		  <swiper class="swiper-wrap" :current="curIndex" @change="swiperChange">
 		    <!--昨日 -->
 		    <swiper-item>
@@ -28,6 +28,7 @@ export default {
 		ReportPage
   },
   data() {
+    this.swiperTabHeight = uni.getSystemInfoSync().windowHeight - 90 + 'px';
     return {
       tabs: ['昨日', '本月'],
       curIndex: 0, // 当前tab的下标

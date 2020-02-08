@@ -11,7 +11,7 @@
         {{ tab }}
       </view>
     </view>
-    <view :style="{ height }" class="swiper-content">
+    <view :style="{ height: height }" class="swiper-content">
       <slot></slot>
     </view>
   </view>
@@ -34,7 +34,9 @@ export default {
     },
     height: {
       type: String,
-      default: 'calc(100vh - 80rpx);'
+      default() {
+        return uni.getSystemInfoSync().windowHeight - 40 + 'px';
+      }
     }
   }
 };

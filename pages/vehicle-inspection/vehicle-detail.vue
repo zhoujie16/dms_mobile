@@ -1,7 +1,7 @@
 <template>
   <MPage ref="MPage">
   <view class="swiper-page-wrap">
-    <SwiperTab height="calc(100vh - 80rpx);" :tabs="tabs" :curIndex="curIndex" @change="changeTab">
+    <SwiperTab :height="swiperTabHeight" :tabs="tabs" :curIndex="curIndex" @change="changeTab">
       <swiper class="swiper-wrap" :current="curIndex" @change="swiperChange">
         <!--全部 -->
         <swiper-item>
@@ -41,6 +41,7 @@ export default {
     ChassisRound
   },
   data() {
+    this.swiperTabHeight = uni.getSystemInfoSync().windowHeight - 40 + 'px';
     return {
       tabs: ['预捡查看', '内饰检查', '发动机舱', '底盘四轮'],
       curIndex: 3 // 当前tab的下标

@@ -1,7 +1,7 @@
 @@ -1,121 +0,0 @@
 <template>
   <MPage ref="MPage" type="primary">
-    <SwiperTab height="calc(100vh - 80rpx);" :tabs="tabs" :curIndex="curIndex" @change="changeTab">
+    <SwiperTab :height="swiperTabHeight" :tabs="tabs" :curIndex="curIndex" @change="changeTab">
       <swiper class="swiper-wrap" :current="curIndex" @change="swiperChange">
         <!--全部 -->
         <swiper-item>
@@ -54,6 +54,7 @@ export default {
     }
   },
   data() {
+    this.swiperTabHeight = uni.getSystemInfoSync().windowHeight - 40 + 'px';
     return {
       tabs: ['客户信息', '客户需求', '车身外观', '详情预览'],
       curIndex: 0 // 当前tab的下标
