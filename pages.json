@@ -59,6 +59,28 @@
       }
     },
     {
+      "path": "pages/remind/remind",
+      "style": {
+        "navigationBarTitleText": "提醒",
+        "app-plus": {
+          "titleNView": {
+            "buttons": [{
+              "type": "none",
+              "text": "全选",
+              "width": "40px",
+              "fontSize": "16px",
+              "float": "right"
+            }, {
+              "type": "none",
+              "text": "删除",
+              "width": "40px",
+              "fontSize": "16px",
+              "float": "right"
+            }]
+          }
+        }
+      }
+    }, {
       "path": "pages/demo/base-demo",
       "style": {
         "navigationBarTitleText": "概览页面"
@@ -229,12 +251,14 @@
     }, {
       "path": "pages/demo/e-charts-demo",
       "style": {}
+    }, {
+      "path": "pages/demo/scroll-demo",
+      "style": {}
+    }, {
+      "path": "pages/demo/swiper-tab-demo",
+      "style": {}
     }
-      ,{
-            "path" : "pages/demo/scroll-demo",
-            "style" : {}
-        }
-    ],
+  ],
   "tabBar": {
     "color": "#333333",
     "selectedColor": "#333333",
@@ -258,13 +282,6 @@
         "text": "报表",
         "iconPath": "static/tabBar/dynamic.png",
         "selectedIconPath": "static/tabBar/dynamic_fill.png",
-        "style": {}
-      },
-      {
-        "pagePath": "pages/tabBar/tabPage4/tabPage4",
-        "text": "提醒",
-        "iconPath": "static/tabBar/remind.png",
-        "selectedIconPath": "static/tabBar/remind_fill.png",
         "style": {}
       }
     ]

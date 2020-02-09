@@ -95,7 +95,7 @@ export default {
         {
           icon: 'bell-o',
           text: '提醒',
-          path: '/pages/index/index'
+          path: '/pages/remind/remind'
         },
         {
           icon: 'desktop',

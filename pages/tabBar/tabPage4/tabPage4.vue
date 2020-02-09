@@ -1,5 +1,7 @@
 <template>
-  <view><DemoPage></DemoPage></view>
+  <MPage ref="MPage" type="primary">
+    
+  </MPage>
 </template>
 
 <script>

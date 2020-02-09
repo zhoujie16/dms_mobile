@@ -23,6 +23,14 @@ export default {
           }
         },
         {
+          title: 'swiper-tab demo',
+          clickFn: async () => {
+            const [err, res] = await uni.navigateTo({
+              url: '/pages/demo/swiper-tab-demo'
+            });
+          }
+        },
+        {
           title: '打开本地网页',
           clickFn: async () => {
             this.$util.openLocalWeb({

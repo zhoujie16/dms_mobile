@@ -42,8 +42,8 @@ export default {
   },
   mounted() {},
   data() {
+    this.scrollHeight = uni.getSystemInfoSync().windowHeight - 50 + 'px';
     return {
-      scrollHeight: uni.getSystemInfoSync().windowHeight - 50 + 'px',
       fetchApi: AjaxScrollData,
       fetchParams: {},
       dataSource: []
@@ -69,8 +69,5 @@ export default {
 </script>
 
 <style lang="scss">
-.page-wrap {
-  height: 100vh;
-  background-color: $uni-bg-color-page;
-}
+
 </style>

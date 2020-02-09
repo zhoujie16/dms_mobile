@@ -1,4 +1,3 @@
-@@ -1,121 +0,0 @@
 <template>
   <view class="swiper-page-wrap">
     <SwiperTab :height="swiperTabHeight" :tabs="tabs" :curIndex="curIndex" @change="changeTab">
