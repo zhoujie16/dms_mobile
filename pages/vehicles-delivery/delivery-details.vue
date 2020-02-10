@@ -40,10 +40,6 @@
       </view>
       <view class="content">
         <view class="m-flex m-align-center m-height-80 content-top">外观检查</view>
-        <view class="subContent">
-        
-         
-        </view>
       </view>
       <view class="content">
         <view class="m-flex m-align-center m-height-80 content-top">物品清点</view>
@@ -168,10 +164,6 @@
           </view>
           <text @click="editClick">编辑</text>
         </view>
-        <view class="subContent">
-        
-         
-        </view>
       </view>
       <view class="content">
         <view class="m-flex m-align-center m-height-80">
@@ -179,10 +171,6 @@
             维修效果
           </view>
           <text @click="editClick">编辑</text>
-        </view>
-        <view class="subContent">
-        
-         
         </view>
       </view>
       <view class="content">
@@ -192,13 +180,42 @@
           </view>
           <text @click="editClick">编辑</text>
         </view>
-        <view class="subContent">
-        
-         
+      </view>
+      <!-- <view class="delivery" @click="deliveryClick">交车</view> -->
+    </view>
+    <MPopup ref="mPopup" type="center" title="关键信息" style="{position: relative;}">
+      <view class="mainMessage">
+        <view class="uni-flex uni-row" style="height: 60rpx;">
+          <view class="message1">距保险到期天数</view>
+          <view class="message2">无</view>
+        </view>
+        <view class="uni-flex uni-row">
+          <view class="message1">距首保天数</view>
+          <view class="message2">已超期1317天</view>
+        </view>
+        <view class="uni-flex uni-row">
+          <view class="message1">距二保天数</view>
+          <view class="message2">已超期1317天</view>
+        </view>
+        <view class="uni-flex uni-row">
+          <view class="message1">距定保天数</view>
+          <view class="message2">289天</view>
+        </view>
+        <view class="uni-flex uni-row">
+          <view class="message1">距质保过期天数</view>
+          <view class="message2">2020-02-10</view>
+        </view>
+        <view class="uni-flex uni-row">
+          <view class="message1">剩余SSP次数</view>
+          <view class="message2">0</view>
         </view>
       </view>
-      <view class="delivery" @click="deliveryClick">交车</view>
-    </view>
+      <button type="primary" size="mini" 
+      @click="messageClose"
+        style="float: left;position: absolute;bottom: 30px;right: 40%;">
+        取消
+      </button>
+    </MPopup>
     <MPopup ref="mPopup1" type="center" title="选择回访时间" style="{position: relative;}">
       <view class="timeContent">
         <view class="time">上午</view>
@@ -212,6 +229,7 @@
         确定
       </button>
       <button type="primary" size="mini" 
+        @click="timeClose"
         style="float: right;position: absolute;bottom: 30px;right: 60px;">
         取消
       </button>
@@ -225,6 +243,9 @@ export default {
   data() {
     return {};
   },
+  mounted() {
+    this.$refs.mPopup.open();
+  },
   methods:{
     editClick() {
       uni.navigateTo({
@@ -233,6 +254,13 @@ export default {
     },
     deliveryClick() {
       this.$refs.mPopup1.open();
+    },
+    messageClose() {
+      // console.log(1111)
+      this.$refs.mPopup.close();
+    },
+    timeClose() {
+      this.$refs.mPopup1.close();
     }
   }
 };
@@ -271,6 +299,7 @@ export default {
         }
         .sub-text {
           line-height: 60rpx;
+          height: 60rpx;
         }
         
       }
@@ -301,6 +330,23 @@ export default {
       font-size: 20px;
       padding-left: 5px;
       text-align: center;
+    }
+  }
+  .mainMessage {
+    padding: 20rpx;
+    .message1 {
+      width: 46%;
+      // background-color: blue;
+      color: #CCCCCC;
+      height: 60rpx;
+      line-height: 60rpx;
+    }
+    .message2 {
+      // width: 60%;
+      // background-color: pink;
+      height: 60rpx;
+      line-height: 60rpx;
+      
     }
   }
 </style>

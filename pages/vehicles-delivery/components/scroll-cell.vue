@@ -22,11 +22,11 @@
           </view>
           <view class="uni-flex uni-row">
             <view class="flex-item m-height-80">服务顾问：WYL1</view>
-            <view class="flex-item m-height-80">技师：拉纳兰</view>
+            <!-- <view class="flex-item m-height-80">技师：拉纳兰</view> -->
           </view>
     </view>
-  <view class="phone">
-    <uni-icons type="phone" size="50" color="orange"></uni-icons>
+  <view class="phone" @click="phoneClick">
+    <uni-icons type="phone" size="40"></uni-icons>
   </view>
   </view>
 </template>
@@ -56,6 +56,12 @@ export default {
       } else {
         this.isShowRight = true;
       }
+    },
+    phoneClick(){
+      console.log(111111);
+      uni.makePhoneCall({
+          phoneNumber: '114' //仅为示例
+      });
     }
   }
 };
@@ -94,8 +100,12 @@ export default {
   }
   .phone {
     position: absolute;
-    bottom: 60px;
-    right: 60px;
+    bottom: 80px;
+    right: 80px;
+    width: 80rpx;
+    height: 80rpx;
+    background-color: orange;
+    border-radius: 50%;
     // .icon {
     //   width: 50rpx;
     //   height: 50rpx;
