@@ -238,7 +238,10 @@ export default {
           this.isshow2 = 'arrowdown';
         }
       }
-    }
+    },
+  bindTextAreaBlur(){
+    
+  }
   }
 };
 </script>

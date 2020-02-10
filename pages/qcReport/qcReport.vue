@@ -89,7 +89,7 @@ export default {
       option: {
         tooltip: {
           //是否显示提示框组件，包括提示框浮层和 axisPointe
-          show: true,
+          show: false,
           // 触发类型: item:数据项触发，axis：坐标轴触发
           trigger: 'item',
           // formatter: '{a} <br/>{b}: {c} ({d}%)'

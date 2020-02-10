@@ -144,6 +144,9 @@ export default {
       // }else{
       //   this.isshow = 'arrowdown';
       // }
+    },
+    bindTextAreaBlur(){
+      
     }
   }
 };
