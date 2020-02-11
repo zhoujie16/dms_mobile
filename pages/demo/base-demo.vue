@@ -53,6 +53,14 @@ export default {
               url: '/pages/demo/e-charts-demo'
             })
           }
+        },
+        {
+          title: '长按语音识别',
+          clickFn: async () => {
+            uni.navigateTo({
+              url: '/pages/demo/recording'
+            })
+          }
         }
       ]
     };

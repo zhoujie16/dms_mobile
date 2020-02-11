@@ -258,7 +258,11 @@
       "path": "pages/demo/swiper-tab-demo",
       "style": {}
     }
-  ],
+      ,{
+            "path" : "pages/demo/recording",
+            "style" : {}
+        }
+    ],
   "tabBar": {
     "color": "#333333",
     "selectedColor": "#333333",
