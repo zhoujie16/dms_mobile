@@ -7,7 +7,7 @@ coverage/
 .history/
 .idea/
 run/
-unpackage/
+unpackage/dist/
 .DS_Store
 *.sw*
 *.un~
