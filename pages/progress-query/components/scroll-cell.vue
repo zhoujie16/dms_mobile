@@ -10,25 +10,30 @@
           <view class="info-text">2020-01-01 16:16</view>
         </view>
       </view>
-      <view class="list-cell-content" v-if="isShowDetail" @click="cellClick">
-        <view class="info-item">
-          <view class="info-item-lab">工单号：</view>
-          <view class="info-item-text">YJ2001020002</view>
+      <view class="list-cell-content" v-if="isShowDetail">
+        <view  @click="cellClick">
+          <view class="info-item">
+            <view class="info-item-lab">工单号：</view>
+            <view class="info-item-text">YJ2001020002</view>
+          </view>
+          <view class="info-item">
+            <view class="info-item-lab">车型：</view>
+            <view class="info-item-text">全新福克斯三厢 1.6MT</view>
+          </view>
+          <view class="info-item">
+            <view class="info-item-lab">服务顾问：</view>
+            <view class="info-item-text">王大锤</view>
+          </view>
+          <view class="info-item">
+            <view class="info-item-lab">技师：</view>
+            <view class="info-item-text">王大锤</view>
+          </view>
         </view>
-        <view class="info-item">
-          <view class="info-item-lab">车型：</view>
-          <view class="info-item-text">全新福克斯三厢 1.6MT</view>
-        </view>
-        <view class="info-item">
-          <view class="info-item-lab">服务顾问：</view>
-          <view class="info-item-text">王大锤</view>
-        </view>
-        <view class="info-item">
-          <view class="info-item-lab">技师：</view>
-          <view class="info-item-text">王大锤</view>
-        </view>
-        <view class="info-item">
+        <!-- <view class="info-item">
           <text class="customer">联系客户</text>
+        </view> -->
+        <view class="customer" @click="phoneClick">
+          <uni-icons type="phone" color="white" size="30" style="margin-right: 20rpx;"></uni-icons>联系客户
         </view>
       </view>
     </view>
@@ -61,6 +66,11 @@ export default {
         url:`/pages/progress-query/repair-check`
       })
       this.$emit('click')
+    },
+    phoneClick() {
+      uni.makePhoneCall({
+          phoneNumber: '114' //仅为示例
+      });
     }
   }
 };
@@ -89,8 +99,10 @@ export default {
     margin-right: 20rpx;
   }
   .nowText {
-    border: 1px solid #C0C0C0;
+    border: 2px solid #66AAFF;
     margin-right: 10rpx;
+    padding: 0 10rpx;
+    color: #66AAFF;
   }
   .name {
     padding: 10rpx 0;
@@ -124,10 +136,10 @@ export default {
     }
   }
   .customer{
-    width: 70%;
-    height: 88rpx;
-    line-height: 88rpx;
-    margin-left: 80rpx;
+    width: 85%;
+    height: 68rpx;
+    line-height: 68rpx;
+    margin-left: 60rpx;
     text-align: center;
     background-color: #2B4D86;
     border-radius: 5rpx;

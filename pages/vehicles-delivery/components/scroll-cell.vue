@@ -26,7 +26,7 @@
           </view>
     </view>
   <view class="phone" @click="phoneClick">
-    <uni-icons type="phone" size="40"></uni-icons>
+    <uni-icons type="phone" size="40" color="white"></uni-icons>
   </view>
   </view>
 </template>
@@ -58,9 +58,20 @@ export default {
       }
     },
     phoneClick(){
-      console.log(111111);
+      // console.log(111111);
       uni.makePhoneCall({
-          phoneNumber: '114' //仅为示例
+          // 手机号
+              phoneNumber: '110', 
+          
+          	// 成功回调
+          	success: (res) => {
+          		console.log('调用成功!');
+          	},
+          
+          	// 失败回调
+          	fail: (res) => {
+          		console.log('调用失败!')
+          	}
       });
     }
   }
@@ -90,7 +101,7 @@ export default {
         .content-right {
           text-align: center;
           width: 20%;
-          background-color: #EF5656;
+          background-color: #ED6A0C;
           height: 30px;
           line-height: 30px;
           border-radius: 14px;
@@ -104,8 +115,10 @@ export default {
     right: 80px;
     width: 80rpx;
     height: 80rpx;
-    background-color: orange;
+    background-color: #F0AD4E;
     border-radius: 50%;
+    text-align: center;
+    line-height: 80rpx;
     // .icon {
     //   width: 50rpx;
     //   height: 50rpx;
