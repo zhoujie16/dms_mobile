@@ -149,7 +149,7 @@ export default {
       option1: {
         tooltip: {
           //是否显示提示框组件，包括提示框浮层和 axisPointe
-          show: true,
+          show: false,
           // 触发类型: item:数据项触发，axis：坐标轴触发
           trigger: 'item',
           // formatter: '{a} <br/>{b}: {c} ({d}%)'
@@ -209,7 +209,7 @@ export default {
       option2: {
         tooltip: {
           //是否显示提示框组件，包括提示框浮层和 axisPointe
-          show: true,
+          show: false,
           // 触发类型: item:数据项触发，axis：坐标轴触发
           trigger: 'item',
           // formatter: '{a} <br/>{b}: {c} ({d}%)'
@@ -269,7 +269,7 @@ export default {
       option3: {
         tooltip: {
           //是否显示提示框组件，包括提示框浮层和 axisPointe
-          show: true,
+          show: false,
           // 触发类型: item:数据项触发，axis：坐标轴触发
           trigger: 'item',
           // formatter: '{a} <br/>{b}: {c} ({d}%)'
@@ -329,7 +329,7 @@ export default {
       option4: {
         tooltip: {
           //是否显示提示框组件，包括提示框浮层和 axisPointe
-          show: true,
+          show: false,
           // 触发类型: item:数据项触发，axis：坐标轴触发
           trigger: 'item',
           // formatter: '{a} <br/>{b}: {c} ({d}%)'
@@ -389,7 +389,7 @@ export default {
       option5: {
         tooltip: {
           //是否显示提示框组件，包括提示框浮层和 axisPointe
-          show: true,
+          show: false,
           // 触发类型: item:数据项触发，axis：坐标轴触发
           trigger: 'item',
           // formatter: '{a} <br/>{b}: {c} ({d}%)'
@@ -520,11 +520,11 @@ export default {
 }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .page-wrap {
   height: 100vh;
   background-color: $uni-bg-color-page;
-
+  overflow: hidden;
   .wrap-text {
     text-align: center;
 
@@ -549,7 +549,7 @@ export default {
   text-align: center;
 }
 .echarts {
-  width: 30vw;
+  width: 28vw;
   margin: 0 auto;
   height: calc(20vh - 20px);
 }

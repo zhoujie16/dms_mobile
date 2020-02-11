@@ -46,6 +46,17 @@ export default {
       uni.navigateTo({
         url: '/pages/demo/detail-demo'
       });
+    },
+    onNavigationBarButtonTap(val) {
+      console.log(val.index);
+      // 删除的按钮调用
+      if (val.index == 1) {
+        console.log('第一个按钮');
+      }
+      //全选的按钮调用  
+      if (val.index == 0) {
+        console.log('第二个按钮');
+      }
     }
   }
 };

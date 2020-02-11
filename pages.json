@@ -262,6 +262,12 @@
             "path" : "pages/demo/recording",
             "style" : {}
         }
+        ,{
+            "path" : "pages/login/editPassword",
+            "style": {
+              "navigationBarTitleText": "修改密码"
+            }
+        }
     ],
   "tabBar": {
     "color": "#333333",

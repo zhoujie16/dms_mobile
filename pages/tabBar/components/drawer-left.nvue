@@ -65,7 +65,11 @@ export default {
   methods: {
     async menuClickUser() {},
     async menuClickupdate() {},
-    async menuClickPassord() {},
+    async menuClickPassord() {
+      uni.navigateTo({
+          url: '/pages/login/editPassword'
+      });
+    },
     async menuClickPhone() {},
     async menuClickBook() {},
     async menuClickQuit() {
