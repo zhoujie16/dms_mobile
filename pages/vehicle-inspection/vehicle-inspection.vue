@@ -1,5 +1,6 @@
 <template>
-  <view class="page-wrap">
+   <MPage ref="MPage" type="primary">
+  <view class="page-wrap" >
     <SearchFilter ref="searchFilter"><searchForm @confirm="searchFormConfirm"></searchForm></SearchFilter>
     <view class="container">
       <view v-for="item in dataSource" :key="item" @click="detailClick(item)">
@@ -31,10 +32,11 @@
       </view>
     </view>
   </view>
+  </MPage>
 </template>
 
 <script>
-import searchForm from '@/pages/customer-reception/components/search-form.vue';
+import searchForm from '@/pages/vehicle-inspection/components/search-form.vue';
 import { AjaxScrollData } from '@/api/test/index.js';
 export default {
   components: {
