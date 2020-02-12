@@ -1,116 +1,56 @@
 <template>
-  <view class="main">
-    <view class="uni-flex uni-row">
-      <view class="flex-item left" @click="servicesChange">
-        <image class="servicesImage" src="../../static/demo/60x60.png" mode=""></image>
-        <text class="text">服务检查</text>
+  <MPage ref="MPage">
+    <view class="menu-wrap">
+      <uni-grid :column="3" :highlight="true">
+        <uni-grid-item v-for="index in list" :key="index">
+          <DocCell @click.native="test"></DocCell>
+        </uni-grid-item>
+      </uni-grid>
+    </view>
+    <!-- <view class="uni-flex uni-row">
+      <view class="flex-item left">
+        <DocCell @click.native="test"></DocCell>
       </view>
-      <view class="flex-item center" @click="questionnaireChange">
-        <image class="servicesImage" src="../../static/demo/60x60.png" mode=""></image>
-        <text class="text">调研问卷</text>
+      <view class="flex-item center">
+        <DocCell @click.native="test2"></DocCell>
       </view>
     </view>
     <view class="uni-flex uni-row">
       <view class="flex-item right" @click="insuranceClick">
-        <image class="servicesImage" src="../../static/demo/60x60.png" mode=""></image>
-        <text class="text">增值业务</text>
+        <DocCell @click.native="test2"></DocCell>
       </view>
       <view class="flex-item"></view>
-    </view>
-  </view>
-  <!-- <view><DemoPage></DemoPage></view> -->
+    </view> -->
+  </MPage>
 </template>
 
 <script>
+  import DocCell from './components/doc-cell.vue';
+  // import DocDemo from './components/doc-dell.vue';
 export default {
+  components: {
+    DocCell
+    // DocDemo
+  },
   data() {
-    return {};
+    return {
+      list: [1,2,3,4,5,6,7,8,9]
+    };
   },
   methods: {
-    servicesChange() {
+    async test() {
       uni.navigateTo({
-        url: `/pages/services-tools/service-check`
-      });
+        url:'/pages/services-tools/components/doc-demo'
+        // url:'/hybrid/html/index.html#/pdf-reader?pdf=default'
+      }) 
     },
-    // 调研问卷 pages/services-tools/research-questionnaire
-    questionnaireChange() {
-      uni.navigateTo({
-        url: `/pages/services-tools/research-questionnaire`
-      });
-    },
-    // 增值业务
-    insuranceClick() {
-      uni.navigateTo({
-        url: '/pages/services-tools/insurance-report'
-      });
+    async test2(){
+      this.$util.openLocalWeb({
+        url:'/hybrid/html/index.html#/pdf-reader?pdf=demo'
+      })
     }
   }
 };
 </script>
 
-<style lang="scss">
-.main {
-  height: 100%;
-  background-color: #f7f7f7;
-}
-.flex-item {
-  width: 50%;
-  height: 310rpx;
-  flex: 1;
-  /* #ifndef APP-NVUE */
-  display: flex;
-  /* #endif */
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding: 15px 0;
-  // line-height: 310rpx;
-  border-radius: 20rpx;
-  // padding: 15px 0;
-  margin: 30rpx;
-  text-align: center;
-}
-
-.text {
-  font-size: 30rpx;
-  width: 100%;
-  // color: $uni-text-color-inverse;
-}
-
-.servicesImage {
-  width: 180rpx;
-  height: 180rpx;
-  margin-top: 20rpx;
-  margin-bottom: 40rpx;
-}
-
-.left {
-  background-color: #ffffff;
-}
-
-.center {
-  background-color: #ffffff;
-}
-
-.right {
-  background-color: #ffffff;
-}
-
-.flex-item-V {
-  width: 100%;
-  height: 160rpx;
-  text-align: center;
-  // line-height: 150rpx;
-}
-
-.r-content {
-  border-right: 2rpx solid #113571;
-  border-bottom: 2rpx solid #113571;
-  color: #ffffff;
-  .count {
-    font-size: 48rpx;
-    display: block;
-    line-height: 100rpx;
-  }
-}
-</style>
+<style></style>
