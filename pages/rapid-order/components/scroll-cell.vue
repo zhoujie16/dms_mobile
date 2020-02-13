@@ -2,7 +2,8 @@
   <view class="list-cell-wrap">
     <view class="list-cell-wrap-inner">
       <view class="list-cell-title" @click="cellTitleClick">
-        <view class="name">赵铁柱</view>
+        <view class="name">
+			<text class="radius"></text>赵铁柱</view>
         <view class="info">
           <view class="info-lab">沪ADC10083</view>
           <view class="info-text">2020-01-01 16:16</view>
@@ -73,6 +74,14 @@ export default {
   .name {
     padding: 10rpx 0;
     font-weight: 500;
+	.radius {
+		background-color: pink;
+		float: left;
+    border-radius: 50%;
+		width: 20rpx;
+		height: 20rpx;
+    margin-right: 20rpx;
+	}
   }
   .info {
     color: #999999;
