@@ -197,12 +197,12 @@
         "navigationBarTitleText": "服务工具"
       }
     },
-	{
-	  "path": "pages/services-tools/components/doc-demo",
-	  "style": {
-	    "navigationBarTitleText": "服务活动手册"
-	  }
-	},
+    {
+      "path": "pages/services-tools/components/doc-demo",
+      "style": {
+        "navigationBarTitleText": "服务活动手册"
+      }
+    },
     {
       "path": "pages/services-tools/service-check",
       "style": {
@@ -263,18 +263,19 @@
     }, {
       "path": "pages/demo/swiper-tab-demo",
       "style": {}
+    }, {
+      "path": "pages/demo/recording",
+      "style": {}
+    }, {
+      "path": "pages/demo/camera",
+      "style": {}
+    }, {
+      "path": "pages/login/editPassword",
+      "style": {
+        "navigationBarTitleText": "修改密码"
+      }
     }
-      ,{
-            "path" : "pages/demo/recording",
-            "style" : {}
-        }
-        ,{
-            "path" : "pages/login/editPassword",
-            "style": {
-              "navigationBarTitleText": "修改密码"
-            }
-        }
-    ],
+  ],
   "tabBar": {
     "color": "#333333",
     "selectedColor": "#333333",

@@ -549,7 +549,7 @@ export default {
   text-align: center;
 }
 .echarts {
-  width: 28vw;
+  width: 26vw;
   margin: 0 auto;
   height: calc(20vh - 20px);
 }

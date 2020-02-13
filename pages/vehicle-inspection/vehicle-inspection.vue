@@ -67,13 +67,14 @@ export default {
 .page-wrap {
   height: 100vh;
   background-color: $uni-bg-color-page;
+  overflow: hidden;
   .container {
     padding: 20rpx;
     max-height: 1200rpx;
     overflow: scroll;
     .content {
       background-color: #ffffff;
-      margin: 20rpx;
+      margin: 20rpx 0 60rpx 0;
       border-radius: 20rpx;
       padding: 0 20rpx;
       .content-top {

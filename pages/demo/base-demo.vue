@@ -61,6 +61,14 @@ export default {
               url: '/pages/demo/recording'
             })
           }
+        },
+        {
+          title: '拍照',
+          clickFn: async () => {
+            uni.navigateTo({
+              url: '/pages/demo/camera'
+            })
+          }
         }
       ]
     };
