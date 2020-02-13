@@ -7,11 +7,11 @@
           张一
         </view>
         <view class="info-item">
-          13602558446
+          <text v-model="phone">{{phone}}</text>
         </view>
       </view>
       <view class="right">
-        <uni-icons type="phone" size="30" color="white"></uni-icons>
+        <uni-icons type="phone" size="30" color="white" @click="phoneClick"></uni-icons>
       </view>
     </view>
 		<view class="list-cell-content">
@@ -43,7 +43,7 @@
         <view class="info-item-lab">维修技师：</view>
         <view class="info-item-text">YJ2</view>
       </view>
-		    <view class="check">车辆检查</view>
+		    <view class="check" @click="check">车辆检查</view>
 		</view>
 	</view>
 </template>
@@ -52,9 +52,27 @@
 	export default {
 		data() {
 			return {
-				
+          phone: '13602558446'
 			};
-		}
+		},
+    mounted() {
+    },
+    methods: {
+      phoneClick() {
+        // console.log(this.phone,'phone');
+        let phone = this.phone;
+        console.log(phone,'phone');
+        uni.makePhoneCall({
+            phoneNumber: phone
+        });
+      },
+      check() {
+        console.log(11111)
+        uni.navigateTo({
+            url: '/pages/vehicle-inspection/vehicle-inspection'
+        });
+      }
+    }
 	}
 </script>
 
@@ -84,10 +102,12 @@
 .list-cell-content {
   background-color: $uni-bg-color-page;
   padding: 10rpx 20rpx;
+  width: 100%;
   height: 75%;
   .info-item {
     padding: 10rpx 0;
     display: flex;
+    width: 100%;
     height: 50px;
     line-height: 50px;
     border-bottom: 1px solid #ccc;

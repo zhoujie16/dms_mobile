@@ -17,7 +17,7 @@
       flex-direction: column;
       justify-content: center;
       align-items: center;
-      width: 235rpx;
+      width: 233rpx;
       height: 300rpx;
       margin: 5rpx 8rpx;
       border: 1px solid #FFF7CC;
