@@ -101,7 +101,7 @@
     {
       "path": "pages/customer-reception/customer-reception",
       "style": {
-        "navigationBarTitleText": "客户接待"
+        "navigationBarTitleText": "车辆预检"
       }
     },
     {
@@ -288,15 +288,15 @@
         "style": {}
       },
       {
-        "pagePath": "pages/tabBar/tabPage2/tabPage2",
-        "text": "文档",
+        "pagePath": "pages/customer-reception/customer-reception",
+        "text": "预检",
         "iconPath": "static/tabBar/document.png",
         "selectedIconPath": "static/tabBar/document_fill.png",
         "style": {}
       },
       {
         "pagePath": "pages/tabBar/tabPage3/tabPage3",
-        "text": "报表",
+        "text": "售后报表",
         "iconPath": "static/tabBar/dynamic.png",
         "selectedIconPath": "static/tabBar/dynamic_fill.png",
         "style": {}

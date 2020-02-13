@@ -58,7 +58,7 @@ export default {
         },
         {
           icon: 'handshake-o',
-          text: '客户接待',
+          text: '车辆预检',
           // path: '/pages/demo/base-demo'
           path: '/pages/customer-reception/customer-reception'
         },
@@ -89,12 +89,12 @@ export default {
         },
         {
           icon: 'tasks',
-          text: '报表',
+          text: '服务报表',
           path: '/pages/qcReport/qcReport'
         },
         {
           icon: 'bell-o',
-          text: '提醒',
+          text: '消息提醒',
           path: '/pages/remind/remind'
         },
         {
@@ -114,9 +114,16 @@ export default {
     gridItemClick(e) {
       const index = e.detail.index;
       const item = this.list[index];
-      uni.navigateTo({
-        url: item.path
-      });
+      if(item.text==='车辆预检'){
+        uni.switchTab({
+            url: item.path
+        });
+      }else{
+        uni.navigateTo({
+          url: item.path
+        });
+      }
+      
     }
   }
 };
