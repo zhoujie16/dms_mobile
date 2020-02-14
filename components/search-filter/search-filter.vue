@@ -6,7 +6,11 @@
     </view>
     <uni-drawer :visible="isShowDrawer" mode="right" @close="closeDrawer">
       <!-- 表单展示 -->
-      <scroll-view class="scroll-view-h" scroll-y><slot></slot></scroll-view>
+      <!-- <view class="scroll-view-h">
+        <slot></slot>
+      </view> -->
+      
+      <scroll-view class="scroll-view-h" @scroll="scroll" scroll-y><slot></slot></scroll-view>
     </uni-drawer>
   </view>
 </template>
@@ -33,7 +37,11 @@ export default {
     hideDrawer() {
       console.log('抽屉组件关闭');
       this.isShowDrawer = false;
-    }
+    },
+    scroll: function(e) {
+                console.log(e)
+                // this.old.scrollTop = e.detail.scrollTop
+            },
   }
 };
 </script>
@@ -69,6 +77,7 @@ export default {
 }
 
 .scroll-view-h {
-  height: 100%;
+  height: 100vh;
+  // overflow: scroll;
 }
 </style>

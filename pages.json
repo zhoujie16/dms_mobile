@@ -177,7 +177,7 @@
     }, {
       "path": "pages/customer-reception/customer-add",
       "style": {
-        "navigationBarTitleText": "客户接待",
+        "navigationBarTitleText": "车辆预检",
         "app-plus": {
           "titleNView": {
             "buttons": [{

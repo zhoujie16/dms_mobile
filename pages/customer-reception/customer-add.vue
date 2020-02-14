@@ -1,6 +1,7 @@
 @@ -1,121 +0,0 @@
 <template>
   <MPage ref="MPage" type="primary">
+	  <view class="swiper-page-wrap">
     <SwiperTab :height="swiperTabHeight" :tabs="tabs" :curIndex="curIndex" @change="changeTab">
       <swiper class="swiper-wrap" :current="curIndex" @change="swiperChange">
         <!--全部 -->
@@ -26,6 +27,13 @@
         </swiper-item>
       </swiper>
     </SwiperTab>
+	<view class="uni-flex uni-row v-footer">
+	  <view class="flex-item v-border" >维修历史</view>
+	  <view class="flex-item v-border" >服务活动</view>
+	 
+	   <view class="flex-item ">监控信息</view>
+	</view>
+	</view>
   </MPage>
 </template>
 
@@ -95,12 +103,32 @@ export default {
 </script>
 
 <style lang="scss">
+	.swiper-page-wrap {
+	  position: relative;
+	  .v-footer {
+	    position: fixed;
+	    bottom: 0;
+	    background-color: #fff;
+	    width: 100%;
+	    height: 120rpx;
+	    padding: 30rpx 0;
+	    .flex-item {
+	      width: 33%;
+	      text-align: center;
+	      line-height: 60rpx;
+	      // line-height: 200rpx;
+	    }
+	    .v-border{
+	      border-right: 2rpx solid #CCCCCC;
+	    }
+	  }
+	}
 .swiper-wrap {
   background-color: $uni-bg-color-page;
   position: absolute;
   top: 0;
   right: 0;
-  bottom: 0;
+  bottom: 100rpx;
   left: 0;
   height: initial;
 }

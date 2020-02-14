@@ -2,8 +2,14 @@
   <!-- 信息面板 -->
   <view class="collapse-panel-wrap">
     <view class="collapse-panel-inner">
-      <view class="collapse-panel-title">{{ title }}</view>
-      <view class="collapse-panel-content"><slot></slot></view>
+      <view class="collapse-panel-title m-flex">
+        <view>{{ title }}</view>
+        <view v-if="isIcon">
+          <uni-icons :type="isShow?'arrowup':'arrowdown'" size="30" color="#CCCCCC" @click="showClick"></uni-icons>
+        </view>
+      
+      </view>
+      <view class="collapse-panel-content" v-if="isShow"><slot></slot></view>
     </view>
   </view>
 </template>
@@ -16,14 +22,23 @@ export default {
     title: {
       type: String,
       default: '标题'
-    }
+    },
+    isIcon:{
+      type: Boolean,
+      default: false
+    },
   },
   mounted() {},
   data() {
-    return {};
+    return {
+      isShow:true
+    };
   },
   methods: {
-    change() {}
+    change() {},
+    showClick(){
+      this.isShow = !this.isShow
+    }
   }
 };
 </script>
@@ -40,6 +55,7 @@ export default {
       font-weight: 600;
       padding: 30rpx 40rpx;
       border-bottom: solid 1rpx #eeeeee;
+      justify-content: space-between
     }
     .collapse-panel-content {
       padding: 0 40rpx;

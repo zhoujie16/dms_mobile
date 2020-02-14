@@ -69,12 +69,12 @@ export default {
   background-color: $uni-bg-color-page;
   overflow: hidden;
   .container {
-    padding: 20rpx;
+    padding: 20rpx 0 80rpx;
     max-height: 1200rpx;
     overflow: scroll;
     .content {
       background-color: #ffffff;
-      margin: 20rpx 0 60rpx 0;
+      margin: 20rpx;
       border-radius: 20rpx;
       padding: 0 20rpx;
       .content-top {
