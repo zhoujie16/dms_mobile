@@ -37,6 +37,14 @@
         </view>
       </view>
     </view>
+    <uni-popup ref="popup" type="bottom">
+      <view style="padding: 0 30rpx;">
+        <view class="text" style="margin-bottom: 15rpx;" @click="phoneCall">呼叫18583285531</view>
+        <view class="text" @click="phoneClose">
+          取消
+        </view>
+      </view>
+    </uni-popup>
   </view>
 </template>
 
@@ -67,11 +75,19 @@ export default {
       })
       this.$emit('click')
     },
-    phoneClick() {
+    phoneClick(){
+      this.$refs.popup.open();
+    },
+    phoneCall() {
+      // let phone = this.phone;
+      // console.log(phone,'phone');
       uni.makePhoneCall({
-          phoneNumber: '114' //仅为示例
+          phoneNumber: '18583285531', 
       });
-    }
+    },
+    phoneClose() {
+      this.$refs.popup.close();
+    },
   }
 };
 </script>
@@ -146,5 +162,11 @@ export default {
     color: #FFFFFF;
   }
 }
-
+.text {
+    height: 100rpx;
+    background-color: #808080;
+    border-radius: 10rpx;
+    line-height: 100rpx;
+    text-align: center;
+  }
 </style>

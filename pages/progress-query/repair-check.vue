@@ -45,6 +45,14 @@
       </view>
 		    <view class="check" @click="check">车辆检查</view>
 		</view>
+    <uni-popup ref="popup" type="bottom">
+      <view style="padding: 0 30rpx;">
+        <view class="text" style="margin-bottom: 15rpx;" @click="phoneCall" v-model="phone">呼叫{{phone}}</view>
+        <view class="text" @click="phoneClose">
+          取消
+        </view>
+      </view>
+    </uni-popup>
 	</view>
 </template>
 
@@ -58,13 +66,18 @@
     mounted() {
     },
     methods: {
-      phoneClick() {
-        // console.log(this.phone,'phone');
+      phoneClick(){
+        this.$refs.popup.open();
+      },
+      phoneCall() {
         let phone = this.phone;
         console.log(phone,'phone');
         uni.makePhoneCall({
             phoneNumber: phone
         });
+      },
+      phoneClose() {
+        this.$refs.popup.close();
       },
       check() {
         console.log(11111)
@@ -135,5 +148,12 @@
     border-radius: 25rpx;
     color: #09BB07;
     border: 4rpx solid #09BB07;
+  }
+  .text {
+    height: 100rpx;
+    background-color: #808080;
+    border-radius: 10rpx;
+    line-height: 100rpx;
+    text-align: center;
   }
 </style>

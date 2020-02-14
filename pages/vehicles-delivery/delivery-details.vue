@@ -234,6 +234,10 @@
         取消
       </button>
     </MPopup>
+	<view class="messages" @click="messagesClick">
+    <uni-icons type="info" color="white" style="display: block;height: 30rpx;"></uni-icons>
+    <text style="font-size: 16rpx;color: #FFFFFF;">关键信息</text>
+	</view>
   </view>
 </template>
 
@@ -244,7 +248,6 @@ export default {
     return {};
   },
   mounted() {
-    this.$refs.mPopup.open();
   },
   methods:{
     editClick() {
@@ -261,6 +264,9 @@ export default {
     },
     timeClose() {
       this.$refs.mPopup1.close();
+    },
+    messagesClick() {
+      this.$refs.mPopup.open();
     }
   }
 };
@@ -348,5 +354,15 @@ export default {
       line-height: 60rpx;
       
     }
+  }
+  .messages {
+	  background-color: #0570DB;
+    position: fixed;
+    top: 80%;
+    right: 20rpx;
+    width: 90rpx;
+    height: 90rpx;
+    line-height: 90rpx;
+    text-align: center;
   }
 </style>

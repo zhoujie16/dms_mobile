@@ -28,6 +28,14 @@
   <view class="phone" @click="phoneClick">
     <uni-icons type="phone" size="40" color="white"></uni-icons>
   </view>
+  <uni-popup ref="popup" type="bottom">
+    <view style="padding: 0 30rpx;">
+      <view class="text" style="margin-bottom: 15rpx;" @click="phoneCall">呼叫185 8328 5531</view>
+      <view class="text" @click="phoneClose">
+        取消
+      </view>
+    </view>
+  </uni-popup>
   </view>
 </template>
 
@@ -58,21 +66,24 @@ export default {
       }
     },
     phoneClick(){
-      // console.log(111111);
+      this.$refs.popup.open();
+    },
+    phoneCall() {
       uni.makePhoneCall({
           // 手机号
-              phoneNumber: '110', 
-          
+              phoneNumber: '18583285531', 
           	// 成功回调
           	success: (res) => {
           		console.log('调用成功!');
           	},
-          
           	// 失败回调
           	fail: (res) => {
           		console.log('调用失败!')
           	}
       });
+    },
+    phoneClose() {
+      this.$refs.popup.close();
     }
   }
 };
@@ -111,20 +122,14 @@ export default {
   }
   .phone {
     position: absolute;
-    bottom: 80px;
-    right: 80px;
+    bottom: 40px;
+    right: 40px;
     width: 80rpx;
     height: 80rpx;
     background-color: #F0AD4E;
     border-radius: 50%;
     text-align: center;
     line-height: 80rpx;
-    // .icon {
-    //   width: 50rpx;
-    //   height: 50rpx;
-    //   background-color: orange;
-    //   border-radius: 50%;
-    // }
   }
 }
 .label-color {
@@ -138,5 +143,11 @@ export default {
   color: #17A2B8;
   padding-right: 15rpx;
 }
-
+.text {
+  height: 100rpx;
+  background-color: #808080;
+  border-radius: 10rpx;
+  line-height: 100rpx;
+  text-align: center;
+}
 </style>
