@@ -29,7 +29,7 @@
     <uni-icons type="phone" size="40" color="white"></uni-icons>
   </view>
   <uni-popup ref="popup" type="bottom">
-    <view style="padding: 0 30rpx;">
+    <view style="padding: 0 30rpx;margin-bottom: 55rpx;">
       <view class="text" style="margin-bottom: 15rpx;" @click="phoneCall">呼叫185 8328 5531</view>
       <view class="text" @click="phoneClose">
         取消

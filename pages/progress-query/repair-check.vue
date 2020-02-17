@@ -33,7 +33,7 @@
 		  </view>
 		  <view class="info-item">
 		    <view class="info-item-lab">送修人电话：</view>
-		    <view class="info-item-text">13826576765</view>
+		    <view class="info-item-text">13826576765<uni-icons type="phone" size="20" color="white"></uni-icons></view>
 		  </view>
 		  <view class="info-item">
 		    <view class="info-item-lab">故障描述：</view>
@@ -44,9 +44,10 @@
         <view class="info-item-text">YJ2</view>
       </view>
 		    <view class="check" @click="check">车辆检查</view>
+        <view class="check">交车</view>
 		</view>
     <uni-popup ref="popup" type="bottom">
-      <view style="padding: 0 30rpx;">
+      <view style="padding: 0 30rpx;margin-bottom: 55rpx;">
         <view class="text" style="margin-bottom: 15rpx;" @click="phoneCall" v-model="phone">呼叫{{phone}}</view>
         <view class="text" @click="phoneClose">
           取消
@@ -145,7 +146,7 @@
     margin: 30rpx 80rpx;
     text-align: center;
     background-color:$uni-bg-color-page;
-    border-radius: 25rpx;
+    border-radius: 50rpx;
     color: #09BB07;
     border: 4rpx solid #09BB07;
   }

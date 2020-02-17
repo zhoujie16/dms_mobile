@@ -235,8 +235,10 @@
       </button>
     </MPopup>
 	<view class="messages" @click="messagesClick">
-    <uni-icons type="info" color="white" style="display: block;height: 30rpx;"></uni-icons>
-    <text style="font-size: 16rpx;color: #FFFFFF;">关键信息</text>
+    <!-- <uni-icons type="info" color="white" style="display: block;height: 30rpx;"></uni-icons>
+    <text style="font-size: 16rpx;color: #FFFFFF;">关键信息</text> -->
+	<uni-icons type="info" size="26" color="#fff"></uni-icons>
+	<view class="r-title">关键信息</view>
 	</view>
   </view>
 </template>
@@ -355,14 +357,36 @@ export default {
       
     }
   }
+  // .messages {
+	 //  background-color: #0570DB;
+  //   position: fixed;
+  //   top: 80%;
+  //   right: 20rpx;
+  //   width: 90rpx;
+  //   height: 90rpx;
+  //   line-height: 90rpx;
+  //   text-align: center;
+  // }
+  // .r-title {
+  //   font-size: 20rpx;
+  //   font-weight: bold;
+  // }
   .messages {
-	  background-color: #0570DB;
-    position: fixed;
-    top: 80%;
-    right: 20rpx;
+	position: fixed;
+	top: 80%;
+	right: 20rpx;
     width: 90rpx;
     height: 90rpx;
-    line-height: 90rpx;
+    // background: #00bfff;
+	background-color: #0570DB;
+    color: #fff;
+    align-items: right;
+    margin-bottom: 20rpx;
+    border-radius: 6rpx;
     text-align: center;
+    .r-title {
+      font-size: 20rpx;
+      font-weight: bold;
+    }
   }
 </style>
