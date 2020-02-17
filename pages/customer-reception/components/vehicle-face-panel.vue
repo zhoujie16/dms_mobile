@@ -4,10 +4,10 @@
     <InfoPanel>
       
     </InfoPanel>
-    <InfoPanel title="故障点记录" isIcon=true>
+    <InfoPanel title="故障点记录" :isIcon='true'>
       
     </InfoPanel>
-    <InfoPanel title="物品清点" isIcon=true>
+    <InfoPanel title="物品清点" :isIcon='true'>
       <MSwitch label="贵重物品"></MSwitch>
       <MSwitch label="保养手册"></MSwitch>
       <MSwitch label="备胎"></MSwitch>

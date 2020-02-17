@@ -10,7 +10,7 @@
         <uni-tag class="type-tag" type="default" inverted text="故障维修"></uni-tag>
       </view>
     </InfoPanel>
-    <InfoPanel title="故障描述"><textarea class="m-textarea" placeholder="" /></InfoPanel>
+    <InfoPanel title="故障描述" ><textarea class="m-textarea" placeholder="" /></InfoPanel>
   </view>
 </template>
 

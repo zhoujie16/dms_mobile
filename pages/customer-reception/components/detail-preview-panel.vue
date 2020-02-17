@@ -1,7 +1,7 @@
 <template>
   <!-- 详情预览 -->
   <view class="panel-wrap">
-    <InfoPanel title="客户信息" isIcon=true>
+    <InfoPanel title="客户信息" :isIcon=true>
       <MInput label="车牌号"></MInput>
       <MInput label="车架号"></MInput>
       <MInput label="车主姓名"></MInput>
@@ -15,7 +15,7 @@
       <MInput label="地址"></MInput>
     </InfoPanel>
 
-    <InfoPanel title="客户需求" isIcon=true>
+    <InfoPanel title="客户需求" :isIcon='true'>
       <view class="type-title">选择类型</view>
       <view class="type-wrap">
         <uni-tag class="type-tag" type="default" inverted text="保养"></uni-tag>
@@ -28,7 +28,7 @@
       <textarea class="m-textarea question-border" placeholder="" />
     </InfoPanel>
 
-   <InfoPanel title="物品清点" isIcon=true>
+   <InfoPanel title="物品清点" :isIcon='true'>
      <MSwitch label="贵重物品"></MSwitch>
      <MSwitch label="保养手册"></MSwitch>
      <MSwitch label="备胎"></MSwitch>
