@@ -275,7 +275,13 @@
         "navigationBarTitleText": "修改密码"
       }
     }
-  ],
+      ,{
+            "path" : "pages/vehicle-inspection/components/service-remind",
+            "style" : {
+               "navigationBarTitleText": "增修提醒"
+            }
+        }
+    ],
   "tabBar": {
     "color": "#333333",
     "selectedColor": "#333333",

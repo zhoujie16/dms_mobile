@@ -32,7 +32,7 @@
           <uni-icons type="refresh" size="26" color="#fff"></uni-icons>
           <view class="r-title">维修历史</view>
         </view>
-        <view class="r-box">
+        <view class="r-box" @click="remindClick">
           <uni-icons type="gear" size="26" color="#fff"></uni-icons>
           <view class="r-title">增修提醒</view>
         </view>
@@ -117,6 +117,12 @@ export default {
     },
     closeHistory(){
        this.$refs.history.close()
+    },
+    //增修提醒
+    remindClick(){
+      uni.navigateTo({
+        url: `/pages/vehicle-inspection/components/service-remind`
+      });
     }
   }
 };

@@ -44,7 +44,7 @@ export default {
       this.endDate = res;
     },
     async btnClick() {
-      if (this.startDate && this.endDate) {
+      if (this.startDate && this.endDate && new Date(Date.parse(this.startDate))<=new Date(Date.parse(this.endDate))) {
         this.$emit('change', [this.startDate, this.endDate]);
         await uni.showToast({
           title: '查询',
@@ -52,6 +52,7 @@ export default {
           mask: true
         });
       } else {
+        this.endDate = '';
         await uni.showToast({
           title: '请选择日期',
           icon: 'none',

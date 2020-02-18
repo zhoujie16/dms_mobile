@@ -26,7 +26,7 @@
 
 <script>
 import { loginHttp } from '@/api/login/index.js';
-
+import { commonDict } from '@/api/test/index.js';
 export default {
   data() {
     return {
@@ -54,9 +54,26 @@ export default {
         url: '/pages/tabBar/tabPage1/tabPage1'
       });
       console.log(res2);
+      
+      const res3 = await commonDict({})
+      console.log('res3',res3)
+      uni.setStorage({
+        key:'dict',
+        data:res3.data.list
+      })
+      // 取值
+      // uni.getStorage({
+      // key:“属性名”,
+      // success(e){
+      // e.data//这就是你想要取的token
+      // }
+      // })
+      
+      
+      
     }
-  }
-};
+  },
+}
 </script>
 
 <style lang="scss">
