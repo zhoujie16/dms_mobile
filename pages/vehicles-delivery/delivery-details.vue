@@ -45,6 +45,50 @@
         <view class="m-flex m-align-center m-height-80 content-top">物品清点</view>
         <view class="subContent">
           <view class="uni-flex uni-row">
+            <view class="flex-item" style="width: 49%;">
+              <view class="sub-text">
+                <view class="list-color">备胎</view>
+                <view class="sub-text list-text">无</view>
+              </view>
+            </view>
+            <view class="flex-item" style="width: 49%;">
+              <view class="sub-text">
+                <view class="list-color">行驶证</view>
+                <view class="sub-text list-text">无</view>
+              </view>
+            </view>
+          </view>
+          <view class="uni-flex uni-row">
+            <view class="flex-item" style="width: 49%;">
+              <view class="sub-text">
+                <view class="list-color">保养手册</view>
+                <view class="sub-text list-text">无</view>
+              </view>
+            </view>
+            <view class="flex-item" style="width: 49%;">
+              <view class="sub-text">
+                <view class="list-color">三脚架</view>
+                <view class="sub-text list-text">无</view>
+              </view>
+            </view>
+          </view>
+          <view class="uni-flex uni-row">
+            <view class="flex-item" style="width: 49%;">
+              <view class="sub-text">
+                <view class="list-color">千斤顶</view>
+                <view class="sub-text list-text">无</view></view>
+            </view>
+            <view class="flex-item" style="width: 49%;">
+              <view class="sub-text">
+                <view class="list-color">贵重物品</view>
+                <view class="sub-text list-text">无</view></view>
+            </view>
+          </view>
+          <view class="uni-flex uni-row">
+            <view class="flex-item1  sub-text">灭火器</view>
+            <view class="flex-item2  sub-text ">无</view>
+          </view>
+          <view class="uni-flex uni-row">
             <view class="flex-item1  sub-text">客户需求</view>
             <view class="flex-item2  sub-text ">无</view>
           </view>
@@ -62,6 +106,11 @@
           <text @click="editClick">编辑</text>
         </view>
         <view class="subContent">
+          <view class="error-text">异常</view>
+          <view class="uni-flex uni-row">
+            <view class="flex-item1  sub-text">雨刮</view>
+            <view class="flex-item2  sub-text ">无</view>
+          </view>
           <view class="uni-flex uni-row">
             <view class="flex-item1  sub-text">备注</view>
             <view class="flex-item2  sub-text ">无</view>
@@ -76,6 +125,61 @@
           <text @click="editClick">编辑</text>
         </view>
         <view class="subContent">
+          <view class="error-text" style="background-color: #1989FA;">正常</view>
+          <view class="uni-flex uni-row">
+            <view class="flex-item" style="width: 49%;">
+              <view class="sub-text">
+                空气滤清器
+                <view class="sub-text list-text">无</view>
+              </view>
+            </view>
+            <view class="flex-item" style="width: 49%;">
+              <view class="sub-text">
+                静态电压_V
+                <view class="sub-text list-text">无</view>
+              </view>
+            </view>
+          </view>
+          <view class="uni-flex uni-row">
+            <view class="flex-item" style="width: 49%;">
+              <view class="sub-text">
+                测试值_CC
+                <view class="sub-text list-text">无</view>
+              </view>
+            </view>
+            <view class="flex-item" style="width: 49%;">
+              <view class="sub-text">
+                启动电压_V
+                <view class="sub-text list-text">无</view>
+              </view>
+            </view>
+          </view>
+          <view class="uni-flex uni-row">
+            <view class="flex-item" style="width: 49%;">
+              <view class="sub-text">
+                额定值_CC
+                <view class="sub-text list-text">无</view>
+              </view>
+            </view>
+          </view>
+          <view class="error-text" style="background-color: #FFB400;">观察</view>
+          <view class="uni-flex uni-row">
+            <view class="flex-item" style="width: 49%;">
+              <view class="sub-text">
+                空调滤清器
+                <view class="sub-text list-text">无</view>
+              </view>
+            </view>
+          </view>
+          <view class="error-text">异常</view>
+          <view class="uni-flex uni-row">
+            <view class="flex-item" style="width: 49%;">
+              <view class="sub-text">
+                蓄电池
+                <view class="sub-text list-text">无</view>
+              </view>
+            </view>
+          </view>
           <view class="uni-flex uni-row">
             <view class="flex-item1  sub-text">备注</view>
             <view class="flex-item2  sub-text ">无</view>
@@ -90,6 +194,44 @@
           <text @click="editClick">编辑</text>
         </view>
         <view class="subContent">
+          <view class="error-text" style="background-color: #1989FA;">正常</view>
+          <view class="uni-flex uni-row">
+            <view class="flex-item" style="width: 49%;">
+              <view class="sub-text">
+                机油滤清器
+                <view class="sub-text list-text">无</view>
+              </view>
+            </view>
+            <view class="flex-item" style="width: 49%;">
+              <view class="sub-text">
+                燃油滤清器
+                <view class="sub-text list-text">无</view>
+              </view>
+            </view>
+          </view>
+          <view class="uni-flex uni-row">
+            <view class="flex-item" style="width: 49%;">
+              <view class="sub-text">
+                旧件拍照
+                <view class="sub-text list-text">无</view>
+              </view>
+            </view>
+            <view class="flex-item" style="width: 49%;">
+              <view class="sub-text">
+                维修效果
+                <view class="sub-text list-text">无</view>
+              </view>
+            </view>
+          </view>
+          <view class="error-text">异常</view>
+          <view class="uni-flex uni-row">
+            <view class="flex-item" style="width: 49%;">
+              <view class="sub-text">
+                刹车盘片
+                <view class="sub-text list-text">无</view>
+              </view>
+            </view>
+          </view>
           <view class="uni-flex uni-row">
             <view class="flex-item1  sub-text">备注</view>
             <view class="flex-item2  sub-text ">无</view>
@@ -181,6 +323,7 @@
           <text @click="editClick">编辑</text>
         </view>
       </view>
+      <view class="check">交车</view>
       <!-- <view class="delivery" @click="deliveryClick">交车</view> -->
     </view>
     <MPopup ref="mPopup" type="center" title="关键信息" style="{position: relative;}">
@@ -291,7 +434,7 @@ export default {
         line-height: 100rpx;
         font-size: 42rpx;
         font-weight: bold;
-        width: 80%;
+        width: 90%;
       }
       .subContent {
         margin: 0 auto 20rpx;
@@ -309,7 +452,23 @@ export default {
           line-height: 60rpx;
           height: 60rpx;
         }
-        
+        .list-text {
+          float: right;
+          padding-right: 10rpx;
+        }
+        .list-color {
+          color: #CCCCCC;
+          float: left;
+        }
+        .error-text {
+          height: 60rpx;
+          line-height: 60rpx;
+          margin: 0 50rpx;
+          background-color: #E04B28;
+          border-radius: 10rpx;
+          text-align: center;
+          color: #fff;
+        }
       }
     }
   }
@@ -388,5 +547,16 @@ export default {
       font-size: 20rpx;
       font-weight: bold;
     }
+  }
+  .check {
+    // width: 70%;
+    height: 88rpx;
+    line-height: 88rpx;
+    margin: 30rpx 120rpx;
+    text-align: center;
+    background-color:$uni-bg-color-page;
+    border-radius: 50rpx;
+    color: #09BB07;
+    border: 3rpx solid #09BB07;
   }
 </style>
