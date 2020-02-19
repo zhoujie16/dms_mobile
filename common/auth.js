@@ -44,5 +44,24 @@ class Auth {
     encrypt.setPublicKey(this.EncryptKey);
     return encrypt.encrypt(str);
   }
+  // 存储本地
+  setStorageData(key, str) {
+    uni.setStorage({
+      key: key,
+      data: str
+    })
+  }
+  // 获取本地数据
+  getStorgeData(key) {
+    let _data = ''
+    uni.getStorage({
+      key: key,
+      success(e) {
+        _data = e.data //这就是你想要取的值
+      }
+    })
+    return _data;
+  }
+
 }
 export default new Auth();

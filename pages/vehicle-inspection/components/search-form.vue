@@ -1,6 +1,6 @@
 <template>
   <view>
-    <view class="form-demo-wrap" @touchmove.prevent>
+    <view class="form-demo-wrap" >
       <MInput v-model="cph" label="车牌号"></MInput>
       <MInput v-model="khmc" label="车主名称"></MInput>
       <MInput v-model="gdbh" label="工单号"></MInput>
