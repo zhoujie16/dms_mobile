@@ -161,6 +161,9 @@ Vue.component("FaIcon", FaIcon);
 import MCheckboxPopup from "@/components/search-filter/m-checkbox-popup.vue";
 Vue.component("MCheckboxPopup", MCheckboxPopup);
 
+import AjaxButton from "@/components/search-filter/ajax-button.vue";
+Vue.component("AjaxButton", AjaxButton);
+
 import MDatePickerPopup from "@/components/search-filter/m-date-picker-popup.vue";
 Vue.component("MDatePickerPopup", MDatePickerPopup);
 
