@@ -1,15 +1,15 @@
 <template>
   <MPage ref="MPage">
-    <view class="page-wrap">
+    <view class="page-wrap" v-for="(item,i) in list" :key="i" @click="chapterClick">
       <view class="left">
-        第一章
+        {{item.chapter}}
       </view>
-      活动内容介绍
+      {{item.content}}
       <view class="right">
-        >
+        {{item.arrow}}
       </view>
     </view>
-    <view class="page-wrap">
+    <!-- <view class="page-wrap">
       <view class="left">
         第二章
       </view>
@@ -35,14 +35,35 @@
       <view class="right">
         >
       </view>
-    </view>
+    </view> -->
   </MPage>
 </template>
 <script>
 export default {
   data() {
     return {
-
+      list: [
+        {
+          chapter: '第一章',
+          content: '活动内容介绍',
+          arrow: '>'
+        },
+        {
+          chapter: '第二章',
+          content: '线下--冬季服务活动活动内容与流程',
+          arrow: '>'
+        },
+        {
+          chapter: '第三章',
+          content: '线上--双12活动活动内容与流程',
+          arrow: '>'
+        },
+        {
+          chapter: '第四章',
+          content: '宣传及特别注意事项',
+          arrow: '>'
+        },
+      ]
       };
   },
   onLoad() {},
@@ -53,6 +74,11 @@ export default {
     detailUrl() {
       uni.navigateTo({
         url: `/pages/qcReport/qcReport-detail`
+      });
+    },
+    async chapterClick() {
+      this.$util.openLocalWeb({
+        url: '/hybrid/html/index.html#/about'
       });
     }
   }

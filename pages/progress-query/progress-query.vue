@@ -1,59 +1,61 @@
 <template>
-  <!-- 预约检查 -->
-  <view class="page-warp">
-    <search-filter ref="searchFilter">
-      <SearchForm @confirm="searchFormConfirm"></SearchForm>
-    </search-filter>
-    <view class="swiper-page-wrap" :style="{ height: height }">
-      <view class="top-warp m-flex m-align-center">
-        <view
-          class="m-flex m-flex-item m-align-center m-justify-center"
-          v-for="(tab, i) in tabs"
-          :key="i"
-          :class="{ active: curIndex === i }"
-          @click="changeTab(i)"
-        >
-          {{ tab }}
+  <MPage ref="MPage">
+    <view class="page-warp">
+      <search-filter ref="searchFilter">
+        <SearchForm @confirm="searchFormConfirm"></SearchForm>
+      </search-filter>
+      <view class="swiper-page-wrap" :style="{ height: height }">
+        <view class="top-warp m-flex m-align-center">
+          <view
+            class="m-flex m-flex-item m-align-center m-justify-center"
+            v-for="(tab, i) in tabs"
+            :key="i"
+            :class="{ active: curIndex === i }"
+            @click="changeTab(i)"
+          >
+            {{ tab }}
+          </view>
         </view>
+        <swiper class="swiper-wrap" :current="curIndex" @change="swiperChange">
+          <!--全部 -->
+          <swiper-item>
+            <baseScroll
+              :top="0"
+              :fetchApi="fetchApi"
+              :fetchParams="fetchParams_0"
+              @listChange="
+                arr => {
+                  this.dataSource_0 = arr;
+                }
+              "
+            >
+              <view v-for="(data, i) in dataSource_0" :key="i">
+                <ScrollCell :cell="data"></ScrollCell>
+              </view>
+            </baseScroll>
+          </swiper-item>
+          
+          <swiper-item>
+            <baseScroll
+              :top="0"
+              :fetchApi="fetchApi"
+              :fetchParams="fetchParams_1"
+              @listChange="
+                arr => {
+                  this.dataSource_1 = arr;
+                }
+              "
+            >
+              <view v-for="(data, i) in dataSource_1" :key="i">
+                <ScrollCell :cell="data"></ScrollCell>
+              </view>
+            </baseScroll>
+          </swiper-item>
+        </swiper>
       </view>
-      <swiper class="swiper-wrap" :current="curIndex" @change="swiperChange">
-        <!--全部 -->
-        <swiper-item>
-          <baseScroll
-            :top="0"
-            :fetchApi="fetchApi"
-            :fetchParams="fetchParams_0"
-            @listChange="
-              arr => {
-                this.dataSource_0 = arr;
-              }
-            "
-          >
-            <view v-for="(data, i) in dataSource_0" :key="i">
-              <ScrollCell :cell="data"></ScrollCell>
-            </view>
-          </baseScroll>
-        </swiper-item>
-        
-        <swiper-item>
-          <baseScroll
-            :top="0"
-            :fetchApi="fetchApi"
-            :fetchParams="fetchParams_1"
-            @listChange="
-              arr => {
-                this.dataSource_1 = arr;
-              }
-            "
-          >
-            <view v-for="(data, i) in dataSource_1" :key="i">
-              <ScrollCell :cell="data"></ScrollCell>
-            </view>
-          </baseScroll>
-        </swiper-item>
-      </swiper>
     </view>
-  </view>
+  </MPage>
+  
 </template>
 
 <script>
