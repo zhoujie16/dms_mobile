@@ -5,7 +5,7 @@
       :loading="loading"
       :size="size"
       :plain="plain"
-      :disabled="disabled"
+      :disabled="isDisabled"
       :openType="openType"
       @click="clickHandler"
     >
@@ -34,14 +34,6 @@ export default {
       type: Boolean,
       default: false
     },
-    loading: {
-      type: Boolean,
-      default: false
-    },
-    disabled: {
-      type: Boolean,
-      default: false
-    },
     openType: {
       type: String,
       default: ''
@@ -62,12 +54,13 @@ export default {
   },
   data() {
     return {
-      ajaxing: false
+      loading: false
+      // ajaxing: false
     };
   },
   computed: {
     isDisabled() {
-      return this.ajaxing || this.disabled;
+      return this.loading;
     }
     // isVisible() {
     //   // 没有权限控制，默认该按钮显示状态
@@ -80,12 +73,17 @@ export default {
       return new Promise(resolve => setTimeout(resolve, timeLen));
     },
     async clickHandler() {
-      this.ajaxing = true;
+      if (this.loading) {
+        return;
+      }
+      this.loading = true;
       try {
         await this.click();
-      } catch (err) {}
-      await this.sleep(100);
-      this.ajaxing = false;
+        this.loading = false;
+      } catch (err) {
+        console.log('err', err);
+        this.loading = false;
+      }
     }
   }
 };

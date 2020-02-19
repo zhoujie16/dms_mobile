@@ -10,7 +10,6 @@
       <button class="test-btn" type="primary" @click="openlocalWeb">打开本地网页</button>
       <button class="test-btn" type="primary" @click="openUChartsDemo">e-charts-H5</button>
       <button class="test-btn" type="primary" @click="openUChartsDemo2">e-charts-renderjs</button>
-      
       <AjaxButton :click="testClick">test-btn</AjaxButton>
     </view>
     <MPopup ref="mPopup1" type="center" title="标题1">弹窗内容 center</MPopup>
@@ -116,9 +115,16 @@ export default {
       });
     },
     async testClick(){
-      this.setTimeout(function() {
-        console.log("11111111");
-      }, 1000);
+      console.log('click')
+      const res = await this.testAjax()
+      console.log('res', res);
+    },
+    testAjax(){
+      return new Promise(resolve=>{
+        setTimeout(function() {
+          resolve("11111111")
+        }, 1000);
+      })
     }
   }
 };
