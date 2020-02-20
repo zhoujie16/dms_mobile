@@ -323,7 +323,7 @@
           <text @click="editClick">编辑</text>
         </view>
       </view>
-      <view class="check">交车</view>
+      <view class="check" @click="deliveryClick">交车</view>
       <!-- <view class="delivery" @click="deliveryClick">交车</view> -->
     </view>
     <MPopup ref="mPopup" type="center" title="关键信息" style="{position: relative;}">
@@ -516,20 +516,6 @@ export default {
       
     }
   }
-  // .messages {
-	 //  background-color: #0570DB;
-  //   position: fixed;
-  //   top: 80%;
-  //   right: 20rpx;
-  //   width: 90rpx;
-  //   height: 90rpx;
-  //   line-height: 90rpx;
-  //   text-align: center;
-  // }
-  // .r-title {
-  //   font-size: 20rpx;
-  //   font-weight: bold;
-  // }
   .messages {
 	position: fixed;
 	top: 80%;

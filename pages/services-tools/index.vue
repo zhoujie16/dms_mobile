@@ -7,26 +7,11 @@
         </uni-grid-item>
       </uni-grid>
     </view>
-    <!-- <view class="uni-flex uni-row">
-      <view class="flex-item left">
-        <DocCell @click.native="test"></DocCell>
-      </view>
-      <view class="flex-item center">
-        <DocCell @click.native="test2"></DocCell>
-      </view>
-    </view>
-    <view class="uni-flex uni-row">
-      <view class="flex-item right" @click="insuranceClick">
-        <DocCell @click.native="test2"></DocCell>
-      </view>
-      <view class="flex-item"></view>
-    </view> -->
   </MPage>
 </template>
 
 <script>
   import DocCell from './components/doc-cell.vue';
-  // import DocDemo from './components/doc-dell.vue';
 export default {
   components: {
     DocCell

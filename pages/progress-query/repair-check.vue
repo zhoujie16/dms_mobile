@@ -111,6 +111,12 @@
       float: right;
       margin-top: 20px;
       font-size: 24px;
+      width: 80rpx;
+      height: 80rpx;
+      background-color: #F0AD4E;
+      border-radius: 50%;
+      text-align: center;
+      line-height: 80rpx;
     }
   }
 .list-cell-content {
