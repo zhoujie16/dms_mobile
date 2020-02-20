@@ -2,6 +2,7 @@
   <!-- 工单详情 -->
   <MPage ref="MPage">
     <!-- 车辆信息 -->
+	<view class="wrap-contanier">
     <view class="car-info-panel">
       <view class="user">
         <text class="name">姓名</text>
@@ -46,6 +47,7 @@
         <AmonitorInfo></AmonitorInfo>
       </MPopup>
     </view>
+	</view>
   </MPage>
 </template>
 
@@ -120,6 +122,10 @@ export default {
 </script>
 
 <style lang="scss">
+	.wrap-contanier{
+		height: 100vh;
+		overflow: scroll;
+	}
 .car-info-panel {
   padding: 0 40rpx;
   border-bottom: solid 20rpx #eeeeee;
