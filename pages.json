@@ -281,6 +281,12 @@
                "navigationBarTitleText": "增修提醒"
             }
         }
+        ,{
+            "path" : "pages/404/404",
+            "style" : {
+				"navigationBarTitleText": "暂无记录"
+			}
+        }
     ],
   "tabBar": {
     "color": "#333333",

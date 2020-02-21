@@ -197,6 +197,10 @@ Vue.component("NavDateRangePicker", NavDateRangePicker);
 import ZTable from '@/libs/z-table/z-table.vue';
 Vue.component("ZTable", ZTable);
 
+
+import MNothing from '@/components/404/m-nothing.vue';
+Vue.component("MNothing", MNothing);
+
 /** 绑定公共组件 E */
 
 Vue.config.productionTip = false;
