@@ -11,6 +11,9 @@
       <button class="test-btn" type="primary" @click="openUChartsDemo">e-charts-H5</button>
       <button class="test-btn" type="primary" @click="openUChartsDemo2">e-charts-renderjs</button>
       <AjaxButton :click="testClick">test-btn</AjaxButton>
+      <MButton></MButton>
+      <MButton type="warning" text="警告类正常"></MButton>
+      <MButton type="normal" text="普通"></MButton>
     </view>
     <MPopup ref="mPopup1" type="center" title="标题1">弹窗内容 center</MPopup>
     <MPopup ref="mPopup2" type="bottom" title="标题2">弹窗内容 bottom</MPopup>

@@ -286,6 +286,10 @@
             "style" : {
 				"navigationBarTitleText": "暂无记录"
 			}
+        },
+        {
+            "path" : "components/m-button/m-button",
+            "style" : {}
         }
     ],
   "tabBar": {

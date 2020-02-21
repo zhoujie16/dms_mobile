@@ -201,6 +201,10 @@ Vue.component("ZTable", ZTable);
 import MNothing from '@/components/404/m-nothing.vue';
 Vue.component("MNothing", MNothing);
 
+// 按钮
+import MButton from '@/components/m-button/m-button.vue';
+Vue.component('MButton',MButton);
+
 /** 绑定公共组件 E */
 
 Vue.config.productionTip = false;
