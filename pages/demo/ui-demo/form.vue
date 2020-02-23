@@ -3,6 +3,16 @@
   <MPage ref="MPage">
     <MLabel title="标题">内容</MLabel>
     <MInput labbe="文本" v-model="formData.value_1"></MInput>
+    <MInput labbe="文本" v-model="formData.value_1">
+      <template v-slot:after>
+        <text class="m-label-after">km</text>
+      </template>
+    </MInput>
+    <MInput labbe="文本" v-model="formData.value_1">
+      <template v-slot:after>
+        <text class="m-label-after">自定义</text>
+      </template>
+    </MInput>
     <MCheckbox
       label="单选 popup"
       type="popup"
@@ -30,7 +40,7 @@
 </template>
 
 <script>
-const testArr_1 = [{ text: '顾问1', value: 1 }, { text: '顾问2', value: 2 }];
+const testArr_1 = [{ text: '是', value: 1 }, { text: '否', value: 2 }];
 const testArr_2 = [
   { text: '顾问1', value: 1 },
   { text: '顾问2', value: 2 },

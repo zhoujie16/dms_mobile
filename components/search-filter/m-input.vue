@@ -2,8 +2,17 @@
   <view>
     <MLabel :label="label" :mast="require">
       <view>
-        <input :value="value" @input="inputHandle" class="m-input" :placeholder="placeholder" />
+        <input
+          :value="value"
+          @input="inputHandle"
+          class="m-input"
+          :placeholder="placeholder"
+          placeholder-style="font-size: 30rpx;color: #c3c3c3;"
+        />
       </view>
+      <template v-slot:after>
+        <slot name="after"></slot>
+      </template>
     </MLabel>
   </view>
 </template>
@@ -45,9 +54,5 @@ export default {
   padding: 5rpx 0rpx 5rpx 26rpx;
   background-color: initial;
   text-align: right;
-}
-.m-input::-webkit-input-placeholder {
-  text-align: right;
-  font-size: 30rpx;
 }
 </style>

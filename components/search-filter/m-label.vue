@@ -5,7 +5,10 @@
         <!-- <text class="m-lab-require" v-if="require">*</text> -->
         {{ label }}
       </view>
-      <view class="m-lab-content"><slot></slot></view>
+      <view class="m-lab-content">
+        <slot name="default"></slot>
+        <slot name="after"></slot>
+      </view>
     </view>
   </view>
 </template>

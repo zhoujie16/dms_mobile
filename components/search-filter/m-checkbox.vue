@@ -15,6 +15,9 @@
           {{ tipInfo }}
         </view>
       </view>
+      <template v-if="type == 'popup'" v-slot:after>
+        <text class="m-label-after m-iconfont">&#xe71a;</text>
+      </template>
     </MLabel>
   </view>
 </template>
