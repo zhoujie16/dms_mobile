@@ -15,16 +15,18 @@
 
 /* 颜色变量 */
 
-/* 行为相关颜色 */
-$uni-color-primary: #007aff;
-$uni-color-success: #4cd964;
-$uni-color-warning: #f0ad4e;
-$uni-color-error: #dd524d;
+/* 行为相关颜色 可以使用 */
+$uni-color-primary: #1371F7;
+$uni-color-success: #3EBE84;
+$uni-color-warning: #F57C40;
+$uni-color-error: #FE4766;
 
-/* 文字基本颜色 */
-$uni-text-color: #333; //基本色
+
+/* 文字基本颜色 可以使用 */
+$uni-text-color: #17212E; //基本色
+$uni-text-color-info:#70767F;
 $uni-text-color-inverse: #fff; //反色
-$uni-text-color-grey: #999; //辅助灰色，如加载更多的提示信息
+$uni-text-color-grey: #C3C3C3; //辅助灰色，如加载更多的提示信息
 $uni-text-color-placeholder: #808080;
 $uni-text-color-disable: #c0c0c0;
 
@@ -110,6 +112,7 @@ $uni-m-font-size-f3:30upx;
 $uni-m-font-size-f4:26upx;
 $uni-m-font-size-f5:24upx;
 $uni-m-font-size-f6:22upx;
+
 
 /* Border Radius */
 $uni-m-border-radius-b1: 40upx;

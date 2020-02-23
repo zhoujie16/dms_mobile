@@ -311,6 +311,10 @@
             "path" : "pages/demo/ui-demo/navbar",
             "style" : {}
         }
+        ,{
+            "path" : "pages/demo/ui-demo/tabs",
+            "style" : {}
+        }
     ],
   "tabBar": {
     "color": "#333333",

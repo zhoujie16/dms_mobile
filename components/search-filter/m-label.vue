@@ -1,7 +1,10 @@
 <template>
   <view class="m-lab-wrap">
     <view class="m-lab-inner" :class="{ 'm-lab-inner2': row > 1, border: border }">
-      <view class="m-lab-title">{{ label }}</view>
+      <view class="m-lab-title">
+        <!-- <text class="m-lab-require" v-if="require">*</text> -->
+        {{ label }}
+      </view>
       <view class="m-lab-content"><slot></slot></view>
     </view>
   </view>
@@ -10,10 +13,15 @@
 <script>
 export default {
   name: 'm-label',
+  mounted() {},
   props: {
     label: {
       type: String,
       default: '标题'
+    },
+    require: {
+      type: Boolean,
+      default: false
     },
     row: {
       type: Number,
@@ -33,16 +41,16 @@ export default {
 <style lang="scss">
 .m-lab-wrap {
   color: #333;
-  font-size: 32rpx;
-}
-
-.m-lab-inner {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-}
-.m-lab-inner.border {
-  border-bottom: solid 1rpx #dddddd;
+  font-size: 30rpx;
+  padding: 0 30rpx;
+  .m-lab-inner {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+  .m-lab-inner.border {
+    border-bottom: solid 1rpx #e1e1e1;
+  }
 }
 
 .m-lab-inner2 {
@@ -56,6 +64,10 @@ export default {
   justify-content: flex-start;
   align-items: center;
   height: 100rpx;
+  .m-lab-require {
+    color: red;
+    margin-right: 8rpx;
+  }
 }
 
 .m-lab-content {

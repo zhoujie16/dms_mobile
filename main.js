@@ -149,6 +149,9 @@ Vue.component("MSwitch", MSwitch);
 import MCheckbox from "@/components/search-filter/m-checkbox.vue";
 Vue.component("MCheckbox", MCheckbox);
 
+import MCheckboxPanel from "@/components/search-filter/m-checkbox-panel.vue";
+Vue.component("MCheckboxPanel", MCheckboxPanel);
+
 import MPopup from "@/components/m-popup/m-popup.vue";
 Vue.component("MPopup", MPopup);
 

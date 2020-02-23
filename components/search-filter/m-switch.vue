@@ -30,13 +30,7 @@ export default {
 };
 </script>
 
-<style>
-.y-title {
-  margin: 8rpx 0;
-}
+<style lang="scss">
+ 
 
-.y-input {
-  padding: 5rpx 26rpx;
-  background-color: #f9f9f9;
-}
 </style>

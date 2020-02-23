@@ -1,8 +1,8 @@
 <template>
   <view>
-    <MLabel :label="label">
+    <MLabel :label="label" :mast="require">
       <view>
-        <input :value="value" @input="inputHandle" class="y-input" :placeholder="placeholder" />
+        <input :value="value" @input="inputHandle" class="m-input" :placeholder="placeholder" />
       </view>
     </MLabel>
   </view>
@@ -22,7 +22,11 @@ export default {
     },
     placeholder: {
       type: String,
-      default: '请输入'
+      default: '请填写'
+    },
+    require: {
+      type: Boolean,
+      default: false
     }
   },
   data() {
@@ -37,12 +41,13 @@ export default {
 </script>
 
 <style>
-.y-title {
-  margin: 8rpx 0;
+.m-input {
+  padding: 5rpx 0rpx 5rpx 26rpx;
+  background-color: initial;
+  text-align: right;
 }
-
-.y-input {
-  padding: 5rpx 26rpx;
-  background-color: #f9f9f9;
+.m-input::-webkit-input-placeholder {
+  text-align: right;
+  font-size: 30rpx;
 }
 </style>

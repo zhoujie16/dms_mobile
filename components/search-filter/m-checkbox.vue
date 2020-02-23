@@ -1,22 +1,20 @@
 <template>
   <view class="">
-    <MLabel :label="label" :row="2">
-      <MCheckboxInner
-        v-if="type == 'inner'"
-        :value="value"
-        :itemList="itemList"
-        :single="single"
-        @input="input"
-      ></MCheckboxInner>
-      <button
-        v-if="type == 'popup'"
-        @click="showPopupClick"
-        size="mini"
-        type="default"
-        class="submit-btn"
-      >
-        {{ tipInfo }}
-      </button>
+    <MLabel :label="label">
+      <view class="m-checkbox-inner" v-if="type == 'inner'">
+        <MCheckboxInner
+          v-if="type == 'inner'"
+          :value="value"
+          :itemList="itemList"
+          :single="single"
+          @input="input"
+        ></MCheckboxInner> 
+      </view>
+      <view class="m-checkbox-inner" v-if="type == 'popup'">
+        <view @click="showPopupClick" size="mini" type="default" class="m-checkbox-text">
+          {{ tipInfo }}
+        </view>
+      </view>
     </MLabel>
   </view>
 </template>
@@ -84,7 +82,11 @@ export default {
 </script>
 
 <style lang="scss">
-.submit-btn {
+.m-checkbox-inner {
   width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  .m-checkbox-text {
+  }
 }
 </style>

@@ -68,8 +68,8 @@
 		display: flex;
 		/* #endif */
 		padding: 0px 16px;
-		height: 30px;
-		line-height: 30px;
+		height: 26px;
+		line-height: 26px;
 		justify-content: center;
 		color: #333;
 		border-radius: 6rpx;

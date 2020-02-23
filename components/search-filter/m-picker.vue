@@ -1,9 +1,11 @@
 <template>
   <view class="">
     <MLabel :label="label" :row="2">
-      <button @click="showPopupClick" size="mini" type="default" class="submit-btn">
-        {{ tipInfo }}
-      </button>
+      <view class="m-picker-inner m-flex m-justify-end">
+        <view @click="showPopupClick">
+          {{ tipInfo }}
+        </view>
+      </view>
     </MLabel>
   </view>
 </template>
@@ -52,10 +54,10 @@ export default {
       }
     },
     // 单选
-    async showPopupSelector(){
+    async showPopupSelector() {
       const params = {
         mode: 'selector',
-        selectList: [{label:"1",value:"1"},{label:"2",value:"2"}],
+        selectList: [{ label: '1', value: '1' }, { label: '2', value: '2' }],
         defaultVal: '2'
       };
       const res = await this.$root.$refs.MPage.MPickerPopup.showPicker(params);
@@ -88,7 +90,7 @@ export default {
 </script>
 
 <style lang="scss">
-.submit-btn {
+.m-picker-inner {
   width: 100%;
 }
 </style>

@@ -15,13 +15,70 @@ export default {
     return {
       btnList: [
         {
+          title: 'style',
+          clickFn: async () => {
+            const [err, res] = await uni.navigateTo({
+              url: '/pages/demo/ui-demo/style'
+            });
+          }
+        },
+        {
           title: 'button',
           clickFn: async () => {
             const [err, res] = await uni.navigateTo({
               url: '/pages/demo/ui-demo/button'
             });
           }
+        },
+        {
+          title: 'form',
+          clickFn: async () => {
+            const [err, res] = await uni.navigateTo({
+              url: '/pages/demo/ui-demo/form'
+            });
+          }
+        },
+        {
+          title: 'list',
+          clickFn: async () => {
+            const [err, res] = await uni.navigateTo({
+              url: '/pages/demo/ui-demo/list'
+            });
+          }
+        },
+        {
+          title: 'dialog',
+          clickFn: async () => {
+            const [err, res] = await uni.navigateTo({
+              url: '/pages/demo/ui-demo/dialog'
+            });
+          }
+        },
+        {
+          title: 'navbar',
+          clickFn: async () => {
+            const [err, res] = await uni.navigateTo({
+              url: '/pages/demo/ui-demo/navbar'
+            });
+          }
+        },
+        {
+          title: 'picker',
+          clickFn: async () => {
+            const [err, res] = await uni.navigateTo({
+              url: '/pages/demo/ui-demo/picker'
+            });
+          }
+        },
+        {
+          title: 'tabs',
+          clickFn: async () => {
+            const [err, res] = await uni.navigateTo({
+              url: '/pages/demo/ui-demo/button'
+            });
+          }
         }
+        
       ]
     };
   },
