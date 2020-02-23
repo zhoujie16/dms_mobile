@@ -25,6 +25,17 @@ navigator,
 image,
 video {
   box-sizing: border-box;
+  font-family: PingFangSC-Regular, PingFang SC;
+}
+/*** 字体图标 ***/
+@font-face {
+  font-family: 'm-iconfont';
+  src: url('~@/common/fonts/iconfont.ttf');
+}
+.m-iconfont {
+  font-family: 'm-iconfont' !important;
+  font-size: 32rpx;
+  font-style: normal;
 }
 
 /** 布局样式 S */
@@ -98,3 +109,39 @@ video {
   height: 100rpx;
 }
 /** 布局样式 E */
+
+/** 2020-02-23 新UI S**/
+/** 字体 **/
+.m-font-1 {
+  font-size: $uni-m-font-size-f1;
+  font-weight: 500;
+  color: rgba(47, 47, 47, 1);
+}
+.m-font-2 {
+  font-size: $uni-m-font-size-f2;
+  font-weight: 500;
+  color: rgba(23, 33, 46, 1);
+}
+.m-font-3 {
+  font-size: $uni-m-font-size-f3;
+  font-weight: 400;
+  color: rgba(23, 33, 46, 1);
+}
+.m-font-4 {
+  font-size: $uni-m-font-size-f4;
+  font-weight: 400;
+  color: rgba(23, 33, 46, 1);
+}
+.m-font-5 {
+  font-size: $uni-m-font-size-f5;
+  font-weight: 400;
+  color: rgba(38, 38, 38, 1);
+}
+
+.m-font-6 {
+  font-size: $uni-m-font-size-f6;
+  font-weight: 400;
+  color: rgba(38, 38, 38, 1);
+}
+
+/** 2020-02-23 新UI E**/
