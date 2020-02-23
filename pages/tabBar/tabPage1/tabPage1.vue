@@ -106,6 +106,11 @@ export default {
           icon: 'desktop',
           text: 'Demo2',
           path: '/pages/demo/base-demo2'
+        },
+        {
+          icon: 'desktop',
+          text: 'UI-DEMO',
+          path: '/pages/demo/ui-demo/ui-demo'
         }
       ]
     };

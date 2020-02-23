@@ -274,21 +274,41 @@
       "style": {
         "navigationBarTitleText": "修改密码"
       }
+    }, {
+      "path": "pages/vehicle-inspection/components/service-remind",
+      "style": {
+        "navigationBarTitleText": "增修提醒"
+      }
+    }, {
+      "path": "pages/404/404",
+      "style": {
+        "navigationBarTitleText": "暂无记录"
+      }
+    }, {
+      "path": "pages/demo/ui-demo/button",
+      "style": {}
+    }, {
+      "path": "pages/demo/ui-demo/ui-demo",
+      "style": {}
+    }, {
+      "path": "pages/demo/ui-demo/dialog",
+      "style": {}
+    }, {
+      "path": "pages/demo/ui-demo/list",
+      "style": {}
+    }, {
+      "path": "pages/demo/ui-demo/form",
+      "style": {}
+    }, {
+      "path": "pages/demo/ui-demo/picker",
+      "style": {}
     }
       ,{
-            "path" : "pages/vehicle-inspection/components/service-remind",
-            "style" : {
-               "navigationBarTitleText": "增修提醒"
-            }
+            "path" : "pages/demo/ui-demo/style",
+            "style" : {}
         }
         ,{
-            "path" : "pages/404/404",
-            "style" : {
-				"navigationBarTitleText": "暂无记录"
-			}
-        },
-        {
-            "path" : "components/m-button/m-button",
+            "path" : "pages/demo/ui-demo/navbar",
             "style" : {}
         }
     ],
