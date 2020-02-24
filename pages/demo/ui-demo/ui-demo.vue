@@ -23,6 +23,14 @@ export default {
           }
         },
         {
+          title: 'search-filter',
+          clickFn: async () => {
+            const [err, res] = await uni.navigateTo({
+              url: '/pages/demo/ui-demo/search-filter'
+            });
+          }
+        },
+        {
           title: 'button',
           clickFn: async () => {
             const [err, res] = await uni.navigateTo({

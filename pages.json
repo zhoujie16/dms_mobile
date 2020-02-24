@@ -315,6 +315,10 @@
             "path" : "pages/demo/ui-demo/tabs",
             "style" : {}
         }
+        ,{
+            "path" : "pages/demo/ui-demo/search-filter",
+            "style" : {}
+        }
     ],
   "tabBar": {
     "color": "#333333",

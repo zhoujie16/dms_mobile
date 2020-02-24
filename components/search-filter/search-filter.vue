@@ -5,11 +5,6 @@
       <view class="camera-btn"><uni-icons type="camera" size="30" color="#ffffff"></uni-icons></view>
     </view>
     <uni-drawer :visible="isShowDrawer" mode="right" @close="closeDrawer">
-      <!-- 表单展示 -->
-      <!-- <view class="scroll-view-h">
-        <slot></slot>
-      </view> -->
-      
       <scroll-view class="scroll-view-h" @scroll="scroll" scroll-y><slot></slot></scroll-view>
     </uni-drawer>
   </view>
