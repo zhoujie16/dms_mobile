@@ -10,7 +10,7 @@
       :up="upOption"
       @up="upCallback"
     >
-      <slot />
+      <slot name="scroll" />
     </mescroll-uni>
   </view>
 </template>

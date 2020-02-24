@@ -1,6 +1,6 @@
 <template>
   <view>
-    <view class="form-demo-wrap" @touchmove.prevent>
+    <view class="form-demo-wrap">
       <MInput v-model="cph" label="车牌号"></MInput>
       <MCheckbox label="选择顾问 单选" v-model="xsgw" :itemList="itemList_xsgw" single></MCheckbox>
       <MCheckbox label="选择顾问 多选" v-model="xsgw2" :itemList="itemList_xsgw2"></MCheckbox>

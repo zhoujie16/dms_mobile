@@ -41,7 +41,7 @@ export default {
   height: calc(100vh - 88rpx);
   /* #endif */
   &.default{
-    background-color: #ffffff;
+    background-color: #f9f9f9;
   }
   &.primary{
     background-color: $uni-bg-color-page;

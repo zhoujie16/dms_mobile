@@ -302,24 +302,32 @@
     }, {
       "path": "pages/demo/ui-demo/picker",
       "style": {}
+    }, {
+      "path": "pages/demo/ui-demo/style",
+      "style": {}
+    }, {
+      "path": "pages/demo/ui-demo/navbar",
+      "style": {}
+    }, {
+      "path": "pages/demo/ui-demo/tabs",
+      "style": {}
+    }, {
+      "path": "pages/demo/ui-demo/search-filter",
+      "style": {
+        "app-plus": {
+          "titleNView": {
+            "buttons": [{
+              "type": "none",
+              "text": "筛选",
+              "width": "50px",
+              "fontSize": "16px",
+              "float": "right"
+            }]
+          }
+        }
+      }
     }
-      ,{
-            "path" : "pages/demo/ui-demo/style",
-            "style" : {}
-        }
-        ,{
-            "path" : "pages/demo/ui-demo/navbar",
-            "style" : {}
-        }
-        ,{
-            "path" : "pages/demo/ui-demo/tabs",
-            "style" : {}
-        }
-        ,{
-            "path" : "pages/demo/ui-demo/search-filter",
-            "style" : {}
-        }
-    ],
+  ],
   // "tabBar": {
   //   "color": "#333333",
   //   "selectedColor": "#333333",
@@ -348,10 +356,10 @@
   //   ]
   // },
   "globalStyle": {
-    "navigationBarTextStyle": "black",
+    "navigationBarTextStyle": "white",
     "navigationBarTitleText": "uni-app",
-    "navigationBarBackgroundColor": "#FFFFFF",
-    "backgroundColor": "#EFEFEF",
+    "navigationBarBackgroundColor": "#1B365E",
+    "backgroundColor": "#2B4D86",
     "app-plus": {
       "bounce": "none"
     }

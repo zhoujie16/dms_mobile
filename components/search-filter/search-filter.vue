@@ -1,12 +1,27 @@
 <template>
-  <view class="search-filter-wrap">
-    <view class="search-filter-wrap-inner">
-      <view class="search-button" @click="showDrawer">筛选</view>
-      <view class="camera-btn"><uni-icons type="camera" size="30" color="#ffffff"></uni-icons></view>
+  <view class="">
+    <view class="m-search-top">
+      <view class="left"><slot name="panel"></slot></view>
+      <view class="right" @click="open">
+        筛选
+        <text class="m-iconfont">&#xe721;</text>
+      </view>
     </view>
-    <uni-drawer :visible="isShowDrawer" mode="right" @close="closeDrawer">
-      <scroll-view class="scroll-view-h" @scroll="scroll" scroll-y><slot></slot></scroll-view>
-    </uni-drawer>
+    <uni-popup ref="popup" type="top" @change="change">
+      <view class="m-search-dialog-wrap">
+        <view class="m-search-dialog-inner">
+          <view class="search-form">
+            <scroll-view class="scroll-view-h" @scroll="scroll" scroll-y>
+              <slot name="form"></slot>
+            </scroll-view>
+          </view>
+          <view class="bottom-button">
+            <view @click="resetBtnClick" class="reset">重置</view>
+            <view @click="confirmBtnClick" class="submit">确定</view>
+          </view>
+        </view>
+      </view>
+    </uni-popup>
   </view>
 </template>
 
@@ -21,58 +36,74 @@ export default {
   },
   methods: {
     // 显示抽屉组件
-    showDrawer() {
-      this.isShowDrawer = true;
+    open() {
+      this.$refs.popup.open();
     },
     // 抽屉组件关闭
-    closeDrawer() {
-      console.log('抽屉组件关闭');
-      this.isShowDrawer = false;
+    close() {
+      this.$refs.popup.open();
     },
-    hideDrawer() {
-      console.log('抽屉组件关闭');
-      this.isShowDrawer = false;
+    change(e) {
+      console.log('change', e);
     },
-    scroll: function(e) {
-                console.log(e)
-                // this.old.scrollTop = e.detail.scrollTop
-            },
+    scroll: function() {
+      console.log(e);
+      // this.old.scrollTop = e.detail.scrollTop
+    },
+    resetBtnClick() {
+      // this.$emit('reset');
+    },
+    confirmBtnClick() {
+      // this.$emit('confirm');
+    }
   }
 };
 </script>
 
 <style lang="scss">
-.search-filter-wrap {
-  background-color: $uni-bg-color-navbar;
-  color: $uni-text-color-inverse;
-}
-.search-filter-wrap-inner {
+.m-search-top {
+  background-color: #ffffff;
   display: flex;
-  flex-direction: row;
-  align-items: center;
-  height: 100rpx;
-  padding: 0 30rpx;
+  height: 84rpx;
+  .left {
+    flex: 1;
+    height: 100%;
+  }
+  .right {
+    flex: 0 0 140rpx;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
 }
-
-.search-button {
-  height: 74rpx;
-  flex: 1 1 auto;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border: solid 1px #888888;
-}
-
-.camera-btn {
-  flex: 0 0 74rpx;
-  margin-left: 30rpx;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.scroll-view-h {
-  height: 100vh;
-  // overflow: scroll;
+.m-search-dialog-wrap {
+  background-color: #ffffff;
+  .m-search-dialog-inner {
+    .search-form {
+      .scroll-view-h {
+        height: 900rpx;
+      }
+    }
+    .bottom-button {
+      display: flex;
+      .reset,
+      .submit {
+        flex: 1;
+        height: 100rpx;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      .reset {
+        background: #ffffff;
+        color: #333;
+      }
+      .submit {
+        background: #1371f7;
+        color: #ffffff;
+      }
+    }
+  }
 }
 </style>
