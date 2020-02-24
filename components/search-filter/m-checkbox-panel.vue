@@ -68,7 +68,8 @@ export default {
   .m-check-box-panel-title {
   }
   .m-check-box-panel-inner {
-    height: 80rpx;
+    background-color: #FFFFFF;
+    height: 100rpx;
     overflow: hidden;
     &.active {
       height: initial;

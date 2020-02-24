@@ -43,6 +43,7 @@ export default {
 
 <style lang="scss">
 .m-lab-wrap {
+  background-color: #FFFFFF;
   color: #333;
   font-size: 30rpx;
   padding: 0 30rpx;

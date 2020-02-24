@@ -1,6 +1,6 @@
 <!-- 表单demo -->
 <template>
-  <view>
+  <MPage ref="MPage">
     <MLabel title="标题">内容</MLabel>
     <MInput labbe="文本" v-model="formData.value_1"></MInput>
     <MInput labbe="文本" v-model="formData.value_1">
@@ -27,16 +27,18 @@
       :itemList="itemList_1"
       single
     ></MCheckbox>
+    <view class="m-break-space"></view>
     <MCheckboxPanel
       label="多选 inner"
       type="inner"
       v-model="formData.value_22"
       :itemList="itemList_2"
     ></MCheckboxPanel>
+    <view class="m-break-space"></view>
     <MPicker label="日期选择" mode="date" v-model="formData.value_date_1"></MPicker>
     <MPicker label="日期范围选择" mode="range" v-model="formData.value_date_2"></MPicker>
     <MSwitch label="开关" v-model="formData.value_3"></MSwitch>
-  </view>
+  </MPage>
 </template>
 
 <script>

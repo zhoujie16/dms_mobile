@@ -79,6 +79,7 @@ export default {
   .tab-slide.active {
     font-size: 36rpx;
     color: #2f2f2f;
+    font-weight:500;
     .tab-bottom {
       display: initial;
     }
