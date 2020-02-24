@@ -356,10 +356,10 @@
   //   ]
   // },
   "globalStyle": {
-    "navigationBarTextStyle": "white",
+    "navigationBarTextStyle": "black",
     "navigationBarTitleText": "uni-app",
-    "navigationBarBackgroundColor": "#1B365E",
-    "backgroundColor": "#2B4D86",
+    "navigationBarBackgroundColor": "#FFFFFF",
+    "backgroundColor": "#EFEFEF",
     "app-plus": {
       "bounce": "none"
     }
