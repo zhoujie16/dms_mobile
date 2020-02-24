@@ -26,7 +26,7 @@ export default {
   data() {
     this.swiperTabHeight = uni.getSystemInfoSync().windowHeight - 40 + 'px';
     return {
-      tabs: ['tab1', 'tab2', 'tab3'],
+      tabs: ['类型一', '类型二', '类型三'],
       curIndex: 0
     };
   },
