@@ -1,6 +1,6 @@
 <!-- 表单demo -->
 <template>
-  <MPage ref="MPage">
+  <view>
     <MLabel title="标题">内容</MLabel>
     <MInput labbe="文本" v-model="formData.value_1"></MInput>
     <MInput labbe="文本" v-model="formData.value_1">
@@ -38,7 +38,7 @@
     <MPicker label="日期选择" mode="date" v-model="formData.value_date_1"></MPicker>
     <MPicker label="日期范围选择" mode="range" v-model="formData.value_date_2"></MPicker>
     <MSwitch label="开关" v-model="formData.value_3"></MSwitch>
-  </MPage>
+  </view>
 </template>
 
 <script>
