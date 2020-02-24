@@ -1,28 +1,25 @@
 <template>
   <view class="swiper-tab-wrap">
-    <view class="top-warp m-flex m-align-center">
+    <view class="top-warp">
       <view
-        class="m-flex m-flex-item m-align-center m-justify-center"
+        class="tab-slide"
         v-for="(tab, i) in tabs"
         :key="i"
         :class="{ active: curIndex === i }"
         @click="$emit('change', i)"
       >
-        {{ tab }}
+        <view class="tab-text">{{ tab }}</view>
+        <view class="tab-bottom"></view>
       </view>
     </view>
-    <view :style="{ height: height }" class="swiper-content">
-      <slot></slot>
-    </view>
+    <view :style="{ height: height }" class="swiper-content"><slot></slot></view>
   </view>
 </template>
 
 <script>
 export default {
   name: 'swiper-tab-wrap',
-  mounted() {
-    
-  },
+  mounted() {},
   props: {
     tabs: {
       type: Array,
@@ -48,20 +45,43 @@ export default {
 }
 
 .top-warp {
+  display: flex;
+  justify-content: center;
   z-index: 10;
-  /* css变量 */
   width: 100%;
-  height: 80rpx;
-  background-color: $uni-bg-color-navbar;
-  color: $uni-text-color-grey;
-  border-bottom: 1upx solid $uni-color-primary;
-  view {
-    height: 80rpx;
-    font-size: 28rpx;
+  height: 88rpx;
+  background-color: #ffffff;
+  color: #70767f;
+  .tab-slide {
+    position: relative;
+    height: 88rpx;
+    font-size: 30rpx;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-top: 5rpx;
+    .tab-text{ 
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .tab-bottom {
+      display: none; 
+      flex: 0 0 10rpx; 
+      width: 20%;
+      border-radius: 6rpx;
+      background-color: #1371f7;
+    }
   }
-  .active {
-    border-bottom: 2rpx solid #ffffff;
-    color: #ffffff;
+  .tab-slide.active {
+    font-size: 36rpx;
+    color: #2f2f2f;
+    .tab-bottom {
+      display: initial;
+    }
   }
 }
 .swiper-content {

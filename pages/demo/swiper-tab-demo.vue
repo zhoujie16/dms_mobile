@@ -8,13 +8,13 @@
       >
       <swiper style="height: 100%;" class="swiper-wrap" :current="curIndex" @change="swiperChange">
         <swiper-item>
-          <view style="background-color: red;height: 100%;"></view>
+          <view style="background-color: #F2F6FC;height: 100%;"></view>
         </swiper-item>
         <swiper-item>
-          <view style="background-color: yellow;height: 100%;"></view>
+          <view style="background-color: #EBEEF5;height: 100%;"></view>
         </swiper-item>
         <swiper-item>
-          <view style="background-color: blue;height: 100%;"></view>
+          <view style="background-color: #E4E7ED;height: 100%;"></view>
         </swiper-item>
       </swiper>
     </SwiperTab>

@@ -82,7 +82,7 @@ export default {
           title: 'tabs',
           clickFn: async () => {
             const [err, res] = await uni.navigateTo({
-              url: '/pages/demo/ui-demo/button'
+              url: '/pages/demo/ui-demo/tabs'
             });
           }
         }
