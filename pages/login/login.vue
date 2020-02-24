@@ -50,7 +50,7 @@ export default {
       if (!res) {
         return;
       }
-      const res2 = await uni.switchTab({
+      const res2 = await uni.navigateTo({
         url: '/pages/tabBar/tabPage1/tabPage1'
       });
       console.log(res2);

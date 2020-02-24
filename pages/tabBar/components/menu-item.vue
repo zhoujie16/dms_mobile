@@ -1,7 +1,8 @@
 <template>
   <view class="grid-item-box">
     <view class="icon-wrap">
-       <fa-icon class="icon" :type="item.icon" size="30" color="#fff"></fa-icon>
+       <!-- <fa-icon class="icon" :type="item.icon" size="30" color="#fff"></fa-icon> -->
+       <image :src="item.image" class="img"></image>
     </view>
     <text class="text">{{ item.text }}</text>
   </view>
@@ -32,17 +33,18 @@ export default {
 }
 
 .text {
-  font-size: 30rpx;
-  color: $uni-text-color-inverse;
+  font-size: $uni-m-font-size-f4;
+  color: $uni-m-color-c17;
 }
 
 .icon-wrap {
-  width: 90rpx;
-  margin-top: 20rpx;
-  margin-bottom: 40rpx;
-  height: 90rpx;
+  width: 80rpx;
+  // margin-top: 20rpx;
+  margin-bottom: 12rpx;
+  height: 80rpx;
   display: flex;
   justify-content: center;
   align-items: center;
+  overflow: hidden;
 }
 </style>

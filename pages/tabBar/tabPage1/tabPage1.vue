@@ -13,7 +13,7 @@
     <HomeHeader></HomeHeader>
     <!-- 菜单 -->
     <view class="menu-wrap">
-      <uni-grid :column="3" :highlight="true" @change="gridItemClick">
+      <uni-grid :column="4" :highlight="true" @change="gridItemClick">
         <uni-grid-item v-for="(item, index) in list" :key="index">
           <MenuItem :item="item"></MenuItem>
         </uni-grid-item>
@@ -52,63 +52,68 @@ export default {
       isShowDrawer: false,
       list: [
         {
-          icon: 'search',
+          image: '../../../static/image/yuyuejiancha.svg',
           text: '预约检查',
           path: '/pages/appointment-check/appointment-check'
         },
         {
-          icon: 'handshake-o',
+          image: '../../../static/image/waiguanjiancha.svg',
           text: '车辆预检',
           // path: '/pages/demo/base-demo'
           path: '/pages/customer-reception/customer-reception'
         },
         {
-          icon: 'file-text',
+          image: '../../../static/image/kuaisugongdan.svg',
           text: '快速工单',
           path: '/pages/rapid-order/rapid-order'
         },
         {
-          icon: 'spinner',
+          image: '../../../static/image/jinduchaxun.svg',
           text: '进度查询',
           path: '/pages/progress-query/progress-query'
         },
         {
-          icon: 'calendar-check-o',
+          image: '../../../static/image/neishijiancha.svg',
           text: '车辆检查',
           path: '/pages/vehicle-inspection/vehicle-inspection'
         },
         {
-          icon: 'car',
+          image: '../../../static/image/jiaoche.svg',
           text: '交车',
           path: '/pages/vehicles-delivery/vehicles-delivery'
         },
         {
-          icon: 'cogs',
+          image: '../../../static/image/fuwugongju.svg',
           text: '服务工具',
           path: '/pages/services-tools/index'
         },
         {
-          icon: 'tasks',
+          image: '../../../static/image/fuwubaobiao.svg',
           text: '服务报表',
           path: '/pages/qcReport/qcReport'
         },
         {
-          icon: 'bell-o',
+          image: '../../../static/image/shouhoubaobiao.svg',
+          text: '售后报表',
+          path: '/pages/tabBar/tabPage3/tabPage3'
+        },
+        {
+          image: '../../../static/image/xiaoxitixing.svg',
           text: '消息提醒',
           path: '/pages/remind/remind'
         },
         {
-          icon: 'desktop',
+          image: '../../../static/image/yuyuejiancha.svg',
           text: 'Demo',
           path: '/pages/demo/base-demo'
         },
         {
-          icon: 'desktop',
+          image: '../../../static/image/yuyuejiancha.svg',
           text: 'Demo2',
           path: '/pages/demo/base-demo2'
         },
         {
-          icon: 'desktop',
+          image: '../../../static/image/yuyuejiancha.svg',
           text: 'UI-DEMO',
           path: '/pages/demo/ui-demo/ui-demo'
         }
@@ -136,7 +141,7 @@ export default {
 
 <style lang="scss">
 .page-wrap {
-  background-color: $uni-bg-color-page;
+  background-color: $uni-m-color-cwhite;
 }
 /* 通知 */
 .notice-bar {

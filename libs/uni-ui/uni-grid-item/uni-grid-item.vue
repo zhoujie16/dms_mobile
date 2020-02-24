@@ -1,8 +1,11 @@
 <template>
 	<view v-if="width" :style="'width:'+width+';'+(square?'height:'+width:'')" class="uni-grid-item">
-		<view :class="{ 'uni-grid-item--border': showBorder,  'uni-grid-item--border-top': showBorder && index < column, 'uni-highlight': highlight }" :style="{  'border-right-color': borderColor ,'border-bottom-color': borderColor ,'border-top-color': borderColor }" class="uni-grid-item__box" @click="_onClick">
+		<!-- <view :class="{ 'uni-grid-item--border': showBorder,  'uni-grid-item--border-top': showBorder && index < column, 'uni-highlight': highlight }" :style="{  'border-right-color': borderColor ,'border-bottom-color': borderColor ,'border-top-color': borderColor }" class="uni-grid-item__box" @click="_onClick">
 			<slot />
-		</view>
+		</view> -->
+    <view :class="{ 'uni-grid-item--border': showBorder,  'uni-grid-item--border-top': showBorder && index < column, 'uni-highlight': highlight }"  class="uni-grid-item__box" @click="_onClick">
+    	<slot />
+    </view>
 	</view>
 </template>
 
@@ -73,18 +76,18 @@
 
 	.uni-grid-item--border {
 		position: relative;
-		border-bottom-color: #e5e5e5;
+		/* border-bottom-color: #e5e5e5;
 		border-bottom-style: solid;
 		border-bottom-width: 1px;
 		border-right-color: #e5e5e5;
 		border-right-style: solid;
-		border-right-width: 1px;
+		border-right-width: 1px; */
 	}
 
 	.uni-grid-item--border-top {
-		border-top-color: #e5e5e5;
+	/* 	border-top-color: #e5e5e5;
 		border-top-style: solid;
-		border-top-width: 1px;
+		border-top-width: 1px; */
 		/* #ifndef APP-NVUE */
 		height: 100%;
 		box-sizing: border-box;
