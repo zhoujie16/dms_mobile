@@ -420,7 +420,7 @@ export default {
 <style lang="scss" scoped>
 .page-wrap {
   min-height: 100vh;
-  background-color: $uni-bg-color-page;
+  // background-color: $uni-bg-color-page;
   .container {
     padding: 20rpx;
     .content {
@@ -535,14 +535,13 @@ export default {
     }
   }
   .check {
-    // width: 70%;
     height: 88rpx;
     line-height: 88rpx;
     margin: 30rpx 120rpx;
     text-align: center;
-    background-color:$uni-bg-color-page;
+    background-color:#1371F7;
     border-radius: 50rpx;
-    color: #09BB07;
-    border: 3rpx solid #09BB07;
+    color: #FFFFFF;
+    // border: 3rpx solid #09BB07;
   }
 </style>
