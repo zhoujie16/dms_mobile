@@ -92,7 +92,7 @@ export default {
 
 <style lang="scss">
   .swiper-wrap {
-    background-color: $uni-bg-color-page;
+    background-color: $uni-m-color-white-pressed;
     position: absolute;
     top: 0;
     right: 0;

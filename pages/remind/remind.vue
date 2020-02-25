@@ -1,6 +1,6 @@
 <template>
   <MPage ref="MPage" type="primary">
-    <BaseScroll
+    <!-- <BaseScroll
       :height="scrollHeight"
       :fetchApi="fetchApi"
       :fetchParams="fetchParams"
@@ -18,7 +18,15 @@
           :cell="data"
         ></RemindCell>
       </view>
-    </BaseScroll>
+    </BaseScroll> -->
+    <view style="padding: 20rpx;">
+      <RemindCell
+        @click="scrollCellClick(data)"
+        v-for="(data, i) in dataSource"
+        :key="i"
+        :cell="data"
+      ></RemindCell>
+    </view>
   </MPage>
 </template>
 
@@ -35,7 +43,7 @@ export default {
     return {
       fetchApi: AjaxScrollData,
       fetchParams: {},
-      dataSource: []
+      dataSource: [1,2,3]
     };
   },
   methods: {

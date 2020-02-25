@@ -30,28 +30,28 @@
     <view class="r-padding uni-common-mt">
       <label class="r-list-cell" @click="tabUrl(reportData.incomeText)">
         <view>
-          <text class="r-icon-box"><uni-icons type="chat" size="30" color="#FFFFFF"></uni-icons></text>
+          <text class="r-icon-box"><uni-icons type="chat" size="30" color="$uni-m-color-c15-3"></uni-icons></text>
           {{ reportData.incomeText }}
         </view>
         <view class="r-list-count">{{ reportData.incomeMoney }}</view>
       </label>
       <label class="r-list-cell" @click="tabUrl(reportData.manHourText)">
         <view>
-          <text class="r-icon-box"><uni-icons type="chat" size="30" color="#FFFFFF"></uni-icons></text>
+          <text class="r-icon-box"><uni-icons type="chat" size="30" color="$uni-m-color-c15-3"></uni-icons></text>
           {{ reportData.manHourText }}
         </view>
         <view class="r-list-count">{{ reportData.manHourMoney }}</view>
       </label>
       <label class="r-list-cell" @click="tabUrl(reportData.partText)">
         <view>
-          <text class="r-icon-box"><uni-icons type="chat" size="30" color="#FFFFFF"></uni-icons></text>
+          <text class="r-icon-box"><uni-icons type="chat" size="30" color="$uni-m-color-c15-3"></uni-icons></text>
           {{ reportData.partText }}
         </view>
         <view class="r-list-count">{{ reportData.partMoney }}</view>
       </label>
       <label class="r-list-cell" @click="tabUrl(reportData.flowText)">
         <view>
-          <text class="r-icon-box"><uni-icons type="chat" size="30" color="#FFFFFF"></uni-icons></text>
+          <text class="r-icon-box"><uni-icons type="chat" size="30" color="$uni-m-color-c15-3"></uni-icons></text>
           {{ reportData.flowText }}
         </view>
         <view class="r-list-count">{{ reportData.flowMoney }}</view>
@@ -91,9 +91,9 @@ export default {
   // line-height: 150rpx;
 }
 .r-content {
-  border-right: 2rpx solid #113571;
-  border-bottom: 2rpx solid #113571;
-  color: #ffffff;
+  border-right: 2rpx solid $uni-m-color-c4-2;
+  border-bottom: 2rpx solid $uni-m-color-c4-2;
+  color: $uni-m-color-c15-3;
   .count {
     font-size: 48rpx;
     display: block;
@@ -109,13 +109,13 @@ export default {
     justify-content: space-between;
     align-items: center;
     line-height: 140rpx;
-    color: $uni-text-color-inverse;
+    color: $uni-m-color-c15-3;
     .r-icon-box {
       display: inline-block;
       width: 100rpx;
     }
     .r-list-count {
-      color: #86fdcc;
+      color: $uni-m-color-c12;
       font-size: 32rpx;
     }
   }

@@ -53,7 +53,7 @@ export default {
 
 <style lang="scss" scoped>
 .container {
-  background-color: $uni-bg-color-page;
+  // background-color: $uni-bg-color-page;
   padding: 5rpx 8rpx;
   position: relative;
   .content {
