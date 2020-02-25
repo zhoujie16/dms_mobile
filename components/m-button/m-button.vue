@@ -1,146 +1,92 @@
 <template>
-  <view class="container">
-    <button @click="buttonHandler" :class="styles" :disabled="disabled">{{text}}</button>
-  </view>
+  <button
+    class="m-button"
+    :size="size"
+    @click="btnHandleClick"
+    :type="type"
+    :plain="plain"
+    :loading="loading"
+    :disabled="disabled"
+    :block="block"
+  >
+    <slot name="default"></slot>
+  </button>
 </template>
 
 <script>
-	export default {
-    name: 'm-button',
-    props: {
-      // 按钮中显示的文字
-      text: {
-        type: String,
-        default: '正常'
-      },
-      // 是否启用按钮
-      disabled: {
-        type: Boolean,
-        default: false
-      },
-      // 按钮形状
-      design: {
-        type: String,
-        default: 'fillet'
-      },
-      // 矢量图标
-      // icon: String,
-     // 内置按钮风格
-      type: {
-        type: String,
-        default: 'primary'
-      }
+export default {
+  name: 'm-button',
+  props: {
+    type: {
+      type: String,
+      default: 'default'
     },
-		data() {
-			return {
-				
-			}
-		},
-    computed: {
-
-        /* 根据不同的props，展示按钮样式 */
-        styles: {
-            get() {
-              console.log(this.type,'type')
-                return ['m-button',this.design, this.type]
-            }
-        }
+    size: {
+      type: String,
+      default: 'default'
     },
-		methods: {
-      // 按钮点击时触发的事件，用于父组件中使用
-			buttonHandler() {
-        this.$emit('click')
-      }
-		}
-	}
+    loading: {
+      type: Boolean,
+      default: false
+    },
+    plain: {
+      type: Boolean,
+      default: false
+    },
+    disabled: {
+      type: Boolean,
+      default: false
+    },
+    block: {
+      type: Boolean,
+      default: false
+    }
+  },
+  data() {
+    return {};
+  },
+  computed: {},
+  methods: {
+    btnHandleClick() {}
+  }
+};
 </script>
 
 <style lang="scss">
-  /* primary style */
-  .primary {
-      background-color: #1371F7;
-      font-size: 18px;
-      color: #FFFFFF;
-      width: 296px;
-      height: 40px;
-      line-height: 40px;
-      text-align: center;
+.m-button {
+  height: 80rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 80rpx;
+  &[type='default'] {
+    border: solid 1rpx #2f84eb;
+    color: #1371f7;
   }
-  .primary:active {
-      background-color: #095ED8;
-      color: #FFFFFF;
-      // border: none;
+  &[type='primary'] {
+    border: solid 1rpx #1371f7;
+    background-color: #1371f7;
   }
-  .primary:hover{
-      cursor: pointer;
-      background-color: #095ED8;
+  &[type='warn'] {
+    border: solid 1rpx #fe4766;
+    background-color: #fe4766;
   }
-  .primary:disabled{
-      background-color: #E1E1E1;
-      color: #FFFFFF;
-      border: none;
-      cursor: not-allowed;
+  &[plain] {
+    border: solid 1rpx #2f84eb;
+    background-color: initial;
   }
-  /* warning style*/
-  .warning {
-      color: #FFFFFF;
-      background-color: #FE4766;
-      font-size: 18px;
-      width: 296px;
-      border: none;
+  &[disabled] {
+    border: solid 1rpx #e1e1e1;
+    background-color: #e1e1e1;
+    color: #ffffff;
   }
-  .warning:active {
-      background-color: #ED3B59;
-      color: #FFFFFF;
-      border: none;
+  &[block] {
+    border-radius: 0rpx;
   }
-  .warning:hover{
-      cursor: pointer;
-      background-color: #ED3B59;
+  &[size=mini]{
+    display: inline-block;
+    height: 60rpx;
+    border-radius: 60rpx;
   }
-  .warning:disabled{
-      background-color: #E1E1E1;
-      color: #FFFFFF;
-      border: none;
-      cursor: not-allowed;
-  }
-  /*normal style*/
-  .normal {
-      width: 296px;
-      border: 1px solid #2F84EB;
-      background-color: #F5F5F5;
-      font-size: 18px;
-      color: #1371F7;
-  }
-  .normal:hover {
-      cursor: pointer;
-      background-color: #E2EFFF;
-  }
-  .normal:active {
-      color: #000;
-      border: 1px solid #2F84EB;
-      background-color: #E2EFFF;
-  }
-  .normal:disabled {
-      cursor: not-allowed;
-      border: 1px solid #EFEFEF;
-      background-color: #F5F5F5;
-      color: #C3C3C3;
-      opacity: 0.8;
-  }
-  /* 半圆 */
-  .oval {
-      border-radius: 50px;
-  }
-  /* 圆角 */
-  .fillet {
-      border-radius: 15px;
-  }
-  /* 圆 */
-  .circle {
-      /*宽高相等才能成为圆,但从视觉上来看，width比height多5px更为好看*/
-      width: 50px;
-      height: 45px;
-      border-radius: 50%;
-  }
+}
 </style>

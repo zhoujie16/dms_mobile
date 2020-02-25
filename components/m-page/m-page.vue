@@ -36,7 +36,7 @@ export default {
   position: relative;
   width: 100%;
   height: 100vh;
-  overflow: hidden;
+  overflow: auto;
   /* #ifdef H5 */
   height: calc(100vh - 88rpx);
   /* #endif */
