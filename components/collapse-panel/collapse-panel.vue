@@ -51,17 +51,29 @@ export default {
       height: 100rpx;
       justify-content: space-between;
       align-items: center;
-      border: solid 1px #EFEFEF;
+      border: solid 1px #efefef;
       padding: 0 30rpx;
       .title {
+        position: relative;
         font-size: 34rpx;
         font-weight: 500;
+        padding-left: 20rpx;
+      }
+      .title:after {
+        content: '';
+        position: absolute;
+        display: inline-block;
+        height: 34rpx;
+        width: 6rpx;
+        border-radius: 4rpx;
+        background-color: #1371f7;
+        left: 0;
+        top: 8rpx;
       }
       .right {
       }
     }
     .collapse-panel-content {
-      
     }
   }
 }

@@ -5,15 +5,16 @@
       <view class="m-status-bar"></view>
       <!-- 自定义导航栏 -->
       <uni-nav-bar class="nav-bar" left-icon="arrowleft" title="工单信息" @clickLeft="back" />
+      <view class="status-bar-bg"></view>
+    </view>
+    <view class="page-body">
       <view class="title-panel">
         <view class="title-panel-inner">
           <view class="customer-info">王大锤 - 沪ADC520</view>
           <view class="car-info">皮蛋卡丁车 1.5L AT</view>
         </view>
+        <view class="title-panel-bg"></view>
       </view>
-      <view class="status-bar-bg"></view>
-    </view>
-    <view class="page-body">
       <CollapsePanel title="基本信息">
         <template slot="default">
           <MLabel label="车主">王大锤</MLabel>
@@ -99,19 +100,30 @@ export default {
     position: absolute;
     top: 0;
     right: 0;
-    bottom: 100rpx;
+    bottom: 0;
     left: 0;
     background: linear-gradient(to right, #41c5ff, #1371f7);
     z-index: 0;
   }
 }
 .title-panel {
+  position: relative;
   height: 200rpx;
   height: 200rpx;
   padding: 10rpx 30rpx 30rpx 30rpx;
   display: flex;
   justify-content: center;
   align-items: center;
+  background-color: #ffffff;
+  .title-panel-bg{
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 110rpx;
+    left: 0;
+    background: linear-gradient(to right, #41c5ff, #1371f7);
+    z-index: 0;
+  }
   .title-panel-inner {
     width: 100%;
     height: 160rpx;
@@ -137,7 +149,7 @@ export default {
   }
 }
 .page-body {
-  height: calc(100vh - 288rpx);
+  height: calc(100vh - 128rpx);
   overflow: auto;
 }
 </style>

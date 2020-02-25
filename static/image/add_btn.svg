@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="60px" height="60px" viewBox="0 0 60 60" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 60 (88103) - https://sketch.com -->
+    <title>icon/cell/Telephone@2x</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <linearGradient x1="87.3159436%" y1="93.5038149%" x2="14.955358%" y2="8.0039006%" id="linearGradient-1">
+            <stop stop-color="#5A9EFF" offset="0%"></stop>
+            <stop stop-color="#1371F7" offset="100%"></stop>
+        </linearGradient>
+        <path d="M30.1059353,54.2920349 C16.7130301,54.2920349 5.85593529,43.4349401 5.85593529,30.0420349 C5.85593529,16.6491298 16.7130301,5.79203495 30.1059353,5.79203495 C43.4988405,5.79203495 54.3559353,16.6491298 54.3559353,30.0420349 C54.3559353,43.4349401 43.4988405,54.2920349 30.1059353,54.2920349 Z" id="path-2"></path>
+        <filter x="-24.7%" y="-24.7%" width="149.5%" height="149.5%" filterUnits="objectBoundingBox" id="filter-4">
+            <feOffset dx="0" dy="0" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="4" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feColorMatrix values="0 0 0 0 0.736116159   0 0 0 0 0.832969486   0 0 0 0 0.985167572  0 0 0 1 0" type="matrix" in="shadowBlurOuter1"></feColorMatrix>
+        </filter>
+    </defs>
+    <g id="快速工单" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="快速工单-列表" transform="translate(-305.000000, -597.000000)">
+            <g id="icon/face/more" transform="translate(305.000000, 597.000000)">
+                <mask id="mask-3" fill="white">
+                    <use xlink:href="#path-2"></use>
+                </mask>
+                <g id="Mask" fill-rule="nonzero" transform="translate(30.105935, 30.042035) rotate(-180.000000) translate(-30.105935, -30.042035) ">
+                    <use fill="black" fill-opacity="1" filter="url(#filter-4)" xlink:href="#path-2"></use>
+                    <use fill="url(#linearGradient-1)" xlink:href="#path-2"></use>
+                </g>
+                <path d="M30.2842093,20.1031143 C31.0315713,20.1031143 31.6374279,20.7089709 31.6374279,21.4563329 L31.6367578,28.7801143 L38.6615393,28.7808516 C39.4089012,28.7808516 40.0147578,29.3867082 40.0147578,30.1340702 C40.0147578,30.8814322 39.4089012,31.4872887 38.6615393,31.4872887 L31.6367578,31.4871143 L31.6374279,38.7498958 C31.6374279,39.4972577 31.0315713,40.1031143 30.2842093,40.1031143 C29.5368473,40.1031143 28.9309908,39.4972577 28.9309908,38.7498958 L28.9307578,31.4871143 L21.3679764,31.4872887 C20.6206144,31.4872887 20.0147578,30.8814322 20.0147578,30.1340702 C20.0147578,29.3867082 20.6206144,28.7808516 21.3679764,28.7808516 L28.9307578,28.7801143 L28.9309908,21.4563329 C28.9309908,20.7089709 29.5368473,20.1031143 30.2842093,20.1031143 Z" id="合并形状" fill="#FFFFFF" fill-rule="nonzero" mask="url(#mask-3)"></path>
+            </g>
+        </g>
+    </g>
+</svg>

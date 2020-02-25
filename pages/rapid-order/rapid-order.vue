@@ -39,7 +39,9 @@
     </view>
     <!-- 弹窗内容 -->
     <view class="popup-group">
-      
+      <view class="add-btn" @click="addOrderBtnClick">
+        <image class="add-btn" src="../../static/image/add_btn.svg" mode="scaleToFill"></image>
+      </view>
       <MPopup ref="mPopup_addorder" type="center" title="新建工单">
         <OrderCell v-for="item in [1, 2]" @click.native="orderCellClick"></OrderCell>
       </MPopup>
@@ -79,8 +81,11 @@ export default {
       };
     },
     // 新建工单按钮
-    addOrderBtnClick() {
-      this.$refs.mPopup_addorder.open();
+    async addOrderBtnClick() {
+      // this.$refs.mPopup_addorder.open();
+      await uni.navigateTo({
+        url: '/pages/rapid-order/order-detail-edit'
+      });
     },
     // 工单点击按钮
     async orderCellClick() {
@@ -121,4 +126,12 @@ export default {
 };
 </script>
 
-<style lang="scss"></style>
+<style lang="scss">
+.add-btn {
+  position: fixed;
+  width: 120rpx;
+  height: 120rpx;
+  right: 20rpx;
+  bottom: 20rpx;
+}
+</style>

@@ -36,10 +36,7 @@ export default {
   position: relative;
   width: 100%;
   height: 100vh;
-  overflow: auto;
-  /* #ifdef H5 */
-  height: calc(100vh - 88rpx);
-  /* #endif */
+  overflow: hidden;
   &.default{
     background-color:$uni-m-color-white-pressed;
   }

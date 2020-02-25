@@ -121,7 +121,7 @@ export default {
   background-color: #f9f9f9;
   color: $uni-text-color-info;
   &.active {
-    background-color: #f9f9f9;
+    background-color: #f0f3ff;
     color: #1371f7;
   }
 }

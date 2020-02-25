@@ -146,6 +146,12 @@
         "navigationStyle": "custom"
       }
     }, {
+      "path": "pages/rapid-order/order-detail-edit",
+      "style": {
+        "navigationBarTitleText": "新建工单",
+        "navigationStyle": "custom"
+      }
+    }, {
       "path": "pages/tabBar/tabPage3/report-detail",
       "style": {
         "navigationBarTitleText": "服务报表"
