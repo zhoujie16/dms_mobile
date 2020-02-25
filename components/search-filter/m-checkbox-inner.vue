@@ -104,6 +104,8 @@ export default {
 .m-checkbox-inner {
   display: flex;
   flex-wrap: wrap;
+  // 我勒个擦 这下面 我不加 important APP里 就变成了 flex-end
+  justify-content: flex-start !important;
 }
 .m-col {
   height: 100rpx;
