@@ -2,17 +2,14 @@
   <!-- 折叠面板 -->
   <view class="collapse-panel-wrap">
     <view class="collapse-panel-inner">
-      <view class="uni-flex uni-row collapse-panel-item" @click="cellTitleClick">
-        <view class="flex-item ">{{ title }}</view>
-        <view class="flex-item" style="text-align: right;">
-          <uni-icons
-            :type="isShowDetail ? 'arrowup' : 'arrowdown'"
-            size="30"
-            color="#CCCCCC"
-          ></uni-icons>
+      <view class="collapse-panel-title" @click="cellTitleClick">
+        <view class="title">{{ title }}</view>
+        <view class="right">
+          <text v-if="isShowDetail" class="m-iconfont">&#xe718;</text>
+          <text v-else class="m-iconfont">&#xe71c;</text>
         </view>
       </view>
-      <view class="collapse-panel-content" v-if="isShowDetail"><slot></slot></view>
+      <view class="collapse-panel-content" v-if="isShowDetail"><slot name="default"></slot></view>
     </view>
   </view>
 </template>
@@ -30,7 +27,7 @@ export default {
   mounted() {},
   data() {
     return {
-      isShowDetail: false
+      isShowDetail: true
     };
   },
   methods: {
@@ -45,22 +42,26 @@ export default {
 <style lang="scss">
 .collapse-panel-wrap {
   background-color: #ffffff;
-  border-radius: 20rpx;
+  border-radius: 10rpx;
   overflow: hidden;
-  padding-bottom: 20rpx;
+  margin-bottom: 20rpx;
   .collapse-panel-inner {
-    .collapse-panel-item {
-      padding: 30rpx 40rpx;
-      border-bottom: solid 1rpx #eeeeee;
-      .title{
-        font-weight: 600;
+    .collapse-panel-title {
+      display: flex;
+      height: 100rpx;
+      justify-content: space-between;
+      align-items: center;
+      border: solid 1px #EFEFEF;
+      padding: 0 30rpx;
+      .title {
+        font-size: 34rpx;
+        font-weight: 500;
+      }
+      .right {
       }
     }
-    .flex-item{
-      width: 50%;
-    }
     .collapse-panel-content {
-      padding: 0 40rpx;
+      
     }
   }
 }

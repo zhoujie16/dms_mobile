@@ -1,20 +1,24 @@
 <template>
   <!-- 快速工单 -->
-  <MPage ref="MPage" type="primary">
-    <NavBarSelect>
-      <NavBarSelectItem @click="showPickerSelect" title="交车"></NavBarSelectItem>
-      <NavBarSelectItem @click="showPickerDate" title="开单日期"></NavBarSelectItem>
-      <NavBarSelectItem @click="showSearchFilter" title="高级筛选"></NavBarSelectItem>
-    </NavBarSelect>
-    <view class="search-filter">
-      <search-filter ref="searchFilter">
+  <MPage ref="MPage">
+    <view class="m-status-bar"></view>
+    <!-- 自定义导航栏 -->
+    <uni-nav-bar left-icon="arrowleft" title="快速工单" @clickLeft="back" />
+    <!-- 筛选组件 -->
+    <search-filter ref="searchFilter">
+      <!-- 自定义面板 -->
+      <template slot="panel">
+        <view class="m-flex m-justify-center m-align-center">自定义区域</view>
+      </template>
+      <!-- 弹窗的表单 -->
+      <template slot="form">
         <SearchForm @confirm="searchFormConfirm"></SearchForm>
-      </search-filter>
-    </view>
+      </template>
+    </search-filter>
     <!-- 数据列表 -->
     <view>
       <BaseScroll
-        :top="100"
+        :height="scrollHeight"
         :fetchApi="fetchApi"
         :fetchParams="fetchParams"
         @listChange="
@@ -23,20 +27,19 @@
           }
         "
       >
-        <!-- 自行循环列表，数据源是 dataSource -->
-        <view class="base-scroll-inner" style="padding: 0 20rpx;">
+        <view slot="scroll" style="padding: 20rpx;">
           <ScrollCell
-            class="base-scroll-inner"
-            @click="scrollCellClick"
+            @click.native="scrollCellClick(data)"
             v-for="(data, i) in dataSource"
             :key="i"
           ></ScrollCell>
         </view>
       </BaseScroll>
+      <!--  <view class="" style="padding: 20rpx;"><ScrollCell></ScrollCell></view> -->
     </view>
     <!-- 弹窗内容 -->
     <view class="popup-group">
-      <MFadBtn @click.native="addOrderBtnClick">新建工单</MFadBtn>
+      
       <MPopup ref="mPopup_addorder" type="center" title="新建工单">
         <OrderCell v-for="item in [1, 2]" @click.native="orderCellClick"></OrderCell>
       </MPopup>
@@ -56,6 +59,7 @@ export default {
     SearchForm
   },
   data() {
+    this.scrollHeight = uni.getSystemInfoSync().windowHeight - 86 + 'px';
     return {
       fetchApi: AjaxScrollData,
       fetchParams: {},
@@ -63,6 +67,11 @@ export default {
     };
   },
   methods: {
+    async back() {
+      uni.navigateBack({
+        delta: 1
+      });
+    },
     searchFormConfirm() {
       this.$refs.searchFilter.hideDrawer();
       this.fetchParams = {
@@ -85,9 +94,8 @@ export default {
     // 列表点击事件
     async scrollCellClick(cell) {
       console.log('cellClick', cell);
-      return;
-      uni.navigateTo({
-        url: '/pages/demo/detail-demo'
+      await uni.navigateTo({
+        url: '/pages/rapid-order/order-detail'
       });
     },
     // 选择 交车状况
@@ -113,9 +121,4 @@ export default {
 };
 </script>
 
-<style lang="scss">
-.search-filter {
-  height: 0;
-  overflow: hidden;
-}
-</style>
+<style lang="scss"></style>

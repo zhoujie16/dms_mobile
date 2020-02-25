@@ -108,22 +108,7 @@
       "path": "pages/rapid-order/rapid-order",
       "style": {
         "navigationBarTitleText": "快速工单",
-        "app-plus": {
-          "titleNView": {
-            "searchInput": {
-              "backgroundColor": "#fff",
-              "borderRadius": "30px", //输入框圆角
-              "placeholder": "按车牌号查询维修工单"
-            },
-            "buttons": [ //原生标题栏按钮配置,
-              {
-                "text": "搜索",
-                "width": "80px",
-                "fontSize": "16px"
-              }
-            ]
-          }
-        }
+        "navigationStyle": "custom"
       }
     },
     {
@@ -157,7 +142,8 @@
     }, {
       "path": "pages/rapid-order/order-detail",
       "style": {
-        "navigationBarTitleText": "新建工单"
+        "navigationBarTitleText": "新建工单",
+        "navigationStyle": "custom"
       }
     }, {
       "path": "pages/tabBar/tabPage3/report-detail",

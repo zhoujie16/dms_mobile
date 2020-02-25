@@ -1,30 +1,22 @@
 <template>
   <view class="list-cell-wrap">
-    <view class="list-cell-wrap-inner">
-      <view class="list-cell-title" @click="cellTitleClick">
-        <view class="name">
-			<text class="radius"></text>赵铁柱</view>
-        <view class="info">
-          <view class="info-lab">沪ADC10083</view>
-          <view class="info-text">2020-01-01 16:16</view>
-        </view>
+    <view class="list-cell-inner">
+      <view class="list-cell-title">
+        <view class="l">王大锤</view>
+        <view class="r">2020-02-02 20:20</view>
       </view>
-      <view class="list-cell-content" v-if="isShowDetail" @click="cellClick">
+      <view class="list-cell-content">
         <view class="info-item">
-          <view class="info-item-lab">工单号：</view>
-          <view class="info-item-text">YJ2001020002</view>
+          <view class="l">工单编号</view>
+          <view class="r">123456789</view>
         </view>
         <view class="info-item">
-          <view class="info-item-lab">接待车型：</view>
-          <view class="info-item-text">全新福克斯三厢 1.6MT</view>
+          <view class="l">服务顾问</view>
+          <view class="r">张全蛋</view>
         </view>
         <view class="info-item">
-          <view class="info-item-lab">接待顾问：</view>
-          <view class="info-item-text">张全蛋</view>
-        </view>
-        <view class="info-item">
-          <view class="info-item-lab">服务技师：</view>
-          <view class="info-item-text">王大锤</view>
+          <view class="l">服务技师</view>
+          <view class="r">王二狗</view>
         </view>
       </view>
     </view>
@@ -36,78 +28,55 @@ export default {
   components: {},
   name: 'list-cell-wrap',
   props: {
-    cell: Object
-  },
-  mounted() {
-    console.log('list-cell-wrap', 'mounted');
-  },
-  data() {
-    return {
-      isShowDetail: false
-    };
-  },
-  methods: {
-    change() {},
-    cellTitleClick() {
-      this.isShowDetail = !this.isShowDetail;
-    },
-    cellClick() {
-      this.$emit('click');
+    cellData: {
+      type: Object
     }
-  }
+  },
+  mounted() {},
+  data() {
+    return {};
+  },
+  methods: {}
 };
 </script>
 
 <style lang="scss">
 .list-cell-wrap {
-}
-
-.list-cell-wrap-inner {
-  width: 100%;
-  border-radius: 10rpx;
-  overflow: hidden;
   background-color: #ffffff;
-  margin-bottom: 30rpx;
-}
-.list-cell-title {
-  padding: 10rpx 20rpx;
-  .name {
-    padding: 10rpx 0;
-    font-weight: 500;
-	.radius {
-		background-color: pink;
-		float: left;
-    border-radius: 50%;
-		width: 20rpx;
-		height: 20rpx;
-    margin-right: 20rpx;
-	}
-  }
-  .info {
-    color: #999999;
-    padding: 10rpx 0;
-    display: flex;
-    .info-lab {
-      flex: 0 0 200rpx;
+  padding: 20rpx 30rpx;
+  border-radius: 10rpx;
+  margin-bottom: 20rpx;
+  .list-cell-inner {
+    .list-cell-title {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      height: 80rpx;
+      border-bottom: solid 1px #efefef;
+      .l {
+        font-size: 34rpx;
+      }
+      .r {
+        font-size: 26rpx;
+        color: #f57c40;
+      }
     }
-    .info-text {
-      flex: 1 1 auto;
-      text-align: right;
-    }
-  }
-}
-.list-cell-content {
-  background-color: #eeeeee;
-  padding: 10rpx 20rpx;
-  .info-item {
-    padding: 10rpx 0;
-    display: flex;
-    .info-item-lab {
-      flex: 0 0 200rpx;
-      color: #999999;
-    }
-    .info-item-text {
-      flex: 1 1 auto;
+    .list-cell-content {
+      padding-top: 10rpx;
+      .info-item {
+        display: flex;
+        height: 60rpx;
+        align-items: center;
+        font-size: 26rpx;
+        .l {
+          flex: 0 0 120rpx;
+          color: #70767f;
+        }
+        .r {
+          flex: 1;
+          padding-left: 20rpx;
+        }
+      }
     }
   }
 }

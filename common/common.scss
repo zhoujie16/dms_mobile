@@ -114,7 +114,11 @@ video {
   color: #70767F;
   padding-left: 10rpx;
 }
-
+// 状态栏站位
+.m-status-bar {
+  background-color: #FFFFFF;
+  height: var(--status-bar-height);
+}
 // 分隔符
 .m-break-space{
   width: 100%;
