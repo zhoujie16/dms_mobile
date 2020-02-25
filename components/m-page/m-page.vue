@@ -41,10 +41,10 @@ export default {
   height: calc(100vh - 88rpx);
   /* #endif */
   &.default{
-    background-color: #f9f9f9;
+    background-color:$uni-m-color-white-pressed;
   }
   &.primary{
-    background-color: $uni-bg-color-page;
+    background-color: $uni-m-color-white-pressed;
   }
 }
 </style>

@@ -1,31 +1,31 @@
 <template>
   <view class="list-cell-wrap">
     <view class="list-cell-wrap-inner">
-      <view class="list-cell-title" @click="cellTitleClick">
-        <view class="name">张全蛋</view>
-        <view class="info">
-          <view class="info-lab">沪ADC10083</view>
-          <view class="info-text">2020-01-01 16:16</view>
+      <view class="list-cell-title">
+        <view class="left">
+          <text class="vin">沪10001</text>
+          <text class="name">笑笑</text>
+        </view>
+        <view class="right">2020-01-09 10:23</view>
+      </view>
+      <view class="list-cell-content">
+        <view class="box">
+          <view class="label">预约单号</view>
+          <view >YO202001090001</view>
+        </view>
+        <view class="box">
+          <view class="label">工单号</view>
+          <view>RO202001090002</view>
+        </view>
+        <view class="box">
+          <view class="label">服务顾问</view>
+          <view>陆小鹏</view>
+        </view>
+        <view class="phone">
+          <image src="../../../../../static/image/dianhua2.svg" class="img"></image>
         </view>
       </view>
-      <view class="list-cell-content" v-if="isShowDetail" @click="cellClick">
-        <view class="info-item">
-          <view class="info-item-lab">预检单号：</view>
-          <view class="info-item-text">YJ2001020002</view>
-        </view>
-        <view class="info-item">
-          <view class="info-item-lab">工单号：</view>
-          <view class="info-item-text">YJ2001020002</view>
-        </view>
-        <view class="info-item">
-          <view class="info-item-lab">接待车型：</view>
-          <view class="info-item-text">全新福克斯三厢 1.6MT</view>
-        </view>
-        <view class="info-item">
-          <view class="info-item-lab">接待顾问：</view>
-          <view class="info-item-text">王大锤</view>
-        </view>
-      </view>
+    
     </view>
   </view>
 </template>
@@ -62,43 +62,56 @@ export default {
 }
 
 .list-cell-wrap-inner {
-  width: 100%;
-  border-radius: 10rpx;
+  // width: 100%;
+  border-radius: $uni-m-border-radius-b2;
   overflow: hidden;
   background-color: #ffffff;
-  margin-bottom: 30rpx;
+  padding:26rpx 30rpx;
+  margin: 20rpx;
 }
 .list-cell-title {
-  padding: 10rpx 20rpx;
-  .name {
-    padding: 10rpx 0;
-    font-weight: 500;
+  display: flex;
+  
+  border-bottom: 1rpx solid $uni-m-color-c4-2;
+  .left {
+    flex: 1;
+    margin-bottom: 20rpx;
+    .vin{
+      font-weight: 800;
+      font-size: $uni-m-font-size-f2;
+    }
+    .name{
+      display: inline-block;
+      margin-left: 20rpx;
+      border: 1rpx dashed $uni-m-color-c3;
+      background-color: $uni-m-color-c4;
+      padding: 0 20rpx;
+      font-size: $uni-m-font-size-f4;
+    }
   }
-  .info {
-    color: #999999;
-    padding: 10rpx 0;
-    display: flex;
-    .info-lab {
-      flex: 0 0 200rpx;
-    }
-    .info-text {
-      flex: 1 1 auto;
-      text-align: right;
-    }
+  .right{
+    color: $uni-m-color-c12;
+    margin-bottom: 20rpx;
   }
 }
-.list-cell-content {
-  background-color: #eeeeee;
-  padding: 10rpx 20rpx;
-  .info-item {
-    padding: 10rpx 0;
+.list-cell-content{
+  margin-top: 10rpx;
+  position: relative;
+  .box{
     display: flex;
-    .info-item-lab {
-      flex: 0 0 200rpx;
-      color: #999999;
+    height: 60rpx;
+    line-height: 60rpx;
+    .label{
+      flex:0 0 120rpx;
+      color:$uni-m-color-c2;
     }
-    .info-item-text {
-      flex: 1 1 auto;
+  }
+  .phone{
+    position: absolute;
+    bottom: -180rpx;
+    right: 30rpx;
+    .img{
+      width: 70rpx;
     }
   }
 }

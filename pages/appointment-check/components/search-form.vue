@@ -2,11 +2,15 @@
   <view>
     <view class="form-demo-wrap" @touchmove.prevent>
       <MInput v-model="cph" label="车牌号"></MInput> 
-      <MCheckbox label="服务顾问" v-model="fwgw" :itemList="itemList_fwgw" single></MCheckbox> 
+     <!-- <MCheckbox label="服务顾问" v-model="fwgw" :itemList="itemList_fwgw" :type="'popup'" single></MCheckbox> -->
+     <MCheckboxPanel
+       label="服务顾问"
+       type="inner"
+       v-model="fwgw"
+       :itemList="itemList_fwgw"
+     ></MCheckboxPanel>
       <MDatePicker label="开单日期" v-model="dateTest"></MDatePicker>
-      <view class="btn-v">
-        <button @click="formSubmit" type="primary" class="submit-btn">查询</button>
-      </view>
+     
     </view>
   </view>
 </template>
