@@ -1,7 +1,18 @@
 <template>
   <uni-popup ref="popup" :type="type" @change="popupChange">
     <view class="m-popup-wrap" :class="[type]">
-      <view class="m-popup-title">{{ title }}</view>
+      <view v-if="type == 'bottom'">
+        <view class="m-popup-title">
+          <view class="title">{{ title }}</view>
+          <view class="icon">
+            <text class="m-iconfont iconfont" @click="deleteHandleCLICK">&#xe720;</text>
+          </view>
+        </view>
+      </view>
+      <view v-else>
+        <view class="m-popup-title">{{ title }}</view>
+      </view>
+      
       <view class="m-popup-content"><slot></slot></view>
     </view>
   </uni-popup>
@@ -32,7 +43,10 @@ export default {
     close() {
       this.$refs.popup.close();
     },
-    popupChange() {}
+    popupChange() {},
+    deleteHandleCLICK() {
+      this.$refs.popup.close();
+    }
   }
 };
 </script>
@@ -47,6 +61,25 @@ export default {
     display: flex;
     justify-content: center;
     align-items: center;
+  }
+  .m-popup-bottom {
+    display: flex;
+    padding: 26rpx 30rpx;
+    overflow: hidden;
+    .title {
+      flex: 1;
+      font-size: $uni-m-font-size-f2;
+      color: $uni-m-color-c1;
+      line-height: 80rpx;
+    }
+    .icon {
+      flex: 0 0 140rpx;
+      text-align: right;
+      .iconfont {
+        font-size: 70rpx;
+        color: $uni-m-color-c3;
+      }
+    }
   }
 }
 .m-popup-wrap.center {
@@ -67,13 +100,34 @@ export default {
   width: 750rpx;
   height: 60vh;
   .m-popup-title {
-    color: #333333;
-    font-size: $uni-font-size-lg;
-    border-bottom: solid 1px #888888;
+    display: flex;
+    padding: 26rpx 30rpx;
+    overflow: hidden;
+    .title {
+      flex: 1;
+      font-size: $uni-m-font-size-f2;
+      color: $uni-m-color-c1;
+      line-height: 80rpx;
+    }
+    .icon {
+      flex: 0 0 140rpx;
+      text-align: right;
+      .iconfont {
+        font-size: 70rpx;
+        color: $uni-m-color-c3;
+      }
+    }
   }
+  // .m-popup-title {
+  //   color: #333333;
+  //   font-size: $uni-font-size-lg;
+  //   border-bottom: solid 1px #888888;
+  // }
   .m-popup-content {
     position: relative;
-    height: calc(60vh - 80rpx); 
+    height: calc(60vh - 80rpx);
+    background: $uni-m-color-white-pressed;
+    padding: 20rpx;
   }
 }
 </style>
