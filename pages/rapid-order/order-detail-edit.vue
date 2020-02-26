@@ -93,9 +93,9 @@
       </CollapsePanel>
       <CollapsePanel title="时间中断">
         <template slot="default">
-          <MInput v-model="value_4" label="午间中断"></MInput>
-          <MInput v-model="value_4" label="午间中断"></MInput>
-          <MInput v-model="value_4" label="午间中断"></MInput>
+          <MTextArea v-model="value_4" label="午间中断"></MTextArea>
+          <view class="m-break-space"></view>
+          <MTextArea v-model="value_4" label="午间中断"></MTextArea>
         </template>
       </CollapsePanel>
       <CollapsePanel title="预计交车时间">

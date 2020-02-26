@@ -36,7 +36,7 @@ export default {
   position: relative;
   width: 100%;
   height: 100vh;
-  overflow: hidden;
+  overflow: auto;
   &.default{
     background-color:$uni-m-color-white-pressed;
   }

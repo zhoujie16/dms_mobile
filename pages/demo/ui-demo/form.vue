@@ -13,6 +13,9 @@
         <text class="m-label-after">自定义</text>
       </template>
     </MInput>
+    <view class="m-break-space"></view>
+    <MTextArea labbe="文本域" v-model="formData.value_1"></MTextArea>
+    <view class="m-break-space"></view>
     <MCheckbox
       label="单选 popup"
       type="popup"
@@ -26,6 +29,12 @@
       v-model="formData.value_2"
       :itemList="itemList_1"
       single
+    ></MCheckbox>
+    <MCheckbox
+      label="多选 inner"
+      type="inner"
+      v-model="formData.value_21"
+      :itemList="itemList_21"
     ></MCheckbox>
     <view class="m-break-space"></view>
     <MCheckboxPanel
@@ -55,19 +64,26 @@ const testArr_2 = [
   { text: '顾问9', value: 9 },
   { text: '顾问10', value: 10 }
 ];
+const testArr_3 = [
+  { text: '王', value: 1 },
+  { text: '大', value: 2 },
+  { text: '锤', value: 3 }
+];
 export default {
   data() {
     return {
       formData: {
         value_1: '',
         value_2: [],
+        value_21: [],
         value_22: [],
         value_3: false,
         value_date_1: ['2020-01-06'],
         value_date_2: ['2018-01-06', '2020-01-06']
       },
       itemList_1: [...testArr_1],
-      itemList_2: [...testArr_2]
+      itemList_2: [...testArr_2],
+      itemList_21: [...testArr_3]
     };
   }
 };
