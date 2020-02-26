@@ -1,14 +1,10 @@
 <template>
   <view class="cell-wrap">
-    <view class="order-title">YJ202012345</view>
-    <view class="order-detail-item">
-      <view class="t">沪ADC10086</view>
-      <view class="c">新福克斯</view>
+    <view class="left">
+      <text class="vin">沪10001</text>
+      <text class="name">笑笑</text>
     </view>
-    <view class="order-detail-item">
-      <view class="t">王大锤</view>
-      <view class="c">LVSHCAME445567734874365</view>
-    </view>
+    <view class="right">YJ2002180006</view>
   </view>
 </template>
 
@@ -16,22 +12,29 @@
 
 <style lang="scss">
 .cell-wrap {
-  padding: 0 20rpx;
-  border-bottom: solid 20rpx #EEEEEE;
-  .order-title {
-    padding: 10rpx 0;
-    font-size: $uni-font-size-base;
+  display: flex;
+  background: $uni-m-color-cwhite;
+  padding: 26rpx 30rpx;
+  margin-bottom: 20rpx;
+  border-radius: $uni-m-border-radius-b2;
+  .left {
+    flex: 1;
+    // margin-bottom: 20rpx;
+    .vin {
+      font-weight: 800;
+      font-size: $uni-m-font-size-f2;
+    }
+    .name {
+      display: inline-block;
+      margin-left: 20rpx;
+      border: 2rpx dashed $uni-m-color-c3;
+      background-color: $uni-m-color-c4;
+      padding: 0 20rpx;
+      font-size: $uni-m-font-size-f4;
+    }
   }
-  .order-detail-item {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10rpx 0;
-    font-size: $uni-font-size-sm;
-    .t {
-    }
-    .c {
-    }
+  .right {
+    color: $uni-m-color-c1;
   }
 }
 </style>

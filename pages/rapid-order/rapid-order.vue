@@ -7,9 +7,19 @@
     <!-- 筛选组件 -->
     <search-filter ref="searchFilter">
       <!-- 自定义面板 -->
-      <template slot="panel">
-        <view class="m-flex m-justify-center m-align-center">自定义区域</view>
-      </template>
+      <view slot="panel" class="panel-box">
+        <view v-for="(item, index) in itemList" :key="index" @click="changeIndex(index)">
+          <view
+            :class="[
+              { 'panel-tab-pressed': activeindex == index },
+              { 'panel-tab': activeindex !== index }
+            ]"
+          >
+            {{ item.title }}
+            <text>{{ item.count }}</text>
+          </view>
+        </view>
+      </view>
       <!-- 弹窗的表单 -->
       <template slot="form">
         <SearchForm @confirm="searchFormConfirm"></SearchForm>
@@ -42,7 +52,7 @@
       <view class="add-btn" @click="addOrderBtnClick">
         <image class="add-btn" src="/static/image/add_btn.svg" mode="scaleToFill"></image>
       </view>
-      <MPopup ref="mPopup_addorder" type="center" title="新建工单">
+      <MPopup ref="mPopup_addorder" type="bottom" title="新建工单">
         <OrderCell v-for="item in [1, 2]" :key="item" @click.native="orderCellClick"></OrderCell>
       </MPopup>
     </view>
@@ -65,7 +75,18 @@ export default {
     return {
       fetchApi: AjaxScrollData,
       fetchParams: {},
-      dataSource: []
+      dataSource: [],
+      activeindex: 0,
+      itemList: [
+        {
+          title: '为交车',
+          count: 0
+        },
+        {
+          title: '已交车',
+          count: 4
+        }
+      ]
     };
   },
   methods: {
@@ -73,6 +94,10 @@ export default {
       uni.navigateBack({
         delta: 1
       });
+    },
+    //已交车 未交车切换
+    changeIndex(index) {
+      this.activeindex = index;
     },
     searchFormConfirm() {
       this.$refs.searchFilter.hideDrawer();
@@ -82,15 +107,15 @@ export default {
     },
     // 新建工单按钮
     async addOrderBtnClick() {
-      // this.$refs.mPopup_addorder.open();
-      await uni.navigateTo({
-        url: '/pages/rapid-order/order-detail-edit'
-      });
+      this.$refs.mPopup_addorder.open();
+      // await uni.navigateTo({
+      //   url: '/pages/rapid-order/order-detail-edit'
+      // });
     },
     // 工单点击按钮
     async orderCellClick() {
       await uni.navigateTo({
-        url: '/pages/rapid-order/order-detail'
+        url: '/pages/rapid-order/order-detail-edit'
       });
     },
     showSearchFilter() {
@@ -126,7 +151,33 @@ export default {
 };
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
+.panel-box {
+  display: flex;
+  flex: 3;
+  .panel-tab {
+    width: 140rpx;
+    height: 40rpx;
+    line-height: 40rpx;
+    border-radius: $uni-m-border-radius-b1;
+    background-color: $uni-m-color-c5;
+    color: $uni-m-color-c1;
+    text-align: center;
+    margin-left: 30rpx;
+    margin-top: 30rpx;
+  }
+  .panel-tab-pressed {
+    width: 140rpx;
+    height: 55rpx;
+    line-height: 55rpx;
+    border-radius: $uni-m-border-radius-b1;
+    background-color: $uni-m-color-c11;
+    color: $uni-m-color-cwhite;
+    text-align: center;
+    margin-left: 30rpx;
+    margin-top: 20rpx;
+  }
+}
 .add-btn {
   position: fixed;
   width: 120rpx;

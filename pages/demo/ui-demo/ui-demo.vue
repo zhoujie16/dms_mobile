@@ -85,6 +85,14 @@ export default {
               url: '/pages/demo/ui-demo/tabs'
             });
           }
+        },
+        {
+          title: '左滑',
+          clickFn: async () => {
+            const [err, res] = await uni.navigateTo({
+              url: '/pages/demo/ui-demo/swipeActionItem'
+            });
+          }
         }
         
       ]

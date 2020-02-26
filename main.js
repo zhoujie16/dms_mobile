@@ -116,6 +116,9 @@ Vue.component("UniSteps", UniSteps);
 import UniSwipeAction from "@/libs/uni-ui/uni-swipe-action/uni-swipe-action.vue";
 Vue.component("UniSwipeAction", UniSwipeAction);
 
+import UniSwipeActionItem from "@/libs/uni-ui/uni-swipe-action-item/uni-swipe-action-item.vue";
+Vue.component("UniSwipeActionItem", UniSwipeActionItem);
+
 import UniSwiperDot from "@/libs/uni-ui/uni-swiper-dot/uni-swiper-dot.vue";
 Vue.component("UniSwiperDot", UniSwiperDot);
 

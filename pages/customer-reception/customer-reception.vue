@@ -1,14 +1,14 @@
 <template>
   <MPage ref="MPage" type="primary">
-     <view class="m-status-bar"></view>
+    <view class="m-status-bar"></view>
     <!-- 自定义导航栏 -->
-    <uni-nav-bar left-icon="arrowleft"  title="车辆预检" @clickLeft="back" @clickRight="handClick">
+    <uni-nav-bar left-icon="arrowleft" title="车辆预检" @clickLeft="back" @clickRight="handClick">
       <block slot="right">
-        <view> <text class="m-iconfont icon">&#xe721;</text></view>
+        <view><text class="m-iconfont icon">&#xe721;</text></view>
       </block>
     </uni-nav-bar>
     <SearchFilter ref="searchFilter" :isShow="false">
-      <searchForm @confirm="searchFormConfirm"></searchForm>
+      <view slot="form"><searchForm @confirm="searchFormConfirm"></searchForm></view>
     </SearchFilter>
     <BaseScroll
       :height="scrollHeight"
@@ -21,7 +21,9 @@
       "
     >
       <view slot="scroll" style="padding: 20rpx;">
-        <view v-for="(data, i) in dataSource" :key="i"><scrollCell @click="scrollCellClick(data)"></scrollCell></view>
+        <view v-for="(data, i) in dataSource" :key="i">
+          <scrollCell @click="scrollCellClick(data)"></scrollCell>
+        </view>
       </view>
     </BaseScroll>
 
@@ -68,7 +70,7 @@ export default {
       });
     },
     //
-    handClick(){
+    handClick() {
       this.$refs.searchFilter.open();
     },
     // 表单查询
@@ -88,7 +90,6 @@ export default {
 </script>
 
 <style lang="scss">
-
 .popup-group {
   position: fixed;
   width: 120rpx;
@@ -96,7 +97,7 @@ export default {
   right: 20rpx;
   bottom: 20rpx;
 }
-.icon{
+.icon {
   font-size: 42rpx;
 }
 </style>

@@ -322,7 +322,17 @@
         }
       }
     }
-  ],
+      ,{
+            "path" : "pages/demo/ui-demo/swipeActionItem",
+            "style" : {
+              "navigationBarTitleText": "SwipeAction 滑动操作",
+                      "disableScroll":true,
+                      "app-plus":{
+                          "bounce":"none"
+                      }
+            }
+        }
+    ],
   // "tabBar": {
   //   "color": "#333333",
   //   "selectedColor": "#333333",
