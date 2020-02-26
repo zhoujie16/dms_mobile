@@ -77,8 +77,31 @@ export default {
       });
     },
     async chapterClick() {
-      this.$util.openLocalWeb({
-        url: '/hybrid/html/index.html#/about'
+      // this.$util.openLocalWeb({
+      //   url: '/hybrid/html/index.html#/about'
+      // });
+      console.log(1111)
+      uni.downloadFile({
+        url: 'https://example.com/somefile.pdf',
+        success: function(res) {
+          var filePath = res.tempFilePath;
+            //打开文件有效值 doc, xls, ppt, pdf, docx, xlsx, pptx
+            uni.openDocument({
+              filePath: escape(filePath),
+                success: function(res) {
+                  uni.hideLoading();
+                    // that.downloadFile_onoff = true;
+                  },
+                fail() {
+                  uni.showToast({
+                    title: '暂不支持此类型',
+                    duration: 2000
+                  });
+                  uni.hideLoading();
+                    // that.downloadFile_onoff = true;
+                }
+           });                 
+        }
       });
     }
   }

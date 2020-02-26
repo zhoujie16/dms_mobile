@@ -35,6 +35,9 @@
         <view class="customer" @click="phoneClick">
           <uni-icons type="phone" color="white" size="30" style="margin-right: 20rpx;"></uni-icons>联系客户
         </view>
+        <!-- <m-button type="primary" @click="phoneClick">
+          <uni-icons type="phone" color="white" size="30" style="margin-right: 20rpx;"></uni-icons>联系客户
+        </m-button> -->
       </view>
     </view>
     <uni-popup ref="popup" type="bottom">
@@ -56,17 +59,18 @@ export default {
     cell: Object
   },
   mounted() {
-    console.log('list-cell-wrap', 'mounted');
   },
   data() {
     return {
       isShowDetail: false
     };
   },
+  computed: {
+  },
   methods: {
     change() {},
-    cellTitleClick() {
-      this.isShowDetail = !this.isShowDetail;
+    cellTitleClick() {      
+      this.isShowDetail = !isShowDetail;
     },
     cellClick(){
       console.log(111111);
@@ -76,6 +80,7 @@ export default {
       this.$emit('click')
     },
     phoneClick(){
+      console.log(1111)
       this.$refs.popup.open();
     },
     phoneCall() {

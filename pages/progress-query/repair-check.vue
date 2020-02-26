@@ -94,7 +94,7 @@
   .page-wrap{
     height: 100%;
     padding: 0 20rpx 0 20rpx;
-    background-color: $uni-bg-color-page;
+    background-color: #FFFFFF;
   }
   .list-cell-title {
     padding: 30rpx 20rpx;

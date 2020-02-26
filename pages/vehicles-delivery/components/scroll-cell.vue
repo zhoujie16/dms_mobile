@@ -67,6 +67,7 @@ export default {
       }
     },
     phoneClick(){
+      console.log(11111)
       this.$refs.popup.open();
     },
     phoneCall() {
@@ -95,17 +96,18 @@ export default {
   background-color: #FFFFFF;
   padding: 5rpx 8rpx;
   position: relative;
-  border-radius: 10rpx;
+  border-radius: 20rpx;
+  margin-bottom: 20rpx;
     .content {
       background-color: #ffffff;
-      margin: 20rpx;
-      border-radius: 20rpx;
-      padding: 0 20rpx;
+      // margin: 20rpx;
+      // border-radius: 20rpx;
+      padding: 10rpx;
       .content-top {
         border-bottom: 1px solid #cccccc;
         padding-right: 10rpx;
-        height: 80rpx;
-        line-height: 80rpx;
+        // height: 80rpx;
+        // line-height: 80rpx;
         font-size: 30rpx;
         margin-bottom: 20rpx;
         .content-left {

@@ -28,6 +28,9 @@ export default {
         url:'/pages/services-tools/components/doc-demo'
         // url:'/hybrid/html/index.html#/pdf-reader?pdf=default'
       }) 
+      // this.$util.openLocalWeb({
+      //   url: '/hybrid/html/index.html#/about'
+      // });
     },
     async test2(){
       this.$util.openLocalWeb({

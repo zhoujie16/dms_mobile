@@ -12,7 +12,7 @@
         <SearchForm></SearchForm>
       </view>
     </search-filter>
-    <view class="refresh">已为您刷新。。。条信息</view>
+    <!-- <view class="refresh">已为您刷新。。。条信息</view> -->
     <view class="wrap">
       <BaseScroll
         :height="scrollHeight"
@@ -61,7 +61,7 @@ export default {
       ],
       fetchApi: AjaxScrollData,
       fetchParams: {},
-      dataSource: []
+      dataSource: [],
     };
   },
   methods: {
