@@ -143,6 +143,9 @@ Vue.component("MLabel", MLabel);
 import MInput from "@/components/search-filter/m-input.vue";
 Vue.component("MInput", MInput);
 
+import MTextArea from "@/components/search-filter/m-textarea.vue";
+Vue.component("MTextArea", MTextArea);
+
 import MSwitch from "@/components/search-filter/m-switch.vue";
 Vue.component("MSwitch", MSwitch);
 

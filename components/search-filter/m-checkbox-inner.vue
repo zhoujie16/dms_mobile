@@ -1,7 +1,12 @@
 <template>
   <view class="">
-    <view v-if="isCell" class="m-checkbox-inner">
-      <view class="m-col" :style="{ padding: '0 0 0 20rpx' }" v-for="(item, i) in itemList_1" :key="i">
+    <view v-if="singleLine" class="m-checkbox-inner-inner">
+      <view
+        class="m-col"
+        :style="{ padding: '0 0 0 20rpx' }"
+        v-for="(item, i) in itemList_1"
+        :key="i"
+      >
         <view
           class="m-checkbox-item"
           :class="{ active: item.isSelect }"
@@ -11,7 +16,7 @@
         </view>
       </view>
     </view>
-    <view v-else class="m-checkbox-inner">
+    <view v-else class="m-checkbox-inner-inner">
       <view
         class="m-col"
         :style="{ width: itemWrapWidth }"
@@ -39,6 +44,10 @@ export default {
       type: Number,
       default: 4
     },
+    singleLine: {
+      type: Boolean,
+      default: true
+    },
     value: {
       type: Array
     },
@@ -54,7 +63,7 @@ export default {
   },
   computed: {
     itemWrapWidth() {
-      return 750 / this.cols + 'upx';
+      return 100 / this.cols + '%';
     },
     itemList_1() {
       const itemList_1 = this.itemList.map(item => {
@@ -101,11 +110,11 @@ export default {
 </script>
 
 <style lang="scss">
-.m-checkbox-inner {
+.m-checkbox-inner-inner {
+  position: relative;
   display: flex;
   flex-wrap: wrap;
-  // 我勒个擦 这下面 我不加 important APP里 就变成了 flex-end
-  justify-content: flex-start !important;
+  justify-content: flex-start;
 }
 .m-col {
   height: 100rpx;

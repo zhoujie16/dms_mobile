@@ -13,6 +13,7 @@
         :value="value"
         :itemList="itemList"
         :single="single"
+        :singleLine="false"
         @input="input"
       ></MCheckboxInner>
     </view>

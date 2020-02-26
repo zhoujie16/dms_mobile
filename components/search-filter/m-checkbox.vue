@@ -1,15 +1,18 @@
 <template>
   <view class="">
     <MLabel :label="label">
+      <!-- 内联选择用 -->
       <view class="m-checkbox-inner" v-if="type == 'inner'">
         <MCheckboxInner
           v-if="type == 'inner'"
           :value="value"
           :itemList="itemList"
           :single="single"
+          :singleLine="true"
           @input="input"
         ></MCheckboxInner> 
       </view>
+      <!-- 弹窗选择用 -->
       <view class="m-checkbox-inner" v-if="type == 'popup'">
         <view @click="showPopupClick" size="mini" type="default" class="m-checkbox-text">
           {{ tipInfo }}
