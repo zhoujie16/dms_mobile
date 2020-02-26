@@ -6,18 +6,28 @@
         <view v-for="(item,index) in itemList" :key="index" @click="changeIndex(index)">
           <view :class="[{'panel-tab-pressed':activeindex==index},{'panel-tab':activeindex!==index}]">{{item.title}}<text>{{item.count}}</text></view>
         </view>
-       
       </view>
       <view slot="form">
         <SearchForm></SearchForm>
       </view>
     </search-filter>
-    <view class="refresh">已为您刷新三条信息</view>
-    <view class="wrap">
+    <!-- <view class="refresh">已为您刷新三条信息</view> -->
+    <BaseScroll
+      :top="100"
+      :fetchApi="fetchApi"
+      :fetchParams="fetchParams"
+      @listChange="
+        arr => {
+          this.dataSource = [1,2,3,4];
+        }
+      "
+    >
+    <view slot="scroll" class="wrap">
+        <scroll-cell></scroll-cell>
       
-      
-      <scroll-cell></scroll-cell>
     </view>
+      </BaseScroll>
+     
   </MPage>
 </template>
 
@@ -33,9 +43,9 @@ export default {
   },
   data() {
     return {
-      // fetchApi: AjaxScrollData,
-      // fetchParams: {},
-      // dataSource: []
+      fetchApi: AjaxScrollData,
+      fetchParams: {},
+      dataSource: [],
       activeindex:0,
       isFolding:true,
       itemList:[

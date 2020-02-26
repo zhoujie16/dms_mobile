@@ -1,14 +1,188 @@
+<!-- 工单详情 -->
 <template>
-  <view></view>
+  <MPage ref="MPage">
+    <view class="status-bar-wrap">
+      <view class="m-status-bar"></view>
+      <!-- 自定义导航栏 -->
+      <uni-nav-bar class="nav-bar" left-icon="arrowleft" title="车辆预检详情" @clickLeft="back" />
+      <view class="status-bar-bg"></view>
+    </view>
+    <view class="page-body">
+      <view class="title-panel">
+        <view class="title-panel-inner">
+          <view class="customer-info">沪ADC520</view>
+          <view class="car-info">
+            预检单号
+            <text class="value">YJ200017231</text>
+          </view>
+          <view class="car-info">
+            工单编号
+            <text class="value">YJ200017231</text>
+          </view>
+        </view>
+        <view class="title-panel-bg"></view>
+      </view>
+      <CollapsePanel title="客户信息">
+        <template slot="default">
+          <MLabel label="车架号">xxxxxxxxxxxxxxxxx</MLabel>
+          <MLabel label="车主姓名">王大锤</MLabel>
+          <MLabel label="车主编号">xxxxxxxxxx</MLabel>
+          <MLabel label="手机号">xxxxxxx</MLabel>
+          <MLabel label="送修人">王尼玛</MLabel>
+          <MLabel label="送修人手机号">xxxxxx</MLabel>
+          <MLabel label="送修人邮箱">xxxxxxxxx@xxx.com</MLabel>
+          <MLabel label="品牌">测试品牌</MLabel>
+          <MLabel label="进厂里程">100000km</MLabel>
+          <MLabel label="服务顾问">张全蛋</MLabel>
+          <MLabel label="预约单号">xxxxxxxxxx</MLabel>
+        </template>
+      </CollapsePanel>
+      <CollapsePanel title="客户需求">
+        <template slot="default">
+          <MLabel label="需求类型">召回</MLabel>
+          <MLabel label="故障描述">普通维修</MLabel>
+        </template>
+      </CollapsePanel>
+      <CollapsePanel title="故障记录点">
+        <template slot="default">
+          <MLabel label="暂无记录"></MLabel>
+        </template>
+      </CollapsePanel>
+      <CollapsePanel title="物品清单">
+        <template slot="default">
+          <MCheckboxPanel
+            label="其他备注"
+            type="inner"
+            v-model="value_1"
+            :itemList="itemList_1"
+          ></MCheckboxPanel>
+        </template>
+      </CollapsePanel>
+      <view class="operate">
+        <view class="btn">
+          <m-button type="default">删除</m-button>
+        </view>
+        <view class="btn">
+          <m-button type="primary">存为预检单</m-button>
+        </view>
+      </view>
+    </view>
+  </MPage>
 </template>
 
 <script>
+// import AmonitorInfo from './components/monitor-info.vue';
 export default {
-  data() {
-    return {};
+  components: {
+    // AmonitorInfo
   },
-  methods: {}
+  data() {
+    return {
+      value_1: [1, 3, 6],
+      itemList_1: [
+        { text: '客户在厂', value: 1 },
+        { text: '需要洗车', value: 2 },
+        { text: '需要路试', value: 3 },
+        { text: '需要质检', value: 4 },
+        { text: '带走旧件', value: 5 },
+        { text: '曾秀保养', value: 6 },
+        { text: '不要积分', value: 7 },
+        { text: '三日电访', value: 8 }
+      ]
+    };
+  },
+  methods: {
+    async back() {
+      uni.navigateBack({
+        delta: 1
+      });
+    }
+  }
 };
 </script>
 
-<style></style>
+<style lang="scss" scoped>
+.status-bar-wrap {
+  position: relative;
+  background: $uni-m-color-cwhite;
+  /deep/ .nav-bar {
+    .uni-navbar__content {
+      z-index: 1;
+      background-color: initial !important;
+      .uni-navbar__header {
+        background-color: initial !important;
+      }
+    }
+    .uni-icons,
+    .uni-nav-bar-text {
+      color: $uni-m-color-cwhite !important;
+    }
+  }
+  .status-bar-bg {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: linear-gradient(to right, #41c5ff, #1371f7);
+    z-index: 0;
+  }
+}
+.title-panel {
+  position: relative;
+  height: 260rpx;
+  padding: 10rpx 30rpx 30rpx 30rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: $uni-m-color-cwhite;
+  .title-panel-bg {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 160rpx;
+    left: 0;
+    background: linear-gradient(to right, #41c5ff, #1371f7);
+    z-index: 0;
+  }
+  .title-panel-inner {
+    width: 100%;
+    height: 240rpx;
+    background-color: $uni-m-color-cwhite;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 0 30rpx;
+    border-radius: 10rpx;
+    z-index: 1;
+    box-shadow: 0px 2px 5px #eeeeee;
+    .customer-info {
+      font-size: 34rpx;
+      height: 60rpx;
+      line-height: 60rpx;
+    }
+    .car-info {
+      font-size: 30rpx;
+      height: 60rpx;
+      line-height: 60rpx;
+      color: $uni-m-color-c2;
+      .value {
+        color: $uni-m-color-c1;
+      }
+    }
+  }
+}
+.page-body {
+  height: calc(100vh - 128rpx);
+  overflow: auto;
+}
+.operate{
+  display: flex;
+  background: $uni-m-color-cwhite;
+  padding: 20rpx 30rpx;
+  .btn{
+    flex: 1;
+    padding: 0 20rpx;
+  }
+}
+</style>

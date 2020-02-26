@@ -1,6 +1,6 @@
 <template>
   <view class="">
-    <view class="m-search-top">
+    <view class="m-search-top" v-show="isShow">
       <view class="left"><slot name="panel"></slot></view>
       <view class="right" @click="open">
         筛选
@@ -29,6 +29,12 @@
 export default {
   name: 'search-filter',
   components: {},
+  props: {
+	  isShow: {
+	    type: Boolean,
+	    default: true
+	  }
+  },
   data() {
     return {
       isShowDrawer: false

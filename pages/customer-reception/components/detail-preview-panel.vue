@@ -57,7 +57,7 @@ export default {
 
 <style lang="scss">
 .panel-wrap {
-  padding: 30rpx;
+  padding: 30rpx 0;
 }
 .type-title{
   line-height: 80rpx;

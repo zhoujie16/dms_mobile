@@ -1,19 +1,20 @@
 <template>
   <!-- 客户信息 -->
   <view class="panel-wrap">
-    <InfoPanel title="客户信息">
-      <MInput label="车牌号"></MInput>
-      <MInput label="车架号"></MInput>
-      <MInput label="车主姓名"></MInput>
-      <MInput label="手机号"></MInput>
-      <MInput label="邮箱"></MInput>
-      <MInput label="送修人"></MInput>
-      <MInput label="送修人手机号"></MInput>
-      <MInput label="车型"></MInput>
-      <MInput label="进厂时间"></MInput>
-      <MInput label="销售日期"></MInput>
-      <MInput label="地址"></MInput>
-    </InfoPanel>
+    <MInput label="车牌号"></MInput>
+    <MInput label="车架号"></MInput>
+    <MInput label="车主姓名"></MInput>
+    <MInput label="手机号"></MInput>
+    <MInput label="邮箱"></MInput>
+    <MInput label="送修人"></MInput>
+    <MInput label="送修人手机号"></MInput>
+    <MInput label="车型"></MInput>
+    <MInput label="进厂时间"></MInput>
+    <MInput label="销售日期"></MInput>
+    <MInput label="地址"></MInput>
+    <!-- <InfoPanel title="客户信息">
+      
+    </InfoPanel> -->
   </view>
 </template>
 
@@ -33,6 +34,6 @@ export default {
 
 <style lang="scss">
 .panel-wrap {
-  padding: 30rpx;
+  padding: 30rpx 0;
 }
 </style>

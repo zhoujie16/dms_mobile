@@ -124,15 +124,9 @@ export default {
     gridItemClick(e) {
       const index = e.detail.index;
       const item = this.list[index];
-      if(item.text==='车辆预检'){
-        uni.switchTab({
-            url: item.path
-        });
-      }else{
-        uni.navigateTo({
-          url: item.path
-        });
-      }
+      uni.navigateTo({
+        url: item.path
+      });
       
     }
   }

@@ -1,6 +1,13 @@
 @@ -1,121 +0,0 @@
 <template>
   <MPage ref="MPage" type="primary">
+    <view class="m-status-bar"></view>
+	  <!-- 自定义导航栏 -->
+	  <uni-nav-bar left-icon="arrowleft"  title="新增预检单" @clickLeft="back" @clickRight="handClick">
+	    <block slot="right">
+	      <view class="nav-right">预览</view>
+	    </block>
+	  </uni-nav-bar>
 	  <view class="swiper-page-wrap">
     <SwiperTab :height="swiperTabHeight" :tabs="tabs" :curIndex="curIndex" @change="changeTab">
       <swiper class="swiper-wrap" :current="curIndex" @change="swiperChange">
@@ -20,11 +27,11 @@
             <VehicleFacePanel></VehicleFacePanel>
           </scroll-view>
         </swiper-item>
-        <swiper-item>
+       <!-- <swiper-item>
           <scroll-view class="swiper-scroll-wrap" scroll-y="true">
             <DetailPreviewPanel></DetailPreviewPanel>
           </scroll-view>
-        </swiper-item>
+        </swiper-item> -->
       </swiper>
     </SwiperTab>
 	<view class="uni-flex uni-row v-footer">
@@ -41,7 +48,7 @@
 import CustomerInfoPanel from './components/customer-info-panel.vue';
 import CustomerDemandPanel from './components/customer-demand-panel.vue';
 import VehicleFacePanel from './components/vehicle-face-panel.vue';
-import DetailPreviewPanel from './components/detail-preview-panel.vue';
+import DetailPreviewPanel from './components/detail-preview-panel.vue';//预览页面
 export default {
   components: {
     CustomerInfoPanel,
@@ -62,14 +69,23 @@ export default {
     }
   },
   data() {
-    this.swiperTabHeight = uni.getSystemInfoSync().windowHeight - 40 + 'px';
+    this.swiperTabHeight = uni.getSystemInfoSync().windowHeight - 100 + 'px';
     return {
-      tabs: ['客户信息', '客户需求', '车身外观', '详情预览'],
+      tabs: ['客户信息', '客户需求', '车身外观'],
       curIndex: 0 // 当前tab的下标
     };
   },
   watch: {},
   methods: {
+    async back() {
+      uni.navigateBack({
+        delta: 1
+      });
+    },
+    // 预览
+    handClick(){
+      
+    },
     // 轮播菜单
     swiperChange(e) {
       this.curIndex = e.detail.current;
@@ -116,15 +132,17 @@ export default {
 	      width: 33%;
 	      text-align: center;
 	      line-height: 60rpx;
+        color: $uni-m-color-c11;
+        font-size: 36rpx;
 	      // line-height: 200rpx;
 	    }
 	    .v-border{
-	      border-right: 2rpx solid #CCCCCC;
+	      border-right: 2rpx solid $uni-m-color-c4-2;
 	    }
 	  }
 	}
 .swiper-wrap {
-  background-color: $uni-bg-color-page;
+  // background-color: $uni-bg-color-page;
   position: absolute;
   top: 0;
   right: 0;
@@ -134,5 +152,8 @@ export default {
 }
 .swiper-scroll-wrap {
   height: 100%;
+}
+.nav-right{
+  color: $uni-m-color-c11;
 }
 </style>

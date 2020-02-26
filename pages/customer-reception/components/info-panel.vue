@@ -46,7 +46,7 @@ export default {
 <style lang="scss">
 .collapse-panel-wrap {
   background-color: #ffffff;
-  border-radius: 20rpx;
+  // border-radius: 20rpx;
   overflow: hidden;
   padding-bottom: 20rpx;
   margin-bottom: 30rpx;

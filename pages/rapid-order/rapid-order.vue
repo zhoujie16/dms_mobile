@@ -40,10 +40,10 @@
     <!-- 弹窗内容 -->
     <view class="popup-group">
       <view class="add-btn" @click="addOrderBtnClick">
-        <image class="add-btn" src="../../static/image/add_btn.svg" mode="scaleToFill"></image>
+        <image class="add-btn" src="/static/image/add_btn.svg" mode="scaleToFill"></image>
       </view>
       <MPopup ref="mPopup_addorder" type="center" title="新建工单">
-        <OrderCell v-for="item in [1, 2]" @click.native="orderCellClick"></OrderCell>
+        <OrderCell v-for="item in [1, 2]" :key="item" @click.native="orderCellClick"></OrderCell>
       </MPopup>
     </view>
   </MPage>

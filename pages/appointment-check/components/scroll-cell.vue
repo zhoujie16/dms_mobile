@@ -22,7 +22,7 @@
           <view>陆小鹏</view>
         </view>
         <view class="phone">
-          <image src="../../../../../static/image/dianhua2.svg" class="img"></image>
+          <image src="/static/image/dianhua2.svg" mode="scaleToFill" class="img"></image>
         </view>
       </view>
     
@@ -83,7 +83,7 @@ export default {
     .name{
       display: inline-block;
       margin-left: 20rpx;
-      border: 1rpx dashed $uni-m-color-c3;
+      border: 2rpx dashed $uni-m-color-c3;
       background-color: $uni-m-color-c4;
       padding: 0 20rpx;
       font-size: $uni-m-font-size-f4;
@@ -102,16 +102,19 @@ export default {
     height: 60rpx;
     line-height: 60rpx;
     .label{
-      flex:0 0 120rpx;
+      flex:0 0 130rpx;
       color:$uni-m-color-c2;
     }
   }
   .phone{
     position: absolute;
-    bottom: -180rpx;
+    width: 70rpx;
+    height: 70rpx;
+    bottom: 40rpx;
     right: 30rpx;
     .img{
       width: 70rpx;
+      height: 70rpx;
     }
   }
 }

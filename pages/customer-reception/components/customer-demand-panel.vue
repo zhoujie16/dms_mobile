@@ -30,7 +30,7 @@ export default {
 
 <style lang="scss">
 .panel-wrap {
-  padding: 30rpx;
+  padding: 30rpx 0;
 }
 .type-wrap {
   display: flex;
