@@ -335,6 +335,18 @@
         ,{
             "path" : "pages/demo/ui-demo/keyWord",
             "style" : {}
+        },
+        {
+            "path" : "pages/no-records/no-records",
+            "style" : {
+              "navigationBarTitleText": "暂无记录"
+            }
+        }
+        ,{
+            "path" : "pages/login/forgetPassword",
+            "style" : {
+              "navigationBarTitleText": "找回密码"
+            }
         }
     ],
   // "tabBar": {

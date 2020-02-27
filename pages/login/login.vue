@@ -24,12 +24,15 @@
             <input class="login-input" type="password" v-model="password" placeholder="密码" />
           </view>
         </view>
-        <view class="miss_password">
+        <view class="miss_password" @click="forgetPassword">
           忘记密码
         </view>
         <button class="login-button" @click="testLogin" type="primary">登录</button>
       </view>
-      <image class="weixin" src="../../static/image/weixin.svg" mode=""></image>
+      <view class="weixin">
+        <image class="vxImg" src="../../static/image/weixin.svg"></image>
+        <view class="vx-text">微信登录</view>
+      </view>
     </view>
     <view class="copy_right">
       v3.05.09.1-18
@@ -74,18 +77,13 @@ export default {
         key:'dict',
         data:res3.data.list
       })
-      // 取值
-      // uni.getStorage({
-      // key:“属性名”,
-      // success(e){
-      // e.data//这就是你想要取的token
-      // }
-      // })
-      
-      
-      
-    }
-  },
+    },
+    forgetPassword() {
+      uni.navigateTo({
+        url: '/pages/login/forgetPassword'
+      })
+  }
+},
 }
 </script>
 
@@ -170,11 +168,19 @@ export default {
       }
     }
     .weixin {
-      width: 84rpx;
-      height: 84rpx;
       position: absolute;
       bottom: -720rpx;
       left: 350rpx;
+      text-align: center;
+      .vxImg {
+        width: 84rpx;
+        height: 84rpx;
+        margin-bottom: 16rpx;
+      }
+      .vx-text {
+        color: #C3C3C3;
+        font-size: 22rpx;
+      }
     }
   }
   .copy_right {

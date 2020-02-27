@@ -54,7 +54,7 @@
 <style>
 .phone-text {
   height: 80rpx;
-  background-color: #ababab;
+  background-color: #C0C0C0;
   border-radius: 10rpx;
   line-height: 80rpx;
   text-align: center;
