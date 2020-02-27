@@ -214,6 +214,10 @@ Vue.component("MNothing", MNothing);
 import MButton from '@/components/m-button/m-button.vue';
 Vue.component('MButton',MButton);
 
+// 车牌号
+import MLicense from '@/components/key-board/m-license.vue';
+Vue.component('MLicense',MLicense);
+
 // 拨号
 import MtelephoneCall from '@/components/m-telephoneCall/m-telephoneCall.vue';
 Vue.component('MtelephoneCall',MtelephoneCall);

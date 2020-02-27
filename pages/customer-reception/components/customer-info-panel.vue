@@ -1,7 +1,8 @@
 <template>
   <!-- 客户信息 -->
   <view class="panel-wrap">
-    <MInput label="车牌号"></MInput>
+   <!-- <MInput label="车牌号"></MInput> -->
+   <MLicense label="车牌号"></MLicense>
     <MInput label="车架号"></MInput>
     <MInput label="车主姓名"></MInput>
     <MInput label="手机号"></MInput>

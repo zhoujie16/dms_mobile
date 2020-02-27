@@ -332,6 +332,10 @@
                       }
             }
         }
+        ,{
+            "path" : "pages/demo/ui-demo/keyWord",
+            "style" : {}
+        }
     ],
   // "tabBar": {
   //   "color": "#333333",
