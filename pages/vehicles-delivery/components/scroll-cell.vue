@@ -29,14 +29,15 @@
     <!-- <uni-icons type="phone" size="40" color="white"></uni-icons> -->
     <image src="../../../../../static/image/dianhua2.svg" class="img"></image>
   </view>
-  <uni-popup ref="popup" type="bottom">
+  <MtelephoneCall ref='phone' type="bottom">185 8328 5531</MtelephoneCall>
+  <!-- <uni-popup ref="popup" type="bottom">
     <view style="padding: 0 30rpx;margin-bottom: 55rpx;">
       <view class="text" style="margin-bottom: 15rpx;" @click="phoneCall">呼叫185 8328 5531</view>
       <view class="text" @click="phoneClose">
         取消
       </view>
     </view>
-  </uni-popup>
+  </uni-popup> -->
   </view>
 </template>
 
@@ -67,25 +68,11 @@ export default {
       }
     },
     phoneClick(){
-      console.log(11111)
-      this.$refs.popup.open();
+      this.$refs.phone.open();
     },
-    phoneCall() {
-      uni.makePhoneCall({
-          // 手机号
-              phoneNumber: '18583285531', 
-          	// 成功回调
-          	success: (res) => {
-          		console.log('调用成功!');
-          	},
-          	// 失败回调
-          	fail: (res) => {
-          		console.log('调用失败!')
-          	}
-      });
-    },
+    
     phoneClose() {
-      this.$refs.popup.close();
+      this.$refs.phone.close();
     }
   }
 };

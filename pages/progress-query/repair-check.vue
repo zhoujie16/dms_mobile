@@ -11,7 +11,8 @@
         </view>
       </view>
       <view class="right">
-        <uni-icons type="phone" size="30" color="white" @click="phoneClick"></uni-icons>
+        <image src="../../static/image/dianhua2.svg" class="phoneImg"  @click="phoneClick"></image>
+        <!-- <uni-icons type="phone" size="30" color="white" @click="phoneClick"></uni-icons> -->
       </view>
     </view>
 		<view class="list-cell-content">
@@ -33,7 +34,9 @@
 		  </view>
 		  <view class="info-item">
 		    <view class="info-item-lab">送修人电话：</view>
-		    <view class="info-item-text">13826576765<uni-icons type="phone" size="20" color="white"></uni-icons></view>
+		    <view class="info-item-text">185 8328 5531        
+          <image src="../../static/image/dianhua2.svg" class="phoneImg"  @click="phoneClick"></image>
+        </view>
 		  </view>
 		  <view class="info-item">
 		    <view class="info-item-lab">故障描述：</view>
@@ -46,14 +49,15 @@
 		    <view class="check" @click="check">车辆检查</view>
         <view class="check">交车</view>
 		</view>
-    <uni-popup ref="popup" type="bottom">
+    <MtelephoneCall ref="phone">185 8328 5531</MtelephoneCall>
+    <!-- <uni-popup ref="popup" type="bottom">
       <view style="padding: 0 30rpx;margin-bottom: 55rpx;">
         <view class="text" style="margin-bottom: 15rpx;" @click="phoneCall" v-model="phone">呼叫{{phone}}</view>
         <view class="text" @click="phoneClose">
           取消
         </view>
       </view>
-    </uni-popup>
+    </uni-popup> -->
 	</view>
 </template>
 
@@ -61,27 +65,16 @@
 	export default {
 		data() {
 			return {
-          phone: '13602558446'
+          phone: '185 8328 5531'
 			};
 		},
     mounted() {
     },
     methods: {
       phoneClick(){
-        this.$refs.popup.open();
-      },
-      phoneCall() {
-        let phone = this.phone;
-        console.log(phone,'phone');
-        uni.makePhoneCall({
-            phoneNumber: phone
-        });
-      },
-      phoneClose() {
-        this.$refs.popup.close();
+        this.$refs.phone.open();
       },
       check() {
-        console.log(11111)
         uni.navigateTo({
             url: '/pages/vehicle-inspection/vehicle-inspection'
         });
@@ -99,8 +92,8 @@
   .list-cell-title {
     padding: 30rpx 20rpx;
     height: 15%;
-    background-color: $uni-bg-color-page;
-    color: #FFFFFF;
+    // background-color: $uni-bg-color-page;
+    // color: #FFFFFF;
     .left {
       float: left;
       height: 90px;
@@ -110,17 +103,10 @@
     .right{
       float: right;
       margin-top: 20px;
-      font-size: 24px;
-      width: 80rpx;
-      height: 80rpx;
-      background-color: #F0AD4E;
-      border-radius: 50%;
-      text-align: center;
-      line-height: 80rpx;
     }
   }
 .list-cell-content {
-  background-color: $uni-bg-color-page;
+  // background-color: $uni-bg-color-page;
   padding: 10rpx 20rpx;
   width: 100%;
   height: 75%;
@@ -140,7 +126,7 @@
       flex: 1 1 auto;
       text-align: right;
       padding-right: 10rpx;
-      color: #FFFFFF;
+      // color: #FFFFFF;
       font-size: 32rpx;
     }
   }
@@ -151,16 +137,13 @@
     line-height: 88rpx;
     margin: 30rpx 80rpx;
     text-align: center;
-    background-color:$uni-bg-color-page;
+    background-color: #1371F7;
     border-radius: 50rpx;
-    color: #09BB07;
-    border: 4rpx solid #09BB07;
+    color: #FFFFFF;
+    // border: 4rpx solid #09BB07;
   }
-  .text {
-    height: 100rpx;
-    background-color: #808080;
-    border-radius: 10rpx;
-    line-height: 100rpx;
-    text-align: center;
-  }
+ .phoneImg {
+   width: 60rpx;
+   height: 60rpx;
+ }
 </style>

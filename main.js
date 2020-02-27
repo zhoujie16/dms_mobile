@@ -214,6 +214,10 @@ Vue.component("MNothing", MNothing);
 import MButton from '@/components/m-button/m-button.vue';
 Vue.component('MButton',MButton);
 
+// 拨号
+import MtelephoneCall from '@/components/m-telephoneCall/m-telephoneCall.vue';
+Vue.component('MtelephoneCall',MtelephoneCall);
+
 /** 绑定公共组件 E */
 
 Vue.config.productionTip = false;

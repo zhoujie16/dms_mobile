@@ -40,14 +40,15 @@
         </m-button> -->
       </view>
     </view>
-    <uni-popup ref="popup" type="bottom">
+    <MtelephoneCall ref="phone">185 8328 5531</MtelephoneCall>
+    <!-- <uni-popup ref="popup" type="bottom">
       <view style="padding: 0 30rpx;margin-bottom: 55rpx;">
         <view class="text" style="margin-bottom: 15rpx;" @click="phoneCall">呼叫18583285531</view>
         <view class="text" @click="phoneClose">
           取消
         </view>
       </view>
-    </uni-popup>
+    </uni-popup> -->
   </view>
 </template>
 
@@ -70,10 +71,9 @@ export default {
   methods: {
     change() {},
     cellTitleClick() {      
-      this.isShowDetail = !isShowDetail;
+      this.isShowDetail = !this.isShowDetail;
     },
     cellClick(){
-      console.log(111111);
       uni.navigateTo({
         url:`/pages/progress-query/repair-check`
       })
@@ -81,18 +81,8 @@ export default {
     },
     phoneClick(){
       console.log(1111)
-      this.$refs.popup.open();
-    },
-    phoneCall() {
-      // let phone = this.phone;
-      // console.log(phone,'phone');
-      uni.makePhoneCall({
-          phoneNumber: '18583285531', 
-      });
-    },
-    phoneClose() {
-      this.$refs.popup.close();
-    },
+      this.$refs.phone.open();
+    }
   }
 };
 </script>
