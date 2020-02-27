@@ -93,7 +93,7 @@
 	
 		props: {
 			type: {
-				type: Number, // 1-数字键盘 2-身份证号  3-车牌号 4-数字+字母  5-字母
+				type: Number, // 1-数字键盘 2-身份证号  3-车牌号 4-数字+字母  
 				default: 1
 			},
 			safeAreaInsetBottom: { //是否设置安全区
