@@ -2,7 +2,6 @@
   <button
     class="m-button"
     :size="size"
-    @click="btnHandleClick"
     :type="type"
     :plain="plain"
     :loading="loading"
@@ -47,7 +46,7 @@ export default {
   },
   computed: {},
   methods: {
-    btnHandleClick() {}
+    
   }
 };
 </script>

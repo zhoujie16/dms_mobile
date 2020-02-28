@@ -1,9 +1,16 @@
 <template>
   <MPage ref="MPage">
     <view class="page-inner">
-      <button v-for="item in btnList" :key="item.title" @click="btnHandleClick(item)" class="demo-btn" type="primary">
+      <m-button
+        block
+        v-for="item in btnList"
+        :key="item.title"
+        @click.native="btnHandleClick(item)"
+        class="demo-btn"
+        type="primary"
+      >
         {{ item.title }}
-      </button>
+      </m-button>
     </view>
   </MPage>
 </template>
@@ -59,6 +66,14 @@ export default {
           clickFn: async () => {
             const [err, res] = await uni.navigateTo({
               url: '/pages/demo/ui-demo/dialog'
+            });
+          }
+        },
+        {
+          title: 'toast',
+          clickFn: async () => {
+            const [err, res] = await uni.navigateTo({
+              url: '/pages/demo/ui-demo/toast'
             });
           }
         },
