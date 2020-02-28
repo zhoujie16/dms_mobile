@@ -1,40 +1,40 @@
 <template>
-	<view>
-		<button type="primary" @click="openModal1">title,content弹窗</button>
-		<button type="primary" @click="openModal2">content弹窗</button>
-		<button type="primary" @click="openModal3">title弹窗</button>
-		<button type="primary" @click="openModal4">mainOperation弹窗</button>
-    <Mmodal ref="popup1" type="default"></Mmodal>
-    <Mmodal ref="popup2" type="content"></Mmodal>
-    <Mmodal ref="popup3" type="title"></Mmodal>
-    <Mmodal ref="popup4" type="mainOperation"></Mmodal>
-	</view>
+  <MPage ref="MPage" class="page-inner">
+    <m-button class="demo-btn" block type="primary" @click.native="showModal_1">标准的</m-button>
+  </MPage>
 </template>
 
 <script>
-	export default {
-		data() {
-			return {
-				
-			}
-		},
-		methods: {
-			openModal1() {
-        this.$refs.popup1.open()
-      },
-      openModal2() {
-        this.$refs.popup2.open()
-      },
-      openModal3() {
-        this.$refs.popup3.open()
-      },
-      openModal4() {
-        this.$refs.popup4.open()
-      }
-		}
-	}
+export default {
+  data() {
+    return {};
+  },
+  methods: {
+    async showModal_1() {
+      // js 调用方式
+      const res = await this.SHOW_MODAL({
+        title: '提示的标题',
+        content: '提示的内容',
+        showCancel: true, // 是否显示取消按钮，默认为 true
+        cancelText: '取消', // 取消按钮的文字，默认为"取消"，最多 4 个字符
+        confirmText: '确定' // 确定按钮的文字，默认为"确定"，最多 4 个字符
+      });
+      // 交互结果
+      console.log('showModal_res', res);
+      await uni.showToast({
+        title: `${res}`,
+        icon: 'none'
+      });
+    }
+  }
+};
 </script>
 
 <style lang="scss" scoped>
-
+.page-inner {
+  padding: 20rpx;
+}
+.demo-btn {
+  margin-bottom: 20rpx;
+}
 </style>

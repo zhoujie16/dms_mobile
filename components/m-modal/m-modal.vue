@@ -1,139 +1,124 @@
 <template>
-	<uni-popup ref="popup" type="center">
-    <view class="popup-modal" :type="type">
-      <view class="modal-top">
-        <view class="title" v-if="!isHasTitle">
-          标题文字
-        </view>
-        <view :class="[!isHasTitle ? content1 : content2]" v-if="!isHasContent">
-          告知当前状态，信息和解决方法告知当前状态，信息和解决方法告知当前状态，信息和解决方法
-        </view>
+  <uni-popup ref="popup" type="center" :maskClick="false">
+    <view v-if="isShowPopup" class="m-modal-wrap">
+      <view class="m-modal-inner">
+        <view class="m-modal-title">{{ title }}</view>
+        <view class="m-modal-content">{{ content }}</view>
       </view>
-      <view class="modal-bottom">
-        <text class="auxiliary" v-if="!isMainOperation">辅助操作</text>
-        <!-- <text :class="[isMainOperation ? main2 : main1]">主操作</text> -->
-        <text class="main1" v-if="!isMainOperation">主操作</text>
-        <text class="main2" v-if="isMainOperation">主操作</text>
+      <!-- 按钮 -->
+      <view class="m-modal-bottom">
+        <view
+          @click="cancelHandleClick"
+          v-if="showCancel"
+          class="m-modal-btn"
+          hover-class="hover"
+          hover-stay-time="50"
+        >
+          {{ cancelText }}
+        </view>
+        <view v-if="showCancel" class="m-modal-bottom-line"></view>
+        <view
+          @click="confirmHandleClick"
+          class="m-modal-btn primary"
+          hover-class="hover"
+          hover-stay-time="50"
+        >
+          {{ confirmText }}
+        </view>
       </view>
     </view>
   </uni-popup>
 </template>
 
 <script>
-	export default {
-    props:{
-      type: {
-        type: String,
-        default: 'default'
-      }
+export default {
+  props: {},
+  data() {
+    return {
+      isShowPopup: false,
+      title: '',
+      content: '',
+      showCancel: true,
+      cancelText: '',
+      confirmText: ''
+    };
+  },
+  computed: {},
+  methods: {
+    showModal({ title, content, showCancel = true, cancelText = '取消', confirmText = '确定' }) {
+      return new Promise(reslove => {
+        this.isShowPopup = true;
+        this.title = title;
+        this.content = content;
+        this.showCancel = showCancel;
+        this.cancelText = cancelText;
+        this.confirmText = confirmText;
+        this.$refs.popup.open();
+        this.confirm = value => {
+          this.$refs.popup.close();
+          // 延时 300 为了不影响动画的连贯性
+          setTimeout(() => {
+            this.isShowPopup = false;
+          }, 300);
+          reslove(value);
+        };
+      });
     },
-		data() {
-			return {
-			}
-		},
-    computed: {
-      isHasTitle() {
-        console.log(this.type,'type')
-        if(this.type === 'content') {
-          return true
-        } else {
-          return false
-        }
-      },
-      isHasContent() {
-        console.log(this.type,'type')
-        if(this.type === 'title') {
-          return true
-        } else {
-          return false
-        }
-      },
-      isMainOperation() {
-        if(this.type === 'mainOperation') {
-          return true
-        } else {
-          return false
-        }
-      }
+    confirmHandleClick() {
+      this.confirm(true);
     },
-		methods: {
-			open() {
-			    this.$refs.popup.open()
-			}
-		}
-	}
+    cancelHandleClick() {
+      this.confirm(false);
+    }
+  }
+};
 </script>
 
 <style lang="scss" scoped>
-.popup-modal {
+.m-modal-wrap {
   width: 560rpx;
-  height: 316rpx;
-  background: #FCFCFC;
-  // background-color: pink;
+  background-color: #ffffff;
   border-radius: 16rpx;
-  .modal-top {
-    padding: 54rpx 40rpx 0 40rpx;
-    height: 226rpx;
-    // text-align: center;
-    border-bottom: 1rpx solid #EFEFEF;
-    .title {
-      width: 480rpx;
-      height: 48rpx;
+  overflow: hidden;
+  .m-modal-inner {
+    padding: 50rpx 40rpx;
+    border-bottom: solid 1rpx #efefef;
+    .m-modal-title {
+      color: #17212e;
       font-size: 34rpx;
-      font-weight: 500;
-      color: #17212E;
-      line-height:48rpx;
       text-align: center;
-      margin-bottom: 10rpx;
-     }
-     .content1 {
-       width: 480rpx;
-       height: 36rpx;
-       font-size: 26rpx;
-       color: #70767F;
-       line-height:36rpx;
-       text-align: center;
-     }
-     .content2 {
-       width: 480rpx;
-       height: 226rpx;
-       font-size: 30rpx;
-       color: #17212E;
-       line-height: 226rpx;
-       text-align: center;
-       margin: 0 auto;
-     }
+      margin-bottom: 16rpx;
+    }
+    .m-modal-content {
+      color: #70767f;
+      font-size: 26rpx;
+      text-align: center;
+      max-height: 60vh;
+      overflow: auto;
+    }
   }
-  .modal-bottom {
+  .m-modal-bottom {
+    height: 88rpx;
+    display: flex;
     font-size: 34rpx;
-    .auxiliary {
-      width: 280rpx;
-      height: 88rpx;
-      line-height: 88rpx;
-      text-align: center;
-      color: #70767F;
-      display: block;
-      float: left;
-      border-right: 1rpx solid #EFEFEF;
+    .m-modal-bottom-line {
+      height: 100%;
+      flex: 0 0 1rpx;
+      background-color: #efefef;
     }
-    .main1 {
-      width: 280rpx;
-      height: 88rpx;
-      line-height: 88rpx;
-      text-align: center;
-      color: #1371F7;
-      display: block;
-      float: right;
-    }
-    .main2 {
-      width: 560rpx;
-      height: 88rpx;
-      font-size: 34rpx;
-      color: #1371F7;
-      line-height: 88rpx;
-      text-align: center;
-      display: block;
-      float: left;
+    .m-modal-btn {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: #70767f;
+      &.hover {
+        // 点击态样式
+        background-color: #f1f1f1;
+      }
+      &.primary {
+        color: #1371f7;
+      }
     }
   }
 }

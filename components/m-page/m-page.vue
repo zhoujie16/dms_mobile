@@ -5,6 +5,7 @@
       <MPickerPopup ref="MPickerPopup"></MPickerPopup>
       <MCheckboxPopup ref="MCheckboxPopup"></MCheckboxPopup>
       <MDatePickerPopup ref="MDatePickerPopup"></MDatePickerPopup>
+      <MModal ref="MModal"></MModal>
     </view>
   </view>
 </template>
@@ -26,6 +27,7 @@ export default {
     this.MPickerPopup = this.$refs.MPickerPopup;
     this.MCheckboxPopup = this.$refs.MCheckboxPopup;
     this.MDatePickerPopup = this.$refs.MDatePickerPopup;
+    this.MModal = this.$refs.MModal;
   },
   methods: {}
 };

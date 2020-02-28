@@ -212,19 +212,19 @@ Vue.component("MNothing", MNothing);
 
 // 按钮
 import MButton from '@/components/m-button/m-button.vue';
-Vue.component('MButton',MButton);
+Vue.component('MButton', MButton);
 
 // 车牌号
 import MLicense from '@/components/key-board/m-license.vue';
-Vue.component('MLicense',MLicense);
+Vue.component('MLicense', MLicense);
 
 // 拨号
 import MtelephoneCall from '@/components/m-telephoneCall/m-telephoneCall.vue';
-Vue.component('MtelephoneCall',MtelephoneCall);
+Vue.component('MtelephoneCall', MtelephoneCall);
 
 // 弹窗
-import Mmodal from '@/components/m-modal/m-modal.vue';
-Vue.component("Mmodal",Mmodal);
+import MModal from '@/components/m-modal/m-modal.vue';
+Vue.component("MModal", MModal);
 
 /** 绑定公共组件 E */
 
@@ -261,6 +261,10 @@ Vue.mixin({
         endYear: '2020'
       };
       const [res] = await this.$root.$refs.MPage.MPickerPopup.showPicker(params);
+    },
+    // 显示模态弹窗
+    async SHOW_MODAL(params) {
+      return await this.$root.$refs.MPage.MModal.showModal(params);
     }
   }
 });
