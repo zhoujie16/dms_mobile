@@ -98,7 +98,7 @@ export default {
 }
 .m-popup-wrap.bottom {
   width: 750rpx;
-  height: 60vh;
+  height: 70vh;
   .m-popup-title {
     display: flex;
     padding: 26rpx 30rpx;
@@ -125,9 +125,9 @@ export default {
   // }
   .m-popup-content {
     position: relative;
-    height: calc(60vh - 80rpx);
+    height: calc(70vh - 80rpx);
     background: $uni-m-color-white-pressed;
-    padding: 20rpx;
+    // padding: 20rpx;
   }
 }
 </style>

@@ -15,11 +15,11 @@
             <view class="car-info">皮蛋卡丁车 1.5L AT</view>
           </view>
           <view class="btn-info">
-            <view class="btn">
+            <view class="btn" @click="historyClick">
               <image class="btn-icon" src="../../static/image/car.svg" mode="scaleToFill"></image>
               <text>维修历史</text>
             </view>
-            <view class="btn">
+            <view class="btn" @click="monitorClick">
               <image class="btn-icon" src="../../static/image/pc.svg" mode="scaleToFill"></image>
               <text>监控信息</text>
             </view>
@@ -118,14 +118,24 @@
         </template>
       </CollapsePanel>
     </view>
+    <!-- 监控信息 -->
+	<MPopup ref="mPopup_amonitor_info" type="bottom" title="监控信息">
+	  <AmonitorInfo></AmonitorInfo>
+	</MPopup>
+  <!-- 维修历史 -->
+  <MPopup ref="mPopup_history" type="bottom" title="维修历史">
+    <RepaidHistory></RepaidHistory>
+  </MPopup>
   </MPage>
 </template>
 
 <script>
 import AmonitorInfo from './components/monitor-info.vue';
+import RepaidHistory from './components/repaid-history.vue';
 export default {
   components: {
-    AmonitorInfo
+    AmonitorInfo,
+    RepaidHistory
   },
   data() {
     return {
@@ -158,6 +168,14 @@ export default {
       uni.navigateBack({
         delta: 1
       });
+    },
+    // 监控信息
+    monitorClick(){
+       this.$refs.mPopup_amonitor_info.open();
+    },
+    // 维修历史
+    historyClick(){
+      this.$refs.mPopup_history.open();
     }
   }
 };

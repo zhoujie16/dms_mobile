@@ -1,6 +1,6 @@
 <template>
 	<view>
-		
+		维修历史
 	</view>
 </template>
 

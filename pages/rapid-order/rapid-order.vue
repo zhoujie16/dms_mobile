@@ -53,7 +53,9 @@
         <image class="add-btn" src="/static/image/add_btn.svg" mode="scaleToFill"></image>
       </view>
       <MPopup ref="mPopup_addorder" type="bottom" title="新建工单">
-        <OrderCell v-for="item in [1, 2]" :key="item" @click.native="orderCellClick"></OrderCell>
+        <view class="order-box">
+          <OrderCell v-for="item in [1, 2]" :key="item" @click.native="orderCellClick"></OrderCell> 
+        </view>
       </MPopup>
     </view>
   </MPage>
@@ -184,5 +186,8 @@ export default {
   height: 120rpx;
   right: 20rpx;
   bottom: 20rpx;
+}
+.order-box{
+  padding: 20rpx;
 }
 </style>
