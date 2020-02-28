@@ -222,6 +222,10 @@ Vue.component('MLicense',MLicense);
 import MtelephoneCall from '@/components/m-telephoneCall/m-telephoneCall.vue';
 Vue.component('MtelephoneCall',MtelephoneCall);
 
+// 弹窗
+import Mmodal from '@/components/m-modal/m-modal.vue';
+Vue.component("Mmodal",Mmodal);
+
 /** 绑定公共组件 E */
 
 Vue.config.productionTip = false;

@@ -337,9 +337,9 @@
             "style" : {}
         },
         {
-            "path" : "pages/no-records/no-records",
+            "path" : "pages/no-access/no-access",
             "style" : {
-              "navigationBarTitleText": "暂无记录"
+              "navigationBarTitleText": "无权访问"
             }
         }
         ,{
@@ -347,6 +347,18 @@
             "style" : {
               "navigationBarTitleText": "找回密码"
             }
+        }
+        ,{
+            "path" : "pages/demo/ui-demo/modal",
+            "style" : {}
+        }
+        ,{
+            "path" : "components/m-modal/m-modal",
+            "style" : {}
+        }
+        ,{
+            "path" : "pages/new-version/new-version",
+            "style" : {}
         }
     ],
   // "tabBar": {

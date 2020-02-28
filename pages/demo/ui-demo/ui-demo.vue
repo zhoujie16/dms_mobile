@@ -101,8 +101,15 @@ export default {
               url: '/pages/demo/ui-demo/keyWord'
             });
           }
+        },
+        {
+          title: '弹窗',
+          clickFn: async () => {
+            const [err, res] = await uni.navigateTo({
+              url: '/pages/demo/ui-demo/modal'
+            });
+          }
         }
-        
       ]
     };
   },

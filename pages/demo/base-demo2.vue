@@ -10,7 +10,8 @@
       <button class="test-btn" type="primary" @click="openlocalWeb">打开本地网页</button>
       <button class="test-btn" type="primary" @click="openUChartsDemo">e-charts-H5</button>
       <button class="test-btn" type="primary" @click="openUChartsDemo2">e-charts-renderjs</button>
-      <button class="test-btn" type="primary" @click="openNoRecords">暂无记录</button>
+      <button class="test-btn" type="primary" @click="openNoAccess">无权访问</button>
+      <button class="test-btn" type="primary" @click="openNewVersion">新版本</button>
       <AjaxButton :click="testClick">test-btn</AjaxButton>
       <MButton></MButton>
       <MButton type="warning" text="警告类正常"></MButton>
@@ -130,14 +131,15 @@ export default {
         }, 1000);
       })
     },
-    async openNoRecords() {
+    async openNoAccess() {
       uni.navigateTo({
-        // url:'/pages/no-records/no-records',
-        url: '/pages/no-records/no-records'
+        url: '/pages/no-access/no-access'
       })
-      // uni.navigateTo({
-      //   url: '/pages/demo/e-charts-demo'
-      // });
+    },
+    async openNewVersion() {
+      uni.navigateTo({
+        url: '/pages/new-version/new-version'
+      })
     }
   }
 };
