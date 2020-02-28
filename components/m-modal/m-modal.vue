@@ -54,12 +54,11 @@ export default {
         this.cancelText = cancelText;
         this.confirmText = confirmText;
         this.$refs.popup.open();
-        this.confirm = value => {
+        this.confirm = async value => {
           this.$refs.popup.close();
           // 延时 300 为了不影响动画的连贯性
-          setTimeout(() => {
-            this.isShowPopup = false;
-          }, 300);
+          await this.$sleep(300);
+          this.isShowPopup = false;
           reslove(value);
         };
       });

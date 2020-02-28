@@ -1,6 +1,7 @@
 <template>
   <MPage ref="MPage" class="page-inner">
     <m-button class="demo-btn" block type="primary" @click.native="showModal_1">标准的</m-button>
+    <m-button class="demo-btn" block type="primary" @click.native="showModal_2">无取消</m-button>
   </MPage>
 </template>
 
@@ -17,6 +18,21 @@ export default {
         content: '提示的内容',
         showCancel: true, // 是否显示取消按钮，默认为 true
         cancelText: '取消', // 取消按钮的文字，默认为"取消"，最多 4 个字符
+        confirmText: '确定' // 确定按钮的文字，默认为"确定"，最多 4 个字符
+      });
+      // 交互结果
+      console.log('showModal_res', res);
+      await uni.showToast({
+        title: `${res}`,
+        icon: 'none'
+      });
+    },
+    async showModal_2(){
+      // js 调用方式
+      const res = await this.SHOW_MODAL({
+        title: '提示的标题',
+        content: '提示的内容',
+        showCancel: false, // 是否显示取消按钮，默认为 true
         confirmText: '确定' // 确定按钮的文字，默认为"确定"，最多 4 个字符
       });
       // 交互结果
