@@ -6,6 +6,7 @@
       <MCheckboxPopup ref="MCheckboxPopup"></MCheckboxPopup>
       <MDatePickerPopup ref="MDatePickerPopup"></MDatePickerPopup>
       <MModal ref="MModal"></MModal>
+      <MActionSheet ref="MActionSheet"></MActionSheet>
     </view>
   </view>
 </template>
@@ -13,9 +14,9 @@
 <script>
 export default {
   name: 'm-page',
-  props:{
+  props: {
     // 页面背景色，可选值 primary  default
-    type:{
+    type: {
       type: String,
       default: 'default'
     }
@@ -28,6 +29,7 @@ export default {
     this.MCheckboxPopup = this.$refs.MCheckboxPopup;
     this.MDatePickerPopup = this.$refs.MDatePickerPopup;
     this.MModal = this.$refs.MModal;
+    this.MActionSheet = this.$refs.MActionSheet;
   },
   methods: {}
 };
@@ -39,10 +41,10 @@ export default {
   width: 100%;
   height: 100vh;
   overflow: auto;
-  &.default{
-    background-color:$uni-m-color-white-pressed;
+  &.default {
+    background-color: $uni-m-color-white-pressed;
   }
-  &.primary{
+  &.primary {
     background-color: $uni-m-color-white-pressed;
   }
 }

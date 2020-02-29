@@ -134,7 +134,7 @@
       "path": "pages/customer-reception/customer-detail",
       "style": {
         "navigationBarTitleText": "接待详情",
-         "navigationStyle": "custom"
+        "navigationStyle": "custom"
       }
     }, {
       "path": "pages/demo/base-demo2",
@@ -172,7 +172,7 @@
       "path": "pages/customer-reception/customer-add",
       "style": {
         "navigationBarTitleText": "新增预检单",
-         "navigationStyle": "custom"
+        "navigationStyle": "custom"
         // "app-plus": {
         //   "titleNView": {
         //     "buttons": [{
@@ -321,49 +321,37 @@
           }
         }
       }
+    }, {
+      "path": "pages/demo/ui-demo/swipeActionItem",
+      "style": {
+        "navigationBarTitleText": "SwipeAction 滑动操作",
+        "disableScroll": true,
+        "app-plus": {
+          "bounce": "none"
+        }
+      }
+    }, {
+      "path": "pages/demo/ui-demo/keyWord",
+      "style": {}
+    },
+    {
+      "path": "pages/no-access/no-access",
+      "style": {
+        "navigationBarTitleText": "无权访问"
+      }
+    }, {
+      "path": "pages/login/forgetPassword",
+      "style": {
+        "navigationBarTitleText": "找回密码"
+      }
+    }, {
+      "path": "pages/new-version/new-version",
+      "style": {}
+    }, {
+      "path": "pages/demo/ui-demo/toast",
+      "style": {}
     }
-      ,{
-            "path" : "pages/demo/ui-demo/swipeActionItem",
-            "style" : {
-              "navigationBarTitleText": "SwipeAction 滑动操作",
-                      "disableScroll":true,
-                      "app-plus":{
-                          "bounce":"none"
-                      }
-            }
-        }
-        ,{
-            "path" : "pages/demo/ui-demo/keyWord",
-            "style" : {}
-        },
-        {
-            "path" : "pages/no-access/no-access",
-            "style" : {
-              "navigationBarTitleText": "无权访问"
-            }
-        }
-        ,{
-            "path" : "pages/login/forgetPassword",
-            "style" : {
-              "navigationBarTitleText": "找回密码"
-            }
-        }
-        ,{
-            "path" : "pages/demo/ui-demo/modal",
-            "style" : {}
-        }
-        ,{
-            "path" : "components/m-modal/m-modal",
-            "style" : {}
-        }
-        ,{
-            "path" : "pages/new-version/new-version",
-            "style" : {}
-        },{
-            "path" : "pages/demo/ui-demo/toast",
-            "style" : {}
-        }
-    ],
+  ],
   // "tabBar": {
   //   "color": "#333333",
   //   "selectedColor": "#333333",

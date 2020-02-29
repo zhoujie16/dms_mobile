@@ -55,6 +55,7 @@ export default {
         this.confirmText = confirmText;
         this.$refs.popup.open();
         this.confirm = async value => {
+          await this.$sleep(100);
           this.$refs.popup.close();
           // 延时 300 为了不影响动画的连贯性
           await this.$sleep(300);
@@ -64,10 +65,10 @@ export default {
       });
     },
     confirmHandleClick() {
-      this.confirm(true);
+      this.confirm('confirm');
     },
     cancelHandleClick() {
-      this.confirm(false);
+      this.confirm('cancel');
     }
   }
 };
