@@ -62,7 +62,7 @@ export default {
           }
         },
         {
-          title: '弹窗',
+          title: '弹窗交互',
           clickFn: async () => {
             const [err, res] = await uni.navigateTo({
               url: '/pages/demo/ui-demo/dialog'
@@ -70,10 +70,10 @@ export default {
           }
         },
         {
-          title: 'toast',
+          title: '语音识别',
           clickFn: async () => {
             const [err, res] = await uni.navigateTo({
-              url: '/pages/demo/ui-demo/toast'
+              url: '/pages/demo/ui-demo/speech'
             });
           }
         },

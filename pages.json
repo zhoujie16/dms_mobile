@@ -289,6 +289,9 @@
       "path": "pages/demo/ui-demo/dialog",
       "style": {}
     }, {
+      "path": "pages/demo/ui-demo/speech",
+      "style": {}
+    }, {
       "path": "pages/demo/ui-demo/list",
       "style": {}
     }, {
