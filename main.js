@@ -234,10 +234,12 @@ Vue.component("MActionSheet", MActionSheet);
 
 Vue.config.productionTip = false;
 
-// 公共方法
+/**
+ * 公共方法混入  所有Vue组件均可使用
+ */
 Vue.mixin({
   methods: {
-    // 修改Vue实例Data方法，当 this.xxx 界面不生效是使用
+    // 修改Vue实例Data方法，当 this.xxx 界面不生效时使用
     setData: function(obj, callback) {
       let that = this;
       let keys = [];
@@ -260,18 +262,14 @@ Vue.mixin({
       callback && callback();
     },
     async TEST() {
-      const params = {
-        mode: 'date',
-        startYear: '2016',
-        endYear: '2020'
-      };
-      const [res] = await this.$root.$refs.MPage.MPickerPopup.showPicker(params);
+      console.log(('mixin test'))
     },
     // 显示提示信息
-    SHOW_TOAST(message) {
-      uni.showToast({
+    async SHOW_TOAST(message) {
+      await uni.showToast({
         title: message,
-        position: 'bottom'
+        position: 'bottom',
+        icon: 'none'
       });
     },
     // 显示等待提示
@@ -287,11 +285,6 @@ Vue.mixin({
     },
     // 显示弹窗选择
     async SHOW_PICKER(params) {
-      /*
-        single,
-        itemList,
-        value
-      */
       return await this.$root.$refs.MPage.MPickerPopup.showPicker({
         mode: 'selector',
         selectList: params.itemList,
@@ -300,33 +293,14 @@ Vue.mixin({
     },
     // 显示弹窗日期选择
     async SHOW_TIME_PICKER(params) {
-      /*
-         mode: date / range
-      */
       return await this.$root.$refs.MPage.MPickerPopup.showPicker(params);
     },
     // 显示模态弹窗
     async SHOW_MODAL(params) {
-      /*
-        参数: 
-        title: '提示的标题',
-        content: '提示的内容',
-        showCancel: true, // 是否显示取消按钮，默认为 true
-        cancelText: '取消', // 取消按钮的文字，默认为"取消"，最多 4 个字符
-        confirmText: '确定' // 确定按钮的文字，默认为"确定"，最多 4 个字符
-        返回:
-        cancel / confirm
-      */
       return await this.$root.$refs.MPage.MModal.showModal(params);
     },
     // 显示操作菜单
     async SHOW_ACTION_SHEET(params) {
-      /*
-        参数:
-        itemList: [{ text: '1', value: 1 }, { text: '2', value: 2 }, { text: '3', value: 3 }]
-        返回:
-        cancel / item
-      */
       return await this.$root.$refs.MPage.MActionSheet.showActionSheet(params);
     }
   }
