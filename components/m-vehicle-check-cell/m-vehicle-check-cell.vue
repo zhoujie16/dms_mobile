@@ -34,10 +34,34 @@
           <text v-else class="m-iconfont">请选择 &#xe71a;</text>
         </view>
       </view>
-      <view v-if="hasPhoto" class="m-check-camera">
+      <view v-if="hasPhoto" class="m-check-camera" @click="cameraBtnClick">
         <image class="camera-img" src="/static/image/camera.svg" mode="scaleToFill"></image>
       </view>
     </view>
+    <uni-popup ref="popup">
+      <view class="choose-photo-popup-wrap">
+        <image @click="colseChoosePanel" class="popup-close-btn" src="/static/image/close.svg" mode="scaleToFill"></image>
+        <view class="choose-photo-title">图片/视频</view>
+        <view class="choose-photo-panel">
+          <view class="choose-photo">
+            <image
+              class="choose-img"
+              src="/static/image/camera-choose.svg"
+              mode="scaleToFill"
+            ></image>
+            <text class="choose-txt">上传图片</text>
+          </view>
+          <view class="choose-photo">
+            <image
+              class="choose-img"
+              src="/static/image/video-choose.svg"
+              mode="scaleToFill"
+            ></image>
+            <text class="choose-txt">上传视频</text>
+          </view>
+        </view>
+      </view>
+    </uni-popup>
   </view>
 </template>
 
@@ -106,6 +130,13 @@ export default {
       if (res !== 'cancel') {
         this.$emit('change', res[0], this.index);
       }
+    },
+    //
+    async cameraBtnClick() {
+      this.$refs.popup.open();
+    },
+    async colseChoosePanel() {
+      this.$refs.popup.close();
     }
   }
 };
@@ -191,5 +222,55 @@ export default {
       }
     }
   }
+}
+.choose-photo-popup-wrap {
+  width: 690rpx;
+  height: 480rpx;
+  padding-top: 40rpx;
+  background-color: #ffffff;
+  border-radius: 16rpx;
+  position: relative;
+  top: -100rpx;
+  .popup-close-btn {
+    position: absolute;
+    width: 52rpx;
+    height: 52rpx;
+    top: 20rpx;
+    right: 20rpx;
+  }
+  // .choose-photo-popup-inner {
+  .choose-photo-title {
+    font-size: 34rpx;
+    color: #17212e;
+    display: flex;
+    height: 120rpx;
+    justify-content: center;
+    align-items: center;
+  }
+  .choose-photo-panel {
+    display: flex;
+    justify-content: space-around;
+    padding: 0 20rpx;
+    // height: 530rpx;
+    .choose-photo {
+      width: 286rpx;
+      height: 286rpx;
+      background-color: #f9f9f9;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      .choose-img {
+        width: 96px;
+        height: 96rpx;
+      }
+      .choose-txt {
+        margin-top: 14rpx;
+        font-size: 24rpx;
+        color: #262626;
+      }
+    }
+  }
+  // }
 }
 </style>
