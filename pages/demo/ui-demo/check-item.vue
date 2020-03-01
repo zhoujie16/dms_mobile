@@ -9,6 +9,7 @@
           :index="i"
           :type="item.type"
           :label="item.label"
+          :itemList="item.itemList"
           :value="item.value"
           :placeholder="item.placeholder"
           :unit="item.unit"
@@ -27,14 +28,24 @@ export default {
       formData: [
         {
           fieldName: 'jylqq',
-          type: 'btn',
+          type: 'select',
           label: '机油滤清器',
+          itemList: [
+            { text: '正常', value: '14001001' },
+            { text: '观察', value: '14001002' },
+            { text: '异常', value: '14001003' }
+          ],
           value: ''
         },
         {
           fieldName: 'rylqq',
-          type: 'btn',
+          type: 'select',
           label: '燃油滤清器',
+          itemList: [
+            { text: '正常', value: '14001001' },
+            { text: '观察', value: '14001002' },
+            { text: '异常', value: '14001003' }
+          ],
           value: ''
         },
         {

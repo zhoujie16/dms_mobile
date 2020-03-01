@@ -5,10 +5,16 @@
       <view class="m-check-label">{{ label }}</view>
       <view class="m-check-body">
         <!-- 按钮组 -->
-        <view v-if="type === 'btn'" class="m-check-btn-group">
-          <view class="check-btn active">正常</view>
-          <view class="check-btn">观察</view>
-          <view class="check-btn">异常</view>
+        <view v-if="type === 'select'" class="m-check-btn-group">
+          <view
+            v-for="(item, i) in itemList"
+            :key="item.value"
+            class="check-btn"
+            :class="{ active: item.value === value }"
+            @click="mCheckBtnClick(item)"
+          >
+            {{ item.text }}
+          </view>
         </view>
         <!-- 文本框 -->
         <view v-if="type === 'input'" class="m-check-text-input">
@@ -40,9 +46,10 @@ export default {
   props: {
     /**
      * 参数:
-     * type: 类型 btn / input / date / customer
+     * type: 类型 select / input / date / customer
      * fieldName: 字段名称
      * label
+     * itemList
      * value
      * placeholder
      * unit: 单位 string
@@ -57,6 +64,9 @@ export default {
     },
     value: {
       type: String
+    },
+    itemList: {
+      type: Array
     },
     type: {
       type: String
@@ -78,6 +88,9 @@ export default {
     return {};
   },
   methods: {
+    mCheckBtnClick(item) {
+      this.$emit('change', item.value, this.index);
+    },
     checkTxtInput(e) {
       console.log(e.target.value);
       this.$emit('change', e.target.value, this.index);
@@ -159,7 +172,7 @@ export default {
           color: #c3c3c3;
         }
         .m-check-date-value {
-          color: #70767F;
+          color: #70767f;
         }
       }
     }
