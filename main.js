@@ -267,6 +267,44 @@ Vue.mixin({
       };
       const [res] = await this.$root.$refs.MPage.MPickerPopup.showPicker(params);
     },
+    // 显示提示信息
+    SHOW_TOAST(message) {
+      uni.showToast({
+        title: message,
+        position: 'bottom'
+      });
+    },
+    // 显示等待提示
+    async SHOW_LOADING(message) {
+      await uni.showLoading({
+        title: message,
+        mask: true
+      });
+    },
+    // 关闭等待提示
+    async HIDE_LOADING() {
+      await uni.hideLoading()
+    },
+    // 显示弹窗选择
+    async SHOW_PICKER(params) {
+      /*
+        single,
+        itemList,
+        value
+      */
+      return await this.$root.$refs.MPage.MPickerPopup.showPicker({
+        mode: 'selector',
+        selectList: params.itemList,
+        defaultVal: params.value[0]
+      });
+    },
+    // 显示弹窗日期选择
+    async SHOW_TIME_PICKER(params) {
+      /*
+         mode: date / range
+      */
+      return await this.$root.$refs.MPage.MPickerPopup.showPicker(params);
+    },
     // 显示模态弹窗
     async SHOW_MODAL(params) {
       /*
@@ -282,7 +320,7 @@ Vue.mixin({
       return await this.$root.$refs.MPage.MModal.showModal(params);
     },
     // 显示操作菜单
-    async SHOW_ACTION_SHEET(params){
+    async SHOW_ACTION_SHEET(params) {
       /*
         参数:
         itemList: [{ text: '1', value: 1 }, { text: '2', value: 2 }, { text: '3', value: 3 }]

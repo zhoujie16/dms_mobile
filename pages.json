@@ -347,9 +347,6 @@
     }, {
       "path": "pages/new-version/new-version",
       "style": {}
-    }, {
-      "path": "pages/demo/ui-demo/toast",
-      "style": {}
     }
   ],
   // "tabBar": {

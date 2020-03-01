@@ -8,7 +8,6 @@
         :defaultVal="defaultVal"
         @confirm="onConfirm"
         ref="picker"
-        themeColor="#f00"
         :selectList="selectList"
       ></w-picker>
     </view>
@@ -22,7 +21,6 @@
         :current="false"
         @confirm="onConfirm"
         ref="picker"
-        themeColor="#f00"
       ></w-picker>
     </view>
     <!-- 日期选择 -->
@@ -33,6 +31,26 @@
         :endYear="endYear"
         :defaultVal="defaultVal"
         :current="true"
+        @confirm="onConfirm"
+        :disabledAfter="false"
+        ref="picker"
+      ></w-picker>
+    </view>
+    <!-- 日期和时间 -->
+    <view v-if="mode === 'dateTime'">
+      <w-picker
+        mode="dateTime" 
+        :defaultVal="defaultVal" 
+        @confirm="onConfirm"
+        :disabledAfter="false"
+        ref="picker"
+      ></w-picker>
+    </view>
+    <!-- 时间 -->
+    <view v-if="mode === 'time'">
+      <w-picker
+        mode="time" 
+        :defaultVal="defaultVal" 
         @confirm="onConfirm"
         :disabledAfter="false"
         ref="picker"
@@ -66,7 +84,10 @@ export default {
       return new Promise(reslove => {
         this.mode = mode;
         if (mode == 'selector') {
-          this.selectList = selectList;
+          this.selectList = selectList.map(x => ({
+            label: x.text,
+            value: x.value
+          }));
           this.defaultVal = defaultVal;
         } else if (mode == 'date') {
           this.startYear = startYear;

@@ -72,6 +72,8 @@ export default {
     border-bottom: solid 1rpx #efefef;
     color: #17212e;
     font-size: 34rpx;
+    max-height: 80vh;
+    overflow: auto;
     .m-actionsheet-cell {
       height: 100rpx;
       display: flex;
