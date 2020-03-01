@@ -25,6 +25,18 @@
 export default {
   data() {
     return {
+      /**
+       * 参数:
+       * type: 类型 select / input / date / customer
+       * fieldName: 字段名称
+       * label
+       * itemList
+       * value
+       * placeholder
+       * unit: 单位 string
+       * hasPhoto: true / false
+       * @change: 值改变,修改数据源的value
+       */
       formData: [
         {
           fieldName: 'jylqq',
