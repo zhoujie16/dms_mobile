@@ -80,6 +80,8 @@ export default {
   background-color: #ffffff;
   border-radius: 16rpx;
   overflow: hidden;
+  position: relative;
+  top: -100rpx;
   .m-modal-inner {
     padding: 50rpx 40rpx;
     border-bottom: solid 1rpx #efefef;
