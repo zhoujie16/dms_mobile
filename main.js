@@ -230,6 +230,10 @@ Vue.component("MModal", MModal);
 import MActionSheet from '@/components/m-actionsheet/m-actionsheet.vue';
 Vue.component("MActionSheet", MActionSheet);
 
+// 车辆检查项 MCheckCell
+import MVehicleCheckCell from '@/components/m-vehicle-check-cell/m-vehicle-check-cell.vue';
+Vue.component("MVehicleCheckCell", MVehicleCheckCell);
+
 /** 绑定公共组件 E */
 
 Vue.config.productionTip = false;
@@ -239,7 +243,7 @@ Vue.config.productionTip = false;
  */
 Vue.mixin({
   methods: {
-    // 修改Vue实例Data方法，当 this.xxx 界面不生效时使用
+    // 修改Vue实例Data方法，当 this.xxx=xxx 界面不生效时使用
     setData: function(obj, callback) {
       let that = this;
       let keys = [];

@@ -350,6 +350,9 @@
     }, {
       "path": "pages/new-version/new-version",
       "style": {}
+    }, {
+      "path": "pages/demo/ui-demo/check-item",
+      "style": {}
     }
   ],
   // "tabBar": {

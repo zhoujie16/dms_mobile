@@ -116,6 +116,14 @@ export default {
               url: '/pages/demo/ui-demo/keyWord'
             });
           }
+        },
+        {
+          title: '车辆检查项',
+          clickFn: async () => {
+            const [err, res] = await uni.navigateTo({
+              url: '/pages/demo/ui-demo/check-item'
+            });
+          }
         }
       ]
     };
