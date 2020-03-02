@@ -2,19 +2,19 @@
 <template>
   <MPage ref="MPage">
     <MLabel title="标题">内容</MLabel>
-    <MInput labbe="文本" v-model="formData.value_1"></MInput>
-    <MInput labbe="文本" v-model="formData.value_1">
+    <MInput label="文本" v-model="formData.value_1"></MInput>
+    <MInput label="文本" v-model="formData.value_1">
       <template v-slot:after>
         <text class="m-label-after">km</text>
       </template>
     </MInput>
-    <MInput labbe="文本" v-model="formData.value_1">
+    <MInput label="文本" v-model="formData.value_1">
       <template v-slot:after>
         <text class="m-label-after">自定义</text>
       </template>
     </MInput>
     <view class="m-break-space"></view>
-    <MTextArea labbe="文本域" v-model="formData.value_1"></MTextArea>
+    <MTextArea label="文本域" v-model="formData.value_1"></MTextArea>
     <view class="m-break-space"></view>
     <MCheckbox
       label="单选 popup"
