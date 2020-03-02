@@ -2,9 +2,9 @@
 	<view class="m-licence-car-box">
 		<view class="m-licence-car-box-title">
 		  <MLabel :label="label" :border="false">
-		    <!-- <text @click="foldingHandleClick" class="m-iconfont">
-		      &#xe71c;
-		    </text> -->
+		    <text @click="foldingHandleClick" class="m-iconfont screen" >
+		      &#xe72a;
+		    </text>
 		  </MLabel>
 		</view>
     <view class="m-licence-box-panel-inner">
@@ -106,5 +106,9 @@
       text-align: center;
       border: 2rpx solid #1371F7;
     }
+  }
+  .screen{
+    font-size: 48rpx;
+    color: $uni-m-color-c11;
   }
 </style>

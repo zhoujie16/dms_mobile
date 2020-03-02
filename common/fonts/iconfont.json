@@ -6,6 +6,97 @@
   "description": "",
   "glyphs": [
     {
+      "icon_id": "13209925",
+      "name": "icon_ waiguanyulan_ weixiulishi",
+      "font_class": "icon_waiguanyulan_weixiulishi",
+      "unicode": "e730",
+      "unicode_decimal": 59184
+    },
+    {
+      "icon_id": "13209926",
+      "name": "icon_ waiguanyulan_ jiankongxinxi",
+      "font_class": "icon_waiguanyulan_jiankongxinxi",
+      "unicode": "e731",
+      "unicode_decimal": 59185
+    },
+    {
+      "icon_id": "13209665",
+      "name": "Close@2x",
+      "font_class": "Closex",
+      "unicode": "e725",
+      "unicode_decimal": 59173
+    },
+    {
+      "icon_id": "13209667",
+      "name": "video备份 2@2x",
+      "font_class": "videobeifenx",
+      "unicode": "e726",
+      "unicode_decimal": 59174
+    },
+    {
+      "icon_id": "13209668",
+      "name": "calendar@2x",
+      "font_class": "calendarx",
+      "unicode": "e727",
+      "unicode_decimal": 59175
+    },
+    {
+      "icon_id": "13209670",
+      "name": "shuoming@2x",
+      "font_class": "shuomingx",
+      "unicode": "e728",
+      "unicode_decimal": 59176
+    },
+    {
+      "icon_id": "13209703",
+      "name": "yuyin@2x",
+      "font_class": "yuyinx",
+      "unicode": "e729",
+      "unicode_decimal": 59177
+    },
+    {
+      "icon_id": "13209704",
+      "name": "scanning@2x",
+      "font_class": "scanningx",
+      "unicode": "e72a",
+      "unicode_decimal": 59178
+    },
+    {
+      "icon_id": "13209705",
+      "name": "camera@2x",
+      "font_class": "camerax",
+      "unicode": "e72b",
+      "unicode_decimal": 59179
+    },
+    {
+      "icon_id": "13209735",
+      "name": "baobiao@2x",
+      "font_class": "baobiaox",
+      "unicode": "e72c",
+      "unicode_decimal": 59180
+    },
+    {
+      "icon_id": "13209736",
+      "name": "delete-wubiankuang@2x",
+      "font_class": "delete-wubiankuangx",
+      "unicode": "e72d",
+      "unicode_decimal": 59181
+    },
+    {
+      "icon_id": "13209737",
+      "name": "point@2x",
+      "font_class": "pointx",
+      "unicode": "e72e",
+      "unicode_decimal": 59182
+    },
+    {
+      "icon_id": "13209742",
+      "name": "flash@2x",
+      "font_class": "flashx",
+      "unicode": "e72f",
+      "unicode_decimal": 59183
+    },
+    {
       "icon_id": "13110896",
       "name": "Hook@1x",
       "font_class": "Hookx",

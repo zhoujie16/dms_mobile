@@ -4,11 +4,11 @@
       <SwiperTab :height="swiperTabHeight" :tabs="tabs" :curIndex="curIndex" @change="changeTab">
         <swiper class="swiper-wrap" :current="curIndex" @change="swiperChange">
           <!--全部 -->
-          <swiper-item>
+          <!-- <swiper-item>
             <scroll-view class="swiper-scroll-wrap" scroll-y="true">
               <VehiclePreview></VehiclePreview>
             </scroll-view>
-          </swiper-item>
+          </swiper-item> -->
           <swiper-item>
             <scroll-view class="swiper-scroll-wrap" scroll-y="true">
               <InteriorCheck></InteriorCheck>
@@ -79,8 +79,8 @@ export default {
   data() {
     this.swiperTabHeight = uni.getSystemInfoSync().windowHeight - 40 + 'px';
     return {
-      tabs: ['预捡查看', '内饰检查', '发动机舱', '底盘四轮'],
-      curIndex: 2 // 当前tab的下标
+      tabs: ['内饰检查', '发动机舱', '底盘四轮'],
+      curIndex: 0 // 当前tab的下标
     };
   },
   methods: {
@@ -172,7 +172,7 @@ export default {
   }
 }
 .swiper-wrap {
-  background-color: $uni-bg-color-page;
+  // background-color: $uni-bg-color-page;
   position: absolute;
   top: 0;
   right: 0;

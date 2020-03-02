@@ -108,17 +108,16 @@ export default {
 };
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .page-wrap {
   min-height: 100vh;
-  background-color: $uni-bg-color-page;
+  background-color: $uni-m-color-white-pressed;
   margin-bottom: 10vh;
   .container {
-    padding: 20rpx;
+    padding: 20rpx 0;
     .content {
       background-color: #ffffff;
-      margin: 20rpx;
-      border-radius: 20rpx;
+      margin: 20rpx 0;
       padding: 0 20rpx;
       .content-top {
         padding-right: 10rpx;

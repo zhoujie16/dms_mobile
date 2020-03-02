@@ -98,6 +98,6 @@ export default {
   bottom: 20rpx;
 }
 .icon {
-  font-size: 42rpx;
+  font-size: 48rpx;
 }
 </style>

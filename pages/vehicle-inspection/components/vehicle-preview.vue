@@ -86,7 +86,7 @@ export default {
 <style lang="scss" scoped>
 .page-wrap {
   min-height: 100vh;
-  background-color: $uni-bg-color-page;
+  // background-color: $uni-bg-color-page;
   margin-bottom: 10vh;
   .container {
     padding: 20rpx;

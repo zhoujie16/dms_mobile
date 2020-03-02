@@ -211,7 +211,8 @@
     }, {
       "path": "pages/vehicle-inspection/vehicle-detail",
       "style": {
-        "navigationBarTitleText": "车辆检查"
+        "navigationBarTitleText": "车辆检查",
+        "navigationStyle": "custom"
       }
     }, {
       "path": "pages/vehicle-inspection/components/advise",
