@@ -1,5 +1,8 @@
 <template>
   <MPage ref="MPage">
+    <view class="m-status-bar"></view>
+    <!-- 自定义导航栏 -->
+    <uni-nav-bar left-icon="arrowleft" title="内饰检查" @clickLeft="back"></uni-nav-bar>
     <view class="swiper-page-wrap">
       <SwiperTab :height="swiperTabHeight" :tabs="tabs" :curIndex="curIndex" @change="changeTab">
         <swiper class="swiper-wrap" :current="curIndex" @change="swiperChange">
@@ -43,10 +46,12 @@
       </view>
       <!-- footer -->
       <view class="uni-flex uni-row v-footer">
-        <view class="flex-item v-border" @click="adviseClick">建议</view>
-        <view class="flex-item v-border" @click="previewClick">预览</view>
-        <view class="flex-item v-border">暂存</view>
-        <view class="flex-item ">保存</view>
+        <view class="flex-item1 v-border" @click="adviseClick">
+          <text class="m-iconfont icon">&#xe72c;</text>
+          <text class="title">预检单</text>
+        </view>
+        <view class="flex-item btn1 v-border" @click="previewClick">暂存</view>
+        <view class="flex-item btn2">保存</view>
       </view>
       <!-- 维修历史 -->
       <uni-popup ref="history" type="bottom">
@@ -84,6 +89,11 @@ export default {
     };
   },
   methods: {
+    async back() {
+      uni.navigateBack({
+        delta: 1
+      });
+    },
     // 轮播菜单
     swiperChange(e) {
       this.curIndex = e.detail.current;
@@ -105,21 +115,21 @@ export default {
       });
     },
     // 关键信息
-    keyClick(){
-      this.$refs.popup.open()
+    keyClick() {
+      this.$refs.popup.open();
     },
-    closeKey(){
-      this.$refs.popup.close()
+    closeKey() {
+      this.$refs.popup.close();
     },
     // 维修历史
-    historyClick(){
-       this.$refs.history.open()
+    historyClick() {
+      this.$refs.history.open();
     },
-    closeHistory(){
-       this.$refs.history.close()
+    closeHistory() {
+      this.$refs.history.close();
     },
     //增修提醒
-    remindClick(){
+    remindClick() {
       uni.navigateTo({
         url: `/pages/vehicle-inspection/components/service-remind`
       });
@@ -140,13 +150,12 @@ export default {
     .r-box {
       width: 100rpx;
       height: 100rpx;
-      background: #00bfff;
+      background:$uni-m-color-c11;
       color: #fff;
       align-items: right;
       margin-bottom: 20rpx;
       border-radius: 6rpx;
       text-align: center;
-
       .r-title {
         font-size: 20rpx;
         font-weight: bold;
@@ -159,15 +168,42 @@ export default {
     background-color: #fff;
     width: 100%;
     height: 120rpx;
-    padding: 30rpx 0;
+    // line-height: 120rpx;
+    // padding: 30rpx 0;
+    .flex-item1 {
+      flex: 0 0 150rpx;
+      text-align: center;
+      padding: 30rpx 0;
+      .icon {
+        color: $uni-m-color-c11;
+        font-size: 42rpx;
+      }
+      .title {
+        display: block;
+        color: $uni-m-color-c2;
+        font-size: 26rpx;
+      }
+    }
     .flex-item {
-      width: 25%;
+      // width: 25%;
+      flex: 1;
       text-align: center;
       line-height: 60rpx;
       // line-height: 200rpx;
     }
     .v-border {
-      border-right: 2rpx solid #cccccc;
+      border-right: 2rpx solid $uni-m-color-c4-2;
+    }
+    .btn1 {
+      line-height: 120rpx;
+      color: $uni-m-color-c11;
+      font-size: $uni-m-font-size-f2;
+    }
+    .btn2 {
+      line-height: 120rpx;
+      background-color: $uni-m-color-c11;
+      color: $uni-m-color-cwhite;
+      font-size: $uni-m-font-size-f2;
     }
   }
 }

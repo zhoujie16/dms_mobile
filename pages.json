@@ -121,7 +121,8 @@
     {
       "path": "pages/vehicle-inspection/vehicle-inspection",
       "style": {
-        "navigationBarTitleText": "车辆检查"
+        "navigationBarTitleText": "车辆检查",
+        "navigationStyle": "custom"
       }
     },
     {
@@ -355,7 +356,14 @@
       "path": "pages/demo/ui-demo/check-item",
       "style": {}
     }
-  ],
+      ,{
+            "path" : "pages/appointment-check/appointment-detail",
+            "style" : {
+              "navigationBarTitleText": "预约检查详情",
+              "navigationStyle": "custom"
+            }
+        }
+    ],
   // "tabBar": {
   //   "color": "#333333",
   //   "selectedColor": "#333333",

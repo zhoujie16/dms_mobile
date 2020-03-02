@@ -2,108 +2,179 @@
   <view class="page-wrap">
     <view class="container">
       <view class="content">
-        <view class="subContent"><VChoose :rowData="formData" @change="(val)=>{ this.formData = val }"></VChoose></view>
+        <view class="subContent">
+          <MVehicleCheckCell
+            v-for="(item, i) in formData"
+            :key="item.fieldName"
+            :index="i"
+            :type="item.type"
+            :label="item.label"
+            :itemList="item.itemList"
+            :value="item.value"
+            :placeholder="item.placeholder"
+            :unit="item.unit"
+            :hasPhoto="item.hasPhoto"
+            @change="formItemChange"
+          ></MVehicleCheckCell>
+        </view>
       </view>
       <view class="content">
-        <view class="m-flex m-align-center m-height-80 content-top">内饰检查</view>
-        <view class="subContent">
-          <textarea class="sub-textarea label-pad" @blur="bindTextAreaBlur" auto-height />
-          <button type="warn " class="btn-blue label-pad "><uni-icons type="mic-filled" size='18' color="#FFFFFF" ></uni-icons>按下说话</button>
-        </view>
+         <MTextArea label="内饰检查" v-model="value_1"></MTextArea>
       </view>
     </view>
   </view>
 </template>
 
 <script>
-import VChoose from './v-choose.vue';
+
 export default {
   name: 'InteriorCheck',
-  components: {
-    VChoose
-  },
   data() {
     return {
+      /**
+       * 参数:
+       * type: 类型 select / input / date / customer
+       * fieldName: 字段名称
+       * label
+       * itemList
+       * value
+       * placeholder
+       * unit: 单位 string
+       * hasPhoto: true / false
+       * @change: 值改变,修改数据源的value
+       */
       formData: [
         {
-          type: 'checkbox',
-          text: '灯光',
-          flag: false,
-          isLook: true,
-          data: ''
+          fieldName: 'dg',
+          type: 'select',
+          label: '灯光',
+          itemList: [
+            { text: '正常', value: '14001001' },
+            { text: '观察', value: '14001002' },
+            { text: '异常', value: '14001003' }
+          ],
+          value: ''
         },
         {
-          type: 'checkbox',
-          text: '四门升降',
-          flag: false,
-          isLook: true,
-          data: ''
+          fieldName: 'smsj',
+          type: 'select',
+          label: '四门升降',
+          itemList: [
+            { text: '正常', value: '14001001' },
+            { text: '观察', value: '14001002' },
+            { text: '异常', value: '14001003' }
+          ],
+          value: ''
         },
         {
-          type: 'checkbox',
-          text: '仪表/指示灯',
-          flag: false,
-          isLook: true,
-          data: ''
+          fieldName: 'ybzsd',
+          type: 'select',
+          label: '仪表/指示灯：',
+          itemList: [
+            { text: '正常', value: '14001001' },
+            { text: '观察', value: '14001002' },
+            { text: '异常', value: '14001003' }
+          ],
+          value: ''
         },
         {
-          type: 'checkbox',
-          text: '雨刮',
-          flag: true,
-          isLook: false,
-          data: 'error'
+          fieldName: 'yg',
+          type: 'select',
+          label: '雨刮：',
+          itemList: [
+            { text: '正常', value: '14001001' },
+            // { text: '观察', value: '14001002' },
+            { text: '异常', value: '14001003' }
+          ],
+          value: ''
         },
         {
-          type: 'checkbox',
-          text: '空调',
-          flag: false,
-          isLook: true,
-          data: ''
+          fieldName: 'kt',
+          type: 'select',
+          label: '空调：',
+          itemList: [
+            { text: '正常', value: '14001001' },
+            { text: '观察', value: '14001002' },
+            { text: '异常', value: '14001003' }
+          ],
+          value: ''
         },
         {
-          type: 'checkbox',
-          text: '音响',
-          flag: false,
-          isLook: true,
-          data: ''
+          fieldName: 'yx',
+          type: 'select',
+          label: '音响：',
+          itemList: [
+            { text: '正常', value: '14001001' },
+            { text: '观察', value: '14001002' },
+            { text: '异常', value: '14001003' }
+          ],
+          value: ''
         },
         {
-          type: 'checkbox',
-          text: '手刹',
-          flag: false,
-          isLook: true,
-          data: ''
+          fieldName: 'ss',
+          type: 'select',
+          label: '手刹：',
+          itemList: [
+            { text: '正常', value: '14001001' },
+            { text: '观察', value: '14001002' },
+            { text: '异常', value: '14001003' }
+          ],
+          value: ''
         },
         {
-          type: 'checkbox',
-          text: '天窗',
-          flag: false,
-          isLook: true,
-          data: ''
+          fieldName: 'tc',
+          type: 'select',
+          label: '天窗：',
+          itemList: [
+            { text: '正常', value: '14001001' },
+            { text: '观察', value: '14001002' },
+            { text: '异常', value: '14001003' }
+          ],
+          value: ''
         },
         {
-          type: 'checkbox',
-          text: '后视镜',
-          flag: false,
-          isLook: true,
-          data: ''
+          fieldName: 'hsj',
+          type: 'select',
+          label: '后视镜：',
+          itemList: [
+            { text: '正常', value: '14001001' },
+            { text: '观察', value: '14001002' },
+            { text: '异常', value: '14001003' }
+          ],
+          value: ''
         },
         {
-          type: 'checkbox',
-          text: '座椅/座椅套',
-          flag: false,
-          isLook: true,
-          data: ''
+          fieldName: 'zy',
+          type: 'select',
+          label: '座椅/座椅套：',
+          itemList: [
+            { text: '正常', value: '14001001' },
+            { text: '观察', value: '14001002' },
+            { text: '异常', value: '14001003' }
+          ],
+          value: ''
         },
         {
-          type: 'checkbox',
-          text: '安全带',
-          flag: false,
-          isLook: true,
-          data: ''
+          fieldName: 'aqd',
+          type: 'select',
+          label: '安全带：',
+          itemList: [
+            { text: '正常', value: '14001001' },
+            { text: '观察', value: '14001002' },
+            { text: '异常', value: '14001003' }
+          ],
+          value: ''
         }
-      ]
+      ],
+      value_1:''
     };
+  },
+  methods: {
+    // 值改变事件
+    async formItemChange(data, index) {
+      console.log('修改了', data, index);
+      this.formData[index].value = data;
+    }
   }
 };
 </script>
@@ -117,8 +188,8 @@ export default {
     padding: 20rpx 0;
     .content {
       background-color: #ffffff;
-      margin: 20rpx 0;
-      padding: 0 20rpx;
+      // margin: 20rpx 0;
+      // padding: 0 20rpx;
       .content-top {
         padding-right: 10rpx;
         height: 100rpx;

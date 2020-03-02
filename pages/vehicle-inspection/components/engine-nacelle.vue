@@ -3,150 +3,212 @@
   <view class="page-wrap">
     <view class="container">
       <view class="content">
-        <view class="subContent"><VChoose :rowData="formData" @change="(val)=>{ this.formData = val }"></VChoose></view>
-      </view>
-      <view class="content">
-        <view class="m-flex m-align-center m-height-80 content-top" style="justify-content: space-between">
-          <view>新能源汽车</view>
-          <view>
-            <uni-icons :type="isshow?'arrowup':'arrowdown'" size="30" color="#CCCCCC" @click="showClick"></uni-icons>
-          </view>
-        </view>
-        <view class="subContent" v-if="isshow">
-         <VChoose :rowData="formData1"></VChoose>
-        </view>
-      </view>
-      <view class="content">
-        <view class="m-flex m-align-center m-height-80 content-top">发动机舱</view>
         <view class="subContent">
-          <textarea class="sub-textarea label-pad" @blur="bindTextAreaBlur" auto-height />
-          <button type="warn " class="btn-blue label-pad "><uni-icons type="mic-filled" size='18' color="#FFFFFF" ></uni-icons>按下说话</button>
+          <MVehicleCheckCell
+            v-for="(item, i) in formData"
+            :key="item.fieldName"
+            :index="i"
+            :type="item.type"
+            :label="item.label"
+            :itemList="item.itemList"
+            :value="item.value"
+            :placeholder="item.placeholder"
+            :unit="item.unit"
+            :hasPhoto="item.hasPhoto"
+            @change="formItemChange"
+          ></MVehicleCheckCell>
         </view>
       </view>
+      <view class="content">
+        <CollapsePanel title="新能源汽车">
+          <template slot="default">
+            <MVehicleCheckCell
+              v-for="(item, i) in formData1"
+              :key="item.fieldName"
+              :index="i"
+              :type="item.type"
+              :label="item.label"
+              :itemList="item.itemList"
+              :value="item.value"
+              :placeholder="item.placeholder"
+              :unit="item.unit"
+              :hasPhoto="item.hasPhoto"
+              @change="formItemChange1"
+            ></MVehicleCheckCell>
+          </template>
+        </CollapsePanel>
+      </view>
+      <view class="content"><MTextArea label="发动机舱" v-model="value_1"></MTextArea></view>
     </view>
   </view>
 </template>
 
 <script>
-import VChoose from './v-choose.vue';
 export default {
   name: 'EngineNacelle',
-  components: {
-    VChoose
-  },
+
   data() {
     return {
       isshow: false,
+      value_1: '',
       formData: [
         {
-          type: 'checkbox',
-          text: '发动机机油',
-          flag: false,
-          isLook: true,
-          data: ''
+          fieldName: 'fdjjy',
+          type: 'select',
+          label: '发动机机油：',
+          itemList: [
+            { text: '正常', value: '14001001' },
+            { text: '观察', value: '14001002' },
+            { text: '异常', value: '14001003' }
+          ],
+          value: ''
         },
         {
-          type: 'checkbox',
-          text: '玻璃清洗液',
-          flag: false,
-          isLook: true,
-          data: ''
+          fieldName: 'blqxy',
+          type: 'select',
+          label: '玻璃清洗液：',
+          itemList: [
+            { text: '正常', value: '14001001' },
+            { text: '观察', value: '14001002' },
+            { text: '异常', value: '14001003' }
+          ],
+          value: ''
         },
         {
-          type: 'checkbox',
-          text: '蓄电池',
-          flag: true,
-          isLook: true,
-          data: 'error'
+          fieldName: 'xdc',
+          type: 'select',
+          label: '蓄电池：',
+          itemList: [
+            { text: '正常', value: '14001001' },
+            { text: '观察', value: '14001002' },
+            { text: '异常', value: '14001003' }
+          ],
+          value: ''
         },
         {
-          type: 'checkbox',
-          text: '防冻液',
-          flag: false,
-          isLook: true,
-          data: ''
+          fieldName: 'fdy',
+          type: 'select',
+          label: '防冻液：',
+          itemList: [
+            { text: '正常', value: '14001001' },
+            { text: '观察', value: '14001002' },
+            { text: '异常', value: '14001003' }
+          ],
+          value: ''
         },
         {
-          type: 'checkbox',
-          text: '助力转向',
-          flag: false,
-          isLook: true,
-          data: ''
+          fieldName: 'zlzx',
+          type: 'select',
+          label: '助力转向：：',
+          itemList: [
+            { text: '正常', value: '14001001' },
+            { text: '观察', value: '14001002' },
+            { text: '异常', value: '14001003' }
+          ],
+          value: ''
         },
         {
-          type: 'percent',
-          text: '制动液',
-          flag: false,
-          data: '',
-          placeholder: '0~10%'
+          fieldName: 'zdy',
+          type: 'input',
+          label: '制动液',
+          value: '',
+          unit: '%',
+          placeholder: '请填写含水量0-10',
+          hasPhoto: false
         },
         {
-          type: 'checkbox',
-          text: '空气滤清器',
-          flag: false,
-          isLook: true,
-          data: 'primary'
+          fieldName: 'kqlqq',
+          type: 'select',
+          label: '空气滤清器：',
+          itemList: [
+            { text: '正常', value: '14001001' },
+            { text: '观察', value: '14001002' },
+            { text: '异常', value: '14001003' }
+          ],
+          value: ''
         },
         {
-          type: 'checkbox',
-          text: '空调滤清器',
-          flag: false,
-          isLook: true,
-          data: 'primary'
+          fieldName: 'fdjpd',
+          type: 'select',
+          label: '发动机皮带：',
+          itemList: [
+            { text: '正常', value: '14001001' },
+            { text: '观察', value: '14001002' },
+            { text: '异常', value: '14001003' }
+          ],
+          value: ''
         },
         {
-          type: 'checkbox',
-          text: '发动机皮带',
-          flag: false,
-          isLook: true,
-          data: ''
-        },
-        {
-          type: 'checkbox',
-          text: '油路/管路/线路',
-          flag: false,
-          isLook: true,
-          data: ''
+          fieldName: 'yl',
+          type: 'select',
+          label: '油路/管路/线路：',
+          itemList: [
+            { text: '正常', value: '14001001' },
+            { text: '观察', value: '14001002' },
+            { text: '异常', value: '14001003' }
+          ],
+          value: ''
         }
       ],
-      formData1:[{
-          type: 'checkbox',
-          text: '高压电池安装',
-          flag: false,
-          isLook: true,
-          data: ''
-        },{
-          type: 'checkbox',
-          text: '高压维护开关',
-          flag: false,
-          isLook: true,
-          data: ''
-        },{
-          type: 'checkbox',
-          text: '线束/接插件',
-          flag: false,
-          isLook: true,
-          data: ''
-        },{
-          type: 'checkbox',
-          text: '逆变器冷却液',
-          flag: false,
-          isLook: true,
-          data: ''
-        }],
+      formData1: [
+        {
+          fieldName: 'gydcaz',
+          type: 'select',
+          label: '高压电池安装：',
+          itemList: [
+            { text: '正常', value: '14001001' },
+            { text: '观察', value: '14001002' },
+            { text: '异常', value: '14001003' }
+          ],
+          value: ''
+        },
+        {
+          fieldName: 'gywhkg',
+          type: 'select',
+          label: '高压维护开关：',
+          itemList: [
+            { text: '正常', value: '14001001' },
+            { text: '观察', value: '14001002' },
+            { text: '异常', value: '14001003' }
+          ],
+          value: ''
+        },
+        {
+          fieldName: 'xs',
+          type: 'select',
+          label: '线束/接插件：',
+          itemList: [
+            { text: '正常', value: '14001001' },
+            { text: '观察', value: '14001002' },
+            { text: '异常', value: '14001003' }
+          ],
+          value: ''
+        },
+        {
+          fieldName: 'nbq',
+          type: 'select',
+          label: '逆变器冷却液：',
+          itemList: [
+            { text: '正常', value: '14001001' },
+            { text: '观察', value: '14001002' },
+            { text: '异常', value: '14001003' }
+          ],
+          value: ''
+        }
+      ]
     };
   },
-  methods:{
-    showClick(){
-      this.isshow = !this.isshow;
-      // if(el==='arrowdown'){
-      //   this.isshow = 'arrowup';
-      // }else{
-      //   this.isshow = 'arrowdown';
-      // }
+  methods: {
+    bindTextAreaBlur() {},
+    // 值改变事件
+    async formItemChange(data, index) {
+      console.log('修改了', data, index);
+      this.formData[index].value = data;
     },
-    bindTextAreaBlur(){
-      
+    // 值改变事件
+    async formItemChange1(data, index) {
+      console.log('修改了', data, index);
+      this.formData[index].value = data;
     }
   }
 };
@@ -155,15 +217,15 @@ export default {
 <style lang="scss" scoped>
 .page-wrap {
   min-height: 100vh;
-  // background-color: $uni-bg-color-page;
+  background-color: $uni-m-color-white-pressed;
   margin-bottom: 10vh;
   .container {
-    padding: 20rpx;
+    padding: 20rpx 0;
     .content {
       background-color: #ffffff;
-      margin: 20rpx;
-      border-radius: 20rpx;
-      padding: 0 20rpx;
+      // margin: 20rpx;
+      // border-radius: 20rpx;
+      // padding: 0 20rpx;
       .content-top {
         padding-right: 10rpx;
         height: 100rpx;

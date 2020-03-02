@@ -3,38 +3,62 @@
   <view class="page-wrap">
     <view class="container">
       <view class="content">
-        <view class="subContent"><VChoose :rowData="formData" @change="(val)=>{ this.formData = val }"></VChoose></view>
+        <view class="subContent">
+          <!-- <VChoose :rowData="formData" @change="(val)=>{ this.formData = val }"></VChoose>-->
+          <MVehicleCheckCell
+            v-for="(item, i) in formData"
+            :key="item.fieldName"
+            :index="i"
+            :type="item.type"
+            :label="item.label"
+            :itemList="item.itemList"
+            :value="item.value"
+            :placeholder="item.placeholder"
+            :unit="item.unit"
+            :hasPhoto="item.hasPhoto"
+            @change="formItemChange"
+          ></MVehicleCheckCell>
+          </view>
       </view>
       <view class="content">
-        <view class="m-flex m-align-center m-height-80 content-top" style="justify-content: space-between">
-          <view>轮胎</view>
-          <view><uni-icons :type="isshow1" size="30" color="#CCCCCC" @click="showClick(isshow1, 1)"></uni-icons></view>
-        </view>
-        <view class="subContent">
-          <VChoose :rowData="formData1"></VChoose>
-          <view v-show="isshow1 === 'arrowup'"><VChoose :rowData="formData2"></VChoose></view>
-        </view>
+        <CollapsePanel title="轮胎">
+          <template slot="default">
+            <MVehicleCheckCell
+              v-for="(item, i) in formData1"
+              :key="item.fieldName"
+              :index="i"
+              :type="item.type"
+              :label="item.label"
+              :itemList="item.itemList"
+              :value="item.value"
+              :placeholder="item.placeholder"
+              :unit="item.unit"
+              :hasPhoto="item.hasPhoto"
+              @change="formItemChange1"
+            ></MVehicleCheckCell>
+          </template>
+        </CollapsePanel>
       </view>
       <view class="content">
-        <view class="m-flex m-align-center m-height-80 content-top" style="justify-content: space-between">
-          <view>刹车片</view>
-          <view><uni-icons :type="isshow2" size="30" color="#CCCCCC" @click="showClick(isshow2, 2)"></uni-icons></view>
-        </view>
-        <view class="subContent">
-          <VChoose :rowData="formData3"></VChoose>
-          <view v-show="isshow2 === 'arrowup'"><VChoose :rowData="formData4"></VChoose></view>
-        </view>
+        <CollapsePanel title="刹车片">
+          <template slot="default">
+            <MVehicleCheckCell
+              v-for="(item, i) in formData2"
+              :key="item.fieldName"
+              :index="i"
+              :type="item.type"
+              :label="item.label"
+              :itemList="item.itemList"
+              :value="item.value"
+              :placeholder="item.placeholder"
+              :unit="item.unit"
+              :hasPhoto="item.hasPhoto"
+              @change="formItemChange2"
+            ></MVehicleCheckCell>
+          </template>
+        </CollapsePanel>
       </view>
-      <view class="content">
-        <view class="m-flex m-align-center m-height-80 content-top">底盘四轮</view>
-        <view class="subContent">
-          <textarea class="sub-textarea label-pad" @blur="bindTextAreaBlur" auto-height />
-          <button type="warn " class="btn-blue label-pad ">
-            <uni-icons type="mic-filled" size="18" color="#FFFFFF"></uni-icons>
-            按下说话
-          </button>
-        </view>
-      </view>
+      <view class="content"><MTextArea label="底盘四轮" v-model="value_1"></MTextArea></view>
     </view>
   </view>
 </template>
@@ -50,214 +74,255 @@ export default {
     return {
       isshow1: 'arrowdown',
       isshow2: 'arrowdown',
+      value_1:'',
       formData: [
         {
-          type: 'checkbox',
-          text: '机油滤清器',
-          flag: false,
-          isLook: true,
-          data: ''
+          fieldName: 'jylqq',
+          type: 'select',
+          label: '机油滤清器：',
+          itemList: [
+            { text: '正常', value: '14001001' },
+            { text: '观察', value: '14001002' },
+            { text: '异常', value: '14001003' }
+          ],
+          value: ''
         },
         {
-          type: 'checkbox',
-          text: '燃油滤清器',
-          flag: false,
-          isLook: true,
-          data: ''
+          fieldName: 'rylqq',
+          type: 'select',
+          label: '燃油滤清器：',
+          itemList: [
+            { text: '正常', value: '14001001' },
+            { text: '观察', value: '14001002' },
+            { text: '异常', value: '14001003' }
+          ],
+          value: ''
         },
         {
-          type: 'checkbox',
-          text: '变速箱油（泄漏）',
-          flag: false,
-          isLook: true,
-          data: ''
+          fieldName: 'bsxy',
+          type: 'select',
+          label: '变速箱油（泄漏）：',
+          itemList: [
+            { text: '正常', value: '14001001' },
+            { text: '观察', value: '14001002' },
+            { text: '异常', value: '14001003' }
+          ],
+          value: ''
         },
         {
-          type: 'checkbox',
-          text: '减震器/撑杆/半轴及其他悬挂组件',
-          flag: false,
-          isLook: true,
-          data: ''
+          fieldName: 'jzq',
+          type: 'select',
+          label: '减震器/撑杆/半轴及其他悬挂组件：',
+          itemList: [
+            { text: '正常', value: '14001001' },
+            { text: '观察', value: '14001002' },
+            { text: '异常', value: '14001003' }
+          ],
+          value: ''
         },
         {
-          type: 'checkbox',
-          text: '排气管',
-          flag: false,
-          isLook: true,
-          data: ''
-        }
+          fieldName: 'pqg',
+          type: 'select',
+          label: '排气管：',
+          itemList: [
+            { text: '正常', value: '14001001' },
+            { text: '观察', value: '14001002' },
+            { text: '异常', value: '14001003' }
+          ],
+          value: ''
+        },
       ],
       formData1: [
         {
-          type: 'checkbox',
-          text: '状态',
-          flag: true,
-          isLook: true,
-          data: ''
-        }
+          fieldName: 'pqg',
+          type: 'select',
+          label: '状态：',
+          itemList: [
+            { text: '正常', value: '14001001' },
+            { text: '观察', value: '14001002' },
+            { text: '异常', value: '14001003' }
+          ],
+          value: ''
+        },
+        {
+          fieldName: 'twzq',
+          type: 'input',
+          label: '胎纹左前',
+          value: '',
+          unit: 'mm',
+          placeholder: '胎纹'
+        },
+        {
+          fieldName: 'twzh',
+          type: 'input',
+          label: '胎纹左后',
+          value: '',
+          unit: 'mm',
+          placeholder: '胎纹'
+        },
+        {
+          fieldName: 'twyq',
+          type: 'input',
+          label: '胎纹右前',
+          value: '',
+          unit: 'mm',
+          placeholder: '胎纹'
+        },
+        {
+          fieldName: 'twyh',
+          type: 'input',
+          label: '胎纹右后',
+          value: '',
+          unit: 'mm',
+          placeholder: '胎纹'
+        },
+        {
+          fieldName: 'tlzq',
+          type: 'date',
+          label: '胎龄左前',
+          value: ''
+        },
+        {
+          fieldName: 'tlzh',
+          type: 'date',
+          label: '胎龄左后',
+          value: ''
+        },
+        {
+          fieldName: 'tlyq',
+          type: 'date',
+          label: '胎龄右前',
+          value: ''
+        },
+        {
+          fieldName: 'tlyh',
+          type: 'date',
+          label: '胎龄右后',
+          value: ''
+        },
+        {
+          fieldName: 'tyzq',
+          type: 'select',
+          label: '胎压左前：',
+          itemList: [
+            { text: '正常', value: '14001001' },
+            { text: '观察', value: '14001002' },
+            { text: '异常', value: '14001003' }
+          ],
+          value: ''
+         
+        },
+        {
+          fieldName: 'tyzh',
+          type: 'select',
+          label: '胎压左后：',
+          itemList: [
+            { text: '正常', value: '14001001' },
+            { text: '观察', value: '14001002' },
+            { text: '异常', value: '14001003' }
+          ],
+          value: ''
+        },
+        {
+          fieldName: 'tyyq',
+          type: 'select',
+          label: '胎压右前：',
+          itemList: [
+            { text: '正常', value: '14001001' },
+            { text: '观察', value: '14001002' },
+            { text: '异常', value: '14001003' }
+          ],
+          value: ''
+        },
+        {
+          fieldName: 'tyyh',
+          type: 'select',
+          label: '胎压右后：',
+          itemList: [
+            { text: '正常', value: '14001001' },
+            { text: '观察', value: '14001002' },
+            { text: '异常', value: '14001003' }
+          ],
+          value: ''
+        },
       ],
       formData2: [
         {
-          type: 'millimeter',
-          text: '胎纹左前',
-          flag: false,
-          data: '',
+          fieldName: 'pqg',
+          type: 'select',
+          label: '状态：',
+          itemList: [
+            { text: '正常', value: '14001001' },
+            { text: '观察', value: '14001002' },
+            { text: '异常', value: '14001003' }
+          ],
+          value: ''
+        },
+        {
+          fieldName: 'scpzq',
+          type: 'input',
+          label: '刹车片左前',
+          value: '',
+          unit: 'mm',
           placeholder: '胎纹'
         },
         {
-          type: 'millimeter',
-          text: '胎纹右前',
-          flag: false,
-          data: '',
+          fieldName: 'scpyq',
+          type: 'input',
+          label: '刹车片右前',
+          value: '',
+          unit: 'mm',
           placeholder: '胎纹'
         },
         {
-          type: 'millimeter',
-          text: '胎纹左后',
-          flag: false,
-          data: '',
+          fieldName: 'scpzh',
+          type: 'input',
+          label: '刹车片左后',
+          value: '',
+          unit: 'mm',
           placeholder: '胎纹'
         },
-        {
-          type: 'millimeter',
-          text: '胎纹右后',
-          flag: false,
-          data: '',
-          placeholder: '胎纹'
-        },
-        {
-          type: 'dateType',
-          text: '胎龄左前',
-          flag: false,
-          data: '',
-          placeholder: '胎龄左前'
-        },
-        {
-          type: 'dateType',
-          text: '胎龄右前',
-          flag: false,
-          data: '',
-          placeholder: '胎龄右前'
-        },
-        {
-          type: 'dateType',
-          text: '胎龄左后',
-          flag: false,
-          data: '',
-          placeholder: '胎龄左后'
-        },
-        {
-          type: 'dateType',
-          text: '胎龄右后',
-          flag: false,
-          data: '',
-          placeholder: '胎龄右后'
-        },
-        {
-          type: 'checkbox',
-          text: '胎压左前',
-          flag: false,
-          isLook: true,
-          data: ''
-        },
-        {
-          type: 'checkbox',
-          text: '胎压右前',
-          flag: false,
-          isLook: true,
-          data: ''
-        },
-        {
-          type: 'checkbox',
-          text: '胎压左后',
-          flag: false,
-          isLook: true,
-          data: ''
-        },
-        {
-          type: 'checkbox',
-          text: '胎压右后',
-          flag: false,
-          isLook: true,
-          data: ''
-        }
-      ],
-      formData3: [
-        {
-          type: 'checkbox',
-          text: '状态',
-          flag: true,
-          isLook: true,
-          data: ''
-        }
-      ],
-      formData4: [
-        {
-          type: 'millimeter',
-          text: '刹车片左前',
-          flag: false,
-          data: '',
-          placeholder: '刹车片'
-        },
-        {
-          type: 'millimeter',
-          text: '刹车片右前',
-          flag: false,
-          data: '',
-          placeholder: '刹车片'
-        },
-        {
-          type: 'millimeter',
-          text: '刹车片左后',
-          flag: false,
-          data: '',
-          placeholder: '刹车片'
-        },
-        {
-          type: 'millimeter',
-          text: '刹车片右后',
-          flag: false,
-          data: '',
-          placeholder: '刹车片'
-        }
+       {
+         fieldName: 'scpyh',
+         type: 'input',
+         label: '刹车片右后',
+         value: '',
+         unit: 'mm',
+         placeholder: '胎纹'
+       }
       ]
     };
   },
   methods: {
-    showClick(el, num) {
-      if (el === 'arrowdown') {
-        if (num == 1) {
-          this.isshow1 = 'arrowup';
-        } else {
-          this.isshow2 = 'arrowup';
-        }
-      } else {
-        if (num == 1) {
-          this.isshow1 = 'arrowdown';
-        } else {
-          this.isshow2 = 'arrowdown';
-        }
-      }
+    // 值改变事件
+    async formItemChange(data, index) {
+      console.log('修改了', data, index);
+      this.formData[index].value = data;
     },
-  bindTextAreaBlur(){
-    
-  }
+    // 值改变事件
+    async formItemChange1(data, index) {
+      console.log('修改了', data, index);
+      this.formData1[index].value = data;
+    },
+    // 值改变事件
+    async formItemChange2(data, index) {
+      console.log('修改了', data, index);
+      this.formData2[index].value = data;
+    }
   }
 };
 </script>
 
 <style lang="scss">
 .page-wrap {
-  min-height: 100vh;
-  background-color: $uni-bg-color-page;
-  margin-bottom: 10vh;
+ min-height: 100vh;
+ background-color: $uni-m-color-white-pressed;
+ margin-bottom: 10vh;
   .container {
-    padding: 20rpx;
+    padding: 20rpx 0;
     .content {
       background-color: #ffffff;
-      margin: 20rpx;
-      border-radius: 20rpx;
-      padding: 0 20rpx;
+      // padding: 0 20rpx;
       .content-top {
         padding-right: 10rpx;
         height: 100rpx;
