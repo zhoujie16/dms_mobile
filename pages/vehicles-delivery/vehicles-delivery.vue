@@ -23,7 +23,7 @@
           }
         "
       >
-        <view slot="scroll" style="padding: 20rpx;">
+        <view slot="scroll" >
           <view v-for="(data, i) in dataSource" :key="i">
             <ScrollCell :cell="data" :activeindex="activeindex"></ScrollCell>
           </view>
@@ -119,7 +119,7 @@ export default {
     }
   }
   .wrap{
-    margin-top: 20rpx;
+    // margin-top: 20rpx;
   }
 .refresh{
   height: 60rpx;

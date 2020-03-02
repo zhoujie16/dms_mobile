@@ -1,16 +1,47 @@
 <template>
   <view>
     <view class="form-demo-wrap" @touchmove.prevent>
-      <MInput v-model="cph" label="车牌号"></MInput> 
+      <MLicense label="车牌号"></MLicense>
+      <MPicker label="交车日期" mode="range" v-model="formData.value_date_2"></MPicker>
+      <MInput label="车主姓名" v-model="formData.name"></MInput>
+      <MInput label="车主编号" v-model="formData.roNo"></MInput>
+      <MCheckbox
+        label="维修类型"
+        type="inner"
+        v-model="formData.value_2"
+        :itemList="itemList"
+        single
+      ></MCheckbox>
+      <!-- <MInput v-model="cph" label="车牌号"></MInput> -->
      <!-- <MCheckbox label="服务顾问" v-model="fwgw" :itemList="itemList_fwgw" :type="'popup'" single></MCheckbox> -->
-     <MCheckboxPanel
+     <!-- <MCheckboxPanel
        label="服务顾问"
        type="inner"
        v-model="fwgw"
        :itemList="itemList_fwgw"
      ></MCheckboxPanel>
-      <MDatePicker label="开单日期" v-model="dateTest"></MDatePicker>
+      <MDatePicker label="开单日期" v-model="dateTest"></MDatePicker> -->
      
+    </view>
+    <view class="check-box">
+      <MCheckboxPanel
+        label="服务顾问"
+        type="inner"
+        v-model="formData.value_22"
+        :itemList="service_itemList"
+      ></MCheckboxPanel>
+      <MCheckboxPanel
+        label="服务技师"
+        type="inner"
+        v-model="formData.value_22"
+        :itemList="service_itemList"
+      ></MCheckboxPanel>
+      <MCheckboxPanel
+        label="服务组织"
+        type="inner"
+        v-model="formData.value_22"
+        :itemList="service_itemList"
+      ></MCheckboxPanel>
     </view>
   </view>
 </template>
@@ -19,31 +50,31 @@ export default {
   components: {},
   data() {
     return {
-      cph: '',
-      khmc: '',
-      gdbh: '',
-      //
-      wxlx: [],
-      fwzz: [],
-      fwgw: [],
-      sfjc: [],
-      itemList_wxlx: [{ text: '机电', value: '1' }, { text: '钣喷', value: '2' }],
-      itemList_fwzz: [
-        { text: '组织1', value: '1' },
-        { text: '组织2', value: '2' },
-        { text: '组织3', value: '3' },
-        { text: '组织4', value: '4' },
-        { text: '组织5', value: '5' }
+      formData: {
+        name: '',
+        roNo: '',
+        value_2: [],
+        value_22: [],
+        value_3: false,
+        value_date_1: ['2020-01-06'],
+        value_date_2: ['2018-01-06', '2020-01-06']
+      },
+      itemList: [
+        { text: '机电', value: 1 }, 
+        { text: '钣喷', value: 2 }
       ],
-      itemList_fwgw: [
-        { text: '王大锤', value: '1' },
-        { text: '张全蛋', value: '2' },
-        { text: '赵铁柱', value: '3' },
-        { text: '王尼玛', value: '4' },
-        { text: '陈二狗', value: '5' }
-      ],
-      itemList_sfjc: [{ text: '已交车', value: '1' }, { text: '未交车', value: '2' }],
-      dateTest: ['']
+      service_itemList: [
+        { text: '顾问1', value: 1 },
+        { text: '顾问2', value: 2 },
+        { text: '顾问3', value: 3 },
+        { text: '顾问4', value: 4 },
+        { text: '顾问5', value: 5 },
+        { text: '顾问6', value: 6 },
+        { text: '顾问7', value: 7 },
+        { text: '顾问8', value: 8 },
+        { text: '顾问9', value: 9 },
+        { text: '顾问10', value: 10 }
+      ]
     };
   },
   watch: {
@@ -66,6 +97,7 @@ export default {
   position: relative;
   background-color: #ffffff;
   padding: 30rpx;
+  margin: 10rpx 0;
 }
 
 .btn-v {

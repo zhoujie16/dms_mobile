@@ -1,167 +1,121 @@
 <template>
   <view class="list-cell-wrap">
-    <view class="list-cell-wrap-inner">
-      <view class="list-cell-title" @click="cellTitleClick">
-        <view class="name">
-          <text class="radius"></text><text class="nowText">在修</text>张全蛋
-         </view>
-        <view class="info">
-          <view class="info-lab">沪ADC10083</view>
-          <view class="info-text">2020-01-01 16:16</view>
+      <view class="list-cell-wrap-inner" @click="cellClick">
+        <view class="list-cell-title">
+          <view class="left">
+            <text class="state">在修</text>
+            <text class="vin">谢菲菲</text>
+          </view>
+          <view class="right">2020-01-09 10:23</view>
         </view>
-      </view>
-      <view class="list-cell-content" v-if="isShowDetail">
-        <view  @click="cellClick">
-          <view class="info-item">
-            <view class="info-item-lab">工单号：</view>
-            <view class="info-item-text">YJ2001020002</view>
+        <view class="list-cell-content">
+          <!-- <view class="box">
+            <view class="label">车牌号码</view>
+            <view >沪A10001</view>
+          </view> -->
+          <view class="box">
+            <view class="label">工单编号</view>
+            <view >YO202001090001</view>
           </view>
-          <view class="info-item">
-            <view class="info-item-lab">车型：</view>
-            <view class="info-item-text">全新福克斯三厢 1.6MT</view>
+          <view class="box">
+            <view class="label">服务顾问</view>
+            <view>张扬</view>
           </view>
-          <view class="info-item">
-            <view class="info-item-lab">服务顾问：</view>
-            <view class="info-item-text">王大锤</view>
-          </view>
-          <view class="info-item">
-            <view class="info-item-lab">技师：</view>
-            <view class="info-item-text">王大锤</view>
+          <view class="box">
+            <view class="label">服务技师</view>
+            <view>陆小鹏</view>
           </view>
         </view>
-        <!-- <view class="info-item">
-          <text class="customer">联系客户</text>
-        </view> -->
-        <view class="customer" @click="phoneClick">
-          <uni-icons type="phone" color="white" size="30" style="margin-right: 20rpx;"></uni-icons>联系客户
-        </view>
-        <!-- <m-button type="primary" @click="phoneClick">
-          <uni-icons type="phone" color="white" size="30" style="margin-right: 20rpx;"></uni-icons>联系客户
-        </m-button> -->
       </view>
     </view>
-    <MtelephoneCall ref="phone">185 8328 5531</MtelephoneCall>
-    <!-- <uni-popup ref="popup" type="bottom">
-      <view style="padding: 0 30rpx;margin-bottom: 55rpx;">
-        <view class="text" style="margin-bottom: 15rpx;" @click="phoneCall">呼叫18583285531</view>
-        <view class="text" @click="phoneClose">
-          取消
-        </view>
-      </view>
-    </uni-popup> -->
-  </view>
 </template>
 
 <script>
 export default {
   components: {},
-  name: 'list-cell-wrap',
+  name: 'list-cell-vehicle-inspection',
   props: {
-    cell: Object
+    cell: Object,
+    index: Number
   },
   mounted() {
+    // console.log('list-cell-wrap', 'mounted');
   },
   data() {
     return {
       isShowDetail: false
     };
   },
-  computed: {
-  },
   methods: {
     change() {},
-    cellTitleClick() {      
+    cellTitleClick() {
       this.isShowDetail = !this.isShowDetail;
     },
     cellClick(){
-      uni.navigateTo({
-        url:`/pages/progress-query/repair-check`
-      })
       this.$emit('click')
-    },
-    phoneClick(){
-      console.log(1111)
-      this.$refs.phone.open();
     }
   }
 };
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .list-cell-wrap {
 }
 
 .list-cell-wrap-inner {
-  width: 100%;
-  border-radius: 10rpx;
+  // width: 100%;
+  border-radius: $uni-m-border-radius-b2;
   overflow: hidden;
   background-color: #ffffff;
-  margin-bottom: 30rpx;
+  padding:26rpx 30rpx;
+  margin: 20rpx;
 }
 .list-cell-title {
-  padding: 10rpx 20rpx;
-  .radius {
-    height: 30rpx;
-    width: 30rpx;
-    margin-top: 10rpx;
-    display: inline-block;
-    background-color: #FF0000;
-    border-radius: 50%;
-    margin-right: 20rpx;
-  }
-  .nowText {
-    border: 2px solid #66AAFF;
-    margin-right: 10rpx;
-    padding: 0 10rpx;
-    color: #66AAFF;
-  }
-  .name {
-    padding: 10rpx 0;
-    font-weight: 500;
-  }
-  .info {
-    color: #999999;
-    padding: 10rpx 0;
-    display: flex;
-    .info-lab {
-      flex: 0 0 200rpx;
+  display: flex;
+  border-bottom: 1rpx solid $uni-m-color-c4-2;
+  .left {
+    flex: 1;
+    margin-bottom: 20rpx;
+    .state{
+      display: inline-block;
+      margin-right: 20rpx;
+      border: 2rpx dashed $uni-m-color-c12;
+      background-color: $uni-m-color-c11;
+      color: $uni-m-color-cwhite;
+      padding: 0 20rpx;
+      font-size: $uni-m-font-size-f4;
     }
-    .info-text {
-      flex: 1 1 auto;
-      text-align: right;
+    .complate {
+      display: inline-block;
+      margin-right: 20rpx;
+      border: 2rpx dashed $uni-m-color-c12;
+      background-color: #74737D;
+      color: $uni-m-color-cwhite;
+      padding: 0 20rpx;
+      font-size: $uni-m-font-size-f4;
     }
+    .vin{
+      font-weight: 800;
+      font-size: $uni-m-font-size-f2;
+    }
+  }
+  .right{
+    color: $uni-m-color-c12;
+    margin-bottom: 20rpx;
   }
 }
-.list-cell-content {
-  background-color: #eeeeee;
-  padding: 10rpx 20rpx;
-  .info-item {
-    padding: 10rpx 0;
+.list-cell-content{
+  margin-top: 10rpx;
+  position: relative;
+  .box{
     display: flex;
-    .info-item-lab {
-      flex: 0 0 200rpx;
-      color: #999999;
-    }
-    .info-item-text {
-      flex: 1 1 auto;
+    height: 60rpx;
+    line-height: 60rpx;
+    .label{
+      flex:0 0 130rpx;
+      color:$uni-m-color-c2;
     }
   }
-  .customer{
-    width: 85%;
-    height: 68rpx;
-    line-height: 68rpx;
-    margin-left: 60rpx;
-    text-align: center;
-    background-color: #2B4D86;
-    border-radius: 5rpx;
-    color: #FFFFFF;
-  }
+  
 }
-.text {
-    height: 100rpx;
-    background-color: #808080;
-    border-radius: 10rpx;
-    line-height: 100rpx;
-    text-align: center;
-  }
 </style>

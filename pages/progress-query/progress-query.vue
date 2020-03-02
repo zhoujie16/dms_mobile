@@ -24,9 +24,9 @@
           }
         "
       >
-        <view slot="scroll" style="padding: 20rpx;">
+        <view slot="scroll">
           <view v-for="(data, i) in dataSource" :key="i">
-            <ScrollCell :cell="data"></ScrollCell>
+            <ScrollCell :cell="data" :index="i"></ScrollCell>
           </view>
         </view>
       </BaseScroll>
@@ -65,13 +65,6 @@ export default {
     };
   },
   methods: {
-    // 列表点击事件
-    scrollCellClick(cell) {
-      console.log('cellClick', cell);
-      uni.navigateTo({
-        url: '/pages/customer-reception/customer-detail'
-      });
-    },
     // 表单查询
     searchFormConfirm() {
       console.log('searchFormConfirm');
@@ -115,7 +108,7 @@ export default {
     }
   }
   .wrap{
-    margin-top: 20rpx;
+    // margin-top: 20rpx;
   }
 .refresh{
   height: 60rpx;

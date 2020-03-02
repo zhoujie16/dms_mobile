@@ -29,10 +29,11 @@
         </view>
         <button class="login-button" @click="testLogin" type="primary">登录</button>
       </view>
-      <view class="weixin">
-        <image class="vxImg" src="../../static/image/weixin.svg"></image>
-        <view class="vx-text">微信登录</view>
-      </view>
+      
+    </view>
+    <view class="weixin">
+      <image class="vxImg" src="../../static/image/weixin.svg"></image>
+      <view class="vx-text">微信登录</view>
     </view>
     <view class="copy_right">
       v3.05.09.1-18
@@ -94,7 +95,7 @@ export default {
     // position: fixed;
     // z-index: -1;
     width: 100vw;
-    // height: 100vh;
+    height: 456rpx;
     will-change: transform;
   }
   .verification_code_login {
@@ -110,11 +111,11 @@ export default {
     right: 30rpx;
   }
   .container {
+    position: absolute;
+    top: 400rpx;
+    left: 26rpx;
     .lg_inner {
       background-color: #ffffff;
-      position: absolute;
-      top: 400rpx;
-      left: 26rpx;
       width: 698rpx;
       height: 866rpx;
       border-radius: 16rpx;
@@ -167,21 +168,7 @@ export default {
         background-color: #1371F7;
       }
     }
-    .weixin {
-      position: absolute;
-      bottom: -720rpx;
-      left: 350rpx;
-      text-align: center;
-      .vxImg {
-        width: 84rpx;
-        height: 84rpx;
-        margin-bottom: 16rpx;
-      }
-      .vx-text {
-        color: #C3C3C3;
-        font-size: 22rpx;
-      }
-    }
+    
   }
   .copy_right {
     width:100%;
@@ -192,7 +179,23 @@ export default {
     line-height:26rpx;
     position: fixed;
     bottom: 10rpx;
-    left: 300rpx;
+    left: 45%;
+    // transform: translateX(-50%);
+  }
+  .weixin {
+    position: absolute;
+    bottom: -720rpx;
+    left: 350rpx;
+    text-align: center;
+    .vxImg {
+      width: 84rpx;
+      height: 84rpx;
+      margin-bottom: 16rpx;
+    }
+    .vx-text {
+      color: #C3C3C3;
+      font-size: 22rpx;
+    }
   }
 }
 </style>
