@@ -6,7 +6,7 @@
             <text class="state">在修</text>
             <text class="vin">谢菲菲</text>
           </view>
-          <view class="right">2020-01-09 10:23</view>
+          <view class="right">2020-01-09 10:23:37</view>
         </view>
         <view class="list-cell-content">
           <!-- <view class="box">
@@ -52,7 +52,10 @@ export default {
       this.isShowDetail = !this.isShowDetail;
     },
     cellClick(){
-      this.$emit('click')
+      // this.$emit('click')
+      uni.navigateTo({
+        url: '/pages/progress-query/repair-check'
+      })
     }
   }
 };
