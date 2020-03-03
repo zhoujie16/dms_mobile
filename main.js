@@ -237,6 +237,10 @@ Vue.component("MActionSheet", MActionSheet);
 import MVehicleCheckCell from '@/components/m-vehicle-check-cell/m-vehicle-check-cell.vue';
 Vue.component("MVehicleCheckCell", MVehicleCheckCell);
 
+// 滑动单元格 m-swipe-cell
+import MSwipeCell from '@/components/m-swipe-cell/m-swipe-cell.vue';
+Vue.component("MSwipeCell", MSwipeCell);
+
 /** 绑定公共组件 E */
 
 Vue.config.productionTip = false;

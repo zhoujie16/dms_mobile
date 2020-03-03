@@ -5,11 +5,14 @@
 </template>
 
 <script>
+	/**
+	 * SwipeAction 滑动操作
+	 * @description 通过滑动触发选项的容器
+	 * @tutorial https://ext.dcloud.net.cn/plugin?id=181
+	 */
 	export default {
 		data() {
-			return {
-
-			};
+			return {};
 		},
 		provide() {
 			return {
@@ -21,33 +24,35 @@
 		},
 		methods: {
 			closeOther(vm) {
-				// console.log(e);
 				let children = this.children
-				// #ifdef APP-VUE || H5 || MP-WEIXIN
 				children.forEach((item, index) => {
 					if (vm === item) return
+					// 支付宝执行以下操作
+					// #ifdef MP-ALIPAY
+					if (item.isopen) {
+						item.close()
+					}
+					// #endif
+
+					// app vue 端、h5 、微信、支付宝  执行以下操作
+					// #ifdef APP-VUE || H5 || MP-WEIXIN
 					let position = item.position[0]
 					let show = position.show
 					if (show) {
 						position.show = false
-						// this.$set(this.children[index].position, 0, position)
 					}
+					// #endif
+
+					// nvue 执行以下操作
+					// #ifdef APP-NVUE || MP-BAIDU || MP-QQ || MP-TOUTIAO
+					item.close()
+					// #endif
 				})
-				// #endif
-				// #ifdef APP-NVUE
-				children.forEach((item, index) => {
-					if (vm === item) return
-					let position = item.position[0]
-					if (item.show) {
-						item.close()
-					}
-				})
-				// #endif
 			}
 		}
 	}
 </script>
 
-<style scoped>
+<style>
 
 </style>

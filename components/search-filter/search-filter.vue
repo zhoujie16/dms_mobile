@@ -47,7 +47,7 @@ export default {
     },
     // 抽屉组件关闭
     close() {
-      this.$refs.popup.open();
+      this.$refs.popup.close();
     },
     change(e) {
       console.log('change', e);
