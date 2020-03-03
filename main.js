@@ -113,6 +113,9 @@ Vue.component("UniSegmentedControl", UniSegmentedControl);
 import UniSteps from "@/libs/uni-ui/uni-steps/uni-steps.vue";
 Vue.component("UniSteps", UniSteps);
 
+import uniSection from "@/libs/uni-ui/uni-section/uni-section.vue";
+Vue.component("uniSection", uniSection);
+
 import UniSwipeAction from "@/libs/uni-ui/uni-swipe-action/uni-swipe-action.vue";
 Vue.component("UniSwipeAction", UniSwipeAction);
 

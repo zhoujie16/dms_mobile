@@ -1,5 +1,6 @@
 <template>
 	<view>
+		<uni-section title="基本用法" type="line"></uni-section>
 		<uni-swipe-action>
 			<uni-swipe-action-item :options="options1" @click="bindClick">
 				<text class="cont">SwipeAction 基础使用场景</text>
@@ -31,11 +32,13 @@
 </template>
 
 <script>
-
+	
 	export default {
-		components: {
-			
-		},
+		// components: {
+		// 	uniSection,
+		// 	uniSwipeAction,
+		// 	uniSwipeActionItem
+		// },
 		data() {
 			return {
 				isOpened: false,
