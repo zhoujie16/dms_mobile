@@ -32,15 +32,15 @@ export default {
 <style lang="scss">
 .page-wrap {
   height: 100vh;
-  background-color:#10497B;
+  background-color:#FFFFFF;
   .r-item{
     padding: 0 60rpx;
     height: 10vh;
     line-height: 10vh;
-    color: $uni-text-color-inverse;
+    color: #1371F7;
   }
   .r-item-bg{
-    background-color:#124E84;
+    background-color:#F5F5F5;
   }
 }
 </style>

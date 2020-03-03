@@ -24,7 +24,7 @@ export default {
           y: 'top',
           textStyle: {
             fontWeight: 'normal',
-            color: '#fff',
+            color: '#1371F7',
             fontSize: 14
           }
         },
@@ -33,13 +33,13 @@ export default {
           axisLabel: {
             show: true,
             textStyle: {
-              color: '#fff'
+              color: '#1371F7'
             },
             
           },
           axisLine: {
             lineStyle: {
-              color: '#fff'
+              color: '#17212E'
             }
           }
         },
@@ -51,7 +51,7 @@ export default {
             show: true,
             rotate:45, 
             textStyle: {
-              color: '#fff'
+              color: '#1371F7'
             },
             // formatter: function(value) {
             //   let valueTxt = '';
@@ -65,7 +65,7 @@ export default {
           },
           axisLine: {
             lineStyle: {
-              color: '#fff'
+              color: '#17212E'
             }
           }
         },
@@ -76,7 +76,7 @@ export default {
             barWidth: 20
           }
         ],
-        color: ['#FAFAD2']
+        color: ['#2795FA']
       }
     };
   },
@@ -129,7 +129,7 @@ export default {
 <style>
 .page-wrap {
   padding: 10px 0;
-  background-color: #2b4d86;
+  background-color:$uni-m-color-white-pressed;
 }
 
 .echarts {

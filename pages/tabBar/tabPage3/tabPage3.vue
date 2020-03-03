@@ -99,6 +99,7 @@ export default {
     bottom: 0;
     left: 0;
     height: initial;
+    // height: calc(100vh-100rpx);
   }
   .swiper-scroll-wrap{
     height: 100%;

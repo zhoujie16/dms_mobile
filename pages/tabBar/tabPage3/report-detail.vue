@@ -42,7 +42,7 @@ export default {
 <style lang="scss">
 .page-warp {
   height: 100vh;
-  background-color: $uni-bg-color-page;
+  background-color: $uni-m-color-white-pressed;
   .r-switch-box {
     text-align: right;
     padding: 30rpx;
@@ -51,7 +51,7 @@ export default {
     padding: 30rpx;
     .r-title {
       display: block;
-      color: $uni-text-color-inverse;
+      color: #1371F7;
       font-size: 36rpx;
       margin-bottom: 20rpx;
     }

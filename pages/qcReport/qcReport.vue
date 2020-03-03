@@ -1,7 +1,12 @@
 <template>
   <MPage ref="MPage">
     <view class="page-wrap">
-      <NavDateRangePicker @change="dateRangeChange"></NavDateRangePicker>
+     <!-- <NavDateRangePicker @change="dateRangeChange"></NavDateRangePicker> -->
+     <SearchFilter ref="searchFilter">
+       <view slot="panel">
+         <view class="condition">请选择时间</view>
+       </view>
+     </SearchFilter>
       <view class="menu-wrap">
         <view class="uni-flex uni-row">
           <view class="flex-item" @click="detailUrl">
@@ -94,7 +99,7 @@ export default {
           trigger: 'item',
           // formatter: '{a} <br/>{b}: {c} ({d}%)'
         },
-        color: ['#0088ff', '#ffffff'],
+        color: ['#1371F7', '#C3C3C3'],
         series: [
           {
             // 系列名称，用于tooltip的显示，legend 的图例筛选，在 setOption 更新数据和配置项时用于指定对应的系列。
@@ -127,7 +132,7 @@ export default {
                     position: 'center',
                     fontSize: 12,
                     textStyle: {
-                      color: '#fff'
+                      color: '#1371F7'
                     },
                     // 标签内容格式器，支持字符串模板和回调函数两种形式，字符串模板与回调函数返回的字符串均支持用 \n 换行
                     formatter: '{b}\n{c}%'
@@ -154,7 +159,7 @@ export default {
           trigger: 'item',
           // formatter: '{a} <br/>{b}: {c} ({d}%)'
         },
-        color: ['#0088ff', '#ffffff'],
+        color: ['#1371F7', '#C3C3C3'],
         series: [
           {
             // 系列名称，用于tooltip的显示，legend 的图例筛选，在 setOption 更新数据和配置项时用于指定对应的系列。
@@ -187,7 +192,7 @@ export default {
                     position: 'center',
                     fontSize: 12,
                     textStyle: {
-                      color: '#fff'
+                      color: '#1371F7'
                     },
                     // 标签内容格式器，支持字符串模板和回调函数两种形式，字符串模板与回调函数返回的字符串均支持用 \n 换行
                     formatter: '{b}\n{c}%'
@@ -214,7 +219,7 @@ export default {
           trigger: 'item',
           // formatter: '{a} <br/>{b}: {c} ({d}%)'
         },
-        color: ['#0088ff', '#ffffff'],
+        color: ['#1371F7', '#C3C3C3'],
         series: [
           {
             // 系列名称，用于tooltip的显示，legend 的图例筛选，在 setOption 更新数据和配置项时用于指定对应的系列。
@@ -247,7 +252,7 @@ export default {
                     position: 'center',
                     fontSize: 12,
                     textStyle: {
-                      color: '#fff'
+                      color: '#1371F7'
                     },
                     // 标签内容格式器，支持字符串模板和回调函数两种形式，字符串模板与回调函数返回的字符串均支持用 \n 换行
                     formatter: '{b}\n{c}%'
@@ -274,7 +279,7 @@ export default {
           trigger: 'item',
           // formatter: '{a} <br/>{b}: {c} ({d}%)'
         },
-        color: ['#0088ff', '#ffffff'],
+        color: ['#1371F7', '#C3C3C3'],
         series: [
           {
             // 系列名称，用于tooltip的显示，legend 的图例筛选，在 setOption 更新数据和配置项时用于指定对应的系列。
@@ -307,7 +312,7 @@ export default {
                     position: 'center',
                     fontSize: 12,
                     textStyle: {
-                      color: '#fff'
+                      color: '#1371F7'
                     },
                     // 标签内容格式器，支持字符串模板和回调函数两种形式，字符串模板与回调函数返回的字符串均支持用 \n 换行
                     formatter: '{b}\n{c}%'
@@ -334,7 +339,7 @@ export default {
           trigger: 'item',
           // formatter: '{a} <br/>{b}: {c} ({d}%)'
         },
-        color: ['#0088ff', '#ffffff'],
+        color: ['#1371F7', '#C3C3C3'],
         series: [
           {
             // 系列名称，用于tooltip的显示，legend 的图例筛选，在 setOption 更新数据和配置项时用于指定对应的系列。
@@ -367,7 +372,7 @@ export default {
                     position: 'center',
                     fontSize: 12,
                     textStyle: {
-                      color: '#fff'
+                      color: '#1371F7'
                     },
                     // 标签内容格式器，支持字符串模板和回调函数两种形式，字符串模板与回调函数返回的字符串均支持用 \n 换行
                     formatter: '{b}\n{c}%'
@@ -394,7 +399,7 @@ export default {
           trigger: 'item',
           // formatter: '{a} <br/>{b}: {c} ({d}%)'
         },
-        color: ['#0088ff', '#ffffff'],
+        color: ['#1371F7', '#C3C3C3'],
         series: [
           {
             // 系列名称，用于tooltip的显示，legend 的图例筛选，在 setOption 更新数据和配置项时用于指定对应的系列。
@@ -427,7 +432,7 @@ export default {
                     position: 'center',
                     fontSize: 12,
                     textStyle: {
-                      color: '#fff'
+                      color: '#1371F7'
                     },
                     // 标签内容格式器，支持字符串模板和回调函数两种形式，字符串模板与回调函数返回的字符串均支持用 \n 换行
                     formatter: '{b}\n{c}%'
@@ -523,12 +528,12 @@ export default {
 <style lang="scss" scoped>
 .page-wrap {
   height: 100vh;
-  background-color: $uni-bg-color-page;
+  background-color: $uni-m-color-white-pressed;
   overflow: hidden;
   .wrap-text {
     text-align: center;
 
-    color: $uni-text-color-inverse;
+    color: #1371F7;
   }
 }
 .flex-item {
@@ -552,5 +557,10 @@ export default {
   width: 26vw;
   margin: 0 auto;
   height: calc(20vh - 20px);
+}
+.condition{
+  color: $uni-m-color-c3-2;
+  line-height: 90rpx;
+  padding-left: 30rpx;
 }
 </style>
