@@ -1,7 +1,11 @@
 <!-- 文本域 -->
 <template>
   <view class="m-textarea-wrap">
-    <view class="m-textarea-title"><MLabel :label="label"></MLabel></view>
+    <view class="m-textarea-title">
+      <MLabel :label="label">
+        <slot></slot>
+      </MLabel>
+      </view>
     <view class="m-textarea-inner">
       <textarea
         :value="value"

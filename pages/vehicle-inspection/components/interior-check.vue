@@ -19,7 +19,9 @@
         </view>
       </view>
       <view class="content">
-         <MTextArea label="内饰检查" v-model="value_1"></MTextArea>
+         <MTextArea label="内饰检查" v-model="value_1">
+           <text class="m-iconfont icon" @click="startRecognize">&#xe729;</text>
+         </MTextArea>
       </view>
     </view>
   </view>
@@ -169,11 +171,51 @@ export default {
       value_1:''
     };
   },
+  mounted() {
+    this.addRecognizeEventListener();
+  },
   methods: {
     // 值改变事件
     async formItemChange(data, index) {
       console.log('修改了', data, index);
       this.formData[index].value = data;
+    },
+    // 添加事件监听
+    addRecognizeEventListener() {
+      plus.speech.addEventListener(
+        'start',
+        () => {
+          console.log('start');
+          this.value_1 = '';
+        },
+        false
+      );
+      plus.speech.addEventListener(
+        'recognition',
+        e => {
+          console.log('recognition', e);
+          this.value_1 += e.result;
+        },
+        false
+      );
+      plus.speech.addEventListener(
+        'end',
+        () => {
+          console.log('end');
+          console.log(this.value_1);
+        },
+        false
+      );
+    },
+    // 开始识别
+    startRecognize() {
+      const options = {
+        engine: 'baidu' // 百度：baidu  讯飞：iFly
+      };
+      plus.speech.startRecognize(options);
+    },
+    stopRecognize() {
+      plus.speech.stopRecognize();
     }
   }
 };
@@ -200,26 +242,9 @@ export default {
       .subContent {
         margin: 0 auto 20rpx;
         padding: 10rpx 0;
-        // .flex-item1 {
-        //   width: 20%;
-        //   padding: 5rpx 0;
-        //   text-align: center;
-        // }
-        // .flex-item2{
-        //   width: 66%;
-        //   padding: 5rpx 0;
-        // }
-        // .flex-item3{
-        //   width: 14%;
-        //   text-align: center;
-        //   padding: 5rpx 0;
-        // }
         .label-pad {
           margin-bottom: 20rpx;
         }
-        // .sub-text {
-        //   line-height: 60rpx;
-        // }
         .sub-textarea {
           display: block;
           background-color: #f1f1f1;
@@ -238,5 +263,9 @@ export default {
       }
     }
   }
+}
+.icon{
+  font-size: 52rpx;
+  color: $uni-m-color-c11;
 }
 </style>

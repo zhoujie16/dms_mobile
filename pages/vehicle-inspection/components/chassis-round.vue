@@ -18,7 +18,7 @@
             :hasPhoto="item.hasPhoto"
             @change="formItemChange"
           ></MVehicleCheckCell>
-          </view>
+        </view>
       </view>
       <view class="content">
         <CollapsePanel title="轮胎">
@@ -58,7 +58,11 @@
           </template>
         </CollapsePanel>
       </view>
-      <view class="content"><MTextArea label="底盘四轮" v-model="value_1"></MTextArea></view>
+      <view class="content">
+        <MTextArea label="底盘四轮" v-model="value_1">
+          <text class="m-iconfont icon" @click="startRecognize">&#xe729;</text>
+        </MTextArea>
+      </view>
     </view>
   </view>
 </template>
@@ -74,7 +78,7 @@ export default {
     return {
       isshow1: 'arrowdown',
       isshow2: 'arrowdown',
-      value_1:'',
+      value_1: '',
       formData: [
         {
           fieldName: 'jylqq',
@@ -130,7 +134,7 @@ export default {
             { text: '异常', value: '14001003' }
           ],
           value: ''
-        },
+        }
       ],
       formData1: [
         {
@@ -210,7 +214,6 @@ export default {
             { text: '异常', value: '14001003' }
           ],
           value: ''
-         
         },
         {
           fieldName: 'tyzh',
@@ -244,7 +247,7 @@ export default {
             { text: '异常', value: '14001003' }
           ],
           value: ''
-        },
+        }
       ],
       formData2: [
         {
@@ -282,16 +285,19 @@ export default {
           unit: 'mm',
           placeholder: '胎纹'
         },
-       {
-         fieldName: 'scpyh',
-         type: 'input',
-         label: '刹车片右后',
-         value: '',
-         unit: 'mm',
-         placeholder: '胎纹'
-       }
+        {
+          fieldName: 'scpyh',
+          type: 'input',
+          label: '刹车片右后',
+          value: '',
+          unit: 'mm',
+          placeholder: '胎纹'
+        }
       ]
     };
+  },
+  mounted() {
+    this.addRecognizeEventListener();
   },
   methods: {
     // 值改变事件
@@ -308,6 +314,43 @@ export default {
     async formItemChange2(data, index) {
       console.log('修改了', data, index);
       this.formData2[index].value = data;
+    },
+    // 添加事件监听
+    addRecognizeEventListener() {
+      plus.speech.addEventListener(
+        'start',
+        () => {
+          console.log('start');
+          this.value_1 = '';
+        },
+        false
+      );
+      plus.speech.addEventListener(
+        'recognition',
+        e => {
+          console.log('recognition', e);
+          this.value_1 += e.result;
+        },
+        false
+      );
+      plus.speech.addEventListener(
+        'end',
+        () => {
+          console.log('end');
+          console.log(this.text);
+        },
+        false
+      );
+    },
+    // 开始识别
+    startRecognize() {
+      const options = {
+        engine: 'baidu' // 百度：baidu  讯飞：iFly
+      };
+      plus.speech.startRecognize(options);
+    },
+    stopRecognize() {
+      plus.speech.stopRecognize();
     }
   }
 };
@@ -315,9 +358,9 @@ export default {
 
 <style lang="scss">
 .page-wrap {
- min-height: 100vh;
- background-color: $uni-m-color-white-pressed;
- margin-bottom: 10vh;
+  min-height: 100vh;
+  background-color: $uni-m-color-white-pressed;
+  margin-bottom: 10vh;
   .container {
     padding: 20rpx 0;
     .content {
@@ -371,5 +414,9 @@ export default {
       }
     }
   }
+}
+.icon {
+  font-size: 52rpx;
+  color: $uni-m-color-c11;
 }
 </style>
