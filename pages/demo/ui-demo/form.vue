@@ -1,6 +1,8 @@
 <!-- 表单demo -->
 <template>
   <MPage ref="MPage">
+    <MLicense></MLicense>
+    <view class="m-break-space"></view>
     <MLabel title="标题">内容</MLabel>
     <MInput label="文本" v-model="formData.value_1"></MInput>
     <MInput label="文本" v-model="formData.value_1">
@@ -66,11 +68,7 @@ const testArr_2 = [
   { text: '顾问9', value: 9 },
   { text: '顾问10', value: 10 }
 ];
-const testArr_3 = [
-  { text: '王', value: 1 },
-  { text: '大', value: 2 },
-  { text: '锤', value: 3 }
-];
+const testArr_3 = [{ text: '王', value: 1 }, { text: '大', value: 2 }, { text: '锤', value: 3 }];
 export default {
   data() {
     return {

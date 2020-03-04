@@ -7,6 +7,7 @@
       <MDatePickerPopup ref="MDatePickerPopup"></MDatePickerPopup>
       <MModal ref="MModal"></MModal>
       <MActionSheet ref="MActionSheet"></MActionSheet>
+      <MKeyboard ref="MKeyboard"></MKeyboard>
     </view>
   </view>
 </template>
@@ -30,6 +31,7 @@ export default {
     this.MDatePickerPopup = this.$refs.MDatePickerPopup;
     this.MModal = this.$refs.MModal;
     this.MActionSheet = this.$refs.MActionSheet;
+    this.MKeyboard = this.$refs.MKeyboard;
   },
   methods: {}
 };

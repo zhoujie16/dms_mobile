@@ -1,0 +1,1 @@
+添加一个class: uni-popup-mask

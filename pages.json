@@ -365,6 +365,10 @@
               "navigationStyle": "custom"
             }
         }
+        ,{
+            "path" : "pages/demo/ui-demo/keyboard",
+            "style" : {}
+        }
     ],
   // "tabBar": {
   //   "color": "#333333",

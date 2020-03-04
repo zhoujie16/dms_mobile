@@ -118,6 +118,14 @@ export default {
           }
         },
         {
+          title: '虚拟键盘',
+          clickFn: async () => {
+            const [err, res] = await uni.navigateTo({
+              url: '/pages/demo/ui-demo/keyboard'
+            });
+          }
+        },
+        {
           title: '车辆检查项',
           clickFn: async () => {
             const [err, res] = await uni.navigateTo({

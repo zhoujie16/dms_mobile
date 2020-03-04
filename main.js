@@ -218,7 +218,7 @@ import MButton from '@/components/m-button/m-button.vue';
 Vue.component('MButton', MButton);
 
 // 车牌号
-import MLicense from '@/components/key-board/m-license.vue';
+import MLicense from '@/components/search-filter/m-license.vue';
 Vue.component('MLicense', MLicense);
 
 // 拨号
@@ -240,6 +240,10 @@ Vue.component("MVehicleCheckCell", MVehicleCheckCell);
 // 滑动单元格 m-swipe-cell
 import MSwipeCell from '@/components/m-swipe-cell/m-swipe-cell.vue';
 Vue.component("MSwipeCell", MSwipeCell);
+
+// 虚拟键盘 m-keyboard
+import MKeyboard from '@/components/m-keyboard/m-keyboard.vue';
+Vue.component("MKeyboard", MKeyboard);
 
 /** 绑定公共组件 E */
 
