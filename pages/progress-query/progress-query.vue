@@ -26,7 +26,7 @@
       >
         <view slot="scroll">
           <view v-for="(data, i) in dataSource" :key="i">
-            <ScrollCell :cell="data" :index="i"></ScrollCell>
+            <ScrollCell :cell="data" :index="i" @click.native="scrollCellClick(data)"></ScrollCell>
           </view>
         </view>
       </BaseScroll>
@@ -75,6 +75,12 @@ export default {
     },
     changeIndex(index){
       this.activeindex= index;
+    },
+    scrollCellClick(){
+      // this.$emit('click')
+      uni.navigateTo({
+        url: '/pages/progress-query/repair-check'
+      })
     }
   }
 };

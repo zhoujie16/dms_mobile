@@ -1,6 +1,6 @@
 <template>
   <view class="list-cell-wrap">
-      <view class="list-cell-wrap-inner" @click="cellClick">
+      <view class="list-cell-wrap-inner">
         <view class="list-cell-title">
           <view class="left">
             <text class="state">在修</text>
@@ -51,12 +51,7 @@ export default {
     cellTitleClick() {
       this.isShowDetail = !this.isShowDetail;
     },
-    cellClick(){
-      // this.$emit('click')
-      uni.navigateTo({
-        url: '/pages/progress-query/repair-check'
-      })
-    }
+    
   }
 };
 </script>

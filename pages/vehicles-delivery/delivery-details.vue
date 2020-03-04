@@ -389,6 +389,11 @@ export default {
   mounted() {
   },
   methods:{
+    async back() {
+      uni.navigateBack({
+        delta: 1
+      });
+    },
     editClick() {
       uni.navigateTo({
         url: '/pages/vehicle-inspection/vehicle-detail'
@@ -438,64 +443,67 @@ export default {
       z-index: 0;
     }
   }
-  .title-panel {
-    position: relative;
-    padding: 10rpx 30rpx 30rpx 30rpx;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: #ffffff;
-    .title-panel-bg {
-      position: absolute;
-      top: 0;
-      right: 0;
-      left: 0;
-      height: 100rpx;
-      background: linear-gradient(to right, #41c5ff, #1371f7);
-      z-index: 0;
-    }
-    .title-panel-inner {
-      width: 100%;
-      background-color: #ffffff;
-      padding: 0 30rpx;
-      border-radius: 10rpx;
-      z-index: 1;
-      box-shadow: 0px 2px 5px #eeeeee;
-      position: relative;
-      .info-panel {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        border-bottom: solid 1px #efefef;
-        padding-top: 12rpx;
-        .customer-info {
-          font-size: 34rpx;
-          height: 80rpx;
-          line-height: 80rpx;
-        }
-        .car-info {
-          font-size: 30rpx;
-          height: 80rpx;
-          line-height: 80rpx;
-          color: #70767f;
-        }
-      }
-      .phone{
-        position: absolute;
-        top: 30rpx;
-        right: 40rpx;
-        width: 70rpx;
-        height: 70rpx;
-        .img{
-          width: 70rpx;
-          height: 70rpx;
-        }
-      }
-       }
-  }
+  
   .page-body {
     height: calc(100vh - 128rpx);
     overflow: auto;
+    .title-panel {
+      position: relative;
+      padding: 10rpx 30rpx 30rpx 30rpx;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: #ffffff;
+      .title-panel-bg {
+        position: absolute;
+        top: 0;
+        right: 0;
+        left: 0;
+        height: 100rpx;
+        background: linear-gradient(to right, #41c5ff, #1371f7);
+        z-index: 0;
+      }
+      .title-panel-inner {
+        width: 100%;
+        background-color: #ffffff;
+        padding: 0 30rpx;
+        border-radius: 10rpx;
+        z-index: 1;
+        box-shadow: 0px 2px 5px #eeeeee;
+        position: relative;
+        .info-panel {
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          border-bottom: solid 1px #efefef;
+          padding-top: 12rpx;
+          height: 148rpx;
+          .customer-info {
+            font-size: 34rpx;
+            height: 80rpx;
+            line-height: 80rpx;
+          }
+          .car-info {
+            font-size: 30rpx;
+            height: 80rpx;
+            line-height: 80rpx;
+            color: #70767f;
+          }
+        }
+        
+         }
+         .phone{
+           position: absolute;
+           top: 30rpx;
+           right: 40rpx;
+           width: 70rpx;
+           height: 70rpx;
+           .img{
+             width: 70rpx;
+             height: 70rpx;
+           }
+         }
+    }
   }
   .content {
     background-color: #ffffff;

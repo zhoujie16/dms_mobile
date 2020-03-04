@@ -234,9 +234,10 @@
       "path": "pages/progress-query/components/scroll-cell",
       "style": {}
     }, {
-      "path": "pages/progress-query/repair-check",
-      "style": {
-        "navigationBarTitleText": "维修检查"
+      "path" : "pages/progress-query/repair-check",
+      "style" : {
+        "navigationBarTitleText": "维修检查",
+        "navigationStyle": "custom"
       }
     }, {
       "path": "pages/vehicles-delivery/components/scroll-cell",
@@ -244,7 +245,8 @@
     }, {
       "path": "pages/vehicles-delivery/delivery-details",
       "style": {
-        "navigationBarTitleText": "交车详情"
+        "navigationBarTitleText": "交车详情",
+        "navigationStyle": "custom"
       }
     }, {
       "path": "pages/web-view-page/web-view-page",
