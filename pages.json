@@ -95,7 +95,8 @@
     {
       "path": "pages/appointment-check/appointment-check",
       "style": {
-        "navigationBarTitleText": "预约检查"
+        "navigationBarTitleText": "预约检查",
+         "navigationStyle": "custom"
       }
     },
     {
