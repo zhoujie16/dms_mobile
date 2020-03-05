@@ -11,7 +11,11 @@
     {
       "path": "pages/index/index",
       "style": {
-        "navigationBarTitleText": "概览页面"
+        "app-plus": {
+          "titleNView": {
+            "titleText": "概览页面"
+          }
+        }
       }
     },
     {
@@ -65,258 +69,458 @@
         "app-plus": {
           "titleNView": {
             "buttons": [{
-              "type": "none",
-              "text": "全选",
-              "width": "40px",
-              "fontSize": "16px",
-              "float": "right"
-            }, {
-              "type": "none",
-              "text": "删除",
-              "width": "40px",
-              "fontSize": "16px",
-              "float": "right"
-            }]
+                "type": "none",
+                "text": "全选",
+                "width": "40px",
+                "fontSize": "16px",
+                "float": "right"
+              },
+              {
+                "type": "none",
+                "text": "删除",
+                "width": "40px",
+                "fontSize": "16px",
+                "float": "right"
+              }
+            ]
           }
         }
       }
-    }, {
+    },
+    {
       "path": "pages/demo/base-demo",
       "style": {
-        "navigationBarTitleText": "概览页面"
+        "app-plus": {
+          "titleNView": {
+            "titleText": "概览页面"
+          }
+        }
       }
     },
     {
       "path": "pages/demo/detail-demo",
       "style": {
-        "navigationBarTitleText": "概览页面"
+        "app-plus": {
+          "titleNView": {
+            "titleText": "概览页面"
+          }
+        }
       }
     },
     {
       "path": "pages/appointment-check/appointment-check",
       "style": {
-        "navigationBarTitleText": "预约检查",
-         "navigationStyle": "custom"
+        "app-plus": {
+          "titleNView": {
+            "titleText": "预约检查"
+          }
+        }
       }
     },
     {
       "path": "pages/customer-reception/customer-reception",
       "style": {
-        "navigationBarTitleText": "车辆预检",
-        "navigationStyle": "custom"
+        "app-plus": {
+          "titleNView": {
+            "titleText": "车辆预检"
+          }
+        }
       }
     },
     {
       "path": "pages/rapid-order/rapid-order",
       "style": {
-        "navigationBarTitleText": "快速工单",
-        "navigationStyle": "custom"
+        "app-plus": {
+          "titleNView": {
+            "titleText": "快速工单"
+          }
+        }
       }
     },
     {
       "path": "pages/progress-query/progress-query",
       "style": {
-        "navigationBarTitleText": "进度查询",
-        "navigationStyle": "custom"
+        "app-plus": {
+          "titleNView": {
+            "titleText": "进度查询"
+          }
+        }
       }
     },
     {
       "path": "pages/vehicle-inspection/vehicle-inspection",
       "style": {
-        "navigationBarTitleText": "车辆检查",
-        "navigationStyle": "custom"
+        "app-plus": {
+          "titleNView": {
+            "titleText": "车辆检查"
+          }
+        }
       }
     },
     {
       "path": "pages/vehicles-delivery/vehicles-delivery",
       "style": {
-        "navigationBarTitleText": "交车查询",
-        "navigationStyle": "custom"
+        "app-plus": {
+          "titleNView": {
+            "titleText": "交车查询"
+          }
+        }
       }
     },
     {
       "path": "pages/customer-reception/customer-detail",
       "style": {
-        "navigationBarTitleText": "接待详情",
-        "navigationStyle": "custom"
+        "app-plus": {
+          "titleNView": {
+            "titleText": "接待详情"
+          }
+        }
       }
-    }, {
+    },
+    {
       "path": "pages/demo/base-demo2",
       "style": {
-        "navigationBarTitleText": "demo2"
+        "app-plus": {
+          "titleNView": {
+            "titleText": "demo2"
+          }
+        }
       }
-    }, {
+    },
+    {
       "path": "pages/rapid-order/order-detail",
       "style": {
-        "navigationBarTitleText": "新建工单",
-        "navigationStyle": "custom"
+        "app-plus": {
+          "titleNView": {
+            "titleText": "工单信息",
+            "titleColor": "#FFFFFF",
+            "backgroundColor": "#41c5ff"
+          }
+        }
       }
-    }, {
+    },
+    {
       "path": "pages/rapid-order/order-detail-edit",
       "style": {
-        "navigationBarTitleText": "新建工单",
-        "navigationStyle": "custom"
+        "app-plus": {
+          "titleNView": {
+            "titleText": "新建工单",
+            "titleColor": "#FFFFFF",
+            "backgroundColor": "#41c5ff"
+            // "backgroundImage":"linear-gradient(to right, #41c5ff, #1371f7)", // 渐变只有2.6.3+版本支持  等一段时间吧
+          }
+        }
       }
-    }, {
+    },
+    {
       "path": "pages/tabBar/tabPage3/report-detail",
       "style": {
-        "navigationBarTitleText": "服务报表"
+        "app-plus": {
+          "titleNView": {
+            "titleText": "服务报表"
+          }
+        }
       }
-    }, {
+    },
+    {
       "path": "pages/qcReport/qcReport",
       "style": {
-        "navigationBarTitleText": "服务报表"
+        "app-plus": {
+          "titleNView": {
+            "titleText": "服务报表"
+          }
+        }
       }
-    }, {
+    },
+    {
       "path": "pages/qcReport/qcReport-detail",
       "style": {
-        "navigationBarTitleText": "服务报表说明"
+        "app-plus": {
+          "titleNView": {
+            "titleText": "服务报表说明"
+          }
+        }
       }
-    }, {
+    },
+    {
       "path": "pages/customer-reception/customer-add",
       "style": {
-        "navigationBarTitleText": "新增预检单",
-        "navigationStyle": "custom"
-        // "app-plus": {
-        //   "titleNView": {
-        //     "buttons": [{
-        //       "type": "none",
-        //       "text": "保存",
-        //       "width": "50px",
-        //       "fontSize": "16px",
-        //       "float": "right"
-        //     }]
-        //   }
-        // }
+        "app-plus": {
+          "titleNView": {
+            "titleText": "新增预检单"
+          }
+        }
       }
     },
     {
       "path": "pages/services-tools/index",
       "style": {
-        "navigationBarTitleText": "服务工具"
+        "app-plus": {
+          "titleNView": {
+            "titleText": "服务工具"
+          }
+        }
       }
     },
     {
       "path": "pages/services-tools/components/doc-demo",
       "style": {
-        "navigationBarTitleText": "服务活动手册"
+        "app-plus": {
+          "titleNView": {
+            "titleText": "服务活动手册"
+          }
+        }
       }
     },
     {
       "path": "pages/services-tools/service-check",
       "style": {
-        "navigationBarTitleText": "检查工具"
+        "app-plus": {
+          "titleNView": {
+            "titleText": "检查工具"
+          }
+        }
       }
-    }, {
+    },
+    {
       "path": "pages/services-tools/research-questionnaire",
       "style": {
-        "navigationBarTitleText": "调研问卷"
+        "app-plus": {
+          "titleNView": {
+            "titleText": "调研问卷"
+          }
+        }
       }
-    }, {
+    },
+    {
       "path": "pages/vehicle-inspection/vehicle-detail",
       "style": {
-        "navigationBarTitleText": "车辆检查",
-        "navigationStyle": "custom"
+        "app-plus": {
+          "titleNView": {
+            "titleText": "车辆检查"
+          }
+        }
       }
-    }, {
+    },
+    {
       "path": "pages/vehicle-inspection/components/advise",
       "style": {
-        "navigationBarTitleText": "建议"
+        "app-plus": {
+          "titleNView": {
+            "titleText": "建议"
+          }
+        }
       }
-    }, {
+    },
+    {
       "path": "pages/vehicle-inspection/components/preview",
       "style": {
-        "navigationBarTitleText": "预览"
+        "app-plus": {
+          "titleNView": {
+            "titleText": "预览"
+          }
+        }
       }
-    }, {
+    },
+    {
       "path": "pages/services-tools/insurance-report",
       "style": {
-        "navigationBarTitleText": "车险上报"
+        "app-plus": {
+          "titleNView": {
+            "titleText": "车险上报"
+          }
+        }
       }
-    }, {
+    },
+    {
       "path": "pages/progress-query/components/scroll-cell",
       "style": {}
-    }, {
-      "path" : "pages/progress-query/repair-check",
-      "style" : {
-        "navigationBarTitleText": "维修检查",
-        "navigationStyle": "custom"
+    },
+    {
+      "path": "pages/progress-query/repair-check",
+      "style": {
+        "app-plus": {
+          "titleNView": {
+            "titleText": "维修检查"
+          }
+        }
       }
-    }, {
+    },
+    {
       "path": "pages/vehicles-delivery/components/scroll-cell",
       "style": {}
-    }, {
+    },
+    {
       "path": "pages/vehicles-delivery/delivery-details",
       "style": {
-        "navigationBarTitleText": "交车详情",
-        "navigationStyle": "custom"
+        "app-plus": {
+          "titleNView": {
+            "titleText": "交车详情"
+          }
+        }
       }
-    }, {
+    },
+    {
       "path": "pages/web-view-page/web-view-page",
       "style": {
-        "navigationBarTitleText": ""
+        "app-plus": {
+          "titleNView": {
+            "titleText": "webview"
+          }
+        }
       }
-    }, {
+    },
+    {
       "path": "pages/demo/e-charts-demo",
       "style": {}
-    }, {
+    },
+    {
       "path": "pages/demo/scroll-demo",
       "style": {}
-    }, {
+    },
+    {
       "path": "pages/demo/swiper-tab-demo",
       "style": {}
-    }, {
+    },
+    {
       "path": "pages/demo/recording",
       "style": {}
-    }, {
+    },
+    {
       "path": "pages/demo/camera",
       "style": {}
-    }, {
+    },
+    {
       "path": "pages/login/editPassword",
       "style": {
-        "navigationBarTitleText": "修改密码"
+        "app-plus": {
+          "titleNView": {
+            "titleText": "修改密码"
+          }
+        }
       }
-    }, {
+    },
+    {
       "path": "pages/vehicle-inspection/components/service-remind",
       "style": {
-        "navigationBarTitleText": "增修提醒"
+        "app-plus": {
+          "titleNView": {
+            "titleText": "增修提醒"
+          }
+        }
       }
-    }, {
+    },
+    {
       "path": "pages/404/404",
       "style": {
-        "navigationBarTitleText": "暂无记录"
+        "app-plus": {
+          "titleNView": {
+            "titleText": "暂无记录"
+          }
+        }
       }
-    }, {
+    },
+    {
       "path": "pages/demo/ui-demo/button",
-      "style": {}
-    }, {
+      "style": {
+        "app-plus": {
+          "titleNView": {
+            "titleText": "按钮"
+          }
+        }
+      }
+    },
+    {
       "path": "pages/demo/ui-demo/ui-demo",
-      "style": {}
-    }, {
+      "style": {
+        "app-plus": {
+          "titleNView": {
+            "titleText": "UI-DEMO"
+          }
+        }
+      }
+    },
+    {
       "path": "pages/demo/ui-demo/dialog",
-      "style": {}
-    }, {
+      "style": {
+        "app-plus": {
+          "titleNView": {
+            "titleText": "弹窗交互"
+          }
+        }
+      }
+    },
+    {
       "path": "pages/demo/ui-demo/speech",
-      "style": {}
-    }, {
+      "style": {
+        "app-plus": {
+          "titleNView": {
+            "titleText": "语音识别"
+          }
+        }
+      }
+    },
+    {
       "path": "pages/demo/ui-demo/list",
-      "style": {}
-    }, {
+      "style": {
+        "app-plus": {
+          "titleNView": {
+            "titleText": "list"
+          }
+        }
+      }
+    },
+    {
       "path": "pages/demo/ui-demo/form",
-      "style": {}
-    }, {
-      "path": "pages/demo/ui-demo/picker",
-      "style": {}
-    }, {
+      "style": {
+        "app-plus": {
+          "titleNView": {
+            "titleText": "表单"
+          }
+        }
+      }
+    },
+    {
       "path": "pages/demo/ui-demo/style",
-      "style": {}
-    }, {
-      "path": "pages/demo/ui-demo/navbar",
-      "style": {}
-    }, {
+      "style": {
+        "app-plus": {
+          "titleNView": {
+            "titleText": "样式"
+          }
+        }
+      }
+    },
+    {
+      "path": "pages/demo/ui-demo/navbar1",
+      "style": {
+        "app-plus": {
+          "titleNView": {
+            "titleText": "原生导航",
+            "titleColor": "#FFFFFF",
+            "backgroundColor": "#41c5ff",
+            // "backgroundImage":"linear-gradient(to right, #41c5ff, #1371f7)", // 渐变只有2.6.3+版本支持  等一段时间吧
+            "buttons": [{
+              // button 按钮可以用字体图标 也可以用图片
+              "fontSrc": "/static/fonts/iconfont.ttf",
+              "type": "none",
+              "text": "\ue721",
+              "width": "50px",
+              "fontSize": "22px",
+              "float": "right"
+            }]
+          }
+        }
+      }
+    },
+    {
+      // 这个页面的导航在页面中 使用 plus api 配置的
+      "path": "pages/demo/ui-demo/navbar2"
+    },
+    {
       "path": "pages/demo/ui-demo/tabs",
       "style": {}
-    }, {
+    },
+    {
       "path": "pages/demo/ui-demo/search-filter",
       "style": {
         "app-plus": {
@@ -331,7 +535,8 @@
           }
         }
       }
-    }, {
+    },
+    {
       "path": "pages/demo/ui-demo/swipeActionItem",
       "style": {
         "navigationBarTitleText": "SwipeAction 滑动操作",
@@ -340,7 +545,8 @@
           "bounce": "none"
         }
       }
-    }, {
+    },
+    {
       "path": "pages/demo/ui-demo/keyWord",
       "style": {}
     },
@@ -349,30 +555,36 @@
       "style": {
         "navigationBarTitleText": "无权访问"
       }
-    }, {
+    },
+    {
       "path": "pages/login/forgetPassword",
       "style": {
         "navigationBarTitleText": "找回密码"
       }
-    }, {
+    },
+    {
       "path": "pages/new-version/new-version",
       "style": {}
-    }, {
+    },
+    {
       "path": "pages/demo/ui-demo/check-item",
       "style": {}
+    },
+    {
+      "path": "pages/appointment-check/appointment-detail",
+      "style": {
+        "app-plus": {
+          "titleNView": {
+            "titleText": "预约检查详情"
+          }
+        }
+      }
+    },
+    {
+      "path": "pages/demo/ui-demo/keyboard",
+      "style": {}
     }
-      ,{
-            "path" : "pages/appointment-check/appointment-detail",
-            "style" : {
-              "navigationBarTitleText": "预约检查详情",
-              "navigationStyle": "custom"
-            }
-        }
-        ,{
-            "path" : "pages/demo/ui-demo/keyboard",
-            "style" : {}
-        }
-    ],
+  ],
   // "tabBar": {
   //   "color": "#333333",
   //   "selectedColor": "#333333",
@@ -402,7 +614,7 @@
   // },
   "globalStyle": {
     "navigationBarTextStyle": "black",
-    "navigationBarTitleText": "uni-app",
+    "navigationBarTitleText": "服务助手",
     "navigationBarBackgroundColor": "#FFFFFF",
     "backgroundColor": "#EFEFEF",
     "app-plus": {
