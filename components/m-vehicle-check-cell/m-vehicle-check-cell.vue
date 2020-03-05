@@ -43,15 +43,16 @@
         <image @click="colseChoosePanel" class="popup-close-btn" src="/static/image/close.svg" mode="scaleToFill"></image>
         <view class="choose-photo-title">图片/视频</view>
         <view class="choose-photo-panel">
-          <view class="choose-photo">
+          <view class="choose-photo" @click="uploadPhoto">
+             <image class="uImage" mode="scaleToFill" :src="image" />
             <image
               class="choose-img"
-              src="/static/image/camera-choose.svg"
+              :src="photoText=='上传图片'?'/static/image/camera-choose.svg':'/static/image/camera-blue.svg'"
               mode="scaleToFill"
             ></image>
-            <text class="choose-txt">上传图片</text>
+            <text :class="photoText=='上传图片'?'choose-txt':'choose-txt1'">{{photoText}}</text>
           </view>
-          <view class="choose-photo">
+          <view class="choose-photo" @click="uploadVideo">
             <image
               class="choose-img"
               src="/static/image/video-choose.svg"
@@ -105,11 +106,23 @@ export default {
     hasPhoto: {
       type: Boolean,
       default: true
+    },
+    photoPath:{
+      type: String,
+      default: ''
+    },
+    videoPath:{
+      type: String,
+      default: ''
     }
   },
   computed: {},
   data() {
-    return {};
+    return {
+      image:'',
+      photoText:'上传图片',
+      vedio:''
+    };
   },
   methods: {
     mCheckBtnClick(item) {
@@ -137,7 +150,141 @@ export default {
     },
     async colseChoosePanel() {
       this.$refs.popup.close();
+    },
+	// 上传图片
+	async uploadPhoto(){
+    if(this.photoText=='上传图片'){
+      uni.chooseImage({
+      	  count: 1,
+      	  sourceType: ['camera'],
+      	  success: res => {
+      	   console.log(res.tempFilePaths[0]);
+            this.image = res.tempFilePaths[0];
+            // this.$emit('changeImage', res.tempFilePaths[0], this.index);
+      	    this.getTempFilePath(res.tempFilePaths[0], 'imageTempPath');
+            this.photoText="编辑图片";
+      	  },
+      	  fail: err => {
+      	    // #ifdef MP
+      	    uni.getSetting({
+      	      success: res => {
+      	        let authStatus = res.authSetting['scope.camera'];
+      	        if (!authStatus) {
+      	          uni.showModal({
+      	            title: '授权失败',
+      	            content: 'Hello uni-app需要从您的相机获取图片，请在设置界面打开相关权限',
+      	            success: res => {
+      	              if (res.confirm) {
+      	                uni.openSetting();
+      	                this.close();
+      	              }
+      	            }
+      	          });
+      	        }
+      	      }
+      	    });
+      	    // #endif
+      	  }
+      	});
+    }else{
+      const res = await this.SHOW_ACTION_SHEET({
+        itemList: [
+          { text: '查看', value: '1' },
+          { text: '编辑', value: '2' },
+          { text: '删除', value: '3' },
+        ]
+      });
+      console.log('showActionSheet', res);
+      // this.SHOW_TOAST(JSON.stringify(res));
+      this.getPhotoWays(res.value)
     }
+	},
+  //图片处理方式
+  async getPhotoWays(index){
+    if(index==1){
+      //查看图片
+    }else if(index==2){
+      //编辑图片
+    }else{
+      //删掉图片
+      const res = await this.SHOW_MODAL({
+        title: '确认删除？',
+        content: '',
+        showCancel: true, // 是否显示取消按钮，默认为 true
+        cancelText: '取消', // 取消按钮的文字，默认为"取消"，最多 4 个字符
+        confirmText: '确定' // 确定按钮的文字，默认为"确定"，最多 4 个字符
+      });
+      // 交互结果
+      console.log('showModal_res', res);
+      if(res=='confirm'){
+        this.image="";
+        this.photoText="上传图片"
+      }
+    }
+  },
+	//上传视频
+	async uploadVideo(){
+		let _this = this;
+		uni.chooseVideo({
+		  count: 1,
+		  sourceType: ['camera'],
+		  success: res => {
+		    console.log(res.tempFilePath);
+		    // this.videoPath = res.tempFilePath;
+		    this.getTempFilePath(res.tempFilePath, 'videoTempPath');
+		  },
+		  fail: err => {
+		    // #ifdef MP
+		    uni.getSetting({
+		      success: res => {
+		        let authStatus = res.authSetting['scope.camera'];
+		        if (!authStatus) {
+		          uni.showModal({
+		            title: '授权失败',
+		            content: 'Hello uni-app需要从您的相机获取视频，请在设置界面打开相关权限',
+		            success: res => {
+		              if (res.confirm) {
+		                uni.openSetting();
+		                this.close();
+		              }
+		            }
+		          });
+		        }
+		      }
+		    });
+		    // #endif
+		  }
+		});
+	},
+	getTempFilePath(url, types) {
+	  // 如果已经下载本地路径，那么直接储存
+	  let obj = {
+	    filePath: url,
+	    success: () => {
+	      console.log('save success');
+	      uni.showModal({
+	        content: '保存成功',
+	        showCancel: false
+	      });
+	      uni.hideLoading();
+	    },
+	    fail: e => {
+	      uni.hideLoading();
+	      uni.showModal({
+	        content: '保存失败',
+	        showCancel: false
+	      });
+	    }
+	  };
+	  uni.showLoading({
+	    title: '保存中...'
+	  });
+	  if (types === 'videoTempPath') {
+	    uni.saveVideoToPhotosAlbum(obj);
+	  } else {
+	    uni.saveImageToPhotosAlbum(obj);
+	  }
+	},
   }
 };
 </script>
@@ -260,6 +407,14 @@ export default {
       flex-direction: column;
       justify-content: center;
       align-items: center;
+      position: relative;
+      overflow: hidden;
+      .uImage{
+        position: absolute;
+        top: 0;
+        width: 286rpx;
+        height: 286rpx;
+      }
       .choose-img {
         width: 96px;
         height: 96rpx;
@@ -268,6 +423,13 @@ export default {
         margin-top: 14rpx;
         font-size: 24rpx;
         color: #262626;
+        z-index: 1;
+      }
+      .choose-txt1 {
+        margin-top: 14rpx;
+        font-size: 24rpx;
+        color: #FFFFFF;
+        z-index: 1;
       }
     }
   }

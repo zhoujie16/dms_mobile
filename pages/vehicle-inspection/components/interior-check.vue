@@ -55,7 +55,8 @@ export default {
             { text: '观察', value: '14001002' },
             { text: '异常', value: '14001003' }
           ],
-          value: ''
+          value: '',
+          photoPath:''
         },
         {
           fieldName: 'smsj',
@@ -179,6 +180,11 @@ export default {
     async formItemChange(data, index) {
       console.log('修改了', data, index);
       this.formData[index].value = data;
+    },
+    //图片改变事件
+    async formImageChange(data, index){
+      console.log()
+       this.formData[index].photoPath = data;
     },
     // 添加事件监听
     addRecognizeEventListener() {
