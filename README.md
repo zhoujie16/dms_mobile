@@ -7,6 +7,19 @@ git地址：https://gitcyx.yycsy.com/dms/dms_service_mob
 
 dms移动app，
 
+```
+开发注意:
+1. 使用 MPage 组件，加ref属性，内部再包裹一层 view，方便以后拓展功能。
+	<MPage ref="MPage">
+		<view>
+			页面布局
+		</view>
+	</MPage>
+2. 导航栏优先在 page.json 中 app-plus 字段中配置，page.json 参数不能满足需求时使用 plus api 配置。见 demo navbar1 和 navbar2。如仍不满足需求使用自定义导航。
+```
+
+
+
 #### 安装教程
 
 - 使用 HBudlidX 打开项目
