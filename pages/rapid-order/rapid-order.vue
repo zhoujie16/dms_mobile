@@ -1,9 +1,6 @@
 <template>
   <!-- 快速工单 -->
   <MPage ref="MPage">
-    <view class="m-status-bar"></view>
-    <!-- 自定义导航栏 -->
-    <uni-nav-bar left-icon="arrowleft" title="快速工单" @clickLeft="back" />
     <!-- 筛选组件 -->
     <search-filter ref="searchFilter">
       <!-- 自定义面板 -->

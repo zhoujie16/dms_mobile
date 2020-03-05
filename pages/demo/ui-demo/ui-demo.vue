@@ -30,7 +30,7 @@ export default {
           }
         },
         {
-          title: 'search-filter',
+          title: '头部表单',
           clickFn: async () => {
             const [err, res] = await uni.navigateTo({
               url: '/pages/demo/ui-demo/search-filter'
@@ -38,7 +38,7 @@ export default {
           }
         },
         {
-          title: 'button',
+          title: '按钮',
           clickFn: async () => {
             const [err, res] = await uni.navigateTo({
               url: '/pages/demo/ui-demo/button'
@@ -46,7 +46,7 @@ export default {
           }
         },
         {
-          title: 'form',
+          title: '表单',
           clickFn: async () => {
             const [err, res] = await uni.navigateTo({
               url: '/pages/demo/ui-demo/form'
@@ -78,18 +78,18 @@ export default {
           }
         },
         {
-          title: 'navbar',
+          title: '原生导航-固定配置',
           clickFn: async () => {
             const [err, res] = await uni.navigateTo({
-              url: '/pages/demo/ui-demo/navbar'
+              url: '/pages/demo/ui-demo/navbar1'
             });
           }
         },
         {
-          title: 'picker',
+          title: '原生导航-动态配置',
           clickFn: async () => {
             const [err, res] = await uni.navigateTo({
-              url: '/pages/demo/ui-demo/picker'
+              url: '/pages/demo/ui-demo/navbar2'
             });
           }
         },
@@ -102,18 +102,10 @@ export default {
           }
         },
         {
-          title: '左滑',
+          title: '左滑列表',
           clickFn: async () => {
             const [err, res] = await uni.navigateTo({
               url: '/pages/demo/ui-demo/swipeActionItem'
-            });
-          }
-        },
-        {
-          title: '车牌号',
-          clickFn: async () => {
-            const [err, res] = await uni.navigateTo({
-              url: '/pages/demo/ui-demo/keyWord'
             });
           }
         },

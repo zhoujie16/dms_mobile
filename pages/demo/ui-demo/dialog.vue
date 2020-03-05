@@ -59,10 +59,7 @@ export default {
       });
       // 交互结果
       console.log('showModal_res', res);
-      await uni.showToast({
-        title: `${res}`,
-        icon: 'none'
-      });
+      this.SHOW_TOAST(`${res}`);
     },
     async showModal_2() {
       // js 调用方式
@@ -74,10 +71,7 @@ export default {
       });
       // 交互结果
       console.log('showModal_res', res);
-      await uni.showToast({
-        title: `${res}`,
-        icon: 'none'
-      });
+      this.SHOW_TOAST(`${res}`);
     },
     /**
      * 显示提示信息

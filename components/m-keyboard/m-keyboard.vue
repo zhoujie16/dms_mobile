@@ -45,7 +45,7 @@ export default {
     };
   },
   mounted() {
-    console.log('虚拟键盘 mounted', this.provices, this.letters);
+    // console.log('虚拟键盘 mounted', this.provices, this.letters);
   },
   methods: {
     setKeyboardType(boardType) {

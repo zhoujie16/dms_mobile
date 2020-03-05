@@ -1,12 +1,6 @@
 <!-- 工单详情 -->
 <template>
   <MPage ref="MPage">
-    <view class="status-bar-wrap">
-      <view class="m-status-bar"></view>
-      <!-- 自定义导航栏 -->
-      <uni-nav-bar class="nav-bar" left-icon="arrowleft" title="工单信息" @clickLeft="back" />
-      <view class="status-bar-bg"></view>
-    </view>
     <view class="page-body">
       <view class="title-panel">
         <view class="title-panel-inner">
@@ -80,32 +74,6 @@ export default {
 </script>
 
 <style lang="scss">
-.status-bar-wrap {
-  position: relative;
-  background: #ffffff;
-  /deep/ .nav-bar {
-    .uni-navbar__content {
-      z-index: 1;
-      background-color: initial !important;
-      .uni-navbar__header {
-        background-color: initial !important;
-      }
-    }
-    .uni-icons,
-    .uni-nav-bar-text {
-      color: #ffffff !important;
-    }
-  }
-  .status-bar-bg {
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    background: linear-gradient(to right, #41c5ff, #1371f7);
-    z-index: 0;
-  }
-}
 .title-panel {
   position: relative;
   height: 200rpx;
@@ -147,9 +115,5 @@ export default {
       color: #70767f;
     }
   }
-}
-.page-body {
-  height: calc(100vh - 128rpx);
-  overflow: auto;
-}
+} 
 </style>
