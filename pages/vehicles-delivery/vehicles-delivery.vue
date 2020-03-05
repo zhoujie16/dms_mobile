@@ -1,5 +1,5 @@
 <template>
-  <MPage ref="MPage">
+  <MPage ref="MPage" title="进度查询">
     <search-filter ref="searchFilter">
       <view slot="panel" class="panel-box">
         <view v-for="(item,index) in itemList" :key="index" @click="changeIndex(index)">
@@ -37,7 +37,7 @@
 import { AjaxScrollData } from '@/api/test/index.js';
 import ScrollCell from '@/pages/vehicles-delivery/components/scroll-cell.vue';
 import SwiperPage from '@/pages/appointment-check/components/swiper-page.vue';
-import SearchForm from '@/pages/appointment-check/components/search-form.vue';
+import SearchForm from '@/pages/vehicles-delivery/components/search-form.vue';
 
 export default {
   components: {

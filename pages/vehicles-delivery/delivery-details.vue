@@ -1,11 +1,10 @@
 <template>
-  <MPage ref="MPage">
-    <view class="status-bar-wrap">
+  <MPage ref="MPage" type="primary" title="客户信息">
+    <!-- <view class="status-bar-wrap">
       <view class="m-status-bar"></view>
-      <!-- 自定义导航栏 -->
       <uni-nav-bar class="nav-bar" left-icon="arrowleft" title="客户信息" @clickLeft="back" />
       <view class="status-bar-bg"></view>
-    </view>
+    </view> -->
     <view class="page-body">
       <view class="title-panel">
         <view class="title-panel-inner">

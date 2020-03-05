@@ -1,6 +1,6 @@
 <template>
   <!-- 进度查询 -->
-  <MPage ref="MPage">
+  <MPage ref="MPage" title="进度查询">
     <search-filter ref="searchFilter">
       <view slot="panel" class="panel-box">
         <view v-for="(item,index) in itemList" :key="index" @click="changeIndex(index)">

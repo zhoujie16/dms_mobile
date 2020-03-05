@@ -116,7 +116,8 @@
     {
       "path": "pages/progress-query/progress-query",
       "style": {
-        "navigationBarTitleText": "进度查询"
+        "navigationBarTitleText": "进度查询",
+        "navigationStyle": "custom"
       }
     },
     {
@@ -129,7 +130,8 @@
     {
       "path": "pages/vehicles-delivery/vehicles-delivery",
       "style": {
-        "navigationBarTitleText": "交车查询"
+        "navigationBarTitleText": "交车查询",
+        "navigationStyle": "custom"
       }
     },
     {
