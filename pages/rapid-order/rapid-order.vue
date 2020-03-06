@@ -70,7 +70,7 @@ export default {
     SearchForm
   },
   data() {
-    this.scrollHeight = uni.getSystemInfoSync().windowHeight - 86 + 'px';
+    this.scrollHeight = uni.getSystemInfoSync().windowHeight - 20 + 'px';
     return {
       fetchApi: AjaxScrollData,
       fetchParams: {},

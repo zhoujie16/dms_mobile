@@ -1,6 +1,6 @@
 <template>
   <!-- 预约检查 -->
-  <MPage ref="MPage" title="预约检查">
+  <MPage ref="MPage" >
     <search-filter ref="searchFilter">
       <view slot="panel" class="panel-box">
         <view v-for="(item, index) in itemList" :key="index" @click="changeIndex(index)">

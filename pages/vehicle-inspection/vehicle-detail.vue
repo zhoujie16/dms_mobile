@@ -1,8 +1,5 @@
 <template>
   <MPage ref="MPage">
-    <view class="m-status-bar"></view>
-    <!-- 自定义导航栏 -->
-    <uni-nav-bar left-icon="arrowleft" title="内饰检查" @clickLeft="back"></uni-nav-bar>
     <view class="swiper-page-wrap">
       <SwiperTab :height="swiperTabHeight" :tabs="tabs" :curIndex="curIndex" @change="changeTab">
         <swiper class="swiper-wrap" :current="curIndex" @change="swiperChange">

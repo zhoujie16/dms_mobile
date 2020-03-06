@@ -1,13 +1,6 @@
 <!-- 工单详情 -->
 <template>
-  <MPage ref="MPage" type="primary" title="预约检查详情">
-	 <!-- <view class="status-bar-wrap">
-	    <view class="m-status-bar"></view>
-	    
-	    <uni-nav-bar class="nav-bar" left-icon="arrowleft" title="预约检查详情" @clickLeft="back" />
-	    <view class="status-bar-bg"></view>
-	  </view> -->
-    
+  <MPage ref="MPage">
     <view class="page-body">
       <view class="title-panel">
         <view class="title-panel-inner">
@@ -86,32 +79,32 @@ export default {
 </script>
 
 <style lang="scss">
-.status-bar-wrap {
-  position: relative;
-  background: #ffffff;
-  /deep/ .nav-bar {
-    .uni-navbar__content {
-      z-index: 1;
-      background-color: initial !important;
-      .uni-navbar__header {
-        background-color: initial !important;
-      }
-    }
-    .uni-icons,
-    .uni-nav-bar-text {
-      color: #ffffff !important;
-    }
-  }
-  .status-bar-bg {
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    background: linear-gradient(to right, #41c5ff, #1371f7);
-    z-index: 0;
-  }
-}
+// .status-bar-wrap {
+//   position: relative;
+//   background: #ffffff;
+//   /deep/ .nav-bar {
+//     .uni-navbar__content {
+//       z-index: 1;
+//       background-color: initial !important;
+//       .uni-navbar__header {
+//         background-color: initial !important;
+//       }
+//     }
+//     .uni-icons,
+//     .uni-nav-bar-text {
+//       color: #ffffff !important;
+//     }
+//   }
+//   .status-bar-bg {
+//     position: absolute;
+//     top: 0;
+//     right: 0;
+//     bottom: 0;
+//     left: 0;
+//     background: linear-gradient(to right, #41c5ff, #1371f7);
+//     z-index: 0;
+//   }
+// }
 .title-panel {
   position: relative;
   padding: 10rpx 30rpx 30rpx 30rpx;
@@ -168,7 +161,7 @@ export default {
      }
 }
 .page-body {
-  height: calc(100vh - 128rpx);
+  height: 100vh;
   overflow: auto;
 }
 

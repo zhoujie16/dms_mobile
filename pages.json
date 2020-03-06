@@ -118,11 +118,32 @@
       }
     },
     {
+      "path": "pages/appointment-check/appointment-detail",
+      "style": {
+        "app-plus": {
+          "titleNView": {
+            "titleText": "预约检查详情",
+            "backgroundColor": "#1676F8",
+            "titleColor": "#FFFFFF"
+          }
+        }
+      }
+    },
+    {
       "path": "pages/customer-reception/customer-reception",
       "style": {
         "app-plus": {
           "titleNView": {
-            "titleText": "车辆预检"
+            "titleText": "车辆预检",
+            "buttons": [{
+              // button 按钮可以用字体图标 也可以用图片
+              "fontSrc": "/static/fonts/iconfont.ttf",
+              "type": "none",
+              "text": "\ue721",
+              "width": "50px",
+              "fontSize": "22px",
+              "float": "right"
+            }]
           }
         }
       }
@@ -152,7 +173,16 @@
       "style": {
         "app-plus": {
           "titleNView": {
-            "titleText": "车辆检查"
+            "titleText": "车辆检查",
+            "buttons": [{
+              // button 按钮可以用字体图标 也可以用图片
+              "fontSrc": "/static/fonts/iconfont.ttf",
+              "type": "none",
+              "text": "\ue721",
+              "width": "50px",
+              "fontSize": "22px",
+              "float": "right"
+            }]
           }
         }
       }
@@ -172,7 +202,9 @@
       "style": {
         "app-plus": {
           "titleNView": {
-            "titleText": "接待详情"
+            "titleText": "接待详情",
+            "backgroundColor": "#1676F8",
+            "titleColor": "#FFFFFF"
           }
         }
       }
@@ -247,7 +279,15 @@
       "style": {
         "app-plus": {
           "titleNView": {
-            "titleText": "新增预检单"
+            "titleText": "新增预检单",
+            "buttons": [{
+              "type": "none",
+              "text": "预览",
+              "width": "40px",
+              "fontSize": "14px",
+              "float": "right",
+              "color":"#1371f7"
+            }]
           }
         }
       }
@@ -341,7 +381,9 @@
       "style": {
         "app-plus": {
           "titleNView": {
-            "titleText": "维修检查"
+            "titleText": "维修检查",
+            "titleColor": "#FFFFFF",
+            "backgroundColor": "#41c5ff"
           }
         }
       }
@@ -355,7 +397,9 @@
       "style": {
         "app-plus": {
           "titleNView": {
-            "titleText": "交车详情"
+            "titleText": "交车详情",
+            "titleColor": "#FFFFFF",
+            "backgroundColor": "#41c5ff"
           }
         }
       }
@@ -570,16 +614,7 @@
       "path": "pages/demo/ui-demo/check-item",
       "style": {}
     },
-    {
-      "path": "pages/appointment-check/appointment-detail",
-      "style": {
-        "app-plus": {
-          "titleNView": {
-            "titleText": "预约检查详情"
-          }
-        }
-      }
-    },
+
     {
       "path": "pages/demo/ui-demo/keyboard",
       "style": {}

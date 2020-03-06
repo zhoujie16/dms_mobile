@@ -205,7 +205,7 @@ export default {
       //查看图片
     }else if(index==2){
       //编辑图片
-    }else{
+    }else if (index == 3){
       //删掉图片
       const res = await this.SHOW_MODAL({
         title: '确认删除？',
@@ -220,6 +220,8 @@ export default {
         this.image="";
         this.photoText="上传图片"
       }
+    }else{
+      return;
     }
   },
 	//上传视频

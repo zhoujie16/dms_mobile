@@ -1,13 +1,5 @@
-@@ -1,121 +0,0 @@
 <template>
   <MPage ref="MPage" type="primary">
-    <view class="m-status-bar"></view>
-	  <!-- 自定义导航栏 -->
-	  <uni-nav-bar left-icon="arrowleft"  title="新增预检单" @clickLeft="back" @clickRight="handClick">
-	    <block slot="right">
-	      <view class="nav-right">预览</view>
-	    </block>
-	  </uni-nav-bar>
 	  <view class="swiper-page-wrap">
     <SwiperTab :height="swiperTabHeight" :tabs="tabs" :curIndex="curIndex" @change="changeTab">
       <swiper class="swiper-wrap" :current="curIndex" @change="swiperChange">
@@ -69,23 +61,20 @@ export default {
     }
   },
   data() {
-    this.swiperTabHeight = uni.getSystemInfoSync().windowHeight - 100 + 'px';
+    this.swiperTabHeight = uni.getSystemInfoSync().windowHeight - 70 + 'px';
     return {
       tabs: ['客户信息', '客户需求', '车身外观'],
       curIndex: 0 // 当前tab的下标
     };
   },
   watch: {},
+  // 监听导航栏删选事件
+  onNavigationBarButtonTap(e) {
+    if (e.float == 'right') {
+     // 预览
+    }
+  },
   methods: {
-    async back() {
-      uni.navigateBack({
-        delta: 1
-      });
-    },
-    // 预览
-    handClick(){
-      
-    },
     // 轮播菜单
     swiperChange(e) {
       this.curIndex = e.detail.current;
