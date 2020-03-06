@@ -1,12 +1,22 @@
 <template>
   <view class="m-key-board-wrap">
     <uni-popup ref="popup" type="bottom" @change="change">
+      <!-- 键盘头部 -->
+      <view class="m-key-board-header">车牌号专用键盘</view>
       <!-- 车牌键盘 -->
       <view class="license-key-board-wrap">
         <!-- 省会简称 -->
         <view v-if="boardType === 'provice'" class="license-key-board-inner provice">
           <view v-for="(provice_arr, i) in provices" class="key-wrap provice" :key="i">
-            <view v-for="(item, j) in provice_arr" class="key" :key="item" @click="keyDown(item)">
+            <view
+              v-for="(item, j) in provice_arr"
+              class="key"
+              :key="item"
+              @click="keyDown(item)"
+              hover-class="active"
+              :hover-start-time="0"
+              :hover-stay-time="5"
+            >
               {{ item }}
             </view>
           </view>
@@ -14,12 +24,28 @@
         <!-- 车牌号码 -->
         <view v-if="boardType === 'letter'" class="license-key-board-inner letter">
           <view v-for="(letter_arr, i) in letters" class="key-wrap letter" :key="i">
-            <view v-for="(item, j) in letter_arr" class="key" :key="item" @click="keyDown(item)">
+            <view
+              v-for="(item, j) in letter_arr"
+              class="key"
+              :key="item"
+              @click="keyDown(item)"
+              hover-class="active"
+              :hover-start-time="0"
+              :hover-stay-time="5"
+            >
               {{ item }}
             </view>
           </view>
         </view>
-        <view class="key del" @click="keyDown(-1)">删</view>
+        <view
+          class="key del"
+          @click="keyDown(-1)"
+          hover-class="active"
+          :hover-start-time="0"
+          :hover-stay-time="5"
+        >
+          删
+        </view>
       </view>
     </uni-popup>
   </view>
@@ -77,49 +103,55 @@ export default {
   /deep/ .uni-popup .uni-popup-mask {
     background-color: rgba(0, 0, 0, 0) !important;
   }
-}
-.license-key-board-wrap {
-  position: relative;
-  .key.del {
-    position: absolute;
+  .m-key-board-header {
+    height: 70rpx;
+    padding-top: 10rpx;
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 66rpx;
-    height: 90rpx;
-    background-color: #ffffff;
-    right: 8rpx;
-    bottom: 24rpx;
-    // width: 80rpx;
-    height: 90rpx;
-    border-radius: 8rpx;
-    color: #70767f;
+    background-color: #f7f7f7;
+    border-top: solid 1rpx #efefef;
+    color: #9ea2a8;
+    font-size: 26rpx;
+    font-weight: 200;
+    letter-spacing: 1px;
   }
+}
+.license-key-board-wrap {
+  position: relative;
   .license-key-board-inner {
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
     width: 100vw;
-    height: 440rpx;
     padding-bottom: 20rpx;
-    background-color: #efefef;
+    background-color: #f7f7f7;
     .key-wrap {
       height: 100rpx;
       display: flex;
       justify-content: center;
       align-items: center;
       font-size: 30rpx;
-      .key {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        width: 66rpx;
-        height: 90rpx;
-        background-color: #ffffff;
-        margin: 0 4rpx;
-        border-radius: 8rpx;
-        color: #70767f;
-      }
+    }
+  }
+  .key {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 66rpx;
+    height: 90rpx;
+    background-color: #ffffff;
+    margin: 0 4rpx;
+    border-radius: 8rpx;
+    color: #70767f;
+    font-weight: 700;
+    &.del {
+      position: absolute;
+      right: 8rpx;
+      bottom: 24rpx;
+    }
+    &.active {
+      background-color: #d1d1d1;
     }
   }
 }
