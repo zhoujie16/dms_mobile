@@ -1,6 +1,6 @@
 <template>
   <view class="m-key-board-wrap">
-    <uni-popup ref="popup" type="bottom">
+    <uni-popup ref="popup" type="bottom" @change="change">
       <!-- 车牌键盘 -->
       <view class="license-key-board-wrap">
         <!-- 省会简称 -->
@@ -51,12 +51,18 @@ export default {
     setKeyboardType(boardType) {
       this.boardType = boardType;
     },
-    open({ keyDown }) {
+    open({ keyDown, close }) {
       this.$refs.popup.open();
       this._keyDown = keyDown;
+      this._close = close;
     },
     close() {
       this.$refs.popup.close();
+    },
+    change({ show }) {
+      if (!show && this._close) {
+        this._close();
+      }
     },
     keyDown(key) {
       console.log('keyDown', key);

@@ -21,6 +21,11 @@
 <script>
 export default {
   name: 'm-license',
+  props: {
+    value: {
+      type: String
+    }
+  },
   data() {
     return {
       itemList: [
@@ -35,12 +40,6 @@ export default {
       ]
     };
   },
-  computed: {
-    activeIndex() {
-      const index = this.itemList.findIndex(item => item.isActive === true);
-      return index;
-    }
-  },
   watch: {
     activeIndex(index) {
       console.log('watch activeIndex', index);
@@ -49,6 +48,31 @@ export default {
       } else {
         this.$root.$refs.MPage.MKeyboard.setKeyboardType('letter');
       }
+    },
+    value: {
+      immediate: true,
+      handler(value) {
+        // console.log('computed value', value);
+        const arr = value.split('');
+        this.itemList.forEach((x, i) => {
+          const val = arr[i];
+          x.value = val ? val : '';
+        });
+      }
+    },
+    _value(value) {
+      // console.log('computed _value', value);
+      this.$emit('input', value);
+    }
+  },
+  computed: {
+    activeIndex() {
+      const index = this.itemList.findIndex(item => item.isActive === true);
+      return index;
+    },
+    _value() {
+      const arr = this.itemList.map(x => (x.value !== '' ? x.value : ' '));
+      return arr.join('');
     }
   },
   methods: {
@@ -80,6 +104,13 @@ export default {
           const index = this.itemList.findIndex(item => item.isActive === true);
           this.itemList[index].value = key;
           this.setNextItemActive();
+        },
+        // 键盘隐藏
+        close: () => {
+          // 框框失焦
+          this.itemList.forEach(x => {
+            x.isActive = false;
+          });
         }
       });
     },
