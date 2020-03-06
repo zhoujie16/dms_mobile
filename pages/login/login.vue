@@ -33,7 +33,7 @@
     </view>
     <view class="weixin">
       <image class="vxImg" src="../../static/image/weixin.svg"></image>
-      <view class="vx-text">微信登录</view>
+      <view class="vx-text">微信登陆</view>
     </view>
     <view class="copy_right">
       v3.05.09.1-18

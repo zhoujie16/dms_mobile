@@ -1,10 +1,5 @@
 <template>
-  <MPage ref="MPage" type="primary" title="维修检查">
-    <!-- <view class="status-bar-wrap">
-      <view class="m-status-bar"></view>
-      <uni-nav-bar class="nav-bar" left-icon="arrowleft" title="维修检查" @clickLeft="back" />
-      <view class="status-bar-bg"></view>
-    </view> -->
+  <MPage ref="MPage">
     <view class="page-body">
       <view class="title-panel">
         <view class="title-panel-inner">
@@ -18,18 +13,19 @@
         </view>
         <view class="title-panel-bg"></view>
       </view>
-      <view>
-        <MLabel label="车牌号">沪A123456</MLabel>
-        <MLabel label="车架号">xxxxxxxxxxxxxxxxx</MLabel>
-        <MLabel label="工单号">xxxxxxxxxx</MLabel>
-        <MLabel label="VIN">xxxxxxxxxx</MLabel>
-        <MLabel label="维修项目">张全蛋</MLabel>
-        <MLabel label="送修人电话">13322111234</MLabel>
-        <MLabel label="故障描述">测试品牌</MLabel>
-        <MLabel label="维修技师">王一</MLabel>
-        <view class="m-break-space"></view>
-        <!-- <MTextArea label="备注" v-model="value_1"></MTextArea> -->
-      </view>
+      <CollapsePanel title="客户信息">
+        <template slot="default">
+          <MLabel label="车牌号">沪A123456</MLabel>
+          <MLabel label="车架号">xxxxxxxxxxxxxxxxx</MLabel>
+          <MLabel label="工单号">xxxxxxxxxx</MLabel>
+          <MLabel label="VIN">xxxxxxxxxx</MLabel>
+          <MLabel label="维修项目">张全蛋</MLabel>
+          <MLabel label="送修人电话">13322111234</MLabel>
+          <MLabel label="故障描述">测试品牌</MLabel>
+          <MLabel label="维修技师">王一</MLabel>
+          <view class="m-break-space"></view>
+        </template>
+      </CollapsePanel>
        <view class="m-break-space"></view>
       <view class="operate">
         <view class="btn">
@@ -77,32 +73,6 @@ export default {
 </script>
 
 <style lang="scss">
-.status-bar-wrap {
-  position: relative;
-  background: #ffffff;
-  /deep/ .nav-bar {
-    .uni-navbar__content {
-      z-index: 1;
-      background-color: initial !important;
-      .uni-navbar__header {
-        background-color: initial !important;
-      }
-    }
-    .uni-icons,
-    .uni-nav-bar-text {
-      color: #ffffff !important;
-    }
-  }
-  .status-bar-bg {
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    background: linear-gradient(to right, #41c5ff, #1371f7);
-    z-index: 0;
-  }
-}
 .title-panel {
   position: relative;
   padding: 10rpx 30rpx 30rpx 30rpx;
@@ -159,7 +129,7 @@ export default {
      }
 }
 .page-body {
-  height: calc(100vh - 128rpx);
+  height: 100vh;
   overflow: auto;
 }
 

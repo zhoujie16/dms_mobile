@@ -1,10 +1,5 @@
 <template>
-  <MPage ref="MPage" type="primary" title="客户信息">
-    <!-- <view class="status-bar-wrap">
-      <view class="m-status-bar"></view>
-      <uni-nav-bar class="nav-bar" left-icon="arrowleft" title="客户信息" @clickLeft="back" />
-      <view class="status-bar-bg"></view>
-    </view> -->
+  <MPage ref="MPage">
     <view class="page-body">
       <view class="title-panel">
         <view class="title-panel-inner">
@@ -18,14 +13,17 @@
         </view>
         <view class="title-panel-bg"></view>
       </view>
-      <view>
-        <MLabel label="车牌号">沪AFH865</MLabel>
-        <MLabel label="车架号">LVSHCFMB6ASD238</MLabel>
-        <MLabel label="车型">全新福克斯三厢 1.6MT</MLabel>
-        <MLabel label="销售日期">xxxxxxxxxx</MLabel>
-        <MLabel label="油量表">60%</MLabel>
-        <MLabel label="里程">100</MLabel>
-      </view>
+      <CollapsePanel title="客户信息">
+        <template slot="default">
+          <MLabel label="车牌号">沪AFH865</MLabel>
+          <MLabel label="车架号">LVSHCFMB6ASD238</MLabel>
+          <MLabel label="车型">全新福克斯三厢 1.6MT</MLabel>
+          <MLabel label="销售日期">xxxxxxxxxx</MLabel>
+          <MLabel label="油量表">60%</MLabel>
+          <MLabel label="里程">100</MLabel>
+          <view class="m-break-space"></view>
+        </template>
+      </CollapsePanel>
        <view class="m-break-space"></view>
        <view class="content">
          <view class="m-flex m-align-center m-height-80 content-top">外观检查</view>
@@ -372,6 +370,7 @@
        <uni-icons type="info" size="26" color="#fff"></uni-icons>
        <view class="r-title">关键信息</view>
        </view>
+       <MtelephoneCall ref='phone' type="bottom">13322111234</MtelephoneCall>
     </view>
     
   </MPage>
@@ -410,100 +409,85 @@ export default {
     },
     messagesClick() {
       this.$refs.mPopup.open();
+    },
+    phoneClick(){
+      this.$refs.phone.open();
     }
   }
 };
 </script>
 
 <style lang="scss" scoped>
-  .status-bar-wrap {
+.title-panel {
+  position: relative;
+  padding: 10rpx 30rpx 30rpx 30rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #ffffff;
+  .title-panel-bg {
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    height: 100rpx;
+    background: linear-gradient(to right, #41c5ff, #1371f7);
+    z-index: 0;
+  }
+  .title-panel-inner {
+    width: 100%;
+    height: 148rpx;
+    background-color: #ffffff;
+    padding: 0 30rpx;
+    border-radius: 10rpx;
+    z-index: 1;
+    box-shadow: 0px 2px 5px #eeeeee;
     position: relative;
-    background: #ffffff;
-    /deep/ .nav-bar {
-      .uni-navbar__content {
-        z-index: 1;
-        background-color: initial !important;
-        .uni-navbar__header {
-          background-color: initial !important;
-        }
-      }
-      .uni-icons,
-      .uni-nav-bar-text {
-        color: #ffffff !important;
-      }
-    }
-    .status-bar-bg {
-      position: absolute;
-      top: 0;
-      right: 0;
-      bottom: 0;
-      left: 0;
-      background: linear-gradient(to right, #41c5ff, #1371f7);
-      z-index: 0;
-    }
-  }
-  
-  .page-body {
-    height: calc(100vh - 128rpx);
-    overflow: auto;
-    .title-panel {
-      position: relative;
-      padding: 10rpx 30rpx 30rpx 30rpx;
+    .info-panel {
       display: flex;
+      flex-direction: column;
       justify-content: center;
-      align-items: center;
-      background-color: #ffffff;
-      .title-panel-bg {
-        position: absolute;
-        top: 0;
-        right: 0;
-        left: 0;
-        height: 100rpx;
-        background: linear-gradient(to right, #41c5ff, #1371f7);
-        z-index: 0;
+      border-bottom: solid 1px #efefef;
+      padding-top: 12rpx;
+      .customer-info {
+        font-size: 34rpx;
+        height: 80rpx;
+        line-height: 80rpx;
       }
-      .title-panel-inner {
-        width: 100%;
-        background-color: #ffffff;
-        padding: 0 30rpx;
-        border-radius: 10rpx;
-        z-index: 1;
-        box-shadow: 0px 2px 5px #eeeeee;
-        position: relative;
-        .info-panel {
-          display: flex;
-          flex-direction: column;
-          justify-content: center;
-          border-bottom: solid 1px #efefef;
-          padding-top: 12rpx;
-          height: 148rpx;
-          .customer-info {
-            font-size: 34rpx;
-            height: 80rpx;
-            line-height: 80rpx;
-          }
-          .car-info {
-            font-size: 30rpx;
-            height: 80rpx;
-            line-height: 80rpx;
-            color: #70767f;
-          }
-        }
-        
-         }
-         .phone{
-           position: absolute;
-           top: 30rpx;
-           right: 40rpx;
-           width: 70rpx;
-           height: 70rpx;
-           .img{
-             width: 70rpx;
-             height: 70rpx;
-           }
-         }
+      .car-info {
+        font-size: 30rpx;
+        height: 80rpx;
+        line-height: 80rpx;
+        color: #70767f;
+      }
     }
+    .phone{
+      position: absolute;
+      top: 30rpx;
+      right: 40rpx;
+      width: 70rpx;
+      height: 70rpx;
+      .img{
+        width: 70rpx;
+        height: 70rpx;
+      }
+    }
+     }
+}
+.page-body {
+  height: 100vh;
+  overflow: auto;
+}
+
+.operate{
+  display: flex;
+  background: $uni-m-color-cwhite;
+  padding: 20rpx 30rpx;
+  .btn{
+    flex: 1;
+    padding: 0 20rpx;
   }
+}
   .content {
     background-color: #ffffff;
     margin: 20rpx;
