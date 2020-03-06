@@ -120,7 +120,11 @@ export default {
             label: x.text,
             value: x.value
           }));
-          this.defaultVal = defaultVal;
+          let defVal = '';
+          if (defaultVal) {
+            defVal = selectList.find(x => x.value === defaultVal).text;
+          }
+          this.defaultVal = defVal;
         } else if (mode == 'date') {
           this.startYear = startYear;
           this.endYear = endYear;
@@ -149,7 +153,7 @@ export default {
           console.log('m-picker-popup result', result);
           let _result = result;
           if (this.mode == 'selector') {
-            _result = [result.result];
+            _result = [result.checkArr.value];
           } else if (this.mode == 'date') {
             _result = [result.result];
           } else if (this.mode == 'yearMonth') {

@@ -303,7 +303,7 @@ Vue.mixin({
       return await this.$root.$refs.MPage.MPickerPopup.showPicker({
         mode: 'selector',
         selectList: params.itemList,
-        defaultVal: params.value[0]
+        defaultVal: params.value.length ? params.value[0] : ''
       });
     },
     // 显示弹窗日期选择

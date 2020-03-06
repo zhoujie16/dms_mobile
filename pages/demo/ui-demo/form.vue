@@ -1,7 +1,7 @@
 <!-- 表单demo -->
 <template>
   <MPage ref="MPage">
-    <MLicense></MLicense>
+    <MLicense v-model="value_cph"></MLicense>
     <view class="m-break-space"></view>
     <MLabel title="标题">内容</MLabel>
     <MInput label="文本" v-model="formData.value_1"></MInput>
@@ -55,23 +55,31 @@
 </template>
 
 <script>
-const testArr_1 = [{ text: '是', value: 1 }, { text: '否', value: 2 }];
+const testArr_1 = [{ text: '是', value: '1' }, { text: '否', value: '2' }];
 const testArr_2 = [
-  { text: '顾问1', value: 1 },
-  { text: '顾问2', value: 2 },
-  { text: '顾问3', value: 3 },
-  { text: '顾问4', value: 4 },
-  { text: '顾问5', value: 5 },
-  { text: '顾问6', value: 6 },
-  { text: '顾问7', value: 7 },
-  { text: '顾问8', value: 8 },
-  { text: '顾问9', value: 9 },
-  { text: '顾问10', value: 10 }
+  { text: '顾问1', value: '1' },
+  { text: '顾问2', value: '2' },
+  { text: '顾问3', value: '3' },
+  { text: '顾问4', value: '4' },
+  { text: '顾问5', value: '5' },
+  { text: '顾问6', value: '6' },
+  { text: '顾问7', value: '7' },
+  { text: '顾问8', value: '8' },
+  { text: '顾问9', value: '9' },
+  { text: '顾问10', value: '10' }
 ];
-const testArr_3 = [{ text: '王', value: 1 }, { text: '大', value: 2 }, { text: '锤', value: 3 }];
+const testArr_3 = [
+  { text: '王', value: '1' },
+  { text: '大', value: '2' },
+  { text: '锤', value: '3' }
+];
 export default {
+  mounted() {
+    window.app = this;
+  },
   data() {
     return {
+      value_cph: '沪ADC',
       formData: {
         value_1: '',
         value_2: [],

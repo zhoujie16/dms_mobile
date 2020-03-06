@@ -10,7 +10,7 @@
           :single="single"
           :singleLine="true"
           @input="input"
-        ></MCheckboxInner> 
+        ></MCheckboxInner>
       </view>
       <!-- 弹窗选择用 -->
       <view class="m-checkbox-inner" v-if="type == 'popup'">
@@ -65,7 +65,8 @@ export default {
       if (this.value.length == 0) {
         return '请选择';
       } else {
-        return this.value.join(',');
+        const texts = this.value.map(val => this.itemList.find(x => x.value === val).text);
+        return texts.join(',');
       }
     }
   },
@@ -74,7 +75,17 @@ export default {
       console.log('选择的结果', this.$util.typeOf(value), value);
       this.$emit('input', value);
     },
-    showPopupClick() {
+    async showPopupClick() {
+      const res = await this.SHOW_PICKER({
+        single: true,
+        itemList: this.itemList,
+        value: this.value
+      });
+      if (res !== 'cancel') {
+        this.input(res);
+      }
+    },
+    showPopupClick3ee() {
       this.$root.$refs.MPage.MCheckboxPopup.showPicker({
         single: this.single,
         itemList: this.itemList,

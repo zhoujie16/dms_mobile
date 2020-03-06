@@ -97,11 +97,11 @@ export default {
     async showActionSheet() {
       const res = await this.SHOW_ACTION_SHEET({
         itemList: [
-          { text: '1', value: '1' },
-          { text: '2', value: '2' },
-          { text: '3', value: '3' },
-          { text: '4', value: '4' },
-          { text: '5', value: '5' }
+          { text: '选项1', value: '1' },
+          { text: '选项2', value: '2' },
+          { text: '选项3', value: '3' },
+          { text: '选项4', value: '4' },
+          { text: '选项5', value: '5' }
         ]
       });
       console.log('showActionSheet', res);
@@ -119,11 +119,11 @@ export default {
       const res = await this.SHOW_PICKER({
         single: true,
         itemList: [
-          { text: '1', value: '1' },
-          { text: '2', value: '2' },
-          { text: '3', value: '3' },
-          { text: '4', value: '4' },
-          { text: '5', value: '5' }
+          { text: '选项1', value: '1' },
+          { text: '选项2', value: '2' },
+          { text: '选项3', value: '3' },
+          { text: '选项4', value: '4' },
+          { text: '选项5', value: '5' }
         ],
         value: ['3']
       });

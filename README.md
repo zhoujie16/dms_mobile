@@ -15,7 +15,11 @@ dms移动app，
 			页面布局
 		</view>
 	</MPage>
+	
 2. 导航栏优先在 page.json 中 app-plus 字段中配置，page.json 参数不能满足需求时使用 plus api 配置。见 demo navbar1 和 navbar2。如仍不满足需求使用自定义导航。
+
+3. 单选 和 多选 的选项参数 itemList 结构: [{ text: '选项1', value: '1' }]。
+   text 和 value 值类型必须 是 字符串
 ```
 
 
