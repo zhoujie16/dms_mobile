@@ -16,9 +16,7 @@
       </template>
     </MInput>
     <view class="m-break-space"></view>
-    <MTextArea label="文本域" v-model="formData.value_1">
-      <text class="m-iconfont">&#xe729;</text>
-    </MTextArea>
+    <MTextArea label="文本域" v-model="formData.value_1"></MTextArea>
     <view class="m-break-space"></view>
     <MCheckbox
       label="单选 popup"
@@ -75,7 +73,9 @@ const testArr_3 = [
 ];
 export default {
   mounted() {
+    // #ifdef H5
     window.app = this;
+    // #endif
   },
   data() {
     return {

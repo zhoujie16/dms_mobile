@@ -3,9 +3,9 @@
   <view class="m-textarea-wrap">
     <view class="m-textarea-title">
       <MLabel :label="label">
-        <slot></slot>
+        <text @click="speechBtnClick" class="m-iconfont speech-btn">&#xe729;</text>
       </MLabel>
-      </view>
+    </view>
     <view class="m-textarea-inner">
       <textarea
         :value="value"
@@ -22,6 +22,9 @@
 export default {
   name: 'm-textarea',
   components: {},
+  mounted() {
+    // this.addRecognizeEventListener();
+  },
   props: {
     label: {
       type: String,
@@ -45,6 +48,30 @@ export default {
   methods: {
     inputHandle(e) {
       this.$emit('input', e.target.value);
+    },
+    speechBtnClick() {
+      console.log('点击语音识别按钮');
+      this.$speech.start({
+        start: () => {
+          console.log('开始语音识别');
+        },
+        volumeChange: ({ volume }) => {
+          // console.log('音量变化: ' + volume);
+        },
+        recognizing: ({ partialResult }) => {
+          console.log('临时语音识别结果: ' + partialResult);
+        },
+        recognition: ({ result }) => {
+          console.log('最终语音识别: ' + result);
+          this.$emit('input', this.value + result);
+        },
+        end: () => {
+          console.log('结束语音识别');
+        },
+        error: ({ code, message }) => {
+          // this.saveLog('语音识别错误: ' + code + ',' + message);
+        }
+      });
     }
   }
 };
@@ -53,11 +80,15 @@ export default {
 <style lang="scss">
 .m-textarea-wrap {
   .m-textarea-title {
+    .speech-btn {
+      color: #1371f7;
+      font-size: 40rpx;
+    }
   }
   .m-textarea-inner {
     background-color: #ffffff;
     padding: 30rpx;
-    .m-textarea{
+    .m-textarea {
       width: 100%;
       height: 200rpx;
       color: #70767f;
