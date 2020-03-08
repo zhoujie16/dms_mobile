@@ -1,7 +1,8 @@
 <template>
   <view>
     <view class="form-demo-wrap">
-      <MInput v-model="cph" label="车牌号"></MInput>
+      <!-- <MInput v-model="cph" label="车牌号"></MInput> -->
+	  <MLicense label="车牌号"></MLicense>
       <MCheckbox label="服务顾问" v-model="fwgw" :itemList="itemList_fwgw" single></MCheckbox>
       <MCheckbox label="是否交车" v-model="sfjc" :itemList="itemList_sfjc" single></MCheckbox>
       <MInput v-model="khmc" label="客户名称"></MInput>

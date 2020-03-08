@@ -53,12 +53,20 @@
             <text :class="photoText=='上传图片'?'choose-txt':'choose-txt1'">{{photoText}}</text>
           </view>
           <view class="choose-photo" @click="uploadVideo">
+            <!-- <video
+              id="myVideo"
+              class="uImage"
+              :src="vedio"
+              :poster="vedio + '?vframe/jpg/offset/1'" preload="auto" controls
+            ></video> -->
+            <image class="uImage" mode="scaleToFill" :src="vedioImage" />
             <image
               class="choose-img"
               src="/static/image/video-choose.svg"
               mode="scaleToFill"
             ></image>
-            <text class="choose-txt">上传视频</text>
+            <text :class="vedioText=='上传视频'?'choose-txt':'choose-txt1'">{{vedioText}}</text>
+            <!-- <text class="choose-txt">上传视频</text> -->
           </view>
         </view>
       </view>
@@ -121,7 +129,9 @@ export default {
     return {
       image:'',
       photoText:'上传图片',
-      vedio:''
+      vedio:'',
+      vedioText:'上传视频',
+      vedioImage:''
     };
   },
   methods: {
@@ -232,8 +242,11 @@ export default {
 		  sourceType: ['camera'],
 		  success: res => {
 		    console.log(res.tempFilePath);
-		    // this.videoPath = res.tempFilePath;
+		    this.vedio = res.tempFilePath;
+        this.vedioImage= res.tempFilePath + '?vframe/jpg/offset/1'
+        console.log(this.vedioImage,'image图片')
 		    this.getTempFilePath(res.tempFilePath, 'videoTempPath');
+        this.vedioText="编辑视频";
 		  },
 		  fail: err => {
 		    // #ifdef MP
