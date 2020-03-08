@@ -4,7 +4,10 @@
     <m-button class="demo-btn" type="primary" @click.native="startRecognize">
       点击开始语音识别
     </m-button>
-    <view class="text">{{ text }}</view>
+    <m-button class="demo-btn" type="primary" @click.native="stopRecognize">结束语音识别</m-button>
+    <view class="text">
+      <view class="" v-for="(item, i) in logs" :key="i">{{ item }}</view>
+    </view>
   </MPage>
 </template>
 
@@ -12,49 +15,42 @@
 export default {
   data() {
     return {
-      text: ''
+      text: '',
+      logs: ['日志']
     };
   },
   mounted() {
-    this.addRecognizeEventListener();
+    // console.log('speech mounted', this.a);
   },
   methods: {
-    // 添加事件监听
-    addRecognizeEventListener() {
-      plus.speech.addEventListener(
-        'start',
-        () => {
-          console.log('start');
-          this.text = '';
-        },
-        false
-      );
-      plus.speech.addEventListener(
-        'recognition',
-        e => {
-          console.log('recognition', e);
-          this.text += e.result;
-        },
-        false
-      );
-      plus.speech.addEventListener(
-        'end',
-        () => {
-          console.log('end');
-          console.log(this.text);
-        },
-        false
-      );
-    },
     // 开始识别
     startRecognize() {
-      const options = {
-        engine: 'baidu' // 百度：baidu  讯飞：iFly
-      };
-      plus.speech.startRecognize(options);
+      this.$speech.start({
+        start: () => {
+          this.saveLog('开始语音识别');
+        },
+        volumeChange: ({ volume }) => {
+          this.saveLog('音量变化: ' + volume);
+        },
+        recognizing: ({ partialResult }) => {
+          this.saveLog('临时语音识别结果: ' + partialResult);
+        },
+        recognition: ({ result }) => {
+          this.saveLog('最终语音识别: ' + result);
+        },
+        end: () => {
+          this.saveLog('结束语音识别');
+        },
+        error: ({ code, message }) => {
+          this.saveLog('语音识别错误: ' + code + ',' + message);
+        }
+      });
     },
     stopRecognize() {
-      plus.speech.stopRecognize();
+      this.$speech.stop();
+    },
+    saveLog(message) {
+      this.logs.unshift(message);
     }
   }
 };

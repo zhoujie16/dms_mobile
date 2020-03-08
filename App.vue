@@ -13,6 +13,7 @@ export default {
   },
   onLaunch: function() {
     console.log('App Launch');
+    this.$speech.initRecognize();
   },
   onShow: function() {
     console.log('App Show');

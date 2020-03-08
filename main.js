@@ -249,6 +249,9 @@ Vue.component("MKeyboard", MKeyboard);
 
 Vue.config.productionTip = false;
 
+import Speech from '@/common/Speech.js';
+Vue.prototype.$speech = Speech;
+
 /**
  * 公共方法混入  所有Vue组件均可使用
  */
