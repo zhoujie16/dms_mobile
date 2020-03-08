@@ -50,7 +50,7 @@ class Speech {
       code,
       message
     }) => {
-      // console.log('语音识别错误', code, message);
+      console.log('语音识别错误', code, message);
       this._error({
         code,
         message
