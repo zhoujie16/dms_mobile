@@ -60,7 +60,7 @@
       </view>
       <view class="content">
         <MTextArea label="底盘四轮" v-model="value_1">
-          <text class="m-iconfont icon" @click="startRecognize">&#xe729;</text>
+         
         </MTextArea>
       </view>
     </view>
@@ -297,7 +297,7 @@ export default {
     };
   },
   mounted() {
-    this.addRecognizeEventListener();
+    
   },
   methods: {
     // 值改变事件
@@ -315,43 +315,6 @@ export default {
       console.log('修改了', data, index);
       this.formData2[index].value = data;
     },
-    // 添加事件监听
-    addRecognizeEventListener() {
-      plus.speech.addEventListener(
-        'start',
-        () => {
-          console.log('start');
-          this.value_1 = '';
-        },
-        false
-      );
-      plus.speech.addEventListener(
-        'recognition',
-        e => {
-          console.log('recognition', e);
-          this.value_1 += e.result;
-        },
-        false
-      );
-      plus.speech.addEventListener(
-        'end',
-        () => {
-          console.log('end');
-          console.log(this.text);
-        },
-        false
-      );
-    },
-    // 开始识别
-    startRecognize() {
-      const options = {
-        engine: 'baidu' // 百度：baidu  讯飞：iFly
-      };
-      plus.speech.startRecognize(options);
-    },
-    stopRecognize() {
-      plus.speech.stopRecognize();
-    }
   }
 };
 </script>

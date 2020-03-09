@@ -81,8 +81,8 @@ export default {
 .m-textarea-wrap {
   .m-textarea-title {
     .speech-btn {
-      color: #1371f7;
-      font-size: 40rpx;
+      color:$uni-m-color-c11;
+      font-size:  52rpx;
     }
   }
   .m-textarea-inner {

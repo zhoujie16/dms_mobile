@@ -38,11 +38,7 @@
           </template>
         </CollapsePanel>
       </view>
-      <view class="content">
-        <MTextArea label="发动机舱" v-model="value_1">
-          <text class="m-iconfont icon" @click="startRecognize">&#xe729;</text>
-        </MTextArea>
-      </view>
+      <view class="content"><MTextArea label="发动机舱" v-model="value_1"></MTextArea></view>
     </view>
   </view>
 </template>
@@ -60,55 +56,35 @@ export default {
           fieldName: 'fdjjy',
           type: 'select',
           label: '发动机机油：',
-          itemList: [
-            { text: '正常', value: '14001001' },
-            { text: '观察', value: '14001002' },
-            { text: '异常', value: '14001003' }
-          ],
+          itemList: [{ text: '正常', value: '14001001' }, { text: '观察', value: '14001002' }, { text: '异常', value: '14001003' }],
           value: ''
         },
         {
           fieldName: 'blqxy',
           type: 'select',
           label: '玻璃清洗液：',
-          itemList: [
-            { text: '正常', value: '14001001' },
-            { text: '观察', value: '14001002' },
-            { text: '异常', value: '14001003' }
-          ],
+          itemList: [{ text: '正常', value: '14001001' }, { text: '观察', value: '14001002' }, { text: '异常', value: '14001003' }],
           value: ''
         },
         {
           fieldName: 'xdc',
           type: 'select',
           label: '蓄电池：',
-          itemList: [
-            { text: '正常', value: '14001001' },
-            { text: '观察', value: '14001002' },
-            { text: '异常', value: '14001003' }
-          ],
+          itemList: [{ text: '正常', value: '14001001' }, { text: '观察', value: '14001002' }, { text: '异常', value: '14001003' }],
           value: ''
         },
         {
           fieldName: 'fdy',
           type: 'select',
           label: '防冻液：',
-          itemList: [
-            { text: '正常', value: '14001001' },
-            { text: '观察', value: '14001002' },
-            { text: '异常', value: '14001003' }
-          ],
+          itemList: [{ text: '正常', value: '14001001' }, { text: '观察', value: '14001002' }, { text: '异常', value: '14001003' }],
           value: ''
         },
         {
           fieldName: 'zlzx',
           type: 'select',
           label: '助力转向：：',
-          itemList: [
-            { text: '正常', value: '14001001' },
-            { text: '观察', value: '14001002' },
-            { text: '异常', value: '14001003' }
-          ],
+          itemList: [{ text: '正常', value: '14001001' }, { text: '观察', value: '14001002' }, { text: '异常', value: '14001003' }],
           value: ''
         },
         {
@@ -124,33 +100,21 @@ export default {
           fieldName: 'kqlqq',
           type: 'select',
           label: '空气滤清器：',
-          itemList: [
-            { text: '正常', value: '14001001' },
-            { text: '观察', value: '14001002' },
-            { text: '异常', value: '14001003' }
-          ],
+          itemList: [{ text: '正常', value: '14001001' }, { text: '观察', value: '14001002' }, { text: '异常', value: '14001003' }],
           value: ''
         },
         {
           fieldName: 'fdjpd',
           type: 'select',
           label: '发动机皮带：',
-          itemList: [
-            { text: '正常', value: '14001001' },
-            { text: '观察', value: '14001002' },
-            { text: '异常', value: '14001003' }
-          ],
+          itemList: [{ text: '正常', value: '14001001' }, { text: '观察', value: '14001002' }, { text: '异常', value: '14001003' }],
           value: ''
         },
         {
           fieldName: 'yl',
           type: 'select',
           label: '油路/管路/线路：',
-          itemList: [
-            { text: '正常', value: '14001001' },
-            { text: '观察', value: '14001002' },
-            { text: '异常', value: '14001003' }
-          ],
+          itemList: [{ text: '正常', value: '14001001' }, { text: '观察', value: '14001002' }, { text: '异常', value: '14001003' }],
           value: ''
         }
       ],
@@ -159,54 +123,35 @@ export default {
           fieldName: 'gydcaz',
           type: 'select',
           label: '高压电池安装：',
-          itemList: [
-            { text: '正常', value: '14001001' },
-            { text: '观察', value: '14001002' },
-            { text: '异常', value: '14001003' }
-          ],
+          itemList: [{ text: '正常', value: '14001001' }, { text: '观察', value: '14001002' }, { text: '异常', value: '14001003' }],
           value: ''
         },
         {
           fieldName: 'gywhkg',
           type: 'select',
           label: '高压维护开关：',
-          itemList: [
-            { text: '正常', value: '14001001' },
-            { text: '观察', value: '14001002' },
-            { text: '异常', value: '14001003' }
-          ],
+          itemList: [{ text: '正常', value: '14001001' }, { text: '观察', value: '14001002' }, { text: '异常', value: '14001003' }],
           value: ''
         },
         {
           fieldName: 'xs',
           type: 'select',
           label: '线束/接插件：',
-          itemList: [
-            { text: '正常', value: '14001001' },
-            { text: '观察', value: '14001002' },
-            { text: '异常', value: '14001003' }
-          ],
+          itemList: [{ text: '正常', value: '14001001' }, { text: '观察', value: '14001002' }, { text: '异常', value: '14001003' }],
           value: ''
         },
         {
           fieldName: 'nbq',
           type: 'select',
           label: '逆变器冷却液：',
-          itemList: [
-            { text: '正常', value: '14001001' },
-            { text: '观察', value: '14001002' },
-            { text: '异常', value: '14001003' }
-          ],
+          itemList: [{ text: '正常', value: '14001001' }, { text: '观察', value: '14001002' }, { text: '异常', value: '14001003' }],
           value: ''
         }
       ]
     };
   },
-  mounted() {
-    this.addRecognizeEventListener();
-  },
+  mounted() {},
   methods: {
-   
     // 值改变事件
     async formItemChange(data, index) {
       console.log('修改了', data, index);
@@ -216,43 +161,6 @@ export default {
     async formItemChange1(data, index) {
       console.log('修改了', data, index);
       this.formData[index].value = data;
-    },
-    // 添加事件监听
-    addRecognizeEventListener() {
-      plus.speech.addEventListener(
-        'start',
-        () => {
-          console.log('start');
-          this.value_1 = '';
-        },
-        false
-      );
-      plus.speech.addEventListener(
-        'recognition',
-        e => {
-          console.log('recognition', e);
-          this.value_1 += e.result;
-        },
-        false
-      );
-      plus.speech.addEventListener(
-        'end',
-        () => {
-          console.log('end');
-          console.log(this.text);
-        },
-        false
-      );
-    },
-    // 开始识别
-    startRecognize() {
-      const options = {
-        engine: 'baidu' // 百度：baidu  讯飞：iFly
-      };
-      plus.speech.startRecognize(options);
-    },
-    stopRecognize() {
-      plus.speech.stopRecognize();
     }
   }
 };
@@ -318,9 +226,5 @@ export default {
       }
     }
   }
-}
-.icon {
-  font-size: 52rpx;
-  color: $uni-m-color-c11;
 }
 </style>

@@ -20,7 +20,6 @@
       </view>
       <view class="content">
          <MTextArea label="内饰检查" v-model="value_1">
-           <text class="m-iconfont icon" @click="startRecognize">&#xe729;</text>
          </MTextArea>
       </view>
     </view>
@@ -173,7 +172,7 @@ export default {
     };
   },
   mounted() {
-    this.addRecognizeEventListener();
+   
   },
   methods: {
     // 值改变事件
@@ -186,43 +185,8 @@ export default {
       console.log()
        this.formData[index].photoPath = data;
     },
-    // 添加事件监听
-    addRecognizeEventListener() {
-      plus.speech.addEventListener(
-        'start',
-        () => {
-          console.log('start');
-          this.value_1 = '';
-        },
-        false
-      );
-      plus.speech.addEventListener(
-        'recognition',
-        e => {
-          console.log('recognition', e);
-          this.value_1 += e.result;
-        },
-        false
-      );
-      plus.speech.addEventListener(
-        'end',
-        () => {
-          console.log('end');
-          console.log(this.value_1);
-        },
-        false
-      );
-    },
-    // 开始识别
-    startRecognize() {
-      const options = {
-        engine: 'baidu' // 百度：baidu  讯飞：iFly
-      };
-      plus.speech.startRecognize(options);
-    },
-    stopRecognize() {
-      plus.speech.stopRecognize();
-    }
+    
+    
   }
 };
 </script>
@@ -269,9 +233,5 @@ export default {
       }
     }
   }
-}
-.icon{
-  font-size: 52rpx;
-  color: $uni-m-color-c11;
 }
 </style>
