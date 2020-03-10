@@ -103,6 +103,7 @@
 				e.stopPropagation()
 			},
 			open() {
+        console.log("open事件")
 				this.showPopup = true
 				this.$nextTick(() => {
 					setTimeout(() => {

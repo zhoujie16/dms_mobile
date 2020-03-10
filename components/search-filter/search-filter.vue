@@ -7,7 +7,7 @@
         <text class="m-iconfont">&#xe721;</text>
       </view>
     </view>
-    <uni-popup ref="popup" type="top" @change="change">
+    <uni-popup ref="popup" type="top" :show="true" >
       <view class="m-search-dialog-wrap">
         <view class="m-search-dialog-inner">
           <view class="search-form">
@@ -43,6 +43,7 @@ export default {
   methods: {
     // 显示抽屉组件
     open() {
+      console.log('点击事件');
       this.$refs.popup.open();
     },
     // 抽屉组件关闭
@@ -57,6 +58,7 @@ export default {
       // this.old.scrollTop = e.detail.scrollTop
     },
     resetBtnClick() {
+       this.$refs.popup.close();
       // this.$emit('reset');
     },
     confirmBtnClick() {
