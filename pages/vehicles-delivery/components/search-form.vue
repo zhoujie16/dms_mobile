@@ -1,7 +1,8 @@
 <template>
   <view>
     <view class="form-demo-wrap" @touchmove.prevent>
-      <MLicense label="车牌号"></MLicense>
+      <!-- <MLicense label="车牌号"></MLicense> -->
+      <MLicense></MLicense>
       <MPicker label="交车日期" mode="range" v-model="formData.value_date_2"></MPicker>
       <MInput label="车主姓名" v-model="formData.name"></MInput>
       <MInput label="车主编号" v-model="formData.roNo"></MInput>

@@ -4,15 +4,15 @@
         <view class="list-cell-title">
           <view class="left">
             <text class="state" v-if="isShowRight">逾期</text>
-            <!-- <text class="vin">谢菲菲</text> -->
+            <text class="vin">何红</text>
           </view>
           <view class="right">2020-01-09 10:23:37</view>
         </view>
         <view class="list-cell-content">
-          <view class="box">
+          <!-- <view class="box">
             <view class="label">姓名</view>
             <view >何红</view>
-          </view>
+          </view> -->
           <view class="box">
             <view class="label">车牌号码</view>
             <view >沪A10001</view>
@@ -30,7 +30,7 @@
       <view class="phone" @click="phoneClick">
         <image src="../../../../../static/image/dianhua2.svg" class="img"></image>
       </view>
-      <MtelephoneCall ref='phone' type="bottom">185 8328 5531</MtelephoneCall>
+      <MtelephoneCall ref='phone' type="bottom" :telphoneNumber="telphoneNumber">{{this.telphoneNumber}}</MtelephoneCall>
     </view>
 </template>
 
@@ -47,7 +47,8 @@ export default {
   },
   data() {
     return {
-      isShowRight: true
+      isShowRight: true,
+      telphoneNumber: '185 8328 5531'
     };
   },
   watch:{
@@ -69,6 +70,8 @@ export default {
       }
     },
     phoneClick(){
+      console.log(111);
+      
       this.$refs.phone.open();
     },
     

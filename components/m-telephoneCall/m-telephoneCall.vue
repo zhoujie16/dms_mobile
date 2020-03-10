@@ -1,5 +1,5 @@
 <template>
-		<uni-popup ref="popup" :type="type">
+		<uni-popup ref="popup" :type="type" :telphoneNumber="telphoneNumber">
 		  <view style="padding: 0 30rpx;margin-bottom: 15rpx;">
 		    <view class="phone-text" style="margin-bottom: 10rpx;" @click="phoneCall">呼叫<slot></slot></view>
 		    <view class="phone-text" @click="phoneClose">
@@ -16,6 +16,9 @@
       type: {
         type: String,
         default: 'bottom'
+      },
+      telphoneNumber: {
+        type: Number
       }
     },
 		data() {
@@ -31,9 +34,11 @@
         this.$refs.popup.close();
       },
 			phoneCall() {
+        // let telphoneNumber = this.$slots.telphoneNumber;
+        // console.log(telphoneNumber,'telphoneNumber')
 			  uni.makePhoneCall({
 			      // 手机号
-			          phoneNumber: '18583285531', 
+			          phoneNumber: 'this.telphoneNumber', 
 			      	// 成功回调
 			      	success: (res) => {
 			      		console.log('调用成功!');
