@@ -65,26 +65,26 @@
     {
       "path": "pages/remind/remind",
       "style": {
-        "navigationBarTitleText": "提醒",
-        "app-plus": {
-          "titleNView": {
-            "buttons": [{
-                "type": "none",
-                "text": "全选",
-                "width": "40px",
-                "fontSize": "16px",
-                "float": "right"
-              },
-              {
-                "type": "none",
-                "text": "删除",
-                "width": "40px",
-                "fontSize": "16px",
-                "float": "right"
-              }
-            ]
-          }
-        }
+        "navigationBarTitleText": "提醒"
+        // "app-plus": {
+        //   "titleNView": {
+        //     "buttons": [{
+        //         "type": "none",
+        //         "text": "全选",
+        //         "width": "40px",
+        //         "fontSize": "16px",
+        //         "float": "right"
+        //       },
+        //       {
+        //         "type": "none",
+        //         "text": "删除",
+        //         "width": "40px",
+        //         "fontSize": "16px",
+        //         "float": "right"
+        //       }
+        //     ]
+        //   }
+        // }
       }
     },
     {

@@ -1,5 +1,5 @@
 <template>
-  <view>
+  <view class="warp">
     <view class="uni-flex uni-row">
       <view class="flex-item flex-item-V r-content" @click="tabUrl(reportData.factoryText)">
         <text class="count">{{ reportData.factoryCount }}</text>
@@ -76,7 +76,10 @@ export default {
 };
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
+  .warp{
+    height: calc(100vh-100rpx);
+  }
 .flex-item {
   width: 50%;
   height: 210rpx;

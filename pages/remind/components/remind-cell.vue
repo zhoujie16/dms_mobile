@@ -6,29 +6,26 @@
           <view class="item1">
             <uni-icons
               :type="isSelect ? 'circle-filled' : 'circle'"
-              :color="isSelect ? '#FF6347' : ''"
-              size="26"
+              :color="isSelect ? '#1371F7' : ''"
+              size="21"
               @click="changeSelect"
             ></uni-icons>
-            <!-- <uni-icons type="circle" size="26" ></uni-icons> -->
-            <!-- <uni-icons type="circle-filled" size="26" color="#FF6347" ></uni-icons> -->
+           <text class="label-pad">日期：2020-01-01</text>
           </view>
           <view class="item2">
-            <uni-icons type="person-filled" size="26" color="#CCCCCC"></uni-icons>
-            <text>完工提醒</text>
+            <uni-icons type="email-filled" size="26" color="#F57C40"></uni-icons>
           </view>
-          <view class="item3">
-            <uni-icons type="email-filled" size="26" color="#F0E68C"></uni-icons>
-          </view>
-        </view>
-        <view class="r-line-height">
-          <text class="label-pad">车辆沪9999已超出退车时间，请及时跟进。。。</text>
         </view>
       </view>
-      <view class="m-height-60">
-        <view class="text-align-right">
-          <text style="color: #1989FA;">日期：</text>
-          2020-01-01
+      <view class="main-box">
+        <view class="left">
+          <view class="image">
+            <text class="m-iconfont font">&#xe723;</text>
+          </view>
+        </view>
+        <view class="right">
+          <text class="title"> 完工信息</text>
+          <text class="text">车辆沪9999已超出退车时间，请及时跟进....</text>
         </view>
       </view>
     </view>
@@ -58,29 +55,54 @@ export default {
   position: relative;
   .content {
     background-color: #ffffff;
-    margin: 20rpx;
+    margin: 15rpx;
     border-radius: 20rpx;
     padding: 10rpx 20rpx;
     .content-border {
-      border-bottom: 1px solid #cccccc;
-      margin-bottom: 20rpx;
+      border-bottom: 2rpx solid #cccccc;
+      margin-bottom: 10rpx;
       .item1 {
-        flex: 0 0 60rpx;
+        flex: 1;
       }
       .item2 {
-        flex: 2;
-      }
-      .item3 {
         flex: 0 0 60rpx;
+      }
+     
+    }
+    .main-box{
+      display: flex;
+      padding:10rpx 60rpx;
+      .left{
+        flex: 0 0 120rpx;
+        .image{ 
+          width: 100%;
+          background: $uni-m-color-c4;
+          text-align: center;
+          height: 130rpx;
+          .font{
+            font-size: 132rpx;
+          }
+        }
+      }
+      .right{
+        margin-left: 20rpx;
+        flex: 1;
+        .title{
+          display: block;
+          font-size: $uni-m-font-size-f3;
+          line-height: 50rpx;
+        }
+        .text{
+          color: $uni-m-color-c3;
+          line-height: 35rpx;
+        }
       }
     }
   }
-  .r-line-height {
-    line-height: 60rpx;
-  }
+ 
   .label-pad {
     display: inline-block;
-    padding-left: 60rpx;
+    padding-left: 20rpx;
   }
   .text-align-right {
     text-align: right;

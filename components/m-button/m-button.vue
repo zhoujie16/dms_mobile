@@ -57,26 +57,26 @@ export default {
   display: flex;
   justify-content: center;
   align-items: center;
-  border-radius: 80rpx;
+  border-radius: $uni-m-border-radius-b3;
   &[type='default'] {
-    border: solid 1rpx #2f84eb;
-    color: #1371f7;
+    border: solid 1rpx $uni-m-color-c11;
+    color: $uni-m-color-c11;
   }
   &[type='primary'] {
-    border: solid 1rpx #1371f7;
-    background-color: #1371f7;
+    border: solid 1rpx $uni-m-color-c11;
+    background-color: $uni-m-color-c11;
   }
   &[type='warn'] {
-    border: solid 1rpx #fe4766;
-    background-color: #fe4766;
+    border: solid 1rpx $uni-m-color-c14;
+    background-color: $uni-m-color-c14;
   }
   &[plain] {
-    border: solid 1rpx #2f84eb;
+    border: solid 1rpx $uni-m-color-c11;
     background-color: initial;
   }
   &[disabled] {
-    border: solid 1rpx #e1e1e1;
-    background-color: #e1e1e1;
+    border: solid 1rpx $uni-m-color-c4;
+    background-color: $uni-m-color-c4;
     color: #ffffff;
   }
   &[block] {

@@ -13,38 +13,29 @@ export default {
       baseTableData: [
         {
           name: '张三',
-          age: 18,
-          gender: '男'
+          age: 18
         },
         {
           name: '赵四',
-          age: 16,
-          gender: '女'
+          age: 16
         },
         {
           name: '王五',
-          age: 20,
-          gender: '男'
+          age: 20
         },
         {
           name: '李六',
-          age: 18,
-          gender: '女'
+          age: 18
         }
       ],
       baseColumns: [
         {
-          title: '姓名',
+          title: '服务顾问',
           key: 'name',
           width: 200
         },
         {
-          title: '性别',
-          key: 'gender',
-          width: 200
-        },
-        {
-          title: '年龄',
+          title: '进厂台次',
           key: 'age',
           width: 200
         }

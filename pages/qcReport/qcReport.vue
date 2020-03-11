@@ -110,6 +110,7 @@ export default {
             // 是否启用防止标签重叠策略，默认开启
             avoidLabelOverlap: false,
             hoverAnimation: false,
+            animation:false,//取消动画效果
             // 标签的视觉引导线样式，在 label 位置 设置为'outside'的时候会显示视觉引导线
             labelLine: {
               normal: {
@@ -170,6 +171,7 @@ export default {
             // 是否启用防止标签重叠策略，默认开启
             avoidLabelOverlap: false,
             hoverAnimation: false,
+            animation:false,//取消动画效果
             // 标签的视觉引导线样式，在 label 位置 设置为'outside'的时候会显示视觉引导线
             labelLine: {
               normal: {
@@ -230,6 +232,7 @@ export default {
             // 是否启用防止标签重叠策略，默认开启
             avoidLabelOverlap: false,
             hoverAnimation: false,
+            animation:false,//取消动画效果
             // 标签的视觉引导线样式，在 label 位置 设置为'outside'的时候会显示视觉引导线
             labelLine: {
               normal: {
@@ -290,6 +293,7 @@ export default {
             // 是否启用防止标签重叠策略，默认开启
             avoidLabelOverlap: false,
             hoverAnimation: false,
+            animation:false,//取消动画效果
             // 标签的视觉引导线样式，在 label 位置 设置为'outside'的时候会显示视觉引导线
             labelLine: {
               normal: {
@@ -350,6 +354,7 @@ export default {
             // 是否启用防止标签重叠策略，默认开启
             avoidLabelOverlap: false,
             hoverAnimation: false,
+            animation:false,//取消动画效果
             // 标签的视觉引导线样式，在 label 位置 设置为'outside'的时候会显示视觉引导线
             labelLine: {
               normal: {
@@ -410,6 +415,7 @@ export default {
             // 是否启用防止标签重叠策略，默认开启
             avoidLabelOverlap: false,
             hoverAnimation: false,
+            animation:false,//取消动画效果
             // 标签的视觉引导线样式，在 label 位置 设置为'outside'的时候会显示视觉引导线
             labelLine: {
               normal: {

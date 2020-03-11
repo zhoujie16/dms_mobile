@@ -1,5 +1,18 @@
 <template>
   <MPage ref="MPage" type="primary">
+    <view class="top-box">
+      <view class="left">
+        <uni-icons
+          :type="isSelect ? 'circle-filled' : 'circle'"
+          :color="isSelect ? '#1371F7' : ''"
+          size="21"
+          @click="selectAllClick"
+        ></uni-icons><text>全选</text>
+      </view>
+      <view class="right">
+        <m-button type="primary" size="mini">删除</m-button>
+      </view>
+    </view>
     <BaseScroll
       :height="scrollHeight"
       :fetchApi="fetchApi"
@@ -30,10 +43,15 @@ export default {
     return {
       fetchApi: AjaxScrollData,
       fetchParams: {},
-      dataSource: []
+      dataSource: [],
+      isSelect:true,
     };
   },
   methods: {
+    // 全选
+    selectAllClick(){
+      this.isSelect = !this.isSelect
+    },
     // 列表点击事件
     scrollCellClick(cell) {
       console.log('cellClick', cell);
@@ -57,4 +75,14 @@ export default {
 };
 </script>
 
-<style lang="scss"></style>
+<style lang="scss" scoped>
+  .top-box{
+    background: $uni-m-color-cwhite;
+    display: flex;
+    padding:10rpx 40rpx;
+    .left{
+      flex: 1;
+      
+    }
+  }
+</style>

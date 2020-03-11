@@ -1,23 +1,25 @@
 <template>
   <!-- 报表 -->
-  <view class="page-warp">
-		<SwiperTab :height="swiperTabHeight" :tabs="tabs" :curIndex="curIndex" @change="changeTab">
-		  <swiper class="swiper-wrap" :current="curIndex" @change="swiperChange">
-		    <!--昨日 -->
-		    <swiper-item>
-		      <scroll-view class="swiper-scroll-wrap" scroll-y="true">
-		       <ReportPage :reportData="fetchParams_0"></ReportPage>
-		      </scroll-view>
-		    </swiper-item>
-        <!-- 本月 -->
-		    <swiper-item>
-		      <scroll-view class="swiper-scroll-wrap" scroll-y="true">
-		       <ReportPage :reportData="fetchParams_1"></ReportPage>
-		      </scroll-view>
-		    </swiper-item>
-		  </swiper>
-		</SwiperTab>
-		</view>
+  <MPage ref="MPage">
+    <view class="page-warp">
+      <SwiperTab :height="swiperTabHeight" :tabs="tabs" :curIndex="curIndex" @change="changeTab">
+        <swiper class="swiper-wrap" :current="curIndex" @change="swiperChange">
+          <!--昨日 -->
+          <swiper-item>
+            <scroll-view class="swiper-scroll-wrap" scroll-y="true">
+              <ReportPage :reportData="fetchParams_0"></ReportPage>
+            </scroll-view>
+          </swiper-item>
+          <!-- 本月 -->
+          <swiper-item>
+            <scroll-view class="swiper-scroll-wrap" scroll-y="true">
+              <ReportPage :reportData="fetchParams_1"></ReportPage>
+            </scroll-view>
+          </swiper-item>
+        </swiper>
+      </SwiperTab>
+    </view>
+  </MPage>
 </template>
 
 <script>
@@ -25,10 +27,10 @@ import { AjaxScrollData } from '@/api/test/index.js';
 import ReportPage from './components/report-page.vue';
 export default {
   components: {
-		ReportPage
+    ReportPage
   },
   data() {
-    this.swiperTabHeight = uni.getSystemInfoSync().windowHeight - 90 + 'px';
+    this.swiperTabHeight = uni.getSystemInfoSync().windowHeight - 20 + 'px';
     return {
       tabs: ['昨日', '本月'],
       curIndex: 0, // 当前tab的下标
@@ -78,31 +80,33 @@ export default {
     };
   },
   methods: {
-		// 轮播菜单
-		swiperChange(e) {
-		  this.curIndex = e.detail.current;
-		},
-		// 切换菜单
-		changeTab(i) {
-		  this.curIndex = i;
-		}
-	}
+    // 轮播菜单
+    swiperChange(e) {
+      this.curIndex = e.detail.current;
+    },
+    // 切换菜单
+    changeTab(i) {
+      this.curIndex = i;
+    }
+  }
 };
 </script>
 
 <style lang="scss">
-  .swiper-wrap {
-    background-color: $uni-m-color-white-pressed;
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    height: initial;
-    // height: calc(100vh-100rpx);
+  .page-warp{
+    position: relative;
   }
-  .swiper-scroll-wrap{
-    height: 100%;
-  }
-
+.swiper-wrap {
+  background-color: $uni-m-color-white-pressed;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  height: initial;
+  // height: calc(100vh-100rpx);
+}
+.swiper-scroll-wrap {
+  height: 100%;
+}
 </style>
