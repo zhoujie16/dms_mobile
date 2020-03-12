@@ -5,14 +5,15 @@
       <MLicense></MLicense>
       <MPicker label="交车日期" mode="range" v-model="formData.value_date_2"></MPicker>
       <MInput label="车主姓名" v-model="formData.name"></MInput>
-      <MInput label="车主编号" v-model="formData.roNo"></MInput>
-      <MCheckbox
+      <MInput label="工单号" v-model="formData.roNo"></MInput>
+      <MInput label="wyi3" v-model="formData.wyi3"></MInput>
+      <!-- <MCheckbox
         label="维修类型"
         type="inner"
         v-model="formData.value_2"
         :itemList="itemList"
         single
-      ></MCheckbox>
+      ></MCheckbox> -->
       <!-- <MInput v-model="cph" label="车牌号"></MInput> -->
      <!-- <MCheckbox label="服务顾问" v-model="fwgw" :itemList="itemList_fwgw" :type="'popup'" single></MCheckbox> -->
      <!-- <MCheckboxPanel
@@ -21,16 +22,16 @@
        v-model="fwgw"
        :itemList="itemList_fwgw"
      ></MCheckboxPanel>
-      <MDatePicker label="开单日期" v-model="dateTest"></MDatePicker> -->
-     
+       -->
+     <!-- <MDatePicker label="开单日期" v-model="dateTest"></MDatePicker> -->
     </view>
     <view class="check-box">
-      <MCheckboxPanel
+      <!-- <MCheckboxPanel
         label="服务顾问"
         type="inner"
         v-model="formData.value_22"
         :itemList="service_itemList"
-      ></MCheckboxPanel>
+      ></MCheckboxPanel> -->
       <MCheckboxPanel
         label="服务技师"
         type="inner"
@@ -54,6 +55,7 @@ export default {
       formData: {
         name: '',
         roNo: '',
+        wyi3: '',
         value_2: [],
         value_22: [],
         value_3: false,

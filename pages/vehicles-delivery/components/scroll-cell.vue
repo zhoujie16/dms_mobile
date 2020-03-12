@@ -30,7 +30,7 @@
       <view class="phone" @click="phoneClick">
         <image src="../../../../../static/image/dianhua2.svg" class="img"></image>
       </view>
-      <MtelephoneCall ref='phone' type="bottom" :telphoneNumber="telphoneNumber">{{this.telphoneNumber}}</MtelephoneCall>
+      <!-- <MtelephoneCall ref='phone' type="bottom" :telphoneNumber="telphoneNumber">{{this.telphoneNumber}}</MtelephoneCall> -->
     </view>
 </template>
 
@@ -48,7 +48,7 @@ export default {
   data() {
     return {
       isShowRight: true,
-      telphoneNumber: '185 8328 5531'
+      telphoneNumber: '18583285531'
     };
   },
   watch:{
@@ -70,9 +70,19 @@ export default {
       }
     },
     phoneClick(){
-      console.log(111);
-      
-      this.$refs.phone.open();
+     // this.$refs.phone.open();
+     uni.makePhoneCall({
+         // 手机号
+             phoneNumber: this.telphoneNumber, 
+         	// 成功回调
+         	success: (res) => {
+         		console.log('调用成功!');
+         	},
+         	// 失败回调
+         	fail: (res) => {
+         		console.log('调用失败!')
+         	}
+     });
     },
     
     phoneClose() {
@@ -113,7 +123,7 @@ export default {
     .state{
       display: inline-block;
       margin-right: 20rpx;
-      border: 2rpx dashed $uni-m-color-c12;
+      border: 2rpx dashed $uni-m-color-c4-2;
       background-color: $uni-m-color-c11;
       color: $uni-m-color-cwhite;
       padding: 0 20rpx;

@@ -45,6 +45,7 @@ export default {
   data() {
     return {
       value_1:'',
+      telphoneNumber: '18583285531'
     };
   },
   methods: {
@@ -54,7 +55,19 @@ export default {
       });
     },
     phoneClick(){
-      this.$refs.phone.open();
+      // this.$refs.phone.open();
+      uni.makePhoneCall({
+          // 手机号
+              phoneNumber: this.telphoneNumber, 
+          	// 成功回调
+          	success: (res) => {
+          		console.log('调用成功!');
+          	},
+          	// 失败回调
+          	fail: (res) => {
+          		console.log('调用失败!')
+          	}
+      });
     },
     
     phoneClose() {
