@@ -1,34 +1,79 @@
 <template>
   <MPage ref="MPage">
     <view class="page-body">
-      <view class="title-panel">
+      <!-- <view class="title-panel">
         <view class="title-panel-inner">
           <view class="info-panel">
             <view class="customer-info">王大锤 - 沪AFH865</view>
-            <!-- <view class="car-info">13322111234</view> -->
+            <view class="car-info">13322111234</view>
           </view>
           <view class="phone" @click="phoneClick">
             <image src="/static/image/dianhua2.svg" mode="scaleToFill" class="img" ></image>
           </view>
         </view>
         <view class="title-panel-bg"></view>
+      </view> -->
+      <view class="title-panel">
+        <view class="title-panel-inner">
+          <view class="customer-info">王大锤 - 沪ADC520</view>
+          <view class="car-info">皮蛋卡丁车 1.5L AT</view>
+        </view>
+        <view class="title-panel-bg"></view>
       </view>
       <CollapsePanel title="客户信息">
         <template slot="default">
-          <MLabel label="车牌号">沪AFH865</MLabel>
+          <MLabel label="客户姓名">税启隆</MLabel>
+          <MLabel label="手机号">13322111234</MLabel>
           <MLabel label="车架号">LVSHCFMB6ASD238</MLabel>
           <MLabel label="车型">全新福克斯三厢 1.6MT</MLabel>
-          <MLabel label="销售日期">xxxxxxxxxx</MLabel>
+          <MLabel label="车牌号">沪AFH865</MLabel>
+          <MLabel label="销售日期">2020-01-01 12:00:00</MLabel>
           <MLabel label="油量表">60%</MLabel>
           <MLabel label="里程">100</MLabel>
           <view class="m-break-space"></view>
         </template>
       </CollapsePanel>
        <view class="m-break-space"></view>
+       <CollapsePanel title="外观检查">
+         <view class="noneContent">
+           没有相关数据
+         </view>
+       </CollapsePanel>
+       <CollapsePanel title="物品清点">
+         <view class="subContent">
+           <view class="uni-flex uni-column">
+             <view class="flex-item2  sub-text">客户需求</view>
+             <view class="flex-item1  sub-text ">无</view>
+           </view>
+           <view class="uni-flex uni-column">
+             <view class="flex-item2  sub-text">事故描述</view>
+             <view class="flex-item1  sub-text ">无</view>
+           </view>
+         </view>
+       </CollapsePanel>
        <view class="content">
-         <view class="m-flex m-align-center m-height-80 content-top">外观检查</view>
+         <view class="m-flex m-align-center m-height-80">
+           <view class="content-top">
+             内饰检查
+           </view>
+           <text @click="editClick">编辑</text>
+         </view>
+         <view class="subContent">
+           <view class="error-text">异常</view>
+           <view class="uni-flex uni-row">
+             <view class="flex-item1  sub-text">雨刮</view>
+             <view class="flex-item2  sub-text ">无</view>
+           </view>
+           <view class="uni-flex uni-row">
+             <view class="flex-item1  sub-text">备注</view>
+             <view class="flex-item2  sub-text ">无</view>
+           </view>
+         </view>
        </view>
-       <view class="content">
+       <!-- <view class="content">
+         <view class="m-flex m-align-center m-height-80 content-top">外观检查</view>
+       </view> -->
+       <!-- <view class="content">
          <view class="m-flex m-align-center m-height-80 content-top">物品清点</view>
          <view class="subContent">
            <view class="uni-flex uni-row">
@@ -84,8 +129,8 @@
              <view class="flex-item2  sub-text ">无</view>
            </view>
          </view>
-       </view>
-       <view class="content">
+       </view> -->
+       <!-- <view class="content">
          <view class="m-flex m-align-center m-height-80">
            <view class="content-top">
              内饰检查
@@ -103,7 +148,7 @@
              <view class="flex-item2  sub-text ">无</view>
            </view>
          </view>
-       </view>
+       </view> -->
        <view class="content">
          <view class="m-flex m-align-center m-height-80 ">
            <view class="content-top">
@@ -311,7 +356,7 @@
          </view>
        </view>
        <view class="check" @click="deliveryClick">交车</view>
-       <MPopup ref="mPopup" type="center" title="关键信息" style="{position: relative;}">
+       <!-- <MPopup ref="mPopup" type="center" title="关键信息" style="{position: relative;}">
            <view class="mainMessage">
              <view class="uni-flex uni-row" style="height: 60rpx;">
                <view class="message1">距保险到期天数</view>
@@ -343,7 +388,12 @@
              style="float: left;position: absolute;bottom: 30px;right: 40%;">
              取消
            </button>
-         </MPopup>
+         </MPopup> -->
+         
+         <!-- 关键信息 -->
+         <uni-popup ref="popup" type="center">
+           <KeyInfoModel @close="closeKey"></KeyInfoModel>
+         </uni-popup>
          
          <MPopup ref="mPopup1" type="center" title="选择回访时间" style="{position: relative;}">
            <view class="timeContent">
@@ -379,8 +429,12 @@
 </template>
 
 <script>
+  import KeyInfoModel from './components/keyInfo-model.vue';
 export default {
 	name:'VehiclePreview',
+  components: {
+    KeyInfoModel
+  },
   data() {
     return {};
   },
@@ -408,7 +462,11 @@ export default {
       this.$refs.mPopup1.close();
     },
     messagesClick() {
-      this.$refs.mPopup.open();
+      // this.$refs.mPopup.open();
+      this.$refs.popup.open();
+    },
+    closeKey() {
+      this.$refs.popup.close();
     },
     phoneClick(){
       this.$refs.phone.open();
@@ -420,74 +478,91 @@ export default {
 <style lang="scss" scoped>
 .title-panel {
   position: relative;
+  height: 200rpx;
+  height: 200rpx;
   padding: 10rpx 30rpx 30rpx 30rpx;
   display: flex;
   justify-content: center;
   align-items: center;
   background-color: #ffffff;
-  .title-panel-bg {
+  .title-panel-bg{
     position: absolute;
     top: 0;
     right: 0;
+    bottom: 110rpx;
     left: 0;
-    height: 100rpx;
     background: linear-gradient(to right, #41c5ff, #1371f7);
     z-index: 0;
   }
   .title-panel-inner {
     width: 100%;
-    height: 148rpx;
+    height: 160rpx;
     background-color: #ffffff;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
     padding: 0 30rpx;
     border-radius: 10rpx;
     z-index: 1;
     box-shadow: 0px 2px 5px #eeeeee;
-    position: relative;
-    .info-panel {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      border-bottom: solid 1px #efefef;
-      padding-top: 12rpx;
-      .customer-info {
-        font-size: 34rpx;
-        height: 80rpx;
-        line-height: 80rpx;
-      }
-      .car-info {
-        font-size: 30rpx;
-        height: 80rpx;
-        line-height: 80rpx;
-        color: #70767f;
-      }
+    .customer-info {
+      font-size: 34rpx;
+      height: 60rpx;
+      line-height: 60rpx;
     }
-    .phone{
-      position: absolute;
-      top: 30rpx;
-      right: 40rpx;
-      width: 70rpx;
-      height: 70rpx;
-      .img{
-        width: 70rpx;
-        height: 70rpx;
-      }
+    .car-info {
+      font-size: 30rpx;
+      height: 60rpx;
+      line-height: 60rpx;
+      color: #70767f;
     }
-     }
-}
-.page-body {
-  height: 100vh;
-  overflow: auto;
-}
-
-.operate{
-  display: flex;
-  background: $uni-m-color-cwhite;
-  padding: 20rpx 30rpx;
-  .btn{
-    flex: 1;
-    padding: 0 20rpx;
   }
+} 
+// .page-body {
+//   height: 100vh;
+//   overflow: auto;
+// }
+.noneContent {
+  height: 100rpx;
+  width: 100%;
+  // background-color: pink;
+  line-height: 100rpx;
+  text-align: center;
 }
+.subContent {
+      margin: 0 auto 20rpx;
+      padding: 10rpx 30rpx;
+      .flex-item1 {
+        width: 25%;
+        color: #CCCCCC;
+        padding: 5rpx 0;
+      }
+      .flex-item2{
+        width: 75%;
+        padding: 5rpx 0;
+      }
+      .sub-text {
+        line-height: 60rpx;
+        height: 60rpx;
+      }
+      .list-text {
+        float: right;
+        padding-right: 10rpx;
+      }
+      .list-color {
+        color: #CCCCCC;
+        float: left;
+      }
+      .error-text {
+        height: 60rpx;
+        line-height: 60rpx;
+        margin: 0 50rpx;
+        background-color: #E04B28;
+        border-radius: 10rpx;
+        text-align: center;
+        color: #fff;
+      }
+    }
   .content {
     background-color: #ffffff;
     margin: 20rpx;
@@ -581,12 +656,12 @@ export default {
   }
   .messages {
 	position: fixed;
-	top: 80%;
+	top: 70%;
 	right: 20rpx;
     width: 90rpx;
     height: 90rpx;
     // background: #00bfff;
-	background-color: #0570DB;
+    background-color: $uni-m-color-c11;
     color: #fff;
     align-items: right;
     margin-bottom: 20rpx;
@@ -598,13 +673,18 @@ export default {
     }
   }
   .check {
-    height: 88rpx;
-    line-height: 88rpx;
-    margin: 30rpx 120rpx;
+    height: 78rpx;
+    line-height: 78rpx;
+    width: 490rpx;
+    // margin: 30rpx 120rpx;
     text-align: center;
-    background-color:#1371F7;
+    background-color: $uni-m-color-c11;
     border-radius: 50rpx;
     color: #FFFFFF;
+    position: fixed;
+    top: 90%;
+    left: 50%;
+    transform: translateX(-50%);
     // border: 3rpx solid #09BB07;
   }
 </style>
