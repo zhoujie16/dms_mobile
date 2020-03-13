@@ -57,7 +57,7 @@ export default {
   display: flex;
   justify-content: center;
   align-items: center;
-  border-radius: $uni-m-border-radius-b3;
+  border-radius: $uni-m-border-radius-b8;
   &[type='default'] {
     border: solid 1rpx $uni-m-color-c11;
     color: $uni-m-color-c11;

@@ -1,6 +1,6 @@
 <template>
   <view>
-    <z-table :tableData="baseTableData" :columns="baseColumns"></z-table>
+    <z-table :tableData="baseTableData"  :columns="baseColumns"></z-table>
   </view>
 </template>
 
@@ -13,7 +13,7 @@ export default {
       baseTableData: [
         {
           name: '张三',
-          age: 18
+          age: 18,
         },
         {
           name: '赵四',
@@ -32,12 +32,12 @@ export default {
         {
           title: '服务顾问',
           key: 'name',
-          width: 200
+          width:360
         },
         {
           title: '进厂台次',
           key: 'age',
-          width: 200
+           width:360
         }
       ]
     };

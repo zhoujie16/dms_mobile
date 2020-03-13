@@ -1,61 +1,66 @@
 <template>
   <view class="warp">
-    <view class="uni-flex uni-row">
-      <view class="flex-item flex-item-V r-content" @click="tabUrl(reportData.factoryText)">
+    <view class="container">
+      <view class="box left" @click="tabUrl(reportData.factoryText)">
         <text class="count">{{ reportData.factoryCount }}</text>
         <text>{{ reportData.factoryText }}</text>
       </view>
-
-      <view class="flex-item flex-item-V r-content" @click="tabUrl(reportData.settleText)">
+      <view class="box right" @click="tabUrl(reportData.settleText)">
         <text class="count">{{ reportData.settleCount }}</text>
         <text>{{ reportData.settleText }}</text>
       </view>
     </view>
-    <view class="uni-flex uni-row">
-      <view class="flex-item flex-item-V r-content" @click="tabUrl(reportData.machineText)">
+    <view class="container">
+      <view class="box left" @click="tabUrl(reportData.machineText)">
         <text class="count">{{ reportData.machineCount }}</text>
         <text>{{ reportData.machineText }}</text>
       </view>
-      <view class="flex-item flex-item-V r-content" @click="tabUrl(reportData.BPEXText)">
+      <view class="box right" @click="tabUrl(reportData.BPEXText)">
         <text class="count">{{ reportData.BPEXCount }}</text>
         <text>{{ reportData.BPEXText }}</text>
       </view>
     </view>
-    <view class="uni-flex uni-row">
-      <view class="flex-item flex-item-V r-content" @click="tabUrl(reportData.maintenanceText)">
+    <view class="container">
+      <view class="box" @click="tabUrl(reportData.maintenanceText)">
         <text class="count">{{ reportData.maintenanceCount }}</text>
         <text>{{ reportData.maintenanceText }}</text>
       </view>
     </view>
-    <view class="r-padding uni-common-mt">
-      <label class="r-list-cell" @click="tabUrl(reportData.incomeText)">
-        <view>
-          <text class="r-icon-box"><uni-icons type="chat" size="30" color="$uni-m-color-c15-3"></uni-icons></text>
-          {{ reportData.incomeText }}
+    <view class="list-cell" @click="tabUrl(reportData.incomeText)">
+      <view class="left">
+        <view class="r-icon-box">
+          <uni-icons type="chat" size="21"  class="icon"></uni-icons>
         </view>
-        <view class="r-list-count">{{ reportData.incomeMoney }}</view>
-      </label>
-      <label class="r-list-cell" @click="tabUrl(reportData.manHourText)">
-        <view>
-          <text class="r-icon-box"><uni-icons type="chat" size="30" color="$uni-m-color-c15-3"></uni-icons></text>
-          {{ reportData.manHourText }}
+        {{ reportData.incomeText }}
+      </view>
+      <view class="right">{{ reportData.incomeMoney }}</view>
+    </view>
+    <view class="list-cell" @click="tabUrl(reportData.manHourText)">
+      <view class="left">
+        <view class="r-icon-box">
+          <uni-icons type="chat" size="21"  class="icon"></uni-icons>
         </view>
-        <view class="r-list-count">{{ reportData.manHourMoney }}</view>
-      </label>
-      <label class="r-list-cell" @click="tabUrl(reportData.partText)">
-        <view>
-          <text class="r-icon-box"><uni-icons type="chat" size="30" color="$uni-m-color-c15-3"></uni-icons></text>
-          {{ reportData.partText }}
+        {{ reportData.manHourText }}
+      </view>
+      <view class="right">{{ reportData.manHourMoney }}</view>
+    </view>
+    <view class="list-cell" @click="tabUrl(reportData.partText)">
+      <view class="left">
+        <view class="r-icon-box">
+          <uni-icons type="chat" size="21"  class="icon"></uni-icons>
         </view>
-        <view class="r-list-count">{{ reportData.partMoney }}</view>
-      </label>
-      <label class="r-list-cell" @click="tabUrl(reportData.flowText)">
-        <view>
-          <text class="r-icon-box"><uni-icons type="chat" size="30" color="$uni-m-color-c15-3"></uni-icons></text>
-          {{ reportData.flowText }}
+        {{ reportData.partText }}
+      </view>
+      <view class="right">{{ reportData.partMoney }}</view>
+    </view>
+    <view class="list-cell" @click="tabUrl(reportData.flowText)">
+      <view class="left">
+        <view class="r-icon-box">
+          <uni-icons type="chat" size="21"  class="icon"></uni-icons>
         </view>
-        <view class="r-list-count">{{ reportData.flowMoney }}</view>
-      </label>
+        {{ reportData.flowText }}
+      </view>
+      <view class="right">{{ reportData.flowMoney }}</view>
     </view>
   </view>
 </template>
@@ -77,62 +82,56 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-  .warp{
-    height: calc(100vh-100rpx);
+.warp {
+  height: calc(100vh-100rpx);
+  padding:30rpx;
+  .container {
+    display: flex;
+    .box {
+      flex: 1;
+      background: $uni-m-color-cwhite;
+      border-radius: $uni-m-border-radius-b2;
+      height: 240rpx;
+      text-align: center;
+      padding: 40rpx 0;
+      margin-bottom: 20rpx;
+      .count {
+        font-size: 48rpx;
+        display: block;
+        line-height: 100rpx;
+        color: $uni-m-color-c15-3;
+      }
+    }
+    .left {
+      margin-right: 10rpx;
+    }
+    .right {
+      margin-left: 10rpx;
+    }
   }
-.flex-item {
-  width: 50%;
-  height: 210rpx;
-  text-align: center;
-  // line-height: 200rpx;
+  .list-cell {
+    background: $uni-m-color-cwhite;
+    border-radius: $uni-m-border-radius-b2;
+    height: 80rpx;
+    display: flex;
+    margin-bottom: 20rpx;
+    line-height: 80rpx;
+    padding: 0 20rpx;
+    .left {
+      flex: 1;
+      .r-icon-box {
+        display: inline-block;
+        margin-right: 20rpx;
+        .icon{
+          color: $uni-m-color-c15-3;
+        }
+      }
+    }
+    .right {
+      color: $uni-m-color-c15-3;
+    }
+  }
+ 
 }
 
-.flex-item-V {
-  width: 100%;
-  height: 160rpx;
-  text-align: center;
-  // line-height: 150rpx;
-}
-.r-content {
-  border-right: 2rpx solid $uni-m-color-c4-2;
-  border-bottom: 2rpx solid $uni-m-color-c4-2;
-  color: $uni-m-color-c15-3;
-  .count {
-    font-size: 48rpx;
-    display: block;
-    line-height: 100rpx;
-  }
-}
-.r-padding {
-  padding: 0 30rpx;
-  .r-list-cell {
-    position: relative;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    line-height: 140rpx;
-    color: $uni-m-color-c15-3;
-    .r-icon-box {
-      display: inline-block;
-      width: 100rpx;
-    }
-    .r-list-count {
-      color: $uni-m-color-c12;
-      font-size: 32rpx;
-    }
-  }
-  .r-list-cell::after {
-    position: absolute;
-    z-index: 3;
-    right: 0;
-    bottom: 0;
-    left: 0px;
-    height: 1px;
-    content: '';
-    -webkit-transform: scaleY(0.5);
-    transform: scaleY(0.5);
-    background-color: #c8c7cc;
-  }
-}
 </style>

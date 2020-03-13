@@ -1,23 +1,20 @@
 <template>
   <!-- 报表 -->
   <MPage ref="MPage">
-    <view class="page-warp">
-      <SwiperTab :height="swiperTabHeight" :tabs="tabs" :curIndex="curIndex" @change="changeTab">
-        <swiper class="swiper-wrap" :current="curIndex" @change="swiperChange">
-          <!--昨日 -->
-          <swiper-item>
-            <scroll-view class="swiper-scroll-wrap" scroll-y="true">
-              <ReportPage :reportData="fetchParams_0"></ReportPage>
-            </scroll-view>
-          </swiper-item>
-          <!-- 本月 -->
-          <swiper-item>
-            <scroll-view class="swiper-scroll-wrap" scroll-y="true">
-              <ReportPage :reportData="fetchParams_1"></ReportPage>
-            </scroll-view>
-          </swiper-item>
-        </swiper>
-      </SwiperTab>
+    <view class="top-header">
+      <view v-for="(item, index) in itemList" :key="index" @click="changeIndex(index)">
+        <view
+          :class="[
+            { 'panel-tab-pressed': activeindex == index },
+            { 'panel-tab': activeindex !== index }
+          ]"
+        >
+          {{ item.title }}
+        </view>
+      </view>
+    </view>
+    <view class="container">
+      <ReportPage :reportData="activeindex == 0 ? fetchParams_0 : fetchParams_1"></ReportPage>
     </view>
   </MPage>
 </template>
@@ -32,8 +29,15 @@ export default {
   data() {
     this.swiperTabHeight = uni.getSystemInfoSync().windowHeight - 20 + 'px';
     return {
-      tabs: ['昨日', '本月'],
-      curIndex: 0, // 当前tab的下标
+      itemList: [
+        {
+          title: '昨日'
+        },
+        {
+          title: '本月'
+        }
+      ],
+      activeindex: 0, // 当前tab的下标
       fetchApi: AjaxScrollData,
       fetchParams_0: {
         flag: 'yesterday',
@@ -80,6 +84,9 @@ export default {
     };
   },
   methods: {
+    changeIndex(index) {
+      this.activeindex = index;
+    },
     // 轮播菜单
     swiperChange(e) {
       this.curIndex = e.detail.current;
@@ -92,21 +99,46 @@ export default {
 };
 </script>
 
-<style lang="scss">
-  .page-warp{
-    position: relative;
-  }
-.swiper-wrap {
-  background-color: $uni-m-color-white-pressed;
-  position: absolute;
+<style lang="scss" scoped>
+.top-header {
+  /* #ifndef H5 */
+  position: fixed;
   top: 0;
-  right: 0;
-  bottom: 0;
   left: 0;
-  height: initial;
-  // height: calc(100vh-100rpx);
+  /* #endif*/
+  width: 100%;
+  background-color: $uni-m-color-cwhite;
+  padding-bottom: 20rpx;
+  display: flex;
+  flex: 2;
+  .panel-tab {
+    width: 140rpx;
+    height: 40rpx;
+    line-height: 40rpx;
+    border-radius: $uni-m-border-radius-b4;
+    background-color: $uni-m-color-c5;
+    color: $uni-m-color-c1;
+    text-align: center;
+    margin-left: 30rpx;
+    margin-top: 30rpx;
+  }
+  .panel-tab-pressed {
+    width: 140rpx;
+    height: 55rpx;
+    line-height: 55rpx;
+    border-radius: $uni-m-border-radius-b4;
+    background-color: $uni-m-color-c11;
+    color: $uni-m-color-cwhite;
+    text-align: center;
+    margin-left: 30rpx;
+    margin-top: 20rpx;
+  }
 }
-.swiper-scroll-wrap {
-  height: 100%;
+.container {
+  /* #ifndef H5 */
+  margin-top: 100rpx;
+  /* #endif*/
+  height: calc(100vh-100rpx);
+  overflow: scroll;
 }
 </style>

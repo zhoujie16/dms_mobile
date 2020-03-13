@@ -56,7 +56,7 @@ export default {
   .content {
     background-color: #ffffff;
     margin: 15rpx;
-    border-radius: 20rpx;
+    border-radius: $uni-m-border-radius-b2;
     padding: 10rpx 20rpx;
     .content-border {
       border-bottom: 2rpx solid #cccccc;

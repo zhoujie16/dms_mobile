@@ -99,7 +99,7 @@ export default {
       width: 140rpx;
       height: 40rpx;
       line-height: 40rpx;
-      border-radius: $uni-m-border-radius-b1;
+      border-radius: $uni-m-border-radius-b4;
       background-color: $uni-m-color-c5;
       color: $uni-m-color-c1;
       text-align: center;
@@ -110,7 +110,7 @@ export default {
       width: 140rpx;
       height: 55rpx;
       line-height: 55rpx;
-      border-radius: $uni-m-border-radius-b1;
+      border-radius: $uni-m-border-radius-b4;
       background-color: $uni-m-color-c11;
       color: $uni-m-color-cwhite;
       text-align: center;

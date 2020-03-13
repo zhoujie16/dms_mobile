@@ -16,7 +16,7 @@
   background: $uni-m-color-cwhite;
   padding: 26rpx 30rpx;
   margin-bottom: 20rpx;
-  border-radius: $uni-m-border-radius-b2;
+  border-radius: $uni-m-border-radius-b8;
   .left {
     flex: 1;
     // margin-bottom: 20rpx;
