@@ -1,9 +1,9 @@
 <template>
   <MPage ref="MPage">
     <view class="menu-wrap">
-      <uni-grid :column="3" :highlight="true">
-        <uni-grid-item v-for="index in list" :key="index">
-          <DocCell @click.native="test"></DocCell>
+      <uni-grid :column="3">
+        <uni-grid-item v-for="(item,index) in list" :key="index">
+          <DocCell @click.native="test" :item="item"></DocCell>
         </uni-grid-item>
       </uni-grid>
     </view>
@@ -19,7 +19,32 @@ export default {
   },
   data() {
     return {
-      list: [1,2,3,4,5,6,7,8,9]
+      list: [
+        {
+          image: '/static/demo/icon_doc.png',
+          text: '附件手册'
+        },
+        {
+          image: '/static/demo/icon_doc.png',
+          text: 'SERVISE2系统经销商操作系统'
+        },
+        {
+          image: '/static/demo/icon_doc.png',
+          text: '微客服认证介绍'
+        },
+        {
+          image: '/static/demo/icon_doc.png',
+          text: '11月-12月零件促销政策'
+        },
+        {
+          image: '/static/demo/icon_doc.png',
+          text: '服务活动手册'
+        },
+        {
+          image: '/static/demo/icon_doc.png',
+          text: '精品手册'
+        }
+      ]
     };
   },
   methods: {
@@ -41,4 +66,5 @@ export default {
 };
 </script>
 
-<style></style>
+<style>
+</style>
