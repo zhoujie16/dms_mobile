@@ -161,6 +161,7 @@ export default {
   justify-content: center;
   align-items: flex-start;
   background-color: #ffffff;
+  padding: 0 20rpx;
   .m-license-item {
     width: 86rpx;
     height: 86rpx;

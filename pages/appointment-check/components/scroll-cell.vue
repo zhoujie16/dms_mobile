@@ -14,12 +14,12 @@
           <view >YO202001090001</view>
         </view>
         <view class="box">
-          <view class="label">工单号</view>
-          <view>RO202001090002</view>
-        </view>
-        <view class="box">
           <view class="label">服务顾问</view>
           <view>陆小鹏</view>
+        </view>
+        <view class="box">
+          <view class="label">联系电话</view>
+          <view>18800123212</view>
         </view>
         <view class="phone">
           <image src="/static/image/dianhua2.svg" mode="scaleToFill" class="img"></image>

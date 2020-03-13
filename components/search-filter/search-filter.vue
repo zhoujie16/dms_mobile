@@ -11,7 +11,7 @@
       <view class="m-search-dialog-wrap">
         <view class="m-search-dialog-inner">
           <view class="search-form">
-            <scroll-view class="scroll-view-h" @scroll="scroll" scroll-y>
+            <scroll-view class="scroll-view-h" :style="{ height: height + 'rpx' }"  @scroll="scroll" scroll-y>
               <slot name="form"></slot>
             </scroll-view>
           </view>
@@ -33,7 +33,11 @@ export default {
 	  isShow: {
 	    type: Boolean,
 	    default: true
-	  }
+	  },
+    height:{
+      type: Number,
+      default: 900
+    }
   },
   data() {
     return {
@@ -91,6 +95,9 @@ export default {
     .search-form {
       .scroll-view-h {
         height: 900rpx;
+        /deep/  .uni-scroll-view{
+          overflow: scroll!important;
+        }
       }
     }
     .bottom-button {

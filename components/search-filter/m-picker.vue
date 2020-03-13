@@ -34,9 +34,9 @@ export default {
     tipInfo() {
       if (this.value) {
         const str = this.value.join(',');
-        return str || '选择';
+        return str || '请选择';
       } else {
-        return '选择';
+        return '请选择';
       }
     }
   },

@@ -1,8 +1,8 @@
 <template>
   <!-- 预约检查 -->
   <MPage ref="MPage" >
-    <search-filter ref="searchFilter">
-      <view slot="panel" class="panel-box">
+    <search-filter ref="searchFilter" :height="700">
+      <view slot="panel" class="panel-box" >
         <view v-for="(item, index) in itemList" :key="index" @click="changeIndex(index)">
           <view
             :class="[
