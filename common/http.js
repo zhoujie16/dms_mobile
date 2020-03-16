@@ -1,4 +1,5 @@
 import AppConfig from "./../config/config.js";
+import Auth from "@/common/auth.js";
 
 class Http {
   constructor(arg) {
@@ -12,7 +13,14 @@ class Http {
   /**
    * 发送请求
    */
-  async ajax({ url, method, data = {}, config = { isLoading: false } }) {
+  async ajax({
+    url,
+    method,
+    data = {},
+    config = {
+      isLoading: false
+    }
+  }) {
     let requestUrl = AppConfig.requsetUrl + url;
     if (url.indexOf("http://") !== -1 || url.indexOf("http://") !== -1) {
       requestUrl = url;
@@ -30,13 +38,18 @@ class Http {
       method,
       data,
       header: {
-        "content-type": "application/x-www-form-urlencoded"
+        "content-type": "application/json;charset=UTF-8",
+        'userAgent': 'pc',
+        "jwt": Auth.getToken(),
+        'appId': 'cyx',
+        'userId': Auth.getUserId(),
+        'ownerCode': Auth.getOwnerCode()
       }
     });
     console.log("http 请求 响应: ", res);
     if (config.isLoading) {
       await this.sleep(300);
-      await uni.hideLoading();
+      await uni.hideLoading(); 
     }
     if (err) {
       console.log(err);
@@ -49,7 +62,9 @@ class Http {
     return await this.ajax({
       url,
       method,
-      data: { ...data, t: new Date().getTime() },
+      data: { ...data,
+        t: new Date().getTime()
+      },
       config
     });
   }

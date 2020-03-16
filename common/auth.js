@@ -9,7 +9,7 @@ class Auth {
   }
   /** Token */
   setToken(jwt) {
-    return uni.setStorageSync('jwt', username)
+    return uni.setStorageSync('jwt', jwt)
   }
   getToken() {
     return uni.getStorageSync('jwt')
@@ -17,6 +17,7 @@ class Auth {
   removeToken() {
     uni.removeStorageSync('jwt')
   }
+  
   /** 用户名 */
   setUser(username) {
     return uni.setStorageSync('username', username)
@@ -27,7 +28,8 @@ class Auth {
   removeUser() {
     uni.removeStorageSync('username')
   }
-  /** 用户 ID */
+  
+  /** 用户 ID userId */
   setUserId(userId) {
     return uni.setStorageSync('userId', userId)
   }
@@ -36,6 +38,17 @@ class Auth {
   }
   removeUserId() {
     uni.removeStorageSync('userId')
+  }
+  
+  /** ownerCode */
+  setOwnerCode(ownerCode) {
+    return uni.setStorageSync('ownerCode', ownerCode)
+  }
+  getOwnerCode() {
+    return uni.getStorageSync('ownerCode')
+  }
+  removeOwnerCode() {
+    uni.removeStorageSync('ownerCode')
   }
 
   // RSA 加密

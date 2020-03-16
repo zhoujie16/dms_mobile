@@ -54,7 +54,13 @@ export default {
   onReady() {
     console.log('login onReady');
     // this.testLogin();
-    console.log(this);
+    // console.log(this);
+    // uni.navigateTo({
+    //   url: '/pages/demo/ui-demo/speech',
+    //   success: res => {},
+    //   fail: () => {},
+    //   complete: () => {}
+    // });
   },
   methods: {
     async testLogin() {
@@ -62,11 +68,17 @@ export default {
         appId: 'cyx',
         username: this.username,
         password: this.$auth.jsEncrypt(this.password)
+        // username: 'ZJ69',
+        // password: this.$auth.jsEncrypt('Aa123456')
       });
-      console.log('登录结果', res);
-      if (!res) {
+      console.log('登录结果', res);  
+      if (!res.success) {
+        this.SHOW_TOAST(res.errMsg);
         return;
       }
+      // 保存信息
+      this.$auth.setToken(res.data.jwt);
+      this.$auth.setUserId(res.data.rData.userId)
       const res2 = await uni.navigateTo({
         url: '/pages/tabBar/tabPage1/tabPage1'
       });
