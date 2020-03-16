@@ -7,11 +7,16 @@
         <text class="m-iconfont">&#xe721;</text>
       </view>
     </view>
-    <uni-popup ref="popup" type="top" :show="true" >
+    <uni-popup ref="popup" type="top" :show="true">
       <view class="m-search-dialog-wrap">
         <view class="m-search-dialog-inner">
           <view class="search-form">
-            <scroll-view class="scroll-view-h" :style="{ height: height + 'rpx' }"  @scroll="scroll" scroll-y>
+            <scroll-view
+              class="scroll-view-h"
+              :style="{ height: height + 'rpx' }"
+              @scroll="scroll"
+              scroll-y
+            >
               <slot name="form"></slot>
             </scroll-view>
           </view>
@@ -30,11 +35,11 @@ export default {
   name: 'search-filter',
   components: {},
   props: {
-	  isShow: {
-	    type: Boolean,
-	    default: true
-	  },
-    height:{
+    isShow: {
+      type: Boolean,
+      default: true
+    },
+    height: {
       type: Number,
       default: 900
     }
@@ -62,8 +67,8 @@ export default {
       // this.old.scrollTop = e.detail.scrollTop
     },
     resetBtnClick() {
-       this.$refs.popup.close();
-      // this.$emit('reset');
+      // this.$refs.popup.close();
+      this.$emit('reset');
     },
     confirmBtnClick() {
       // this.$emit('confirm');
@@ -95,8 +100,8 @@ export default {
     .search-form {
       .scroll-view-h {
         height: 900rpx;
-        /deep/  .uni-scroll-view{
-          overflow: scroll!important;
+        /deep/ .uni-scroll-view {
+          overflow: scroll !important;
         }
       }
     }

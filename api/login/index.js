@@ -1,7 +1,8 @@
 import Http from "@/common/http.js";
+import SERVER from '../server.js';
 
 export const loginHttp = params =>
-  Http.post("/api/sysManage/login", params, {
+  Http.post(`${SERVER.DMSCLOUD_BASEDATA}/login`, params, {
     isLoading: true
   });
 

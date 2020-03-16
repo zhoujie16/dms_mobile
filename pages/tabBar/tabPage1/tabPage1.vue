@@ -52,53 +52,53 @@ export default {
       isShowDrawer: false,
       list: [
         {
-          image: '../../../static/image/yuyuejiancha.svg',
+          image: '/static/image/yuyuejiancha.svg',
           text: '预约检查',
           path: '/pages/appointment-check/appointment-check'
         },
         {
-          image: '../../../static/image/waiguanjiancha.svg',
+          image: '/static/image/waiguanjiancha.svg',
           text: '车辆预检',
           // path: '/pages/demo/base-demo'
           path: '/pages/customer-reception/customer-reception'
         },
         {
-          image: '../../../static/image/kuaisugongdan.svg',
+          image: '/static/image/kuaisugongdan.svg',
           text: '快速工单',
           path: '/pages/rapid-order/rapid-order'
         },
         {
-          image: '../../../static/image/jinduchaxun.svg',
+          image: '/static/image/jinduchaxun.svg',
           text: '进度查询',
           path: '/pages/progress-query/progress-query'
         },
         {
-          image: '../../../static/image/neishijiancha.svg',
+          image: '/static/image/neishijiancha.svg',
           text: '车辆检查',
           path: '/pages/vehicle-inspection/vehicle-inspection'
         },
         {
-          image: '../../../static/image/jiaoche.svg',
+          image: '/static/image/jiaoche.svg',
           text: '交车',
           path: '/pages/vehicles-delivery/vehicles-delivery'
         },
         {
-          image: '../../../static/image/fuwugongju.svg',
+          image: '/static/image/fuwugongju.svg',
           text: '服务工具',
           path: '/pages/services-tools/index'
         },
         {
-          image: '../../../static/image/fuwubaobiao.svg',
+          image: '/static/image/fuwubaobiao.svg',
           text: '服务报表',
           path: '/pages/qcReport/qcReport'
         },
         {
-          image: '../../../static/image/shouhoubaobiao.svg',
+          image: '/static/image/shouhoubaobiao.svg',
           text: '售后报表',
           path: '/pages/tabBar/tabPage3/tabPage3'
         },
         {
-          image: '../../../static/image/xiaoxitixing.svg',
+          image: '/static/image/xiaoxitixing.svg',
           text: '消息提醒',
           path: '/pages/remind/remind'
         },

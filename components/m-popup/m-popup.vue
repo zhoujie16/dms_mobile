@@ -84,16 +84,22 @@ export default {
 }
 .m-popup-wrap.center {
   width: 600rpx;
-  height: 70vh;
+  // height: 70vh;
+  min-height: 400rpx;
+  max-height: 70vh;
   border-radius: 30rpx;
   .m-popup-title {
     color: #ffffff;
-    font-size: $uni-font-size-lg;
-    background-color: $uni-bg-color-navbar;
+    height: 80rpx;
+    line-height: 80rpx;
+    font-size: $uni-m-color-cwhite;
+    background-color: $uni-m-color-c11;
   }
   .m-popup-content {
     position: relative;
-    height: calc(70vh - 80rpx);
+    min-height: 100rpx;
+    max-height: calc(70vh - 80rpx);
+    // height: calc(70vh - 80rpx);
   }
 }
 .m-popup-wrap.bottom {

@@ -2,7 +2,9 @@
 <template>
   <view class="m-license-wrap">
     <view class="m-license-inner">
-      <MLabel label="车牌号" :border="false"></MLabel>
+      <MLabel label="车牌号" :border="false">
+         <text @click="foldingHandleClick" class="m-iconfont screen"> &#xe72a;</text>
+      </MLabel>
       <view class="m-license-content">
         <view
           v-for="(item, i) in itemList"
@@ -15,6 +17,11 @@
         </view>
       </view>
     </view>
+    <MPopup ref="mPopup" type="center" title="查询到的车牌">
+    	<view v-for="(item,index) in itemListLicense" :key="index">
+        <view class="itemBox" @click="licenseClick(item)">{{item.license}}</view>
+      </view>
+    </MPopup>
   </view>
 </template>
 
@@ -37,7 +44,20 @@ export default {
         { id: 5, value: '', isActive: false },
         { id: 6, value: '', isActive: false },
         { id: 7, value: '', isActive: false }
-      ]
+      ],
+      itemListLicense:[{
+        id:1,
+        license:'沪001001'
+      },
+      {
+        id:2,
+        license:'沪001001'
+      },
+      {
+        id:3,
+        license:'沪001001'
+      }
+      ],
     };
   },
   watch: {
@@ -149,6 +169,17 @@ export default {
       } else {
         this.setItemActive(0);
       }
+    },
+    //搜索车牌号
+    foldingHandleClick(){
+      // console.log(this._value,'车牌号')
+      this.$refs.mPopup.open();  // 打开
+      
+    },
+    //点击车牌号，将数据传给父级
+    licenseClick(item){
+      this.$emit('list', item);
+      this.$refs.mPopup.close(); 
     }
   }
 };
@@ -174,4 +205,14 @@ export default {
     }
   }
 }
+ .screen{
+    font-size: 52rpx;;
+    color: $uni-m-color-c11;
+  }
+  .itemBox{
+    height: 80rpx;
+    line-height: 80rpx;
+    text-align: center;
+    border-bottom: 2rpx solid $uni-m-color-c4-2;
+  }
 </style>
