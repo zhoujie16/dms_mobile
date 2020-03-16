@@ -14,7 +14,7 @@
             <view >何红</view>
           </view> -->
           <view class="box">
-            <view class="label">车牌号码</view>
+            <view class="label">车牌号</view>
             <view >沪A10001</view>
           </view>
           <view class="box">
@@ -100,8 +100,8 @@ export default {
     bottom: 40px;
     right: 40px;
     .img {  
-      width: 56rpx;
-      height: 56rpx;
+      width: 70rpx;
+      height: 70rpx;
     }
   }
 }

@@ -48,7 +48,8 @@ export default {
   data() {
     return {
       username: '',
-      password: ''
+      password: '',
+      isHasNull: true
     };
   },
   onReady() {
@@ -62,14 +63,23 @@ export default {
     //   complete: () => {}
     // });
   },
+  watch: {
+    username(curVal,oldVal) {
+      if(curVal) {
+        this.isHasNull = false
+      } else {
+        this.isHasNull = true
+      }
+    }
+  },
   methods: {
     async testLogin() {
       const res = await loginHttp({
         appId: 'cyx',
-        username: this.username,
-        password: this.$auth.jsEncrypt(this.password)
-        // username: 'ZJ69',
-        // password: this.$auth.jsEncrypt('Aa123456')
+        // username: this.username,
+        // password: this.$auth.jsEncrypt(this.password)
+        username: 'ZJ69',
+        password: this.$auth.jsEncrypt('Aa123456')
       });
       console.log('登录结果', res);  
       if (!res.success) {
@@ -156,7 +166,9 @@ export default {
           padding: 0 20rpx;
           .login-input {
             flex: 1;
-            color: #E1E1E1;
+            // color: #E1E1E1;
+            color: #17212E;
+            font-size: 34rpx;
           }
         }
       }

@@ -15,12 +15,13 @@
       </view>
       <CollapsePanel title="客户信息">
         <template slot="default">
-          <MLabel label="车牌号">沪A123456</MLabel>
-          <MLabel label="车架号">xxxxxxxxxxxxxxxxx</MLabel>
           <MLabel label="工单号">xxxxxxxxxx</MLabel>
           <MLabel label="VIN">xxxxxxxxxx</MLabel>
-          <MLabel label="维修项目">张全蛋</MLabel>
-          <MLabel label="送修人电话">13322111234</MLabel>
+          <MLabel label="送修人">xxxxxxxx</MLabel>
+          <MLabel label="送修人电话">
+            13322111234
+            <image src="/static/image/dianhua2.svg" mode="scaleToFill" class="img"  @click="phoneClick"></image>
+          </MLabel>
           <MLabel label="故障描述">测试品牌</MLabel>
           <MLabel label="维修技师">王一</MLabel>
           <view class="m-break-space"></view>
@@ -141,6 +142,10 @@ export default {
     }
      }
 }
+.img{
+      width: 56rpx;
+      height: 56rpx;
+    }
 .page-body {
   height: 100vh;
   overflow: auto;
