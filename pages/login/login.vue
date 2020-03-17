@@ -37,6 +37,7 @@
 <script>
 import { loginHttp } from '@/api/login/index.js';
 import { commonDict } from '@/api/test/index.js';
+import { queryDict } from '@/api/util/index.js';
 export default {
   data() {
     return {
@@ -80,6 +81,7 @@ export default {
         this.SHOW_TOAST(res.errMsg);
         return;
       }
+      
       // 保存信息
       this.$auth.setToken(res.data.jwt);
       this.$auth.setUserId(res.data.rData.userId);
@@ -88,10 +90,11 @@ export default {
       });
       console.log(res2);
 
-      const res3 = await queryDict();
-      if (res3.resultCode == 200) {
-        console.log('res3', res3);
-        const { dict } = res3.data;
+      // 获取字典
+      const dictRes = await queryDict();
+      if (dictRes.resultCode == 200) {
+        console.log('dictRes', dictRes);
+        const { dict } = dictRes.data;
         const data = { ...dict };
         //数据字典本地存储
         if (!_.isEqual(data, JSON.parse(this.$auth.getStorgeData('dict')))) {

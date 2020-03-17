@@ -22,7 +22,7 @@ class Http {
     }
   }) {
     let requestUrl = AppConfig.requsetUrl + url;
-    if (url.indexOf("http://") !== -1 || url.indexOf("http://") !== -1) {
+    if (url.indexOf("http://") !== -1 || url.indexOf("https://") !== -1) {
       requestUrl = url;
     }
     if (config.isLoading) {
