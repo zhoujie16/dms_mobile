@@ -91,14 +91,14 @@ export default {
     /** 上拉加载的回调 */
     async upCallback(mescroll) {
       let pageNum = mescroll.num; // 页码, 默认从1开始
-      let pageSize = mescroll.size; // 页长, 默认每页10条
+      let limit = mescroll.size; // 页长, 默认每页10条
       console.log('上拉加载', {
         pageNum,
-        pageSize
+        limit
       });
       const res = await this.fetchData({
         pageNum,
-        pageSize
+        limit
       });
       const { curPageData, totalSize } = res;
       if (mescroll.num == 1) {
@@ -109,9 +109,9 @@ export default {
       mescroll.endBySize(curPageData.length, totalSize);
     },
     // 请求数据
-    async fetchData({ pageNum, pageSize }) {
+    async fetchData({ pageNum, limit }) {
       await this.sleep(500);
-      const params = { ...this.fetchParams, pageNum, pageSize };
+      const params = { ...this.fetchParams, pageNum, limit };
       const res = await this.fetchApi(params);
       if (!res) {
         console.log('baseScroll 请求数据失败');

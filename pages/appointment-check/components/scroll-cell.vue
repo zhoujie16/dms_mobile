@@ -17,6 +17,10 @@
           <view class="label">服务顾问</view>
           <view>陆小鹏</view>
         </view>
+        <view class="box" v-if="activeindex==1">
+          <view class="label">工单号</view>
+          <view>GD00011</view>
+        </view>
         <view class="box">
           <view class="label">联系电话</view>
           <view>18800123212</view>
@@ -35,7 +39,12 @@ export default {
   components: {},
   name: 'list-cell-wrap',
   props: {
-    cell: Object
+    cell: Object,
+    activeindex:{
+      type: Number,
+      default: 0
+    }
+    
   },
   mounted() {
     console.log('list-cell-wrap', 'mounted');

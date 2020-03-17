@@ -1,8 +1,8 @@
 <template>
   <!-- 预约检查 -->
-  <MPage ref="MPage" >
+  <MPage ref="MPage">
     <search-filter ref="searchFilter" :height="700">
-      <view slot="panel" class="panel-box" >
+      <view slot="panel" class="panel-box">
         <view v-for="(item, index) in itemList" :key="index" @click="changeIndex(index)">
           <view
             :class="[
@@ -24,7 +24,7 @@
       :fetchParams="fetchParams"
       @listChange="
         arr => {
-          this.dataSource = [1, 2, 3, 4];
+          this.dataSource = arr.data.records;
         }
       "
     >
@@ -33,45 +33,60 @@
           @click.native="scrollCellClick(data)"
           v-for="(data, i) in dataSource"
           :key="i"
+          :cell="data"
+          :activeindex="activeindex"
         ></scroll-cell>
       </view>
     </BaseScroll>
-    
+   <!-- <scroll-cell
+     @click.native="scrollCellClick"
+      :activeindex="activeindex"
+    ></scroll-cell> -->
   </MPage>
 </template>
 
 <script>
-import { AjaxScrollData } from '@/api/test/index.js';
+
+import { queryAllAppointment,queryStatusNum } from '@/api/appointment-check/index.js';
 import SearchForm from '@/pages/appointment-check/components/search-form.vue';
 import ScrollCell from '@/pages/appointment-check/components/scroll-cell.vue';
-
+import { dictionary } from '@/common/dictMixin.js';
 export default {
   components: {
     SearchForm,
     ScrollCell
   },
+  mixins:[dictionary],
   data() {
     return {
-      fetchApi: AjaxScrollData,
-      fetchParams: {},
+      fetchApi: queryAllAppointment,
+      fetchParams: {
+        bookingOrderStatus:'80401001'
+      },
       dataSource: [],
       activeindex: 0,
       isFolding: true,
       itemList: [
         {
+          id:'80401001',
           title: '未进厂',
           count: 0
         },
         {
+          id:'80401002',
           title: '已进厂',
           count: 4
         },
         {
+          id:'80401004',
           title: '已取消',
           count: 3
         }
       ]
     };
+  },
+  onLoad(){
+    // console.log(this.createDictList('8040'))
   },
   methods: {
     // 表单查询
@@ -84,6 +99,8 @@ export default {
     },
     changeIndex(index) {
       this.activeindex = index;
+      this.dataSource = [];
+      this.fetchParams = { ...this.fetchParams };
     },
     // 列表点击事件
     async scrollCellClick(cell) {

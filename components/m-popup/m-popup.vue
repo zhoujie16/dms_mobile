@@ -88,6 +88,7 @@ export default {
   min-height: 400rpx;
   max-height: 70vh;
   border-radius: 30rpx;
+  overflow: hidden;
   .m-popup-title {
     color: #ffffff;
     height: 80rpx;
