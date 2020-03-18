@@ -3,55 +3,55 @@
     <view class="list-cell-wrap-inner">
       <view class="list-cell-title">
         <view class="left">
-          <text class="vin">沪10001</text>
-          <text class="name">笑笑</text>
+          <text class="vin">{{ cell.license }}</text>
+          <text class="name">{{ cell.ownerName ? cell.ownerName : '未知' }}</text>
         </view>
-        <view class="right">2020-01-09 10:23</view>
+        <view class="right">{{ cell.bookingComeTime }}</view>
       </view>
       <view class="list-cell-content">
         <view class="box">
           <view class="label">预约单号</view>
-          <view >YO202001090001</view>
+          <view>{{ cell.bookingOrderNo }}</view>
         </view>
         <view class="box">
           <view class="label">服务顾问</view>
-          <view>陆小鹏</view>
+          <view>{{ cell.serviceAdvisor }}</view>
         </view>
-        <view class="box" v-if="activeindex==1">
+        <view class="box" v-if="activeindex == 1">
           <view class="label">工单号</view>
-          <view>GD00011</view>
+          <view>{{ cell.roNo }}</view>
         </view>
         <view class="box">
           <view class="label">联系电话</view>
-          <view>18800123212</view>
+          <view>{{ cell.contactorPhone }}</view>
         </view>
         <view class="phone">
           <image src="/static/image/dianhua2.svg" mode="scaleToFill" class="img"></image>
         </view>
       </view>
-    
     </view>
   </view>
 </template>
 
 <script>
+import { searchRoleByCode } from '@/api/util/index.js';
 export default {
   components: {},
   name: 'list-cell-wrap',
   props: {
     cell: Object,
-    activeindex:{
+    activeindex: {
       type: Number,
       default: 0
     }
-    
   },
+
   mounted() {
     console.log('list-cell-wrap', 'mounted');
   },
   data() {
     return {
-      isShowDetail: false
+      isShowDetail: false,
     };
   },
   methods: {
@@ -59,9 +59,10 @@ export default {
     cellTitleClick() {
       this.isShowDetail = !this.isShowDetail;
     },
-    cellClick(){
-      this.$emit('click')
-    }
+    cellClick() {
+      this.$emit('click');
+    },
+  
   }
 };
 </script>
@@ -75,21 +76,21 @@ export default {
   border-radius: $uni-m-border-radius-b2;
   overflow: hidden;
   background-color: #ffffff;
-  padding:26rpx 30rpx;
+  padding: 26rpx 30rpx;
   margin: 20rpx;
 }
 .list-cell-title {
   display: flex;
-  
+
   border-bottom: 1rpx solid $uni-m-color-c4-2;
   .left {
     flex: 1;
     margin-bottom: 20rpx;
-    .vin{
+    .vin {
       font-weight: 800;
       font-size: $uni-m-font-size-f2;
     }
-    .name{
+    .name {
       display: inline-block;
       margin-left: 20rpx;
       border: 2rpx dashed $uni-m-color-c3;
@@ -98,30 +99,30 @@ export default {
       font-size: $uni-m-font-size-f4;
     }
   }
-  .right{
+  .right {
     color: $uni-m-color-c12;
     margin-bottom: 20rpx;
   }
 }
-.list-cell-content{
+.list-cell-content {
   margin-top: 10rpx;
   position: relative;
-  .box{
+  .box {
     display: flex;
     height: 60rpx;
     line-height: 60rpx;
-    .label{
-      flex:0 0 130rpx;
-      color:$uni-m-color-c2;
+    .label {
+      flex: 0 0 130rpx;
+      color: $uni-m-color-c2;
     }
   }
-  .phone{
+  .phone {
     position: absolute;
     width: 70rpx;
     height: 70rpx;
     bottom: 40rpx;
     right: 30rpx;
-    .img{
+    .img {
       width: 70rpx;
       height: 70rpx;
     }

@@ -70,11 +70,11 @@ export default {
     async testLogin() {
       const res = await loginHttp({
         appId: 'cyx',
-        username: this.username,
-        password: this.$auth.jsEncrypt(this.password)
+        // username: this.username,
+        // password: this.$auth.jsEncrypt(this.password)
         
-        // username: 'ZJ69',
-        // password: this.$auth.jsEncrypt('Aa123456')
+        username: 'ZF1',
+        password: this.$auth.jsEncrypt('Aa123456')
       });
       console.log('登录结果', res);
       if (!res.success) {
@@ -85,22 +85,24 @@ export default {
       // 保存信息
       this.$auth.setToken(res.data.jwt);
       this.$auth.setUserId(res.data.rData.userId);
+      this.$auth.setCompanyId( res.data.rData.companyId);
+      console.log(this.$auth.getCompanyId(),'公司id')
       const res2 = await uni.navigateTo({
         url: '/pages/tabBar/tabPage1/tabPage1'
       });
       console.log(res2);
 
       // 获取字典
-      const dictRes = await queryDict();
-      if (dictRes.resultCode == 200) {
-        console.log('dictRes', dictRes);
-        const { dict } = dictRes.data;
-        const data = { ...dict };
-        //数据字典本地存储
-        if (!_.isEqual(data, JSON.parse(this.$auth.getStorgeData('dict')))) {
-          this.$auth.setStorageData('dict', data);
-        }
-      }
+      // const dictRes = await queryDict();
+      // if (dictRes.resultCode == 200) {
+      //   console.log('dictRes', dictRes);
+      //   const { dict } = dictRes.data;
+      //   const data = { ...dict };
+      //   //数据字典本地存储
+      //   if (!_.isEqual(data, JSON.parse(this.$auth.getStorgeData('dict')))) {
+      //     this.$auth.setStorageData('dict', data);
+      //   }
+      // }
     },
     forgetPassword() {
       uni.navigateTo({

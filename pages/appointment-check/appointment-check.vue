@@ -24,7 +24,7 @@
       :fetchParams="fetchParams"
       @listChange="
         arr => {
-          this.dataSource = arr.data.records;
+          this.dataSource = arr;
         }
       "
     >
@@ -38,7 +38,7 @@
         ></scroll-cell>
       </view>
     </BaseScroll>
-   <!-- <scroll-cell
+    <!-- <scroll-cell
      @click.native="scrollCellClick"
       :activeindex="activeindex"
     ></scroll-cell> -->
@@ -46,47 +46,51 @@
 </template>
 
 <script>
-
-import { queryAllAppointment,queryStatusNum } from '@/api/appointment-check/index.js';
+import { queryAllAppointment, queryStatusNum } from '@/api/appointment-check/index.js';
 import SearchForm from '@/pages/appointment-check/components/search-form.vue';
 import ScrollCell from '@/pages/appointment-check/components/scroll-cell.vue';
-import { dictionary } from '@/common/dictMixin.js';
+// import { dictionary } from '@/common/dictMixin.js';
+import dictCode from '@/common/dictCode.js';
+import { searchRoleByCode } from '@/api/util/index.js';
+// import commonDict from '@/common/commonDIct.js'
 export default {
   components: {
     SearchForm,
     ScrollCell
   },
-  mixins:[dictionary],
+  // mixins:[dictionary],
   data() {
     return {
       fetchApi: queryAllAppointment,
       fetchParams: {
-        bookingOrderStatus:'80401001'
+        bookingOrderStatus: '80401001'
       },
       dataSource: [],
       activeindex: 0,
       isFolding: true,
       itemList: [
         {
-          id:'80401001',
+          id: '80401001',
           title: '未进厂',
           count: 0
         },
         {
-          id:'80401002',
+          id: '80401002',
           title: '已进厂',
           count: 4
         },
         {
-          id:'80401004',
+          id: '80401004',
           title: '已取消',
           count: 3
         }
-      ]
+      ],
+      serviceAdvisorList: []
     };
   },
-  onLoad(){
-    // console.log(this.createDictList('8040'))
+  mounted() {
+    this.queryServiceAdvisor();
+    
   },
   methods: {
     // 表单查询
@@ -108,6 +112,16 @@ export default {
       await uni.navigateTo({
         url: '/pages/appointment-check/appointment-detail'
       });
+    },
+    //获取服务顾问列表或服务技师
+    async queryServiceAdvisor() {
+      let consultant = { role: dictCode.SERVICE_CONSULTANT, companyId: this.$auth.getCompanyId() };
+      const res = await searchRoleByCode(consultant);
+      console.log('111', res);
+      const serviceAdvisorList = res.data.map(x => ({
+        value: x.userId,
+        text: x.employeeName
+      }));
     }
   }
 };

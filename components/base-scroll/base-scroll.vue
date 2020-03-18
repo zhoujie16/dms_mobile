@@ -117,8 +117,9 @@ export default {
         console.log('baseScroll 请求数据失败');
         return;
       }
+      console.log(res,'请求的数据')
       const _res = {
-        curPageData: res.data.list, // 新增的列表数据
+        curPageData: res.data.records, // 新增的列表数据
         totalSize: res.data.toast // 总数据
       };
       return _res;

@@ -1,6 +1,7 @@
 import AppConfig from "./../config/config.js";
 import JSEncrypt from "wx-jsencrypt";
 
+
 class Auth {
   constructor(arg) {
     this.debugger = false;
@@ -17,7 +18,7 @@ class Auth {
   removeToken() {
     uni.removeStorageSync('jwt')
   }
-  
+
   /** 用户名 */
   setUser(username) {
     return uni.setStorageSync('username', username)
@@ -28,7 +29,17 @@ class Auth {
   removeUser() {
     uni.removeStorageSync('username')
   }
-  
+  /** 公司名 */
+  setCompanyId(companyId) {
+    return uni.setStorageSync('companyId', companyId)
+  }
+  getCompanyId() {
+    return uni.getStorageSync('companyId')
+  }
+  removeCompanyId() {
+    uni.removeStorageSync('companyId')
+  }
+
   /** 用户 ID userId */
   setUserId(userId) {
     return uni.setStorageSync('userId', userId)
@@ -39,7 +50,7 @@ class Auth {
   removeUserId() {
     uni.removeStorageSync('userId')
   }
-  
+
   /** ownerCode */
   setOwnerCode(ownerCode) {
     return uni.setStorageSync('ownerCode', ownerCode)
@@ -75,6 +86,17 @@ class Auth {
     })
     return _data;
   }
+
+  /**
+   * @param {Object} code  服务顾问code
+   * @param {Object} list  服务顾问列表
+   */
+  getServiceAdvisorName(code, list) {
+    const name = list.find(x => x.userId == code).employeeName;
+    return name;
+  }
+
+
 
 }
 export default new Auth();

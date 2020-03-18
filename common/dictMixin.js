@@ -8,6 +8,7 @@ const getLocalRegion = () => {
   return JSON.parse(data) || {};
 };
 
+import {getServiceAdvisor} from '@/api/util/index.js'
 
 export const dictionary = {
   onLoad() {
@@ -76,6 +77,11 @@ export const dictionary = {
         res.push(target);
       }
       return res;
+    },
+    //获取服务顾问  通过code转化name
+    async getServiceAdvisorName(code){
+      const res = await getServiceAdvisor();
+      const itemList = res.map(x => ({ value: x.EMPLOYEE_NO, text: x.EMPLOYEE_NAME }))
     }
   }
 }
