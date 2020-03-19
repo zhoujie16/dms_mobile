@@ -6,8 +6,8 @@
         <view class="title-panel">
           <view class="title-panel-inner">
             <view class="info-panel">
-              <view class="customer-info">王大锤 - 沪ADC520</view>
-              <view class="car-info">13322111234</view>
+              <view class="customer-info">{{appointmentInfo.ownerName}} - {{appointmentInfo.license}}</view>
+              <view class="car-info">{{appointmentInfo.contactorPhone}}</view>
             </view>
             <view class="phone" @click="phoneClick">
               <image src="/static/image/dianhua2.svg" mode="scaleToFill" class="img"></image>
@@ -18,44 +18,49 @@
       </view>
 
       <view class="content-warp">
-        <MLabel label="预约进厂时间">2020-02-04</MLabel>
+        <MLabel label="预约进厂时间">{{appointmentInfo.bookingComeTime}}</MLabel>
 
-        <MLabel label="预约单号">xxxxxxxxxx</MLabel>
-        <MLabel label="VIN">xxxxxxxxxx</MLabel>
-        <MLabel label="车型">QASW</MLabel>
-        <MLabel label="里程(KM)">100</MLabel>
-        <MLabel label="服务顾问">张全蛋</MLabel>
-        <MLabel label="维修技师">王尼玛</MLabel>
+        <MLabel label="预约单号">{{appointmentInfo.bookingOrderNo}}</MLabel>
+        <MLabel label="VIN">{{appointmentInfo.vin}}</MLabel>
+        <MLabel label="车型">{{appointmentInfo.model}}</MLabel>
+        <MLabel label="里程(KM)">{{appointmentInfo.inMileage}}</MLabel>
+        <MLabel label="服务顾问">{{appointmentInfo.serviceAdvisor}}</MLabel>
+        <MLabel label="维修技师">{{appointmentInfo.chiefTechnician}}</MLabel>
 
-        <MLabel label="客户需求">测试品牌</MLabel>
+        <MLabel label="客户需求">{{appointmentInfo.customerDesc}}</MLabel>
         <view class="m-break-space"></view>
-        <MTextArea label="备注" v-model="value_1"></MTextArea>
+        <MTextArea label="备注" v-model="appointmentInfo.remark"></MTextArea>
       </view>
       <view class="m-break-space"></view>
-      <view class="operate">
-        <view class="btn">
-          <m-button type="default" @click.native="cancelClick">修改预约时间</m-button>
+      <view class="operate"  v-if="activeindex!=2">
+        <view class="btn" v-if="activeindex==0">
+          <m-button type="warn"  @click.native="cancelClick">取消预约</m-button>
         </view>
-        <view class="btn"><m-button type="primary">外观预检</m-button></view>
+        <view class="btn" v-if="activeindex==0">
+          <m-button type="default" @click.native="editClick">修改预约</m-button>
+        </view>
+        <view class="btn"><m-button type="primary">车辆预检</m-button></view>
       </view>
     </view>
     <MPopup ref="mPopup" type="center" title="修改预约时间">
       <!-- 弹窗内容 -->
       <view class="a-time-wrap">
         <view class="container">
-          <MLabel label="预约单号">xxxxxxxxxx</MLabel>
+          <MLabel label="预约单号">{{this.bookingOrderNo}}</MLabel>
           <MLabel label="预约时间" :row="2" :border="false">
             <view class="time-box">
-              <view @click="showPopupClick">{{ appointTime }}</view>
+              <view @click="showPopupClick">{{ bookingComeTime }}</view>
             </view>
           </MLabel>
         </view>
-        
+
         <view class="operate-time">
           <view class="btn">
-            <m-button type="default" :plain="true" :block="true" @click.native="cancelAppointClick">取消</m-button>
+            <m-button type="default" :plain="true" :block="true" @click.native="cancelAppointClick">
+              取消
+            </m-button>
           </view>
-          <view class="btn"><m-button type="default" :block="true">确认</m-button></view>
+          <view class="btn"><m-button  type="default" :block="true" @click.native="confirmAppointTime">确认</m-button></view>
         </view>
       </view>
     </MPopup>
@@ -63,19 +68,30 @@
 </template>
 
 <script>
+import { queryAppointmentDetail ,deleteAppointment ,editAppointment} from '@/api/appointment-check/index.js';
+
 export default {
   data() {
     return {
-      value_1: '',
-      appointTime: '请选择'
+      activeindex: 0,
+      bookingOrderNo:'',//预约单号
+      appointmentInfo:{},
+      bookingComeTime: '请选择'
     };
   },
   computed: {},
+  onLoad(option) {
+    console.warn(option.bookingOrderNo, '预约单号');
+    this.activeindex = option.activeindex;
+    this.bookingOrderNo = option.bookingOrderNo;
+    this.getOrderInfo(option.bookingOrderNo);
+  },
   methods: {
-    async back() {
-      uni.navigateBack({
-        delta: 1
-      });
+    //根据预约单号查询信息
+    async getOrderInfo(roNo) {
+      let res = await queryAppointmentDetail(roNo);
+      console.log(res, '预约检查详情信息');
+      this.appointmentInfo = res.data;
     },
     phoneClick() {
       // this.$refs.phone.open();
@@ -93,19 +109,13 @@ export default {
     phoneClose() {
       this.$refs.phone.close();
     },
-    async cancelClick() {
+    editClick() {
       this.$refs.mPopup.open();
-      // const res = await this.SHOW_ACTION_SHEET({
-      //   itemList: [
-      //     { text: '未与工单关联', value: '1' },
-      //     { text: '超出预约进厂时间', value: '2' },
-      //     { text: '未与工单关联', value: '3' },
-      //     { text: '超出预约进厂时间', value: '4' },
-      //     { text: '其他原因取消', value: '5' }
-      //   ]
-      // });
-      // console.log('showActionSheet', res);
-      // this.SHOW_TOAST(JSON.stringify(res));
+    },
+    async cancelClick() {
+      const res = await deleteAppointment(this.bookingOrderNo);
+      console.log('取消预约',res)
+     
     },
     //预约时间
     async showPopupClick() {
@@ -119,16 +129,27 @@ export default {
       });
       // console.log(res);
       // this.SHOW_TOAST(JSON.stringify(res));
-      if(res[0]!='cancel'){
-        this.appointTime = res[0]
-      }else{
+      if (res[0] != 'cancel') {
+        this.bookingComeTime = res[0];
+      } else {
         return;
       }
     },
+    //保存预约时间
+    async confirmAppointTime(){
+      let params = {
+        bookingOrderNo:this.bookingOrderNo,
+        bookingComeTime:this.bookingComeTime
+      }
+      const res = await editAppointment(params);
+      console.log('修改预约时间',res)
+       this.getOrderInfo(this.bookingOrderNo);
+       this.cancelAppointClick();
+    },
     //取消预约时间
-    cancelAppointClick(){
-       this.$refs.mPopup.close();
-        this.appointTime = '请选择'
+    cancelAppointClick() {
+      this.$refs.mPopup.close();
+      this.bookingComeTime = '请选择';
     }
   }
 };
@@ -241,21 +262,21 @@ export default {
   padding: 20rpx 30rpx;
   .btn {
     flex: 1;
-    padding: 0 20rpx;
+    padding: 0 10rpx;
   }
 }
 .a-time-wrap {
   position: relative;
   // padding-top: 100rpx;
   height: 400rpx;
-  .container{
+  .container {
     margin-top: 20rpx;
     .time-box {
       width: 100%;
       text-align: right;
     }
   }
-  
+
   .operate-time {
     position: absolute;
     bottom: 0;

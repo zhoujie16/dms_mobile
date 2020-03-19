@@ -1,6 +1,8 @@
 import AppConfig from "./../config/config.js";
 import JSEncrypt from "wx-jsencrypt";
-
+import {
+  searchRoleByCode
+} from '@/api/util/index.js';
 
 class Auth {
   constructor(arg) {
@@ -86,14 +88,22 @@ class Auth {
     })
     return _data;
   }
-
+  // 获取服务顾问列表
+  async queryServiceAdvisor(params) {
+    const res = await searchRoleByCode(params);
+    const serviceAdvisorList = res.data.map(x => ({
+      value: x.userId,
+      text: x.employeeName
+    }));
+    return serviceAdvisorList;
+  }
   /**
-   * @param {Object} code  服务顾问code
-   * @param {Object} list  服务顾问列表
+   * @param {Object} code  列表code  //比如服务顾问code
+   * @param {Object} list  列表   //比如服务顾问列表
    */
-  getServiceAdvisorName(code, list) {
-    const name = list.find(x => x.userId == code).employeeName;
-    return name;
+  getRoleName(code, list) {
+    let item = list.find(x => x.value == code);
+    return item == undefined ? '未知' : item.text;
   }
 
 

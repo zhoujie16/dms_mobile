@@ -7,6 +7,6 @@ export const queryDict = () => Http.get(`${SERVER.DMSCLOUD_BASEDATA}/dicts`, {
 
 
 //查询服务顾问
-export const searchRoleByCode = params => Http.get(`${SERVER.DMSCLOUD_BASEDATA}/basedata/users/getUserListByRole`, {
+export const searchRoleByCode = params => Http.get(`${SERVER.DMSCLOUD_BASEDATA}/basedata/users/getUserListByRole`, 
   params
-});
+);

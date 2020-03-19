@@ -3,7 +3,7 @@
   <MPage ref="MPage">
     <search-filter ref="searchFilter" :height="700">
       <view slot="panel" class="panel-box">
-        <view v-for="(item, index) in itemList" :key="index" @click="changeIndex(index)">
+        <view v-for="(item, index) in itemList" :key="index" @click="changeIndex(item, index)">
           <view
             :class="[
               { 'panel-tab-pressed': activeindex == index },
@@ -29,13 +29,14 @@
       "
     >
       <view slot="scroll" class="wrap">
-        <scroll-cell
-          @click.native="scrollCellClick(data)"
-          v-for="(data, i) in dataSource"
-          :key="i"
-          :cell="data"
-          :activeindex="activeindex"
-        ></scroll-cell>
+       <scroll-cell
+         @click.native="scrollCellClick(data)"
+         v-for="(data, i) in dataSource"
+         :key="i"
+         :cell="data"
+         :activeindex="activeindex"
+         :serviceAdvisorList="serviceAdvisorList"
+       ></scroll-cell>
       </view>
     </BaseScroll>
     <!-- <scroll-cell
@@ -80,7 +81,7 @@ export default {
           count: 4
         },
         {
-          id: '80401004',
+          id: '80401005',
           title: '已取消',
           count: 3
         }
@@ -88,9 +89,10 @@ export default {
       serviceAdvisorList: []
     };
   },
-  mounted() {
-    this.queryServiceAdvisor();
-    
+  onReady() {
+    // this.queryServiceAdvisor();
+    this.getServiceAdvisorList();
+    this.queryStatusCount();
   },
   methods: {
     // 表单查询
@@ -101,27 +103,31 @@ export default {
         t: new Date().getTime()
       };
     },
-    changeIndex(index) {
+    //统计数量
+    async queryStatusCount() {
+      let res = await queryStatusNum(this.fetchParams);
+      console.log(res, '统计数量');
+      this.itemList[0].count=res.data.unEnter;
+      this.itemList[1].count=res.data.entered;
+      this.itemList[2].count=res.data.cancelled;
+    },
+    changeIndex(item, index) {
       this.activeindex = index;
       this.dataSource = [];
+      this.fetchParams.bookingOrderStatus = item.id;
       this.fetchParams = { ...this.fetchParams };
     },
     // 列表点击事件
     async scrollCellClick(cell) {
       console.log('cellClick', cell);
       await uni.navigateTo({
-        url: '/pages/appointment-check/appointment-detail'
+        url: `/pages/appointment-check/appointment-detail?bookingOrderNo=${cell.bookingOrderNo}&activeindex=${this.activeindex}`
       });
     },
-    //获取服务顾问列表或服务技师
-    async queryServiceAdvisor() {
+    //获取服务列表
+    async getServiceAdvisorList() {
       let consultant = { role: dictCode.SERVICE_CONSULTANT, companyId: this.$auth.getCompanyId() };
-      const res = await searchRoleByCode(consultant);
-      console.log('111', res);
-      const serviceAdvisorList = res.data.map(x => ({
-        value: x.userId,
-        text: x.employeeName
-      }));
+      this.serviceAdvisorList = await this.$auth.queryServiceAdvisor(consultant);
     }
   }
 };

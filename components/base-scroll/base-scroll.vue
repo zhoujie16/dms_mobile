@@ -64,7 +64,8 @@ export default {
         },
         noMoreSize: 5, // 配置列表的总数量要大于等于5条才显示'-- END --'的提示
         empty: {
-          tip: '暂无相关数据'
+          icon:'/static/image/404.png',
+          tip: '暂无记录'
         }
       }
     };

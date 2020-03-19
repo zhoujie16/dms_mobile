@@ -15,7 +15,7 @@
         </view>
         <view class="box">
           <view class="label">服务顾问</view>
-          <view>{{ cell.serviceAdvisor }}</view>
+          <view>{{ $auth.getRoleName(cell.serviceAdvisor, serviceAdvisorList) }}</view>
         </view>
         <view class="box" v-if="activeindex == 1">
           <view class="label">工单号</view>
@@ -43,7 +43,8 @@ export default {
     activeindex: {
       type: Number,
       default: 0
-    }
+    },
+    serviceAdvisorList: Array
   },
 
   mounted() {
@@ -51,7 +52,7 @@ export default {
   },
   data() {
     return {
-      isShowDetail: false,
+      isShowDetail: false
     };
   },
   methods: {
@@ -61,8 +62,13 @@ export default {
     },
     cellClick() {
       this.$emit('click');
-    },
-  
+    }
+    // getServiceAdvisorName(code) {
+
+    //   let item = this.serviceAdvisorList.find(x => x.value == code);
+
+    //   return item == undefined ? '未知' : item.text;
+    // }
   }
 };
 </script>
@@ -81,7 +87,6 @@ export default {
 }
 .list-cell-title {
   display: flex;
-
   border-bottom: 1rpx solid $uni-m-color-c4-2;
   .left {
     flex: 1;
