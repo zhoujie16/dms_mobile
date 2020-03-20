@@ -1,6 +1,6 @@
 <template>
   <view>
-    <MLabel :label="label" :mast="require">
+    <MLabel :label="label" :required="required">
       <view>
         <input
           :value="value"
@@ -33,7 +33,7 @@ export default {
       type: String,
       default: '请填写'
     },
-    require: {
+    required: {
       type: Boolean,
       default: false
     }

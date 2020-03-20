@@ -2,7 +2,7 @@
   <view class="m-lab-wrap">
     <view class="m-lab-inner" :class="{ 'm-lab-inner2': row > 1, border: border }">
       <view class="m-lab-title">
-        <!-- <text class="m-lab-require" v-if="require">*</text> -->
+        <text class="m-lab-required" v-if="required">*</text>
         {{ label }}
       </view>
       <view class="m-lab-content">
@@ -16,13 +16,15 @@
 <script>
 export default {
   name: 'm-label',
-  mounted() {},
+  mounted() {
+    console.log('m-label mounted',this.required)
+  },
   props: {
     label: {
       type: String,
       default: '标题'
     },
-    require: {
+    required: {
       type: Boolean,
       default: false
     },
@@ -68,8 +70,8 @@ export default {
   justify-content: flex-start;
   align-items: center;
   height: 100rpx;
-  .m-lab-require {
-    color: red;
+  .m-lab-required {
+    color: #1371F7;
     margin-right: 8rpx;
   }
 }

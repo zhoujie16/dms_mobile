@@ -4,8 +4,8 @@
     <MLicense v-model="value_cph"></MLicense>
     <view class="m-break-space"></view>
     <MLabel title="标题">内容</MLabel>
-    <MInput label="文本" v-model="formData.value_1"></MInput>
-    <MInput label="文本" v-model="formData.value_1">
+    <MInput :required="true" label="文本" v-model="formData.value_1"></MInput>
+    <MInput :required="false" label="文本" v-model="formData.value_1">
       <template v-slot:after>
         <text class="m-label-after">km</text>
       </template>
