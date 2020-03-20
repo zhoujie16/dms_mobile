@@ -4,15 +4,16 @@
     <MLicense v-model="value_cph"></MLicense>
     <view class="m-break-space"></view>
     <MLabel title="标题">内容</MLabel>
-    <MInput :required="true" label="文本" v-model="formData.value_1"></MInput>
-    <MInput :required="false" label="文本" v-model="formData.value_1">
+    <MInput disabled required readonly label="文本" v-model="formData.value_1"></MInput>
+    <MInput required label="文本" v-model="formData.value_1" after="cm"></MInput>
+    <MInput required label="文本" v-model="formData.value_1">
       <template v-slot:after>
         <text class="m-label-after">km</text>
       </template>
     </MInput>
     <MInput label="文本" v-model="formData.value_1">
       <template v-slot:after>
-        <text class="m-label-after">自定义</text>
+        <text class="m-label-after">mm</text>
       </template>
     </MInput>
     <view class="m-break-space"></view>

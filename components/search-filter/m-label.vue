@@ -1,10 +1,7 @@
 <template>
   <view class="m-lab-wrap">
     <view class="m-lab-inner" :class="{ 'm-lab-inner2': row > 1, border: border }">
-      <view class="m-lab-title">
-        <text class="m-lab-required" v-if="required">*</text>
-        {{ label }}
-      </view>
+      <view class="m-lab-title" :class="{ 'm-required': required }">{{ label }}</view>
       <view class="m-lab-content">
         <slot name="default"></slot>
         <slot name="after"></slot>
@@ -17,7 +14,7 @@
 export default {
   name: 'm-label',
   mounted() {
-    console.log('m-label mounted',this.required)
+    // console.log('m-label mounted', this.required);
   },
   props: {
     label: {
@@ -45,7 +42,7 @@ export default {
 
 <style lang="scss">
 .m-lab-wrap {
-  background-color: #FFFFFF;
+  background-color: #ffffff;
   color: #333;
   font-size: 30rpx;
   padding: 0 30rpx;
@@ -64,15 +61,19 @@ export default {
 }
 
 .m-lab-title {
+  position: relative;
   flex: 1;
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
   align-items: center;
   height: 100rpx;
-  .m-lab-required {
-    color: #1371F7;
-    margin-right: 8rpx;
+  &.m-required::before {
+    content: '*';
+    display: inline-block;
+    position: absolute;
+    left: -16rpx;
+    color: #1371f7;
   }
 }
 
