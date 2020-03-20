@@ -7,12 +7,10 @@
         <text class="m-iconfont">&#xe721;</text>
       </view>
     </view>
-    <uni-popup ref="searchPopup" type="top" :show="true" @change="change">
+    <uni-popup ref="searchPopup" type="top" @change="change">
       <view class="m-search-dialog-wrap">
         <view class="m-search-dialog-inner">
-          <view class="search-form">
-            <slot name="form"></slot>
-          </view>
+          <slot name="form"></slot>
         </view>
       </view>
     </uni-popup>
@@ -80,36 +78,7 @@ export default {
 .m-search-dialog-wrap {
   background-color: #ffffff;
   .m-search-dialog-inner {
-    .search-form {
-      // max-height: 900rpx;
-      // overflow-y: scroll;
-      // .scroll-view-h {
-      //   height: 900rpx;
-      //   /deep/ .uni-scroll-view {
-      //     overflow: scroll !important;
-      //   }
-      // }
-    }
-  }
-}
-
-.m-form-bottom-button {
-  display: flex;
-  .reset,
-  .submit {
-    flex: 1;
-    height: 100rpx;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-  .reset {
-    background: #ffffff;
-    color: #333;
-  }
-  .submit {
-    background: #1371f7;
-    color: #ffffff;
+    
   }
 }
 </style>

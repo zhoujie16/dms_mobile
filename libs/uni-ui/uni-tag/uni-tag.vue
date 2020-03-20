@@ -12,6 +12,27 @@
 </template>
 
 <script>
+	/**
+	 * Tag 标签
+	 * @description 用于展示1个或多个文字标签，可点击切换选中、不选中的状态
+	 * @tutorial https://ext.dcloud.net.cn/plugin?id=35
+	 * @property {String} text 标签内容
+	 * @property {String} size = [normal|small] 大小尺寸
+	 * 	@value normal 正常
+	 * 	@value small 小尺寸
+	 * @property {String} type = [default|primary|success｜warning｜error｜royal]  颜色类型
+	 * 	@value default 灰色
+	 * 	@value primary 蓝色
+	 * 	@value success 绿色
+	 * 	@value warning 黄色
+	 * 	@value error 红色
+	 * 	@value royal 紫色
+	 * @property {Boolean} disabled = [true|false] 是否为禁用状态
+	 * @property {Boolean} inverted = [true|false] 是否无需背景颜色（空心标签）
+	 * @property {Boolean} circle = [true|false] 是否为圆角
+	 * @event {Function} click 点击 Tag 触发事件
+	 */
+
 	export default {
 		name: "UniTag",
 		props: {
@@ -32,22 +53,22 @@
 			},
 			disabled: {
 				// 是否为禁用状态
-				type: [String, Boolean],
+				type: [Boolean, String],
 				defalut: false
 			},
 			inverted: {
 				// 是否为空心
-				type: [String, Boolean],
+				type: [Boolean, String],
 				defalut: false
 			},
 			circle: {
 				// 是否为圆角样式
-				type: [String, Boolean],
+				type: [Boolean, String],
 				defalut: false
 			},
 			mark: {
 				// 是否为标记样式
-				type: [String, Boolean],
+				type: [Boolean, String],
 				defalut: false
 			}
 		},
@@ -68,8 +89,8 @@
 		display: flex;
 		/* #endif */
 		padding: 0px 16px;
-		height: 26px;
-		line-height: 26px;
+		height: 30px;
+		line-height: 30px;
 		justify-content: center;
 		color: #333;
 		border-radius: 6rpx;
@@ -112,11 +133,6 @@
 
 	.uni-tag-text {
 		color: #fff;
-		font-size: 28rpx;
-	}
-
-	.uni-tag--default {
-		color: #333;
 		font-size: 28rpx;
 	}
 

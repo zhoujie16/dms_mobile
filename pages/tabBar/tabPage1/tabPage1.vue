@@ -13,9 +13,9 @@
     <HomeHeader></HomeHeader>
     <!-- 菜单 -->
     <view class="menu-wrap">
-      <uni-grid :column="4" :highlight="true" @change="gridItemClick">
+      <uni-grid :column="4" :highlight="true">
         <uni-grid-item v-for="(item, index) in list" :key="index">
-          <MenuItem :item="item"></MenuItem>
+          <MenuItem @click.native="gridItemClick(item)" :item="item"></MenuItem>
         </uni-grid-item>
       </uni-grid>
     </view>
@@ -121,13 +121,11 @@ export default {
     };
   },
   methods: {
-    gridItemClick(e) {
-      const index = e.detail.index;
-      const item = this.list[index];
+    gridItemClick(item) {
+      console.log('gridItemClick');
       uni.navigateTo({
         url: item.path
       });
-      
     }
   }
 };

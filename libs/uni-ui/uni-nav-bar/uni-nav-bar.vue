@@ -1,6 +1,6 @@
 <template>
 	<view class="uni-navbar">
-		<view :class="{ 'uni-navbar--fixed': fixed, 'uni-navbar--shadow': border, 'uni-navbar--border': border }" :style="{ 'background-color': backgroundColor }" class="uni-navbar__content">
+		<view :class="{ 'uni-navbar--fixed': fixed, 'uni-navbar--shadow': shadow, 'uni-navbar--border': border }" :style="{ 'background-color': backgroundColor }" class="uni-navbar__content">
 			<uni-status-bar v-if="statusBar" />
 			<view :style="{ color: color,backgroundColor: backgroundColor }" class="uni-navbar__header uni-navbar__content_view">
 				<view @tap="onClickLeft" class="uni-navbar__header-btns uni-navbar__header-btns-left uni-navbar__content_view">
@@ -42,6 +42,23 @@
 	import uniStatusBar from "../uni-status-bar/uni-status-bar.vue";
 	import uniIcons from "../uni-icons/uni-icons.vue";
 
+	/**
+	 * NavBar 自定义导航栏
+	 * @description 导航栏组件，主要用于头部导航
+	 * @tutorial https://ext.dcloud.net.cn/plugin?id=52
+	 * @property {String} title 标题文字
+	 * @property {String} leftText 左侧按钮文本
+	 * @property {String} rightText 右侧按钮文本
+	 * @property {String} leftIcon 左侧按钮图标（图标类型参考 [Icon 图标](http://ext.dcloud.net.cn/plugin?id=28) type 属性）
+	 * @property {String} rightIcon 右侧按钮图标（图标类型参考 [Icon 图标](http://ext.dcloud.net.cn/plugin?id=28) type 属性）
+	 * @property {String} color 图标和文字颜色
+	 * @property {String} backgroundColor 导航栏背景颜色
+	 * @property {Boolean} fixed = [true|false] 是否固定顶部
+	 * @property {Boolean} statusBar = [true|false] 是否包含状态栏
+	 * @property {Boolean} shadow = [true|false] 导航栏下是否有阴影
+	 * @event {Function} clickLeft 左侧按钮点击时触发
+	 * @event {Function} clickRight 右侧按钮点击时触发
+	 */
 	export default {
 		name: "UniNavBar",
 		components: {
@@ -86,12 +103,12 @@
 				default: false
 			},
 			shadow: {
-				type: [String, Boolean],
+				type: [Boolean, String],
 				default: false
 			},
 			border: {
-				type: [String, Boolean],
-				default: false
+				type: [Boolean, String],
+				default: true
 			}
 		},
 		mounted() {
@@ -124,13 +141,8 @@
 		font-size: 28rpx;
 	}
 
-	.uni-navbar {
-		width: 750rpx;
-	}
-
 	.uni-navbar__content {
 		position: relative;
-		width: 750rpx;
 		background-color: #ffffff;
 		overflow: hidden;
 	}
@@ -150,7 +162,6 @@
 		display: flex;
 		/* #endif */
 		flex-direction: row;
-		width: 750rpx;
 		height: 44px;
 		line-height: 44px;
 		font-size: 16px;

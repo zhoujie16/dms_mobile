@@ -2,7 +2,7 @@
 <template>
   <view>
     <!-- 表单部分 可滚动 -->
-    <scroll-view class="scroll-view-h" :style="{ height: '900rpx' }" scroll-y>
+    <scroll-view class="scroll-view-h" :style="{ maxHeight: '900rpx' }" scroll-y>
       <MLabel title="标题">内容</MLabel>
       <MInput labbe="文本" v-model="formData.value_1"></MInput>
       <MInput labbe="文本" v-model="formData.value_1">
@@ -37,8 +37,8 @@
         :itemList="itemList_2"
       ></MCheckboxPanel>
       <view class="m-break-space"></view>
-      <MPicker label="日期选择" mode="date" v-model="formData.value_date_1"></MPicker>
-      <MPicker label="日期范围选择" mode="range" v-model="formData.value_date_2"></MPicker>
+      <!-- <MPicker label="日期选择" mode="date" v-model="formData.value_date_1"></MPicker>
+      <MPicker label="日期范围选择" mode="range" v-model="formData.value_date_2"></MPicker> -->
       <MSwitch label="开关" v-model="formData.value_3"></MSwitch>
     </scroll-view>
     <!-- 重置选择按钮 位置固定 -->
