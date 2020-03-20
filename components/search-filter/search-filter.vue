@@ -7,22 +7,11 @@
         <text class="m-iconfont">&#xe721;</text>
       </view>
     </view>
-    <uni-popup ref="popup" type="top" :show="true">
+    <uni-popup ref="searchPopup" type="top" :show="true" @change="change">
       <view class="m-search-dialog-wrap">
         <view class="m-search-dialog-inner">
           <view class="search-form">
-            <scroll-view
-              class="scroll-view-h"
-              :style="{ height: height + 'rpx' }"
-              @scroll="scroll"
-              scroll-y
-            >
-              <slot name="form"></slot>
-            </scroll-view>
-          </view>
-          <view class="bottom-button">
-            <view @click="resetBtnClick" class="reset">重置</view>
-            <view @click="confirmBtnClick" class="submit">确定</view>
+            <slot name="form"></slot>
           </view>
         </view>
       </view>
@@ -46,32 +35,26 @@ export default {
   },
   data() {
     return {
-      isShowDrawer: false
+      popupShow: false
     };
   },
   methods: {
     // 显示抽屉组件
     open() {
-      console.log('点击事件');
-      this.$refs.popup.open();
+      console.log('筛选 点击事件');
+      if (this.popupShow) {
+        this.$refs.searchPopup.close();
+      } else {
+        this.$refs.searchPopup.open();
+      }
     },
     // 抽屉组件关闭
     close() {
-      this.$refs.popup.close();
+      this.$refs.searchPopup.close();
     },
     change(e) {
-      console.log('change', e);
-    },
-    scroll: function() {
-      console.log(e);
-      // this.old.scrollTop = e.detail.scrollTop
-    },
-    resetBtnClick() {
-      // this.$refs.popup.close();
-      this.$emit('reset');
-    },
-    confirmBtnClick() {
-      // this.$emit('confirm');
+      console.log('mpopup change', e);
+      this.popupShow = e.show;
     }
   }
 };
@@ -98,32 +81,35 @@ export default {
   background-color: #ffffff;
   .m-search-dialog-inner {
     .search-form {
-      .scroll-view-h {
-        height: 900rpx;
-        /deep/ .uni-scroll-view {
-          overflow: scroll !important;
-        }
-      }
+      // max-height: 900rpx;
+      // overflow-y: scroll;
+      // .scroll-view-h {
+      //   height: 900rpx;
+      //   /deep/ .uni-scroll-view {
+      //     overflow: scroll !important;
+      //   }
+      // }
     }
-    .bottom-button {
-      display: flex;
-      .reset,
-      .submit {
-        flex: 1;
-        height: 100rpx;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-      }
-      .reset {
-        background: #ffffff;
-        color: #333;
-      }
-      .submit {
-        background: #1371f7;
-        color: #ffffff;
-      }
-    }
+  }
+}
+
+.m-form-bottom-button {
+  display: flex;
+  .reset,
+  .submit {
+    flex: 1;
+    height: 100rpx;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .reset {
+    background: #ffffff;
+    color: #333;
+  }
+  .submit {
+    background: #1371f7;
+    color: #ffffff;
   }
 }
 </style>

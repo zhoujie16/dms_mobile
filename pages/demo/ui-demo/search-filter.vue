@@ -1,17 +1,17 @@
 <template>
   <MPage ref="MPage">
-    <!-- 上面的表单哦哦哦哦哦 -->
+    <!-- 表单组件 -->
     <search-filter ref="searchFilter">
       <!-- 自定义面板 -->
-      <template slot="panel">
+      <template v-slot:panel>
         <view class="m-flex m-justify-center m-align-center">自定义区域</view>
       </template>
       <!-- 弹窗的表单 -->
-      <template slot="form">
-        <FormDemo></FormDemo>
+      <template v-slot:form>
+        <FormDemo @confirm="formConfirm"></FormDemo>
       </template>
     </search-filter>
-    <!-- 下面的列表展示ooooo -->
+    <!-- 下面的列表展示 -->
     <BaseScroll
       :height="scrollHeight"
       :fetchApi="fetchApi"
@@ -22,14 +22,16 @@
         }
       "
     >
-      <view slot="scroll" style="padding: 20rpx;">
-        <ScrollCell
-          @click="scrollCellClick(data)"
-          v-for="(data, i) in dataSource"
-          :key="i"
-          :cell="data"
-        ></ScrollCell>
-      </view>
+      <template v-slot:scroll>
+        <view style="padding: 20rpx;">
+          <ScrollCell
+            @click="scrollCellClick(data)"
+            v-for="(data, i) in dataSource"
+            :key="i"
+            :cell="data"
+          ></ScrollCell>
+        </view>
+      </template>
     </BaseScroll>
   </MPage>
 </template>
@@ -56,7 +58,18 @@ export default {
     console.log('导航栏按钮点击事件', btn);
     this.$refs.searchFilter.open();
   },
-  methods: {}
+  methods: {
+    async scrollCellClick() {
+      
+    },
+    async formConfirm(data) {
+      console.log('formConfirm');
+      this.$refs.searchFilter.close();
+    },
+    async formReset() {
+      console.log('formReset');
+    }
+  }
 };
 </script>
 

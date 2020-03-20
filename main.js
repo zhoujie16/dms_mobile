@@ -143,6 +143,10 @@ Vue.component("BaseScroll", BaseScroll);
 import SearchFilter from "@/components/search-filter/search-filter.vue";
 Vue.component("SearchFilter", SearchFilter);
 
+import MFormBottom from "@/components/search-filter/m-form-bottom.vue";
+Vue.component("MFormBottom", MFormBottom);
+
+
 import MLabel from "@/components/search-filter/m-label.vue";
 Vue.component("MLabel", MLabel);
 

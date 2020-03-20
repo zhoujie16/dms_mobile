@@ -20,6 +20,23 @@ dms移动app，
 
 3. 单选 和 多选 的选项参数 itemList 结构: [{ text: '选项1', value: '1' }]。
    text 和 value 值类型必须 是 字符串
+   
+4. 插槽的使用
+	具名插槽和作用域插槽 全部使用 v-slot 指令。
+	不要使用  slot 和 slot-scope （vue官方已废弃）
+	
+	// 例如这样
+	<template v-slot:header="slotProps">
+		{{ slotProps.msg }}
+	</template>
+	
+	// 下面的写法不要使用
+	<template slot="header"></template>
+	<template slot="default" slot-scope="slotProps">
+    {{ slotProps.msg }}
+  </template>
+  
+5. m-button 按钮绑定事件 使用 @click.native 方式
 ```
 
 

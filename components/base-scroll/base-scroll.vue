@@ -10,7 +10,7 @@
       :up="upOption"
       @up="upCallback"
     >
-      <slot name="scroll" />
+      <slot name="scroll"></slot>
     </mescroll-uni>
   </view>
 </template>
@@ -64,7 +64,7 @@ export default {
         },
         noMoreSize: 5, // 配置列表的总数量要大于等于5条才显示'-- END --'的提示
         empty: {
-          icon:'/static/image/404.png',
+          icon: '/static/image/404.png',
           tip: '暂无记录'
         }
       }
@@ -118,9 +118,9 @@ export default {
         console.log('baseScroll 请求数据失败');
         return;
       }
-      console.log(res,'请求的数据')
+      console.log(res, '请求的数据');
       const _res = {
-        curPageData: res.data.records, // 新增的列表数据
+        curPageData: res.data.list, // 新增的列表数据
         totalSize: res.data.toast // 总数据
       };
       return _res;
