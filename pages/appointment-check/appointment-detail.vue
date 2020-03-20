@@ -114,7 +114,19 @@ export default {
     },
     async cancelClick() {
       const res = await deleteAppointment(this.bookingOrderNo);
-      console.log('取消预约',res)
+      console.log('取消预约',res);
+      const res1 = await this.SHOW_MODAL({
+        title: '取消成功',
+        content: '',
+        showCancel: false, // 是否显示取消按钮，默认为 true
+        confirmText: '确定' // 确定按钮的文字，默认为"确定"，最多 4 个字符
+      });
+      console.log(res1,res1=='confirm')
+      if(res1 == 'confirm'){
+        uni.navigateTo({
+          url: '/pages/appointment-check/appointment-check'
+        });
+      }
      
     },
     //预约时间

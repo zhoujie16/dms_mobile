@@ -3,7 +3,9 @@
   <view class="m-license-wrap">
     <view class="m-license-inner">
       <MLabel label="车牌号" :border="false">
-         <text @click="foldingHandleClick" class="m-iconfont screen"> &#xe72a;</text>
+         <text v-if="searchType=='search'" @click="foldingHandleClick" class="m-iconfont screen"> &#xe732;</text>
+          <text v-else @click="scanClick" class="m-iconfont screen">&#xe72a;</text>
+      
       </MLabel>
       <view class="m-license-content">
         <view
@@ -31,6 +33,10 @@ export default {
   props: {
     value: {
       type: String
+    },
+    searchType:{
+      type: String,
+      default: 'search'
     }
   },
   data() {
@@ -173,13 +179,22 @@ export default {
     //搜索车牌号
     foldingHandleClick(){
       // console.log(this._value,'车牌号')
-      this.$refs.mPopup.open();  // 打开
+      if(this.value){
+         this.$refs.mPopup.open();  // 打开
+      }else{
+         this.SHOW_TOAST('请输入车牌号');
+      }
+     
       
     },
     //点击车牌号，将数据传给父级
     licenseClick(item){
       this.$emit('list', item);
       this.$refs.mPopup.close(); 
+    },
+    //扫描车牌号
+    scanClick(){
+      
     }
   }
 };

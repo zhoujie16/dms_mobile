@@ -131,12 +131,15 @@ export default {
 };
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .page-wrap {
   background-color: $uni-m-color-cwhite;
 }
 /* 通知 */
 .notice-bar {
   margin: 10rpx 0;
+}
+/deep/ .uni-grid-item--border-top{
+  border: none!important;
 }
 </style>

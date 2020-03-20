@@ -26,7 +26,7 @@
           <view>{{ cell.contactorPhone }}</view>
         </view>
         <view class="phone">
-          <image src="/static/image/dianhua2.svg" mode="scaleToFill" class="img"></image>
+          <image @click.native="callClick(cell.contactorPhone)" src="/static/image/dianhua2.svg" mode="scaleToFill" class="img"></image>
         </view>
       </view>
     </view>
@@ -62,6 +62,11 @@ export default {
     },
     cellClick() {
       this.$emit('click');
+    },
+    callClick(phone){
+      uni.makePhoneCall({
+        phoneNumber: phone //仅为示例
+      });
     }
     // getServiceAdvisorName(code) {
 

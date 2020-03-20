@@ -6,12 +6,12 @@
         <!--全部 -->
         <swiper-item>
           <scroll-view class="swiper-scroll-wrap" scroll-y="true">
-            <CustomerInfoPanel></CustomerInfoPanel>
+            <CustomerInfoPanel ref="customerInfo"></CustomerInfoPanel>
           </scroll-view>
         </swiper-item>
         <swiper-item>
           <scroll-view class="swiper-scroll-wrap" scroll-y="true">
-            <CustomerDemandPanel></CustomerDemandPanel>
+            <CustomerDemandPanel ref="customerDemand"></CustomerDemandPanel>
           </scroll-view>
         </swiper-item>
         <swiper-item>
@@ -77,7 +77,7 @@ export default {
   methods: {
     // 轮播菜单
     swiperChange(e) {
-      this.curIndex = e.detail.current;
+       this.curIndex = e.detail.current;
     },
     // 切换菜单
     changeTab(i) {

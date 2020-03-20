@@ -6,6 +6,13 @@
   "description": "",
   "glyphs": [
     {
+      "icon_id": "13603203",
+      "name": "资源 1",
+      "font_class": "ziyuan-copy",
+      "unicode": "e732",
+      "unicode_decimal": 59186
+    },
+    {
       "icon_id": "13209925",
       "name": "icon_ waiguanyulan_ weixiulishi",
       "font_class": "icon_waiguanyulan_weixiulishi",

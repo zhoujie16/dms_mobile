@@ -105,8 +105,5 @@ class Auth {
     let item = list.find(x => x.value == code);
     return item == undefined ? '未知' : item.text;
   }
-
-
-
 }
 export default new Auth();

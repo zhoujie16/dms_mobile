@@ -15,7 +15,7 @@
           </view>
         </view>
       </view>
-      <view slot="form"><SearchForm></SearchForm></view>
+      <view slot="form"><SearchForm @confirm="conformSearch"></SearchForm></view>
     </search-filter>
     <!-- <view class="refresh">已为您刷新三条信息</view> -->
     <BaseScroll
@@ -78,12 +78,12 @@ export default {
         {
           id: '80401002',
           title: '已进厂',
-          count: 4
+          count: 0
         },
         {
           id: '80401005',
           title: '已取消',
-          count: 3
+          count: 0
         }
       ],
       serviceAdvisorList: []
@@ -100,6 +100,12 @@ export default {
       console.log('searchFormConfirm');
       this.$refs.searchFilter.hideDrawer();
       this.fetchParams = {
+        t: new Date().getTime()
+      };
+    },
+    conformSearch(params){
+      this.fetchParams = {
+        ...params,
         t: new Date().getTime()
       };
     },
