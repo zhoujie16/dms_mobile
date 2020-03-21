@@ -97,10 +97,15 @@ export default {
         pageNum,
         limit
       });
-      const res = await this.fetchData({
+      const [err, res] = await this.fetchData({
         pageNum,
         limit
       });
+      if (err) {
+        // 失败 重置数据
+        mescroll.endErr();
+        return;
+      }
       const { curPageData, totalSize } = res;
       if (mescroll.num == 1) {
         //如果是第一页需手动置空列表
@@ -113,17 +118,17 @@ export default {
     async fetchData({ pageNum, limit }) {
       await this.sleep(500);
       const params = { ...this.fetchParams, pageNum, limit };
-      const res = await this.fetchApi(params);
-      if (!res) {
+      const [err, res] = await this.fetchApi(params);
+      if (err) {
         console.log('baseScroll 请求数据失败');
-        return;
+        return [err, res];
       }
       console.log(res, '请求的数据');
       const _res = {
         curPageData: res.data.list, // 新增的列表数据
         totalSize: res.data.toast // 总数据
       };
-      return _res;
+      return [err, _res];
     }
   }
 };

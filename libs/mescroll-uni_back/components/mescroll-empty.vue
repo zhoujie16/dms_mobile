@@ -51,20 +51,19 @@ export default {
 .mescroll-empty {
 	box-sizing: border-box;
 	width: 100%;
-	padding: 100rpx 50rpx;
+	padding: 40rpx;
 	text-align: center;
 }
 
 .mescroll-empty.empty-fixed {
 	z-index: 99;
-	position: absolute; /*transform会使fixed失效,最终会降级为absolute */
-	top: 100rpx;
+	position: fixed; /*transform会使fixed失效,最终会降级为absolute */
+	top: 20%;
 	left: 0;
 }
 
 .mescroll-empty .empty-icon {
-	width: 280rpx;
-	height: 280rpx;
+	width: 45%;
 }
 
 .mescroll-empty .empty-tip {
