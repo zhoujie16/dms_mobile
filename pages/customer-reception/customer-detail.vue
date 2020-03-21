@@ -4,31 +4,28 @@
     <view class="page-body">
       <view class="title-panel">
         <view class="title-panel-inner">
-          <view class="customer-info">沪ADC520</view>
+          <view class="customer-info">{{previewInfoData.license}}</view>
           <view class="car-info">
             预检单号
-            <text class="value">YJ200017231</text>
+            <text class="value">{{previewInfoData.yjNo}}</text>
           </view>
           <view class="car-info">
-            工单编号
-            <text class="value">YJ200017231</text>
+            工单号
+            <text class="value">{{previewInfoData.roNo}}</text>
           </view>
         </view>
         <view class="title-panel-bg"></view>
       </view>
       <CollapsePanel title="客户信息">
         <template slot="default">
-          <MLabel label="车架号">xxxxxxxxxxxxxxxxx</MLabel>
-          <MLabel label="车主姓名">王大锤</MLabel>
-          <MLabel label="车主编号">xxxxxxxxxx</MLabel>
-          <MLabel label="手机号">xxxxxxx</MLabel>
-          <MLabel label="送修人">王尼玛</MLabel>
-          <MLabel label="送修人手机号">xxxxxx</MLabel>
-          <MLabel label="送修人邮箱">xxxxxxxxx@xxx.com</MLabel>
-          <MLabel label="品牌">测试品牌</MLabel>
-          <MLabel label="进厂里程">100000km</MLabel>
-          <MLabel label="服务顾问">张全蛋</MLabel>
-          <MLabel label="预约单号">xxxxxxxxxx</MLabel>
+          <MLabel label="vin">{{previewInfoData.vin}}</MLabel>
+          <MLabel label="车主姓名">{{previewInfoData.ownerName}}</MLabel>
+          <MLabel label="手机号">{{previewInfoData.mobile}}</MLabel>
+          <MLabel label="送修人">{{previewInfoData.contactorName}}</MLabel>
+          <MLabel label="送修人手机号">{{previewInfoData.contactorPhone}}</MLabel>
+          <MLabel label="送修人邮箱">{{previewInfoData.contactorEMail	}}</MLabel>
+          <MLabel label="里程(KM)">{{previewInfoData.inMileage}}</MLabel>
+          <MLabel label="服务顾问">{{previewInfoData.serviceAdvisor}}</MLabel>
         </template>
       </CollapsePanel>
       <CollapsePanel title="客户需求">
@@ -72,6 +69,7 @@ export default {
   },
   data() {
     return {
+      previewInfoData:{},
       value_1: [1, 3, 6],
       itemList_1: [
         { text: '客户在厂', value: 1 },

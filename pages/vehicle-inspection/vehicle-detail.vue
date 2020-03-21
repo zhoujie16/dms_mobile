@@ -36,9 +36,9 @@
           <uni-icons type="gear" size="26" color="#fff"></uni-icons>
           <view class="r-title">增修提醒</view>
         </view>
-        <view class="r-box" @click="keyClick">
+        <view class="r-box" @click="amonitorClick">
           <uni-icons type="info" size="26" color="#fff"></uni-icons>
-          <view class="r-title">关键信息</view>
+          <view class="r-title">监控信息</view>
         </view>
       </view>
       <!-- footer -->
@@ -51,13 +51,14 @@
         <view class="flex-item btn2">保存</view>
       </view>
       <!-- 维修历史 -->
-      <uni-popup ref="history" type="bottom">
-        <HistoryModel @close="closeHistory"></HistoryModel>
-      </uni-popup>
-      <!-- 关键信息 -->
-      <uni-popup ref="popup" type="center">
-        <KeyInfoModel @close="closeKey"></KeyInfoModel>
-      </uni-popup>
+      <MPopup ref="mPopup_history" type="bottom" title="维修历史">
+        <HistoryModel></HistoryModel>
+      </MPopup>
+      <!-- 监控信息 -->
+      <MPopup ref="mPopup_amonitor_info" type="bottom" title="监控信息">
+        <AmonitorInfo></AmonitorInfo>
+      </MPopup>
+      
     </view>
   </MPage>
 </template>
@@ -67,15 +68,15 @@ import VehiclePreview from './components/vehicle-preview.vue';
 import InteriorCheck from './components/interior-check.vue';
 import EngineNacelle from './components/engine-nacelle.vue';
 import ChassisRound from './components/chassis-round.vue';
-import KeyInfoModel from './components/keyInfo-model.vue';
-import HistoryModel from './components/history-model.vue';
+import AmonitorInfo from '@/pages/customer-reception/components/monitor-info.vue'; //监控信息
+import HistoryModel from '@/pages/customer-reception/components/history-model.vue';  //维修历史
 export default {
   components: {
     VehiclePreview,
     InteriorCheck,
     EngineNacelle,
     ChassisRound,
-    KeyInfoModel,
+    AmonitorInfo,
     HistoryModel
   },
   data() {
@@ -112,19 +113,15 @@ export default {
       });
     },
     // 关键信息
-    keyClick() {
-      this.$refs.popup.open();
+    amonitorClick() {
+       this.$refs.mPopup_amonitor_info.open();
     },
-    closeKey() {
-      this.$refs.popup.close();
-    },
+   
     // 维修历史
     historyClick() {
-      this.$refs.history.open();
+       this.$refs.mPopup_history.open();
     },
-    closeHistory() {
-      this.$refs.history.close();
-    },
+    
     //增修提醒
     remindClick() {
       uni.navigateTo({

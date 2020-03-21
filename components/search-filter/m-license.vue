@@ -3,9 +3,10 @@
   <view class="m-license-wrap">
     <view class="m-license-inner">
       <MLabel label="车牌号" :border="false">
-         <text v-if="searchType=='search'" @click="foldingHandleClick" class="m-iconfont screen"> &#xe732;</text>
-          <text v-else @click="scanClick" class="m-iconfont screen">&#xe72a;</text>
-      
+        <text v-if="searchType == 'search'" @click="foldingHandleClick" class="m-iconfont screen">
+          &#xe732;
+        </text>
+        <text v-else @click="scanClick" class="m-iconfont screen">&#xe72a;</text>
       </MLabel>
       <view class="m-license-content">
         <view
@@ -20,8 +21,8 @@
       </view>
     </view>
     <MPopup ref="mPopup" type="center" title="查询到的车牌">
-    	<view v-for="(item,index) in itemListLicense" :key="index">
-        <view class="itemBox" @click="licenseClick(item)">{{item.license}}</view>
+      <view v-for="(item, index) in itemListLicense" :key="index">
+        <view class="itemBox" @click="licenseClick(item)">{{ item.license }}</view>
       </view>
     </MPopup>
   </view>
@@ -34,7 +35,7 @@ export default {
     value: {
       type: String
     },
-    searchType:{
+    searchType: {
       type: String,
       default: 'search'
     }
@@ -51,19 +52,20 @@ export default {
         { id: 6, value: '', isActive: false },
         { id: 7, value: '', isActive: false }
       ],
-      itemListLicense:[{
-        id:1,
-        license:'沪001001'
-      },
-      {
-        id:2,
-        license:'沪001001'
-      },
-      {
-        id:3,
-        license:'沪001001'
-      }
-      ],
+      itemListLicense: [
+        {
+          id: 1,
+          license: '沪001001'
+        },
+        {
+          id: 2,
+          license: '沪001001'
+        },
+        {
+          id: 3,
+          license: '沪001001'
+        }
+      ]
     };
   },
   watch: {
@@ -177,25 +179,21 @@ export default {
       }
     },
     //搜索车牌号
-    foldingHandleClick(){
-      // console.log(this._value,'车牌号')
-      if(this.value){
-         this.$refs.mPopup.open();  // 打开
-      }else{
-         this.SHOW_TOAST('请输入车牌号');
+    foldingHandleClick() {
+      console.log(this._value, '车牌号');
+      if (this._value.trim()) {
+        this.$refs.mPopup.open(); // 打开
+      } else {
+        this.SHOW_TOAST('请输入车牌号');
       }
-     
-      
     },
     //点击车牌号，将数据传给父级
-    licenseClick(item){
+    licenseClick(item) {
       this.$emit('list', item);
-      this.$refs.mPopup.close(); 
+      this.$refs.mPopup.close();
     },
     //扫描车牌号
-    scanClick(){
-      
-    }
+    scanClick() {}
   }
 };
 </script>
@@ -220,14 +218,14 @@ export default {
     }
   }
 }
- .screen{
-    font-size: 52rpx;;
-    color: $uni-m-color-c11;
-  }
-  .itemBox{
-    height: 80rpx;
-    line-height: 80rpx;
-    text-align: center;
-    border-bottom: 2rpx solid $uni-m-color-c4-2;
-  }
+.screen {
+  font-size: 52rpx;
+  color: $uni-m-color-c11;
+}
+.itemBox {
+  height: 80rpx;
+  line-height: 80rpx;
+  text-align: center;
+  border-bottom: 2rpx solid $uni-m-color-c4-2;
+}
 </style>

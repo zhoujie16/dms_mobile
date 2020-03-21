@@ -1,38 +1,50 @@
 <template>
   <MPage ref="MPage" type="primary">
-	  <view class="swiper-page-wrap">
-    <SwiperTab :height="swiperTabHeight" :tabs="tabs" :curIndex="curIndex" @change="changeTab">
-      <swiper class="swiper-wrap" :current="curIndex" @change="swiperChange">
-        <!--全部 -->
-        <swiper-item>
-          <scroll-view class="swiper-scroll-wrap" scroll-y="true">
-            <CustomerInfoPanel ref="customerInfo"></CustomerInfoPanel>
-          </scroll-view>
-        </swiper-item>
-        <swiper-item>
-          <scroll-view class="swiper-scroll-wrap" scroll-y="true">
-            <CustomerDemandPanel ref="customerDemand"></CustomerDemandPanel>
-          </scroll-view>
-        </swiper-item>
-        <swiper-item>
-          <scroll-view class="swiper-scroll-wrap" scroll-y="true">
-            <VehicleFacePanel></VehicleFacePanel>
-          </scroll-view>
-        </swiper-item>
-       <!-- <swiper-item>
+    <view class="swiper-page-wrap">
+      <SwiperTab :height="swiperTabHeight" :tabs="tabs" :curIndex="curIndex" @change="changeTab">
+        <swiper class="swiper-wrap" :current="curIndex" @change="swiperChange">
+          <!--全部 -->
+          <swiper-item>
+            <scroll-view class="swiper-scroll-wrap" scroll-y="true">
+              <CustomerInfoPanel ref="customerInfo"></CustomerInfoPanel>
+            </scroll-view>
+          </swiper-item>
+          <swiper-item>
+            <scroll-view class="swiper-scroll-wrap" scroll-y="true">
+              <CustomerDemandPanel ref="customerDemand"></CustomerDemandPanel>
+            </scroll-view>
+          </swiper-item>
+          <swiper-item>
+            <scroll-view class="swiper-scroll-wrap" scroll-y="true">
+              <VehicleFacePanel></VehicleFacePanel>
+            </scroll-view>
+          </swiper-item>
+          <!-- <swiper-item>
           <scroll-view class="swiper-scroll-wrap" scroll-y="true">
             <DetailPreviewPanel></DetailPreviewPanel>
           </scroll-view>
         </swiper-item> -->
-      </swiper>
-    </SwiperTab>
-	<view class="uni-flex uni-row v-footer">
-	  <view class="flex-item v-border" >维修历史</view>
-	  <view class="flex-item v-border" >服务活动</view>
-	 
-	   <view class="flex-item ">监控信息</view>
-	</view>
-	</view>
+        </swiper>
+      </SwiperTab>
+      <view class="uni-flex uni-row v-footer">
+        <view class="flex-item v-border" @click="historyClick">维修历史</view>
+        <view class="flex-item v-border" @click="activityClick">服务活动</view>
+
+        <view class="flex-item " @click="amonitorClick">监控信息</view>
+      </view>
+    </view>
+    <!-- 维修历史 -->
+    <MPopup ref="mPopup_history" type="bottom" title="维修历史">
+      <HistoryModel></HistoryModel>
+    </MPopup>
+    <!-- 服务活动 -->
+    <MPopup ref="mPopup_activity" type="bottom" title="服务活动">
+      <ServiceActivity></ServiceActivity>
+    </MPopup>
+    <!-- 监控信息 -->
+    <MPopup ref="mPopup_amonitor_info" type="bottom" title="监控信息">
+      <AmonitorInfo></AmonitorInfo>
+    </MPopup>
   </MPage>
 </template>
 
@@ -40,13 +52,20 @@
 import CustomerInfoPanel from './components/customer-info-panel.vue';
 import CustomerDemandPanel from './components/customer-demand-panel.vue';
 import VehicleFacePanel from './components/vehicle-face-panel.vue';
-import DetailPreviewPanel from './components/detail-preview-panel.vue';//预览页面
+import DetailPreviewPanel from './components/detail-preview-panel.vue'; //预览页面
+import AmonitorInfo from '@/pages/customer-reception/components/monitor-info.vue'; //监控信息
+import HistoryModel from '@/pages/customer-reception/components/history-model.vue'; //维修历史
+import ServiceActivity from '@/pages/customer-reception/components/service-activity.vue'; //维修历史
+
 export default {
   components: {
     CustomerInfoPanel,
     CustomerDemandPanel,
     VehicleFacePanel,
-    DetailPreviewPanel
+    DetailPreviewPanel,
+    AmonitorInfo,
+    HistoryModel,
+    ServiceActivity
   },
   // 导航栏按钮点击事件
   onNavigationBarButtonTap(btn) {
@@ -71,13 +90,13 @@ export default {
   // 监听导航栏删选事件
   onNavigationBarButtonTap(e) {
     if (e.float == 'right') {
-     // 预览
+      // 预览
     }
   },
   methods: {
     // 轮播菜单
     swiperChange(e) {
-       this.curIndex = e.detail.current;
+      this.curIndex = e.detail.current;
     },
     // 切换菜单
     changeTab(i) {
@@ -102,34 +121,46 @@ export default {
         console.log('点击 取消');
         await uni.navigateBack();
       }
+    },
+    //维修历史
+    historyClick() {
+      this.$refs.mPopup_history.open();
+    },
+    //监控信息
+    amonitorClick() {
+      this.$refs.mPopup_amonitor_info.open();
+    },
+    //服务活动
+    activityClick() {
+      this.$refs.mPopup_activity.open();
     }
   }
 };
 </script>
 
 <style lang="scss">
-	.swiper-page-wrap {
-	  position: relative;
-	  .v-footer {
-	    position: fixed;
-	    bottom: 0;
-	    background-color: #fff;
-	    width: 100%;
-	    height: 120rpx;
-	    padding: 30rpx 0;
-	    .flex-item {
-	      width: 33%;
-	      text-align: center;
-	      line-height: 60rpx;
-        color: $uni-m-color-c11;
-        font-size: 36rpx;
-	      // line-height: 200rpx;
-	    }
-	    .v-border{
-	      border-right: 2rpx solid $uni-m-color-c4-2;
-	    }
-	  }
-	}
+.swiper-page-wrap {
+  position: relative;
+  .v-footer {
+    position: fixed;
+    bottom: 0;
+    background-color: #fff;
+    width: 100%;
+    height: 120rpx;
+    padding: 30rpx 0;
+    .flex-item {
+      width: 33%;
+      text-align: center;
+      line-height: 60rpx;
+      color: $uni-m-color-c11;
+      font-size: 36rpx;
+      // line-height: 200rpx;
+    }
+    .v-border {
+      border-right: 2rpx solid $uni-m-color-c4-2;
+    }
+  }
+}
 .swiper-wrap {
   // background-color: $uni-bg-color-page;
   position: absolute;
@@ -142,7 +173,7 @@ export default {
 .swiper-scroll-wrap {
   height: 100%;
 }
-.nav-right{
+.nav-right {
   color: $uni-m-color-c11;
 }
 </style>

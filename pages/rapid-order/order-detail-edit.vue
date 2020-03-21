@@ -118,18 +118,18 @@
 	</MPopup>
   <!-- 维修历史 -->
   <MPopup ref="mPopup_history" type="bottom" title="维修历史">
-    <RepaidHistory></RepaidHistory>
+    <HistoryModel></HistoryModel>
   </MPopup>
   </MPage>
 </template>
 
 <script>
-import AmonitorInfo from './components/monitor-info.vue';
-import RepaidHistory from './components/repaid-history.vue';
+import AmonitorInfo from '@/pages/customer-reception/components/monitor-info.vue';
+import HistoryModel from '@/pages/customer-reception/components/history-model.vue';
 export default {
   components: {
     AmonitorInfo,
-    RepaidHistory
+    HistoryModel
   },
   data() {
     return {

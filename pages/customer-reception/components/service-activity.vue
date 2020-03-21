@@ -1,6 +1,7 @@
 <template>
+  <!-- 服务活动 -->
 	<view>
-		维修历史
+		服务活动
 	</view>
 </template>
 

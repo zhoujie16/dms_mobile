@@ -15,7 +15,7 @@
           </view>
         </view>
       </view>
-      <view slot="form"><SearchForm @confirm="conformSearch"></SearchForm></view>
+      <view slot="form"><SearchForm :serviceAdvisorList="serviceAdvisorList" @confirm="conformSearch"></SearchForm></view>
     </search-filter>
     <!-- <view class="refresh">已为您刷新三条信息</view> -->
     <BaseScroll

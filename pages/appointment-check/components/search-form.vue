@@ -1,16 +1,23 @@
 <template>
   <view>
     <view class="form-demo-wrap" @touchmove.prevent>
-      <MLicense v-model="searchFilter.license"></MLicense>
+      <MLicense v-model="formData.license"></MLicense>
       <!-- <MPicker label="开单日期" mode="range" v-model="value_date_2"></MPicker> -->
-      <MCheckboxPanel
+     <!-- <MCheckboxPanel
         label="服务顾问"
         type="inner"
         v-model="searchFilter.serviceAdvisor"
         :itemList="serviceAdvisorList"
         single
-      ></MCheckboxPanel>
-      <MPicker label="开单日期" mode="range" v-model="searchFilter.createdAt"></MPicker>
+      ></MCheckboxPanel> -->
+      <MCheckbox
+        label="服务顾问"
+        type="popup"
+        v-model="formData.serviceAdvisor"
+        :itemList="serviceAdvisorList"
+        single
+      ></MCheckbox>
+      <MPicker label="开单日期" mode="range" v-model="formData.createdAt"></MPicker>
        <MFormBottom @confirm="formConfirm" @reset="formReset"></MFormBottom>
     </view>
   </view>
@@ -18,15 +25,18 @@
 <script>
 export default {
   components: {},
-
+  props:{
+    serviceAdvisorList:{
+      type:Array
+    }
+  },
   data() {
     return {
-      searchFilter: {
+      formData: {
         license: '',
         serviceAdvisor: [],
-        createdAt: []
+        createdAt: ['2018-01-06', '2020-01-06']
       },
-      serviceAdvisorList: []
     };
   },
   watch: {},
@@ -42,15 +52,15 @@ export default {
     },
     //重置表单
     formReset() {
-      this.searchFilter = { ...this.formData_reset };
+      this.formData = { ...this.formData_reset };
     },
     //确认查询
     formConfirm() {
       let params = {
-        license: this.searchFilter.license.trim(),
-        serviceAdvisor: this.searchFilter.serviceAdvisor[0],
-        beginCreatedAt: this.searchFilter.createdAt[0],
-        endCreatedAt: this.searchFilter.createdAt[1]
+        license: this.formData.license.trim(),
+        serviceAdvisor: this.formData.serviceAdvisor[0],
+        beginCreatedAt: this.formData.createdAt[0],
+        endCreatedAt: this.formData.createdAt[1]
       };
       this.$emit('confirm', params);
     },

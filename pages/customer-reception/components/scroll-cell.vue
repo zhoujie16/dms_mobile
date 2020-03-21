@@ -18,7 +18,7 @@
             <view>RO202001090002</view>
           </view>
           <view class="box">
-            <view class="label">接待顾问</view>
+            <view class="label">服务顾问</view>
             <view>陆小鹏</view>
           </view>
         </view>
@@ -55,6 +55,7 @@ export default {
 
 <style lang="scss" scoped>
 .list-cell-wrap {
+  width: 100%;
 }
 
 .list-cell-wrap-inner {
@@ -63,7 +64,7 @@ export default {
   overflow: hidden;
   background-color: #ffffff;
   padding:26rpx 30rpx;
-  margin: 20rpx;
+  margin:0 20rpx;
 }
 .list-cell-title {
   display: flex;

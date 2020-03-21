@@ -3,7 +3,7 @@
     <SearchFilter ref="searchFilter" :isShow="false">
       <view slot="form"><searchForm @confirm="searchFormConfirm"></searchForm></view>
     </SearchFilter>
-    <BaseScroll
+  <!--  <BaseScroll
       :height="scrollHeight"
       :fetchApi="fetchApi"
       :fetchParams="fetchParams"
@@ -18,8 +18,8 @@
           <scrollCell @click="scrollCellClick(data)"></scrollCell>
         </view>
       </view>
-    </BaseScroll>
-    <!-- <scrollCell @click="scrollCellClick(1)"></scrollCell> -->
+    </BaseScroll> -->
+    <scrollCell @click="scrollCellClick(1)"></scrollCell>
   </MPage>
 </template>
 

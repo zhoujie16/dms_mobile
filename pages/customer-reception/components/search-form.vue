@@ -1,65 +1,75 @@
 <template>
   <view>
     <view class="form-demo-wrap">
-      <!-- <MInput v-model="cph" label="车牌号"></MInput> -->
-	  <MLicense label="车牌号"></MLicense>
-      <MCheckbox label="服务顾问" v-model="fwgw" :itemList="itemList_fwgw" single></MCheckbox>
-      <MCheckbox label="是否交车" v-model="sfjc" :itemList="itemList_sfjc" single></MCheckbox>
-      <MInput v-model="khmc" label="客户名称"></MInput>
-      <MInput v-model="gdbh" label="预检单号"></MInput>
-      <MInput v-model="gdbh1" label="工单单号"></MInput>
-      <!-- <MCheckbox label="维修类型" v-model="wxlx" :itemList="itemList_wxlx" single></MCheckbox> -->
-      <!-- <MCheckbox label="服务组织" v-model="fwzz" :itemList="itemList_fwzz"></MCheckbox> -->
-      <MDatePicker label="开单日期" v-model="dateTest"></MDatePicker>
-      <view class="btn-v">
-        <button @click="formSubmit" type="primary" class="submit-btn">查询</button>
-      </view>
+      <MLicense label="车牌号" :value="formData.license"></MLicense>
+      <MCheckbox
+        label="服务顾问"
+        type="popup"
+        v-model="formData.serviceAdvisor"
+        :itemList="serviceAdvisorList"
+        single
+      ></MCheckbox>
+      <MCheckbox
+        label="是否交车"
+        type="popup"
+        v-model="formData.deliveryTag"
+        :itemList="itemList_sfjc"
+        single
+      ></MCheckbox>
+
+      <MInput label="车主名称" :value="formData.ownerName"></MInput>
+      <MInput label="预检单号" :value="formData.yjNo"></MInput>
+      <MInput label="工单号" :value="formData.roNo"></MInput>
+      <MPicker label="开单日期" mode="range" v-model="formData.createdAt"></MPicker>
+     
     </view>
+     <MFormBottom @confirm="formConfirm" @reset="formReset"></MFormBottom>
   </view>
 </template>
 <script>
 export default {
   components: {},
-  data() {
-    return {
-      cph: '',
-      khmc: '',
-      gdbh: '',
-      gdbh1: '',
-      //
-      wxlx: [],
-      fwzz: [],
-      fwgw: [],
-      sfjc: [],
-      itemList_wxlx: [{ text: '机电', value: '1' }, { text: '钣喷', value: '2' }],
-      itemList_fwzz: [
-        { text: '组织1', value: '1' },
-        { text: '组织2', value: '2' },
-        { text: '组织3', value: '3' },
-        { text: '组织4', value: '4' },
-        { text: '组织5', value: '5' }
-      ],
-      itemList_fwgw: [
-        { text: '王大锤', value: '1' },
-        { text: '张全蛋', value: '2' },
-        { text: '赵铁柱', value: '3' },
-        { text: '王尼玛', value: '4' },
-        { text: '陈二狗', value: '5' }
-      ],
-      itemList_sfjc: [{ text: '已交车', value: '1' }, { text: '未交车', value: '2' }],
-      dateTest: ['']
-    };
-  },
-  watch: {
-    dateTest(dateTest) {
-      console.log('dateTest change', dateTest);
+  props:{
+    serviceAdvisorList:{
+      type:Array
     }
   },
+  data() {
+    return {
+      formData: {
+        license: '',
+        serviceAdvisor: [],
+        deliveryTag: [],
+        ownerName: '',
+        yjNo: '',
+        roNo: '',
+        createdAt: ['2018-01-06', '2020-01-06']
+      },
+      itemList_sfjc: [{ text: '已交车', value: '1' }, { text: '未交车', value: '2' }]
+    };
+  },
+  mounted() {
+    // 备份初始值 用于重置
+    this.formData_reset = { ...this.formData };
+  },
   methods: {
-    // 查询按钮事件
-    formSubmit() {
-      console.log('formSubmit');
-      this.$emit('confirm');
+    //重置表单
+    formReset() {
+      this.formData = { ...this.formData_reset };
+    },
+    //确认查询
+    formConfirm() {
+      let params = {
+        license: this.formData.license.trim(),
+        serviceAdvisor: this.formData.serviceAdvisor[0],
+        deliveryTag: this.formData.deliveryTag[0],
+        ownerName: this.formData.ownerName,
+        yjNo: this.formData.yjNo,
+        roNo: this.formData.roNo,
+        beginCreatedAt: this.formData.createdAt[0],
+        endCreatedAt: this.formData.createdAt[1]
+      };
+      this.$emit('confirm', params);
     }
   }
 };
@@ -69,7 +79,7 @@ export default {
 .form-demo-wrap {
   position: relative;
   background-color: #ffffff;
-  padding: 30rpx;
+  margin-bottom: 30rpx;
 }
 
 .btn-v {

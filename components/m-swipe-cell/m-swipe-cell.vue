@@ -59,4 +59,12 @@ export default {
 };
 </script>
 
-<style lang="scss"></style>
+<style lang="scss" scoped>
+  /deep/ .uni-swipe_box{
+    background:none!important;
+  }
+  /deep/ .uni-swipe_button{
+    border-top-left-radius: 20rpx;
+    border-bottom-left-radius: 20rpx;
+  }
+</style>

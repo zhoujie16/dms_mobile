@@ -43,7 +43,7 @@
 </template>
 
 <script>
-import AmonitorInfo from './components/monitor-info.vue';
+import AmonitorInfo from '@/pages/customer-reception/components/monitor-info.vue'; //监控信息
 export default {
   components: {
     AmonitorInfo

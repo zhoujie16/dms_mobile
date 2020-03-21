@@ -100,7 +100,6 @@ export default {
           { text: '选项1', value: '1' },
           { text: '选项2', value: '2' },
           { text: '选项3', value: '3' },
-          { text: '选项4', value: '4' },
           { text: '选项5', value: '5' }
         ]
       });

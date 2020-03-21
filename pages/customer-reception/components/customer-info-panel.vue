@@ -6,9 +6,9 @@
       <view slot="after"><text @click="searchClick" class="m-iconfont screen">&#xe732;</text></view>
     </MInput>
     <!-- readonly -->
-    <MInput label="车型"  :value="formData.model"></MInput>
+    <MInput label="车型" :value="formData.model"></MInput>
     <!-- readonly -->
-    <MInput label="车主姓名" :value="formData.ownerName"></MInput> 
+    <MInput label="车主姓名" :value="formData.ownerName"></MInput>
     <!-- readonly -->
     <MInput label="手机号" :value="formData.phone"></MInput>
     <MInput label="邮箱" :value="formData.eMail"></MInput>
@@ -23,6 +23,13 @@
         ></image>
       </view>
     </MInput>
+    <MCheckbox
+      label="服务顾问"
+      type="popup"
+      v-model="formData.serviceAdvisor"
+      :itemList="serviceAdvisorList"
+      single
+    ></MCheckbox>
     <MInput label="里程(KM)" :required="true"></MInput>
     <MInput label="进厂时间"></MInput>
     <!-- readonly -->
@@ -32,12 +39,9 @@
 </template>
 
 <script>
-import InfoPanel from './info-panel.vue';
+import dictCode from '@/common/dictCode.js';
 export default {
-  components: {
-    InfoPanel
-  },
-  name: '',
+  name: 'customer-info-add',
   data() {
     return {
       formData: {
@@ -52,9 +56,14 @@ export default {
         mileage: '',
         firstInDate: '',
         salesDate: '',
-        address: ''
-      }
+        address: '',
+        serviceAdvisor: []
+      },
+      serviceAdvisorList: []
     };
+  },
+  mounted() {
+    this.getServiceAdvisorList();
   },
   methods: {
     searchClick() {},
@@ -63,6 +72,12 @@ export default {
       uni.makePhoneCall({
         phoneNumber: phone //仅为示例
       });
+    },
+    //获取列表
+    async getServiceAdvisorList() {
+      //服务顾问
+      let consultant = { role: dictCode.SERVICE_CONSULTANT, companyId: this.$auth.getCompanyId() };
+      this.serviceAdvisorList = await this.$auth.queryServiceAdvisor(consultant);
     }
   }
 };

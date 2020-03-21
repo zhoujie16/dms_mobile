@@ -1,8 +1,7 @@
 <template>
   <MPage ref="MPage" type="primary">
-   
     <SearchFilter ref="searchFilter" :isShow="false">
-      <view slot="form"><searchForm @confirm="searchFormConfirm"></searchForm></view>
+      <view slot="form"><searchForm :serviceAdvisorList="serviceAdvisorList" @confirm="searchFormConfirm"></searchForm></view>
     </SearchFilter>
     <!-- <BaseScroll
       :height="scrollHeight"
@@ -20,7 +19,19 @@
         </view>
       </view>
     </BaseScroll> -->
-     <scrollCell @click="scrollCellClick(1)"></scrollCell>
+    <view class="cell-pad">
+      <MSwipeCell
+        :disabled="false"
+        :options="[{ text: '删除', type: 'warn' }]"
+        @optionClick="optionClick"
+        @change="swipeChange"
+      >
+        <template v-slot:cell>
+          <scrollCell @click="scrollCellClick(1)"></scrollCell>
+        </template>
+      </MSwipeCell>
+    </view>
+
     <view class="popup-group">
       <image
         @click="addBtnClick"
@@ -36,7 +47,7 @@
 import searchForm from '@/pages/customer-reception/components/search-form.vue';
 import { AjaxScrollData } from '@/api/test/index.js';
 import scrollCell from '@/pages/customer-reception/components/scroll-cell.vue';
-
+import dictCode from '@/common/dictCode.js';
 export default {
   components: {
     scrollCell,
@@ -47,7 +58,8 @@ export default {
     return {
       fetchApi: AjaxScrollData,
       fetchParams: {},
-      dataSource: []
+      dataSource: [],
+      serviceAdvisorList: []
     };
   },
   // 监听导航栏删选事件
@@ -55,6 +67,9 @@ export default {
     if (e.float == 'right') {
       this.$refs.searchFilter.open();
     }
+  },
+  mounted() {
+    this.getServiceAdvisorList();
   },
   methods: {
     // 列表点击事件
@@ -75,6 +90,21 @@ export default {
       await uni.navigateTo({
         url: '/pages/customer-reception/customer-add'
       });
+    },
+    //左滑删除
+    optionClick({ text, index }) {
+      console.log('点击滑动区域按钮', { text, index });
+      this.SHOW_TOAST(text);
+    },
+    swipeChange(state) {
+      console.log('状态', state);
+    },
+    
+    //服务顾问列表
+    async getServiceAdvisorList() {
+      //服务顾问
+      let consultant = { role: dictCode.SERVICE_CONSULTANT, companyId: this.$auth.getCompanyId() };
+      this.serviceAdvisorList = await this.$auth.queryServiceAdvisor(consultant);
     }
   }
 };
@@ -90,5 +120,8 @@ export default {
 }
 .icon {
   font-size: 48rpx;
+}
+.cell-pad {
+  margin: 20rpx 0;
 }
 </style>
