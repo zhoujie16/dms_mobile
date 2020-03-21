@@ -1,5 +1,5 @@
 <template>
-  <view class="page-wrap">
+  <MPage ref="MPage">
     <!-- 提醒 -->
     <uni-notice-bar
       class="notice-bar"
@@ -19,10 +19,12 @@
         </uni-grid-item>
       </uni-grid>
     </view>
-  </view>
+  </MPage>
 </template>
 
 <script>
+import { mapActions } from 'vuex';
+import { queryDict } from '@/api/util/index.js';
 import uniGrid from '@/libs/uni-ui/uni-grid/uni-grid.vue';
 import uniGridItem from '@/libs/uni-ui/uni-grid-item/uni-grid-item.vue';
 import uniNoticeBar from '@/libs/uni-ui/uni-notice-bar/uni-notice-bar.vue';
@@ -46,6 +48,8 @@ export default {
   },
   onReady() {
     console.log('tabbar1 ready', this);
+    // 登录后，获取所有的数据字典值
+    // this.createDictData();
   },
   data() {
     return {
@@ -121,6 +125,24 @@ export default {
     };
   },
   methods: {
+    // 下载数据字典
+    async createDictData() {
+      const [err, res_queryDict] = await queryDict();
+      if (err) {
+        console.log('字典下载失败');
+        const res_modal = await this.SHOW_MODAL({
+          title: '提示',
+          content: '数据字典下载失败, 请重新登录',
+          showCancel: false,
+          confirmText: '确定'
+        });
+        await uni.reLaunch({
+          url: '/pages/login/login'
+        });
+        return;
+      }
+      // 字典下载成功 保存字典
+    },
     gridItemClick(item) {
       console.log('gridItemClick');
       uni.navigateTo({
@@ -132,14 +154,11 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.page-wrap {
-  background-color: $uni-m-color-cwhite;
-}
 /* 通知 */
 .notice-bar {
   margin: 10rpx 0;
 }
-/deep/ .uni-grid-item--border-top{
-  border: none!important;
+/deep/ .uni-grid-item--border-top {
+  border: none !important;
 }
 </style>

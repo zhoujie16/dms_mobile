@@ -23,7 +23,7 @@
           </view>
         </view>
         <view class="miss_password" @click="forgetPassword">忘记密码</view>
-        <button class="login-button" @click="testLogin" type="primary">登录</button>
+        <button class="login-button" @click="loginHandleClick" type="primary">登录</button>
       </view>
     </view>
     <view class="weixin">
@@ -35,9 +35,11 @@
 </template>
 
 <script>
+import { mapActions } from 'vuex';
 import { loginHttp } from '@/api/login/index.js';
 import { commonDict } from '@/api/test/index.js';
 import { queryDict } from '@/api/util/index.js';
+
 export default {
   data() {
     return {
@@ -48,6 +50,7 @@ export default {
   },
   onReady() {
     console.log('login onReady');
+    this.reloadUserInfo();
     // this.testLogin();
     // console.log(this);
     // uni.navigateTo({
@@ -67,30 +70,44 @@ export default {
     }
   },
   methods: {
-    async testLogin() {
-      const res = await loginHttp({
+    // 回显用户名密码
+    reloadUserInfo() {
+      // 如果jwt存在 跳过登录
+      // const jwt = uni.getStorageSync(LOGIN_JWT);
+      // if (jwt) {
+      //   this.goMenuPage();
+      // }
+      this.username = this.$auth.getLoginUser();
+      this.password = this.$auth.getLoginPassword();
+    },
+    async loginHandleClick() {
+      const [err, res] = await loginHttp({
         appId: 'cyx',
-        // username: this.username,
-        // password: this.$auth.jsEncrypt(this.password)
-        
-        username: 'ZF1',
-        password: this.$auth.jsEncrypt('Aa123456')
+        username: this.username,
+        password: this.$auth.jsEncrypt(this.password)
+
+        // username: 'ZF1',
+        // password: this.$auth.jsEncrypt('Aa123456')
       });
-      console.log('登录结果', res);
-      if (!res.success) {
-        this.SHOW_TOAST(res.errMsg);
+      // console.log('登录结果', res);
+      if (err) {
         return;
       }
-      
-      // 保存信息
-      this.$auth.setToken(res.data.jwt);
-      this.$auth.setUserId(res.data.rData.userId);
-      this.$auth.setCompanyId( res.data.rData.companyId);
-      console.log(this.$auth.getCompanyId(),'公司id')
-      const res2 = await uni.navigateTo({
-        url: '/pages/tabBar/tabPage1/tabPage1'
-      });
-      console.log(res2);
+      // 记住用户名密码
+      this.$auth.saveLoginUser(this.username);
+      this.$auth.saveLoginPassword(this.password);
+      // 保存信息 rData 全部字段 不知道有些是干啥的 先存了再说 😅
+      this.$auth.saveToken(res.data.jwt);
+      const rData = res.data.rData;
+      this.$auth.saveUserStatus(rData.userStatus);
+      this.$auth.saveEmployeeId(rData.employeeId);
+      this.$auth.saveUserId(rData.userId);
+      this.$auth.saveUserCode(rData.userCode);
+      this.$auth.saveCompanyId(rData.companyId);
+      this.$auth.saveEmployeedudytype(rData.employeeDutyType);
+      this.$auth.saveOrgCode(rData.orgCode);
+
+      await this.goMenuPage();
 
       // 获取字典
       // const dictRes = await queryDict();
@@ -103,6 +120,12 @@ export default {
       //     this.$auth.setStorageData('dict', data);
       //   }
       // }
+    },
+    // 重定向到主页
+    async goMenuPage() {
+      await uni.reLaunch({
+        url: '/pages/tabBar/tabPage1/tabPage1'
+      });
     },
     forgetPassword() {
       uni.navigateTo({

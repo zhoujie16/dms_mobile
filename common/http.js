@@ -1,5 +1,5 @@
 import AppConfig from "./../config/config.js";
-import Auth from "@/common/auth.js";
+import Auth from "@/common/auth/index.js";
 
 class Http {
   constructor(arg) {
@@ -17,10 +17,13 @@ class Http {
     url,
     method,
     data = {},
-    config = {
-      isLoading: false
-    }
+    _config = {}
   }) {
+    const config = {
+      isLoading: false,
+      showError: true,
+      ..._config
+    }
     let requestUrl = AppConfig.requsetUrl + url;
     if (url.indexOf("http://") !== -1 || url.indexOf("https://") !== -1) {
       requestUrl = url;
@@ -39,25 +42,42 @@ class Http {
       data,
       header: {
         "content-type": "application/json;charset=UTF-8",
+        'appId': 'cyx',
         'userAgent': 'pc',
         "jwt": Auth.getToken(),
-        'appId': 'cyx',
         'userId': Auth.getUserId(),
-        'ownerCode': Auth.getOwnerCode()
+        'ownerCode': ''
       }
     });
-    console.log("http 请求 响应: ", res);
+    console.log("http 请求 响应: ", res.data);
     if (config.isLoading) {
       await this.sleep(300);
-      await uni.hideLoading(); 
+      await uni.hideLoading();
     }
     if (err) {
-      console.log(err);
+      // 请求发送时候失败
+      uni.showToast({
+        title: '请求发送失败, 请检查您的网络',
+        position: 'bottom',
+        icon: 'none'
+      });
       return null;
     }
-    return res.data;
+    const resultCode = res.data.resultCode;
+    if (resultCode !== 200) {
+      if (config.showError) {
+        const errMsg = res.data.errMsg || res.data.message;
+        uni.showToast({
+          title: errMsg,
+          position: 'bottom',
+          icon: 'none'
+        });
+      }
+      return [true, res.data];
+    }
+    return [false, res.data];
   }
-  async get(url, data, config) {
+  async get(url, data, _config) {
     const method = "GET";
     return await this.ajax({
       url,
@@ -65,17 +85,17 @@ class Http {
       data: { ...data,
         t: new Date().getTime()
       },
-      config
+      _config
     });
   }
 
-  async post(url, data, config) {
+  async post(url, data, _config) {
     const method = "POST";
     return await this.ajax({
       url,
       method,
       data,
-      config
+      _config
     });
   }
 }
