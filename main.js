@@ -14,6 +14,14 @@ Vue.prototype.$store = store;
 import AppConfig from "@/config/config.js";
 Vue.prototype.$appConfig = AppConfig;
 
+import Speech from '@/common/speech/index.js';
+Vue.prototype.$speech = Speech;
+
+import Dict from '@/common/dict/index.js';
+Vue.prototype.$dict = Dict;
+
+Vue.config.productionTip = false;
+
 Vue.prototype.$sleep = timeout => {
   return new Promise((resolve, resject) => {
     setTimeout(() => {
@@ -22,7 +30,7 @@ Vue.prototype.$sleep = timeout => {
   });
 };
 
-import Auth from "@/common/auth.js";
+import Auth from "@/common/auth/index.js";
 Vue.prototype.$auth = Auth;
 
 // 绑定公共方法
@@ -251,11 +259,6 @@ Vue.component("MKeyboard", MKeyboard);
 
 /** 绑定公共组件 E */
 
-Vue.config.productionTip = false;
-
-import Speech from '@/common/Speech.js';
-Vue.prototype.$speech = Speech;
-
 /**
  * 公共方法混入  所有Vue组件均可使用
  */
@@ -282,6 +285,13 @@ Vue.mixin({
         })
       });
       callback && callback();
+    },
+    SLEEP(timeout) {
+      return new Promise((resolve, resject) => {
+        setTimeout(() => {
+          resolve();
+        }, timeout);
+      });
     },
     async TEST() {
       console.log(('mixin test'))
@@ -317,11 +327,36 @@ Vue.mixin({
     async SHOW_TIME_PICKER(params) {
       return await this.$root.$refs.MPage.MPickerPopup.showPicker(params);
     },
-    // 显示模态弹窗
+    /**
+     * 显示模态弹窗
+     * @example 
+      const res = await this.SHOW_MODAL({
+        title: '提示的标题',
+        content: '提示的内容',
+        showCancel: true, // 是否显示取消按钮，默认为 true
+        cancelText: '取消', // 取消按钮的文字，默认为"取消"，最多 4 个字符
+        confirmText: '确定' // 确定按钮的文字，默认为"确定"，最多 4 个字符
+      });
+      @property {String} res = ['confirm' | 'cancel']
+     */
     async SHOW_MODAL(params) {
       return await this.$root.$refs.MPage.MModal.showModal(params);
     },
-    // 显示操作菜单
+    // 
+    /**
+     * 显示操作菜单
+     * @example 
+       const res = await this.SHOW_ACTION_SHEET({
+         itemList: [
+           { text: '选项1', value: '1' },
+           { text: '选项2', value: '2' },
+           { text: '选项3', value: '3' },
+           { text: '选项4', value: '4' },
+           { text: '选项5', value: '5' }
+         ]
+       });
+     * @param {type} res = { text: '选项5', value: '5' } 
+     */
     async SHOW_ACTION_SHEET(params) {
       return await this.$root.$refs.MPage.MActionSheet.showActionSheet(params);
     }

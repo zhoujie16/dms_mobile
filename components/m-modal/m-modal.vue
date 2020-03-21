@@ -45,7 +45,13 @@ export default {
   },
   computed: {},
   methods: {
-    showModal({ title, content, showCancel = true, cancelText = '取消', confirmText = '确定' }) {
+    showModal({
+      title = '提示',
+      content,
+      showCancel = true,
+      cancelText = '取消',
+      confirmText = '确定'
+    }) {
       return new Promise(reslove => {
         this.isShowPopup = true;
         this.title = title;

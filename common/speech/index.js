@@ -7,13 +7,16 @@ let instance = null;
 
 class Speech {
   constructor() {
+    console.log('Speech constructor');
     if (!instance) {
       instance = this;
+      instance.initRecognize();
     }
     return instance;
   }
   // 初始化 语音识别
   initRecognize() {
+    console.log('plus', plus);
     plus.speech.addEventListener('start', () => {
       // console.log('开始语音识别');
       this._start();
