@@ -13,6 +13,9 @@ export default {
   },
   onLaunch: function() {
     console.log('App Launch');
+    // #ifdef H5
+    window.app = this;
+    // #endif
   },
   onShow: function() {
     console.log('App Show');

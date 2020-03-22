@@ -10,13 +10,14 @@ class Speech {
     console.log('Speech constructor');
     if (!instance) {
       instance = this;
+			//#ifdef APP-PLUS
       instance.initRecognize();
+			//#endif
     }
     return instance;
   }
   // 初始化 语音识别
   initRecognize() {
-    console.log('plus', plus);
     plus.speech.addEventListener('start', () => {
       // console.log('开始语音识别');
       this._start();

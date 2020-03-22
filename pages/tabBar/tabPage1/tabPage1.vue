@@ -49,7 +49,7 @@ export default {
   onReady() {
     console.log('tabbar1 ready', this);
     // 登录后，获取所有的数据字典值
-    // this.createDictData();
+    this.createDictData();
   },
   data() {
     return {
@@ -127,7 +127,7 @@ export default {
   methods: {
     // 下载数据字典
     async createDictData() {
-      const [err, res_queryDict] = await queryDict();
+      const [err, res_dict] = await queryDict();
       if (err) {
         console.log('字典下载失败');
         const res_modal = await this.SHOW_MODAL({
@@ -142,6 +142,10 @@ export default {
         return;
       }
       // 字典下载成功 保存字典
+      const dict = res_dict.data.dict;
+      const region = res_dict.data.region;
+      this.$dict.initDict({ dict, region });
+      console.log('createDictRegion', this.$dict.createDictRegion());
     },
     gridItemClick(item) {
       console.log('gridItemClick');
