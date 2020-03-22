@@ -124,7 +124,16 @@ export default {
               url: '/pages/demo/ui-demo/check-item'
             });
           }
-        }
+        },
+        // pages/demo/ui-demo/dict
+        {
+          title: '字典Demo',
+          clickFn: async () => {
+            const [err, res] = await uni.navigateTo({
+              url: '/pages/demo/ui-demo/dict'
+            });
+          }
+        },
       ]
     };
   },

@@ -359,6 +359,17 @@ Vue.mixin({
      */
     async SHOW_ACTION_SHEET(params) {
       return await this.$root.$refs.MPage.MActionSheet.showActionSheet(params);
+    },
+    /**
+     * 选择地址
+     * @example
+       const res = await this.SHOW_ADDRESS_PICKER({
+         value:['code','code','code'] // 默认值
+       });
+     * @param {type} res = 
+     */
+    async SHOW_ADDRESS_PICKER(params) {
+      return await this.$root.$refs.MPage.MPickerPopup.showAddressPicker(params);
     }
   }
 });

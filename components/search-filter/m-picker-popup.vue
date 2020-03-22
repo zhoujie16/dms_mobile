@@ -80,6 +80,19 @@
         ref="picker"
       ></w-picker>
     </view>
+
+    <!-- 多级联动 -->
+    <view v-if="mode === 'linkage'">
+      <w-picker
+        mode="linkage"
+        :level="3"
+        @confirm="onConfirm"
+        @cancel="onCancel"
+        ref="picker"
+        :value="linkListValue"
+        :linkList="linkList"
+      ></w-picker>
+    </view>
   </view>
 </template>
 
@@ -101,7 +114,10 @@ export default {
       startYear: '',
       endYear: '',
       defaultVal: '',
-      hasSecond: true
+      hasSecond: true,
+      // 多级参数
+      linkListValue: [],
+      linkList: []
     };
   },
   methods: {
@@ -184,6 +200,47 @@ export default {
     },
     onCancel() {
       this.cancel();
+    },
+    showAddressPicker({ value = ['22030', '22061', '22062'] }) {
+      return new Promise(reslove => {
+        this.mode = 'linkage';
+        this.linkListValue = value;
+        // this.linkList = [
+        //   {
+        //     label: 'aaa10',
+        //     value: '10',
+        //     children: [
+        //       {
+        //         label: 'aaa1010',
+        //         value: '1010',
+        //         children: [{ label: 'aaa101010', value: '101010' }]
+        //       }
+        //     ]
+        //   }
+        // ];
+        this.linkList = this.$dict.createDictRegion();
+        this.$nextTick(() => {
+          this.$refs.picker.show();
+        });
+        this.confirm = result => {
+          console.log('m-picker-popup result', result);
+          let _result = result;
+          if (this.mode == 'linkage') {
+            _result = result;
+          }
+          setTimeout(() => {
+            this.mode = '';
+            reslove(_result);
+          }, 300);
+        };
+        this.cancel = () => {
+          console.log('m-picker-popup cancel');
+          setTimeout(() => {
+            this.mode = '';
+            reslove('cancel');
+          }, 300);
+        };
+      });
     }
   }
 };

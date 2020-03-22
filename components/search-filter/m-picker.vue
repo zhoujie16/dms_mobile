@@ -2,9 +2,7 @@
   <view class="">
     <MLabel :label="label" :row="2">
       <view class="m-picker-inner m-flex m-justify-end">
-        <view @click="showPopupClick">
-          {{ tipInfo }}
-        </view>
+        <view @click="showPopupClick">{{ tipInfo }}</view>
       </view>
     </MLabel>
   </view>
@@ -28,16 +26,20 @@ export default {
     }
   },
   data() {
-    return {};
+    return {
+      formatAddress: ''
+    };
   },
   computed: {
     tipInfo() {
-      if (this.value) {
-        const str = this.value.join(',');
-        return str || '请选择';
-      } else {
+      if (!this.value || !this.formatAddress) {
         return '请选择';
       }
+      if (this.mode == 'address') {
+        return this.formatAddress;
+      }
+      const str = this.value.join(',');
+      return str || '请选择';
     }
   },
   methods: {
@@ -51,6 +53,8 @@ export default {
         this.showPopupDate();
       } else if (mode == 'range') {
         this.showPopupRange();
+      } else if (mode == 'address') {
+        this.showPopupAddress();
       }
     },
     // 单选
@@ -84,6 +88,11 @@ export default {
       };
       const res = await this.$root.$refs.MPage.MPickerPopup.showPicker(params);
       this.emitInput(res);
+    },
+    async showPopupAddress() {
+      const res = await this.SHOW_ADDRESS_PICKER({ value: this.value });
+      this.formatAddress = res.result;
+      this.emitInput(res.checkValue);
     }
   }
 };
