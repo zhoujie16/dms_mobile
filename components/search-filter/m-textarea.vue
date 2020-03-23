@@ -2,8 +2,8 @@
 <template>
   <view class="m-textarea-wrap">
     <view class="m-textarea-title">
-      <MLabel :label="label">
-        <text @click="speechBtnClick" class="m-iconfont speech-btn">&#xe729;</text>
+      <MLabel :label="label" :required="required">
+        <text v-if="!(disabled || readonly)" @click="speechBtnClick" class="m-iconfont speech-btn">&#xe729;</text>
       </MLabel>
     </view>
     <view class="m-textarea-inner">
@@ -13,6 +13,8 @@
         class="m-textarea"
         :placeholder="placeholder"
         placeholder-style="font-size: 30rpx;color: #c3c3c3;"
+				:maxlength="maxlength"
+				:disabled="disabled || readonly"
       />
     </view>
   </view>
@@ -37,10 +39,22 @@ export default {
       type: String,
       default: '请输入内容（最多200字）'
     },
-    require: {
+    required: {
       type: Boolean,
       default: false
-    }
+    },
+		disabled: {
+		  type: Boolean,
+		  default: false
+		},
+		readonly: {
+		  type: Boolean,
+		  default: false
+		},
+		maxlength: {
+		  type: Number,
+		  default: 140
+		},
   },
   data() {
     return {};

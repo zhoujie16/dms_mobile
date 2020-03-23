@@ -19,6 +19,8 @@
     <view class="m-break-space"></view>
     <MTextArea label="文本域" v-model="formData.value_1"></MTextArea>
     <view class="m-break-space"></view>
+    <MTextArea required readonly label="文本域" v-model="formData.value_1"></MTextArea>
+    <view class="m-break-space"></view>
     <MCheckbox
       label="单选 popup"
       type="popup"
