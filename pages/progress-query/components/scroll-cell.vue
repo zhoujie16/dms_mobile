@@ -4,30 +4,30 @@
       <view class="list-cell-wrap-inner">
         <view class="list-cell-title">
           <view class="left">
-            <text class="state">在修</text>
-            <text class="vin">谢菲菲</text>
+            <text class="state">{{this.createDictText(cell.roStatus)}}</text> 
+            <text class="vin">{{cell.ownerName}}</text>
           </view>
-          <view class="right">2020-01-09 10:23:37</view>
+          <view class="right">{{cell.roCreateDate}}</view>
         </view>
         <view class="list-cell-content">
           <view class="box">
             <view class="label">工单号</view>
-            <view >YO202001090001</view>
+            <view >{{cell.roNo}}</view>
           </view>
           <view class="box">
             <view class="label">车牌号</view>
-            <view >沪A10001</view>
+            <view >{{cell.license}}</view>
           </view>
           <view class="box">
             <view class="label">服务顾问</view>
-            <view>张扬</view>
+            <view>{{$auth.getRoleName(cell.serviceAdvisor,serviceAdvisorList)}}</view>
           </view>
           <view class="box">
             <view class="label">服务技师</view>
-            <view>陆小鹏</view>
+            <view>{{$auth.getRoleName(cell.chiefTechnician,serviceAdvisorList)}}</view>
           </view>
         </view>
-        <view class="phone" @click="phoneClick">
+        <view class="phone" @click.native="phoneClick">
           <image src="../../../../../static/image/dianhua2.svg" class="img"></image>
         </view>
       </view>
@@ -40,19 +40,36 @@ export default {
   name: 'list-cell-vehicle-inspection',
   props: {
     cell: Object,
-    index: Number
+    index: Number,
+    serviceAdvisorList: Array
   },
   mounted() {
-    // console.log('list-cell-wrap', 'mounted');
+    // this.createDictText()
   },
   data() {
     return {
       isShowDetail: false,
-      telphoneNumber: '18583285531'
+      telphoneNumber: '18583285531',
+      roStatus: ''
     };
   },
   methods: {
-    change() {},
+    createDictText(val) {
+      let text = '';
+      if(val) { 
+        let roStatus = val.toString();
+        let str = roStatus.substring(0,4);
+            // console.log(text,'text-----')
+        text = this.$dict.createDictText(roStatus, str);
+      } else {
+        text = '未知'
+      }
+      return text;
+    },
+    
+    change() {
+      // console.log(await f(ff));
+    },
     cellTitleClick() {
       this.isShowDetail = !this.isShowDetail;
     },

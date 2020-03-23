@@ -4,8 +4,8 @@
       <view class="title-panel">
         <view class="title-panel-inner">
           <view class="info-panel">
-            <view class="customer-info">王大锤 - 沪ADC520</view>
-            <view class="car-info">13322111234</view>
+            <view class="customer-info">{{repairOrderInfo.ownerName}} - {{repairOrderInfo.license}}</view>
+            <view class="car-info">{{repairOrderInfo.delivererMobile}}</view>
           </view>
           <view class="phone" @click="phoneClick">
             <image src="/static/image/dianhua2.svg" mode="scaleToFill" class="img" ></image>
@@ -15,15 +15,15 @@
       </view>
       <CollapsePanel title="客户信息">
         <template slot="default">
-          <MLabel label="工单号">xxxxxxxxxx</MLabel>
-          <MLabel label="VIN">xxxxxxxxxx</MLabel>
-          <MLabel label="送修人">xxxxxxxx</MLabel>
+          <MLabel label="工单号">{{repairOrderInfo.roNo}}</MLabel>
+          <MLabel label="VIN">{{repairOrderInfo.vin}}</MLabel>
+          <MLabel label="送修人">{{repairOrderInfo.deliverer}}</MLabel>
           <MLabel label="送修人电话">
-            13322111234
+            {{repairOrderInfo.delivererMobile}}
             <image src="/static/image/dianhua2.svg" mode="scaleToFill" class="img"  @click="phoneClick"></image>
           </MLabel>
-          <MLabel label="故障描述">测试品牌</MLabel>
-          <MLabel label="维修技师">王一</MLabel>
+          <MLabel label="故障描述">{{repairOrderInfo.customerDesc}}</MLabel>
+          <MLabel label="维修技师">{{$auth.getRoleName(repairOrderInfo.chiefTechnician,this.serviceAdvisorList)}}</MLabel>
           <view class="m-break-space"></view>
         </template>
       </CollapsePanel>
@@ -33,7 +33,7 @@
           <m-button type="default" @click.native="checkClick">车辆检查</m-button>
         </view>
         <view class="btn">
-          <m-button type="primary">交车</m-button>
+          <m-button type="primary" v-if="roStatus === '80491003'">交车</m-button>
         </view>
       </view>
     </view>
@@ -42,14 +42,44 @@
 </template>
 
 <script>
+  import { findRepairOrderInfoByRoNo } from '@/api/progress-query/index.js';
 export default {
   data() {
     return {
       value_1:'',
-      telphoneNumber: '18583285531'
+      telphoneNumber: '18583285531',
+      repairOrderInfo: {},
+      serviceAdvisorList: [],
+      roStatus: ''  // 工单状态
     };
   },
+  onReady() {
+    this.getServiceAdvisorList()
+  },
+  onLoad(option) {
+    // option为上个页面传递过来的参数
+    console.log(option,'option');
+    // let roNo = option.orderNum;
+    this.roStatus = option.roStatus;
+    this.findRepairOrderInfo(option.orderNum)
+  },
   methods: {
+    async findRepairOrderInfo(roNo) {
+      console.log(roNo,'ronoooooo')
+      let res = await findRepairOrderInfoByRoNo(roNo);
+      console.log(res[1].data,'res----');
+      this.repairOrderInfo = JSON.parse(JSON.stringify(res[1].data));
+    },
+    
+    //获取列表
+    async getServiceAdvisorList() {
+      //服务顾问
+      let consultant = { role: dictCode.SERVICE_CONSULTANT , companyId: this.$auth.getCompanyId()};
+      //服务技师
+      let technician = { role: dictCode.TECHNICIAN , companyId: this.$auth.getCompanyId()};
+      this.serviceAdvisorList = await this.$auth.queryServiceAdvisor(consultant);   
+     },
+     
     async back() {
       uni.navigateBack({
         delta: 1

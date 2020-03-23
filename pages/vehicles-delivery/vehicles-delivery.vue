@@ -13,7 +13,7 @@
     </search-filter>
     <!-- <view class="refresh">已为您刷新。。。条信息</view> -->
     <view class="wrap">
-      <BaseScroll
+      <!-- <BaseScroll
         :height="scrollHeight"
         :fetchApi="fetchApi"
         :fetchParams="fetchParams"
@@ -28,7 +28,8 @@
             <ScrollCell :cell="data" :activeindex="activeindex"></ScrollCell>
           </view>
         </view>
-      </BaseScroll>
+      </BaseScroll> -->
+      <ScrollCell :cell="data" :activeindex="activeindex"></ScrollCell>
     </view>
   </MPage>
 </template>

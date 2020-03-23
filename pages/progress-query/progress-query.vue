@@ -3,10 +3,17 @@
   <MPage ref="MPage" title="进度查询">
     <search-filter ref="searchFilter">
       <view slot="panel" class="panel-box">
-        <view v-for="(item,index) in itemList" :key="index" @click="changeIndex(index)">
-          <view :class="[{'panel-tab-pressed':activeindex==index},{'panel-tab':activeindex!==index}]">{{item.title}}<text>{{item.count}}</text></view>
+        <view v-for="(item, index) in itemList" :key="index" @click="changeIndex(item,index)">
+          <view
+            :class="[
+              { 'panel-tab-pressed': activeindex == index },
+              { 'panel-tab': activeindex !== index }
+            ]"
+          >
+            {{ item.title }}
+            <text>{{ item.count }}</text>
+          </view>
         </view>
-       
       </view>
       <view slot="form">
         <SearchForm></SearchForm>
@@ -14,8 +21,8 @@
     </search-filter>
     <!-- <view class="refresh">已为您刷新。。。条信息</view> -->
     <view class="wrap">
-      <!-- <BaseScroll
-        :height="scrollHeight"
+      <BaseScroll
+        :top="100"
         :fetchApi="fetchApi"
         :fetchParams="fetchParams"
         @listChange="
@@ -25,47 +32,82 @@
         "
       >
         <view slot="scroll">
-          <view v-for="(data, i) in dataSource" :key="i">
-            <ScrollCell :cell="data" :index="i" @click.native="scrollCellClick(data)"></ScrollCell>
-          </view>
+          <scroll-cell
+            @click.native="scrollCellClick(data)"
+            v-for="(data, i) in dataSource"
+            :key="i"
+            :cell="data"
+            :activeindex="activeindex"
+            :serviceAdvisorList='serviceAdvisorList'
+          ></scroll-cell>
         </view>
-      </BaseScroll> -->
-      <ScrollCell :cell="data" :index="i" @click.native="scrollCellClick(data)"></ScrollCell>
+      </BaseScroll>
     </view>
   </MPage>
 </template>
 
 <script>
-import { AjaxScrollData } from '@/api/test/index.js';
+// import { AjaxScrollData } from '@/api/test/index.js';
+import { progressQueryAll, findSubmitCarStatus } from '@/api/progress-query/index.js';
 import SearchForm from '@/pages/progress-query/components/search-form.vue';
 import ScrollCell from '@/pages/progress-query/components/scroll-cell.vue';
+import { dictionary } from '@/common/dictMixin.js';
 
 export default {
   components: {
     SearchForm,
     ScrollCell
   },
+  // mixins: [dictionary],
   data() {
     this.scrollHeight = uni.getSystemInfoSync().windowHeight - 50 + 'px';
     return {      
       activeindex:0,
       isFolding:true,
+      deliveredVehicleStatus: '80011002', // 交车状态
       itemList:[
         {
+          id: '80011002',
           title:'未交车',
-          count:4
+          count:0
         },
         {
+          id: '80011001',
           title:'已交车',
-          count:3
+          count:0
         },
       ],
-      fetchApi: AjaxScrollData,
-      fetchParams: {},
+      // fetchApi: AjaxScrollData,
+      fetchApi: progressQueryAll,
+      fetchParams: {
+        
+      },
       dataSource: [],
+      serviceAdvisorList: []
     };
   },
+  onLoad() {
+    this.getServiceAdvisorList();
+    this.queryStatusCount()
+  },
   methods: {
+    //获取列表
+    async getServiceAdvisorList() {
+      //服务顾问
+      let consultant = { role: dictCode.SERVICE_CONSULTANT , companyId: this.$auth.getCompanyId()};
+      //服务技师
+      let technician = { role: dictCode.TECHNICIAN , companyId: this.$auth.getCompanyId()};
+      this.serviceAdvisorList = await this.$auth.queryServiceAdvisor(consultant);   
+     },
+     
+     //统计数量
+     async queryStatusCount() {
+       let res = await findSubmitCarStatus(this.fetchParams);
+       console.log(res, '统计数量');
+       this.itemList[0].count=res[1].data.undeliveredVehicle;
+       this.itemList[1].count=res[1].data.deliveredVehicle;
+     },
+
     // 表单查询
     searchFormConfirm() {
       console.log('searchFormConfirm');
@@ -74,13 +116,16 @@ export default {
         t: new Date().getTime()
       };
     },
-    changeIndex(index){
+    changeIndex(item,index){
       this.activeindex= index;
+      this.dataSource = [];
+      this.fetchParams.deliveredVehicleStatus = item.id;
+      this.fetchParams = { ...this.fetchParams };
     },
-    scrollCellClick(){
+    scrollCellClick(data){
       // this.$emit('click')
       uni.navigateTo({
-        url: '/pages/progress-query/repair-check'
+        url: `/pages/progress-query/repair-check?orderNum=${data.roNo}&activeindex=${this.activeindex}&roStatus=${data.roStatus}`
       })
     }
   }
@@ -88,6 +133,9 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+  .wrap {
+    margin-top: 84rpx;
+  }
   .panel-box{
     display: flex;
     flex:3;
