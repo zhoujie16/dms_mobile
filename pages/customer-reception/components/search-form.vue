@@ -1,6 +1,6 @@
 <template>
   <view>
-    <view class="form-demo-wrap">
+    <scroll-view class="scroll-view-h" :style="{ maxHeight: '900rpx' }" scroll-y>
       <MLicense label="车牌号" :value="formData.license"></MLicense>
       <MCheckbox
         label="服务顾问"
@@ -21,17 +21,16 @@
       <MInput label="预检单号" :value="formData.yjNo"></MInput>
       <MInput label="工单号" :value="formData.roNo"></MInput>
       <MPicker label="开单日期" mode="range" v-model="formData.createdAt"></MPicker>
-     
-    </view>
-     <MFormBottom @confirm="formConfirm" @reset="formReset"></MFormBottom>
+    </scroll-view>
+    <MFormBottom @confirm="formConfirm" @reset="formReset"></MFormBottom>
   </view>
 </template>
 <script>
 export default {
   components: {},
-  props:{
-    serviceAdvisorList:{
-      type:Array
+  props: {
+    serviceAdvisorList: {
+      type: Array
     }
   },
   data() {
@@ -45,7 +44,7 @@ export default {
         roNo: '',
         createdAt: ['2018-01-06', '2020-01-06']
       },
-      itemList_sfjc: [{ text: '已交车', value: '1' }, { text: '未交车', value: '2' }]
+      itemList_sfjc: this.$dict.createDictList('8001')
     };
   },
   mounted() {

@@ -94,32 +94,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-// .status-bar-wrap {
-//   position: relative;
-//   background: $uni-m-color-cwhite;
-//   /deep/ .nav-bar {
-//     .uni-navbar__content {
-//       z-index: 1;
-//       background-color: initial !important;
-//       .uni-navbar__header {
-//         background-color: initial !important;
-//       }
-//     }
-//     .uni-icons,
-//     .uni-nav-bar-text {
-//       color: $uni-m-color-cwhite !important;
-//     }
-//   }
-//   .status-bar-bg {
-//     position: absolute;
-//     top: 0;
-//     right: 0;
-//     bottom: 0;
-//     left: 0;
-//     background: linear-gradient(to right, #41c5ff, #1371f7);
-//     z-index: 0;
-//   }
-// }
 .title-panel {
   position: relative;
   height: 260rpx;

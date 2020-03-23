@@ -5,12 +5,9 @@
     <MInput label="VIN" :required="true">
       <view slot="after"><text @click="searchClick" class="m-iconfont screen">&#xe732;</text></view>
     </MInput>
-    <!-- readonly -->
-    <MInput label="车型" :value="formData.model"></MInput>
-    <!-- readonly -->
-    <MInput label="车主姓名" :value="formData.ownerName"></MInput>
-    <!-- readonly -->
-    <MInput label="手机号" :value="formData.phone"></MInput>
+    <MInput label="车型" readonly="true" :value="formData.model"></MInput>
+    <MInput label="车主姓名" readonly="true" :value="formData.ownerName"></MInput>
+    <MInput label="手机号" readonly="true" :value="formData.phone"></MInput>
     <MInput label="邮箱" :value="formData.eMail"></MInput>
     <MInput label="送修人"></MInput>
     <MInput label="送修人手机号" :required="true" :value="formData.contactorPhone">
@@ -32,8 +29,7 @@
     ></MCheckbox>
     <MInput label="里程(KM)" :required="true"></MInput>
     <MInput label="进厂时间"></MInput>
-    <!-- readonly -->
-    <MInput label="销售日期" :value="formData.salesDate"></MInput>
+    <MInput label="销售日期" readonly="true" :value="formData.salesDate"></MInput>
     <MInput label="地址"></MInput>
   </view>
 </template>
@@ -45,7 +41,7 @@ export default {
   data() {
     return {
       formData: {
-        license: '',
+        license: '沪',
         vin: '',
         model: '',
         ownerName: '',

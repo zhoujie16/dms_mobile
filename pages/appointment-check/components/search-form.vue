@@ -1,15 +1,7 @@
 <template>
   <view>
-    <view class="form-demo-wrap" @touchmove.prevent>
+    <scroll-view class="scroll-view-h" :style="{ maxHeight: '900rpx' }" scroll-y>
       <MLicense v-model="formData.license"></MLicense>
-      <!-- <MPicker label="开单日期" mode="range" v-model="value_date_2"></MPicker> -->
-     <!-- <MCheckboxPanel
-        label="服务顾问"
-        type="inner"
-        v-model="searchFilter.serviceAdvisor"
-        :itemList="serviceAdvisorList"
-        single
-      ></MCheckboxPanel> -->
       <MCheckbox
         label="服务顾问"
         type="popup"
@@ -18,16 +10,16 @@
         single
       ></MCheckbox>
       <MPicker label="开单日期" mode="range" v-model="formData.createdAt"></MPicker>
-       <MFormBottom @confirm="formConfirm" @reset="formReset"></MFormBottom>
-    </view>
+    </scroll-view>
+    <MFormBottom @confirm="formConfirm" @reset="formReset"></MFormBottom>
   </view>
 </template>
 <script>
 export default {
   components: {},
-  props:{
-    serviceAdvisorList:{
-      type:Array
+  props: {
+    serviceAdvisorList: {
+      type: Array
     }
   },
   data() {
@@ -36,14 +28,14 @@ export default {
         license: '',
         serviceAdvisor: [],
         createdAt: ['2018-01-06', '2020-01-06']
-      },
+      }
     };
   },
   watch: {},
- mounted() {
-   // 备份初始值 用于重置
-   this.formData_reset = { ...this.formData };
- },
+  mounted() {
+    // 备份初始值 用于重置
+    this.formData_reset = { ...this.formData };
+  },
   methods: {
     // 查询按钮事件
     formSubmit() {
@@ -66,11 +58,11 @@ export default {
     },
     //获取列表
     async getServiceAdvisorList() {
-      console.log(444)
+      console.log(444);
       //服务顾问
       let consultant = { role: dictCode.SERVICE_CONSULTANT, companyId: this.$auth.getCompanyId() };
       this.serviceAdvisorList = await this.$auth.queryServiceAdvisor(consultant);
-      console.log('服务顾问', this.serviceAdvisorList)
+      console.log('服务顾问', this.serviceAdvisorList);
     }
   }
 };

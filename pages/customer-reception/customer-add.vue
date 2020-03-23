@@ -4,7 +4,7 @@
       <SwiperTab :height="swiperTabHeight" :tabs="tabs" :curIndex="curIndex" @change="changeTab">
         <swiper class="swiper-wrap" :current="curIndex" @change="swiperChange">
           <!--全部 -->
-          <swiper-item>
+          <swiper-item @touchmove.stop="stoptouchMove">
             <scroll-view class="swiper-scroll-wrap" scroll-y="true">
               <CustomerInfoPanel ref="customerInfo"></CustomerInfoPanel>
             </scroll-view>
@@ -83,7 +83,8 @@ export default {
     this.swiperTabHeight = uni.getSystemInfoSync().windowHeight - 70 + 'px';
     return {
       tabs: ['客户信息', '客户需求', '车身外观'],
-      curIndex: 0 // 当前tab的下标
+      curIndex: 0, // 当前tab的下标
+      isMove:false,
     };
   },
   watch: {},
@@ -94,13 +95,26 @@ export default {
     }
   },
   methods: {
+    stoptouchMove(){
+      return this.isMove
+    },
     // 轮播菜单
     swiperChange(e) {
       this.curIndex = e.detail.current;
+      // if(this.$refs.customerInfo.formData.license){
+      //   this.curIndex = e.detail.current;
+      // }
     },
     // 切换菜单
     changeTab(i) {
-      this.curIndex = i;
+      // this.curIndex = i;
+      console.log("-----",this.$refs.customerInfo.formData.license);
+      if(this.$refs.customerInfo.formData.license){
+        this.curIndex = i;
+        this.isMove = false;
+      }else{
+        this.isMove = true;
+      }
     },
     // 保存预检单
     async saveOrder() {

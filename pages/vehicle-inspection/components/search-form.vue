@@ -1,6 +1,6 @@
 <template>
   <view>
-    <view class="form-demo-wrap" >
+    <scroll-view class="scroll-view-h" :style="{ maxHeight: '900rpx' }" scroll-y>
       <MInput v-model="cph" label="车牌号"></MInput>
       <MInput v-model="khmc" label="车主名称"></MInput>
       <MInput v-model="gdbh" label="工单号"></MInput>
@@ -10,10 +10,8 @@
       <MCheckbox label="技师名称" v-model="jsmc" :itemList="itemList_jsmc" single></MCheckbox>
       <MCheckbox label="服务组织" v-model="fwzz" :itemList="itemList_fwzz"></MCheckbox>
       <MDatePicker label="开单日期" v-model="dateTest"></MDatePicker>
-      <view class="btn-v">
-        <button @click="formSubmit" type="primary" class="submit-btn">查询</button>
-      </view>
-    </view>
+    </scroll-view>
+    <button @click="formSubmit" type="primary" class="submit-btn">查询</button>
   </view>
 </template>
 <script>
