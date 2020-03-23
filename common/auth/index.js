@@ -133,7 +133,7 @@ class Auth {
   // 获取服务顾问列表
   async queryServiceAdvisor(params) {
     const res = await searchRoleByCode(params);
-    const serviceAdvisorList = res.data.map(x => ({
+    const serviceAdvisorList = res[1].data.map(x => ({
       value: x.userId,
       text: x.employeeName
     }));

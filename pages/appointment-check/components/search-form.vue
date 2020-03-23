@@ -58,7 +58,6 @@ export default {
     },
     //获取列表
     async getServiceAdvisorList() {
-      console.log(444);
       //服务顾问
       let consultant = { role: dictCode.SERVICE_CONSULTANT, companyId: this.$auth.getCompanyId() };
       this.serviceAdvisorList = await this.$auth.queryServiceAdvisor(consultant);

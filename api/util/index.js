@@ -10,3 +10,7 @@ export const queryDict = () => Http.get(`${SERVER.DMSCLOUD_BASEDATA}/dicts`, {},
 export const searchRoleByCode = params => Http.get(`${SERVER.DMSCLOUD_BASEDATA}/basedata/users/getUserListByRole`,
   params
 );
+
+
+//根据车牌号查询客户信息
+export const queryCusInfoByLicense = params =>Http.get(`${SERVER.DMSCLOUD_REPAIR/VehiclePreviewController/queryCusInfoByLicense}`,params)

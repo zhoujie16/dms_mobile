@@ -18,27 +18,30 @@
       <view slot="form"><SearchForm :serviceAdvisorList="serviceAdvisorList" @confirm="conformSearch"></SearchForm></view>
     </search-filter>
     <!-- <view class="refresh">已为您刷新三条信息</view> -->
-    <BaseScroll
-      :top="100"
-      :fetchApi="fetchApi"
-      :fetchParams="fetchParams"
-      @listChange="
-        arr => {
-          this.dataSource = arr;
-        }
-      "
-    >
-      <view slot="scroll" class="wrap">
-       <scroll-cell
-         @click.native="scrollCellClick(data)"
-         v-for="(data, i) in dataSource"
-         :key="i"
-         :cell="data"
-         :activeindex="activeindex"
-         :serviceAdvisorList="serviceAdvisorList"
-       ></scroll-cell>
-      </view>
-    </BaseScroll>
+    <view class="wrap">
+      <BaseScroll
+        :top="100"
+        :fetchApi="fetchApi"
+        :fetchParams="fetchParams"
+        @listChange="
+          arr => {
+            this.dataSource = arr;
+          }
+        "
+      >
+        <view slot="scroll">
+         <scroll-cell
+           @click.native="scrollCellClick(data)"
+           v-for="(data, i) in dataSource"
+           :key="i"
+           :cell="data"
+           :activeindex="activeindex"
+           :serviceAdvisorList="serviceAdvisorList"
+         ></scroll-cell>
+        </view>
+      </BaseScroll>
+    </view>
+    
     <!-- <scroll-cell
      @click.native="scrollCellClick"
       :activeindex="activeindex"
@@ -108,14 +111,16 @@ export default {
         ...params,
         t: new Date().getTime()
       };
+      this.$refs.searchFilter.close();
+      this.queryStatusCount();
     },
     //统计数量
     async queryStatusCount() {
       let res = await queryStatusNum(this.fetchParams);
-      console.log(res, '统计数量');
-      this.itemList[0].count=res.data.unEnter;
-      this.itemList[1].count=res.data.entered;
-      this.itemList[2].count=res.data.cancelled;
+      console.log(res[1], '统计数量');
+      this.itemList[0].count=res[1].data.unEnter;
+      this.itemList[1].count=res[1].data.entered;
+      this.itemList[2].count=res[1].data.cancelled;
     },
     changeIndex(item, index) {
       this.activeindex = index;
@@ -167,7 +172,7 @@ export default {
   }
 }
 .wrap {
-  margin-top: 20rpx;
+  margin-top: 84rpx;
 }
 .refresh {
   height: 60rpx;

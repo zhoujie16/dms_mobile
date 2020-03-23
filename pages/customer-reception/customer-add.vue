@@ -160,14 +160,14 @@ export default {
     bottom: 0;
     background-color: #fff;
     width: 100%;
-    height: 120rpx;
+    height: 100rpx;
     padding: 30rpx 0;
     .flex-item {
       width: 33%;
       text-align: center;
-      line-height: 60rpx;
+      line-height: 50rpx;
       color: $uni-m-color-c11;
-      font-size: 36rpx;
+      font-size: 32rpx;
       // line-height: 200rpx;
     }
     .v-border {
@@ -180,7 +180,7 @@ export default {
   position: absolute;
   top: 0;
   right: 0;
-  bottom: 100rpx;
+  bottom: 80rpx;
   left: 0;
   height: initial;
 }

@@ -58,7 +58,7 @@ export default {
   data() {
     const provices1 = ['京', '津', '沪', '渝', '翼', '豫', '云', '辽', '黑', '湘'];
     const provices2 = ['皖', '鲁', '新', '苏', '浙', '赣', '鄂', '桂', '甘'];
-    const provices3 = ['晋', '蒙', '陕', '吉', '闵', '贵', '粤'];
+    const provices3 = ['晋', '蒙', '陕', '吉', '闽', '贵', '粤'];
     const provices4 = ['青', '藏', '川', '宁', '琼'];
     const numbers = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0'];
     const letters1 = ['Q', 'W', 'E', 'R', 'T', 'Y', 'U', 'I', 'O', 'P'];

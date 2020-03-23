@@ -3,10 +3,13 @@
   <view class="m-license-wrap">
     <view class="m-license-inner">
       <MLabel label="车牌号" :border="false">
-        <text v-if="searchType == 'search'" @click="foldingHandleClick" class="m-iconfont screen">
-          &#xe732;
-        </text>
-        <text v-else @click="scanClick" class="m-iconfont screen">&#xe72a;</text>
+        <view slot="default">
+          <text v-if="searchType == 'search'" @click="foldingHandleClick" class="m-iconfont screen">
+            &#xe732;
+          </text>
+          <text v-else @click="scanClick" class="m-iconfont screen">&#xe72a;</text>
+        </view>
+        
       </MLabel>
       <view class="m-license-content">
         <view
@@ -29,6 +32,8 @@
 </template>
 
 <script>
+import { searchRoleByCode } from '@/api/util/index.js';
+
 export default {
   name: 'm-license',
   props: {
@@ -179,9 +184,14 @@ export default {
       }
     },
     //搜索车牌号
-    foldingHandleClick() {
+    async foldingHandleClick() {
       console.log(this._value, '车牌号');
       if (this._value.trim()) {
+        let params = {
+          license:this._value.trim()
+        }
+        let res = await searchRoleByCode(params);
+        console.log('车牌号', res);
         this.$refs.mPopup.open(); // 打开
       } else {
         this.SHOW_TOAST('请输入车牌号');

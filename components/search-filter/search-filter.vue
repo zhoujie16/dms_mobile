@@ -63,6 +63,11 @@ export default {
   background-color: #ffffff;
   display: flex;
   height: 84rpx;
+  position: fixed;
+  width: 100%;
+  left: 0;
+  top: 0;
+  z-index: 99;
   .left {
     flex: 1;
     height: 100%;

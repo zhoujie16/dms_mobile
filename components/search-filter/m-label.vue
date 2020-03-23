@@ -78,7 +78,7 @@ export default {
 }
 
 .m-lab-content {
-  flex: 2;
+  flex: 1;
   display: flex;
   flex-direction: row;
   justify-content: flex-end;

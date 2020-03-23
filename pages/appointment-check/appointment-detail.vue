@@ -6,7 +6,7 @@
         <view class="title-panel">
           <view class="title-panel-inner">
             <view class="info-panel">
-              <view class="customer-info">{{appointmentInfo.ownerName}} - {{appointmentInfo.license}}</view>
+              <view class="customer-info">{{appointmentInfo.ownerName?appointmentInfo.ownerName:'未知'}} - {{appointmentInfo.license}}</view>
               <view class="car-info">{{appointmentInfo.contactorPhone}}</view>
             </view>
             <view class="phone" @click="phoneClick">
@@ -91,7 +91,7 @@ export default {
     async getOrderInfo(roNo) {
       let res = await queryAppointmentDetail(roNo);
       console.log(res, '预约检查详情信息');
-      this.appointmentInfo = res.data;
+      this.appointmentInfo = res[1].data;
     },
     phoneClick() {
       // this.$refs.phone.open();
@@ -199,6 +199,7 @@ export default {
   top: 0;
   left: 0;
   right: 0;
+  z-index: 99;
 }
 .title-panel {
   position: relative;
