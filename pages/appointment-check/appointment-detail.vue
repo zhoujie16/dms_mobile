@@ -6,10 +6,13 @@
         <view class="title-panel">
           <view class="title-panel-inner">
             <view class="info-panel">
-              <view class="customer-info">{{appointmentInfo.ownerName?appointmentInfo.ownerName:'未知'}} - {{appointmentInfo.license}}</view>
-              <view class="car-info">{{appointmentInfo.contactorPhone}}</view>
+              <view class="customer-info">
+                {{ appointmentInfo.ownerName ? appointmentInfo.ownerName : '未知' }} -
+                {{ appointmentInfo.license }}
+              </view>
+              <view class="car-info">{{ appointmentInfo.contactorPhone }}</view>
             </view>
-            <view class="phone" @click="phoneClick">
+            <view class="phone" @click="phoneClick(appointmentInfo.contactorPhone)">
               <image src="/static/image/dianhua2.svg" mode="scaleToFill" class="img"></image>
             </view>
           </view>
@@ -18,25 +21,25 @@
       </view>
 
       <view class="content-warp">
-        <MLabel label="预约进厂时间">{{appointmentInfo.bookingComeTime}}</MLabel>
+        <MLabel label="预约进厂时间">{{ appointmentInfo.bookingComeTime }}</MLabel>
 
-        <MLabel label="预约单号">{{appointmentInfo.bookingOrderNo}}</MLabel>
-        <MLabel label="VIN">{{appointmentInfo.vin}}</MLabel>
-        <MLabel label="车型">{{appointmentInfo.model}}</MLabel>
-        <MLabel label="里程(KM)">{{appointmentInfo.inMileage}}</MLabel>
-        <MLabel label="服务顾问">{{appointmentInfo.serviceAdvisor}}</MLabel>
-        <MLabel label="维修技师">{{appointmentInfo.chiefTechnician}}</MLabel>
+        <MLabel label="预约单号">{{ appointmentInfo.bookingOrderNo }}</MLabel>
+        <MLabel label="VIN">{{ appointmentInfo.vin }}</MLabel>
+        <MLabel label="车型">{{ appointmentInfo.model }}</MLabel>
+        <MLabel label="里程(KM)">{{ appointmentInfo.inMileage }}</MLabel>
+        <MLabel label="服务顾问">{{ appointmentInfo.serviceAdvisor }}</MLabel>
+        <MLabel label="维修技师">{{ appointmentInfo.chiefTechnician }}</MLabel>
 
-        <MLabel label="客户需求">{{appointmentInfo.customerDesc}}</MLabel>
+        <MLabel label="客户需求">{{ appointmentInfo.customerDesc }}</MLabel>
         <view class="m-break-space"></view>
-        <MTextArea label="备注" v-model="appointmentInfo.remark"></MTextArea>
+        <MTextArea readonly label="备注" v-model="appointmentInfo.remark==null?'':appointmentInfo.remark"></MTextArea>
       </view>
       <view class="m-break-space"></view>
-      <view class="operate"  v-if="activeindex!=2">
-        <view class="btn" v-if="activeindex==0">
-          <m-button type="warn"  @click.native="cancelClick">取消预约</m-button>
+      <view class="operate" v-if="activeindex != 2">
+        <view class="btn" v-if="activeindex == 0">
+          <m-button type="warn" @click.native="cancelClick">取消预约</m-button>
         </view>
-        <view class="btn" v-if="activeindex==0">
+        <view class="btn" v-if="activeindex == 0">
           <m-button type="default" @click.native="editClick">修改预约</m-button>
         </view>
         <view class="btn"><m-button type="primary">车辆预检</m-button></view>
@@ -46,8 +49,8 @@
       <!-- 弹窗内容 -->
       <view class="a-time-wrap">
         <view class="container">
-          <MLabel label="预约单号">{{this.bookingOrderNo}}</MLabel>
-          <MLabel label="预约时间" :row="2" :border="false">
+          <MLabel label="预约单号">{{ this.bookingOrderNo }}</MLabel>
+          <MLabel label="预约时间" :border="false">
             <view class="time-box">
               <view @click="showPopupClick">{{ bookingComeTime }}</view>
             </view>
@@ -60,7 +63,11 @@
               取消
             </m-button>
           </view>
-          <view class="btn"><m-button  type="default" :block="true" @click.native="confirmAppointTime">确认</m-button></view>
+          <view class="btn">
+            <m-button type="default" :block="true" @click.native="confirmAppointTime">
+              确认
+            </m-button>
+          </view>
         </view>
       </view>
     </MPopup>
@@ -68,14 +75,18 @@
 </template>
 
 <script>
-import { queryAppointmentDetail ,deleteAppointment ,editAppointment} from '@/api/appointment-check/index.js';
+import {
+  queryAppointmentDetail,
+  deleteAppointment,
+  editAppointment
+} from '@/api/appointment-check/index.js';
 
 export default {
   data() {
     return {
       activeindex: 0,
-      bookingOrderNo:'',//预约单号
-      appointmentInfo:{},
+      bookingOrderNo: '', //预约单号
+      appointmentInfo: {},
       bookingComeTime: '请选择'
     };
   },
@@ -93,16 +104,10 @@ export default {
       console.log(res, '预约检查详情信息');
       this.appointmentInfo = res[1].data;
     },
-    phoneClick() {
+    phoneClick(phone) {
       // this.$refs.phone.open();
       uni.makePhoneCall({
-        phoneNumber: '114', //仅为示例
-        success: e => {
-          //成功
-        },
-        fail: e => {
-          //失败
-        }
+        phoneNumber: phone, 
       });
     },
 
@@ -114,20 +119,19 @@ export default {
     },
     async cancelClick() {
       const res = await deleteAppointment(this.bookingOrderNo);
-      console.log('取消预约',res);
+      console.log('取消预约', res);
       const res1 = await this.SHOW_MODAL({
         title: '取消成功',
         content: '',
         showCancel: false, // 是否显示取消按钮，默认为 true
         confirmText: '确定' // 确定按钮的文字，默认为"确定"，最多 4 个字符
       });
-      console.log(res1,res1=='confirm')
-      if(res1 == 'confirm'){
+      console.log(res1, res1 == 'confirm');
+      if (res1 == 'confirm') {
         uni.navigateTo({
           url: '/pages/appointment-check/appointment-check'
         });
       }
-     
     },
     //预约时间
     async showPopupClick() {
@@ -148,15 +152,15 @@ export default {
       }
     },
     //保存预约时间
-    async confirmAppointTime(){
+    async confirmAppointTime() {
       let params = {
-        bookingOrderNo:this.bookingOrderNo,
-        bookingComeTime:this.bookingComeTime
-      }
+        bookingOrderNo: this.bookingOrderNo,
+        bookingComeTime: this.bookingComeTime
+      };
       const res = await editAppointment(params);
-      console.log('修改预约时间',res)
-       this.getOrderInfo(this.bookingOrderNo);
-       this.cancelAppointClick();
+      console.log('修改预约时间', res);
+      this.getOrderInfo(this.bookingOrderNo);
+      this.cancelAppointClick();
     },
     //取消预约时间
     cancelAppointClick() {

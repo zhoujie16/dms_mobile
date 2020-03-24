@@ -9,7 +9,6 @@
           </text>
           <text v-else @click="scanClick" class="m-iconfont screen">&#xe72a;</text>
         </view>
-        
       </MLabel>
       <view class="m-license-content">
         <view
@@ -24,15 +23,31 @@
       </view>
     </view>
     <MPopup ref="mPopup" type="center" title="查询到的车牌">
-      <view v-for="(item, index) in itemListLicense" :key="index">
+      <!-- <view v-for="(item, index) in itemListLicense" :key="index">
         <view class="itemBox" @click="licenseClick(item)">{{ item.license }}</view>
-      </view>
+      </view> -->
+      <BaseScroll
+        :top="100"
+        :fetchApi="fetchApi"
+        :fetchParams="fetchParams"
+        @listChange="
+          arr => {
+            this.itemListLicense = arr;
+          }
+        "
+      >
+        <view slot="scroll">
+          <view v-for="(item, index) in itemListLicense" :key="index">
+            <view class="itemBox" @click.native="licenseClick(item)">{{ item.license }}</view>
+          </view>
+        </view>
+      </BaseScroll>
     </MPopup>
   </view>
 </template>
 
 <script>
-import { searchRoleByCode } from '@/api/util/index.js';
+import { queryCusInfoByLicense } from '@/api/util/index.js';
 
 export default {
   name: 'm-license',
@@ -70,7 +85,9 @@ export default {
           id: 3,
           license: '沪001001'
         }
-      ]
+      ],
+      fetchApi: queryCusInfoByLicense,
+      fetchParams: {}
     };
   },
   watch: {
@@ -187,11 +204,10 @@ export default {
     async foldingHandleClick() {
       console.log(this._value, '车牌号');
       if (this._value.trim()) {
-        let params = {
-          license:this._value.trim()
-        }
-        let res = await searchRoleByCode(params);
-        console.log('车牌号', res);
+        this.fetchParams = {
+          license: this._value.trim()
+        };
+
         this.$refs.mPopup.open(); // 打开
       } else {
         this.SHOW_TOAST('请输入车牌号');
@@ -199,7 +215,9 @@ export default {
     },
     //点击车牌号，将数据传给父级
     licenseClick(item) {
+      console.log('2222', item);
       this.$emit('list', item);
+
       this.$refs.mPopup.close();
     },
     //扫描车牌号

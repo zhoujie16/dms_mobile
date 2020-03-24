@@ -1,30 +1,42 @@
 <template>
   <!-- 客户需求 -->
   <view class="panel-wrap">
-    <InfoPanel title="选择类型">
-      <view class="type-wrap">
-        <uni-tag class="type-tag" type="default" inverted text="保养"></uni-tag>
-        <uni-tag class="type-tag" type="default" inverted text="召回"></uni-tag>
-        <uni-tag class="type-tag" type="default" inverted text="故障检测"></uni-tag>
-        <uni-tag class="type-tag" type="default" inverted text="维修"></uni-tag>
-        <uni-tag class="type-tag" type="default" inverted text="故障维修"></uni-tag>
-      </view>
-    </InfoPanel>
-    <InfoPanel title="故障描述" ><textarea class="m-textarea" placeholder="" /></InfoPanel>
+   <MCheckboxPanel
+      label="选择类型"
+      type="inner"
+      v-model="formData.value1"
+      :itemList="itemList"
+      single
+    ></MCheckboxPanel>
+    <view class="m-break-space"></view>
+     <MTextArea label="故障描述" v-model="formData.value_1"></MTextArea>
   </view>
 </template>
 
 <script>
-import InfoPanel from './info-panel.vue';
 export default {
   name: '',
-  components: {
-    InfoPanel
-  },
+  components: {},
   data() {
-    return {};
+    return {
+      itemList: [
+        { text: '保养', value: '1' },
+        { text: '召回', value: '2' },
+        { text: '故障检测', value: '3' },
+        { text: '维修', value: '4' },
+        { text: '故障维修', value: '5' }
+      ],
+      formData: {
+        value1: ''
+      }
+    };
   },
-  methods: {}
+  methods: {
+    input(value) {
+      console.log('选择的结果', this.$util.typeOf(value), value);
+      // this.$emit('input', value);
+    }
+  }
 };
 </script>
 

@@ -1,10 +1,11 @@
 <template>
   <MPage ref="MPage" type="primary">
     <SearchFilter ref="searchFilter" :isShow="false">
-      <view slot="form"><searchForm :serviceAdvisorList="serviceAdvisorList" @confirm="searchFormConfirm"></searchForm></view>
+      <view slot="form"><searchForm :serviceAdvisorList="serviceAdvisorList" @confirm="conformSearch"></searchForm></view>
     </SearchFilter>
-    <!-- <BaseScroll
-      :height="scrollHeight"
+    
+    <BaseScroll
+      :top="100"
       :fetchApi="fetchApi"
       :fetchParams="fetchParams"
       @listChange="
@@ -15,22 +16,32 @@
     >
       <view slot="scroll" style="padding: 20rpx;">
         <view v-for="(data, i) in dataSource" :key="i">
-          <scrollCell @click="scrollCellClick(data)"></scrollCell>
+         <!-- <scrollCell @click="scrollCellClick(data)"></scrollCell> -->
+         <view class="cell-pad">
+           <MSwipeCell
+              :disabled="false"
+              :options="[{ text: '删除', type: 'warn' }]"
+              @optionClick="optionClick(data)"
+              @change="swipeChange"
+            >
+              <template v-slot:cell>
+                <scrollCell @click="scrollCellClick(data)"></scrollCell>
+              </template>
+            </MSwipeCell>
+         </view>
         </view>
       </view>
-    </BaseScroll> -->
-    <view class="cell-pad">
-      <MSwipeCell
-        :disabled="false"
-        :options="[{ text: '删除', type: 'warn' }]"
-        @optionClick="optionClick"
-        @change="swipeChange"
-      >
-        <template v-slot:cell>
-          <scrollCell @click="scrollCellClick(1)"></scrollCell>
-        </template>
-      </MSwipeCell>
-    </view>
+    </BaseScroll>
+<!-- <MSwipeCell
+   :disabled="false"
+   :options="[{ text: '删除', type: 'warn' }]"
+   @optionClick="optionClick(data)"
+   @change="swipeChange"
+ >
+   <template v-slot:cell>
+     <scrollCell @click="scrollCellClick(data)"></scrollCell>
+   </template>
+ </MSwipeCell> -->
 
     <view class="popup-group">
       <image
@@ -44,8 +55,8 @@
 </template>
 
 <script>
+import { queryAllPreview, deletePreview } from '@/api/customer-reception/index.js'; 
 import searchForm from '@/pages/customer-reception/components/search-form.vue';
-import { AjaxScrollData } from '@/api/test/index.js';
 import scrollCell from '@/pages/customer-reception/components/scroll-cell.vue';
 import dictCode from '@/common/dictCode.js';
 export default {
@@ -56,7 +67,7 @@ export default {
   data() {
     this.scrollHeight = uni.getSystemInfoSync().windowHeight - 20 + 'px';
     return {
-      fetchApi: AjaxScrollData,
+      fetchApi: queryAllPreview,
       fetchParams: {},
       dataSource: [],
       serviceAdvisorList: []
@@ -80,8 +91,12 @@ export default {
       });
     },
     // 表单查询
-    searchFormConfirm() {
-      console.log('searchFormConfirm');
+    conformSearch(params) {
+      console.log('conformSearch');
+      this.fetchParams = {
+        ...params,
+        t: new Date().getTime()
+      };
       this.$refs.searchFilter.hideDrawer();
       this.fetchParams = { t: new Date().getTime() };
     },
@@ -118,6 +133,7 @@ export default {
   right: 20rpx;
   bottom: 20rpx;
 }
+
 .icon {
   font-size: 48rpx;
 }

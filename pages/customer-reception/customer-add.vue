@@ -52,7 +52,7 @@
 import CustomerInfoPanel from './components/customer-info-panel.vue';
 import CustomerDemandPanel from './components/customer-demand-panel.vue';
 import VehicleFacePanel from './components/vehicle-face-panel.vue';
-import DetailPreviewPanel from './components/detail-preview-panel.vue'; //预览页面
+// import DetailPreviewPanel from './components/detail-preview-panel.vue'; //预览页面
 import AmonitorInfo from '@/pages/customer-reception/components/monitor-info.vue'; //监控信息
 import HistoryModel from '@/pages/customer-reception/components/history-model.vue'; //维修历史
 import ServiceActivity from '@/pages/customer-reception/components/service-activity.vue'; //维修历史
@@ -62,16 +62,9 @@ export default {
     CustomerInfoPanel,
     CustomerDemandPanel,
     VehicleFacePanel,
-    DetailPreviewPanel,
     AmonitorInfo,
     HistoryModel,
     ServiceActivity
-  },
-  // 导航栏按钮点击事件
-  onNavigationBarButtonTap(btn) {
-    console.log('导航栏按钮点击事件', btn);
-    this.saveOrder();
-    // uni.getSubNVueById('drawer').show('slide-in-left', 200);
   },
   props: {
     height: {
@@ -85,6 +78,7 @@ export default {
       tabs: ['客户信息', '客户需求', '车身外观'],
       curIndex: 0, // 当前tab的下标
       isMove:false,
+      isPreview:true, //是否预览
     };
   },
   watch: {},
@@ -92,6 +86,11 @@ export default {
   onNavigationBarButtonTap(e) {
     if (e.float == 'right') {
       // 预览
+      if(this.isPreview){
+        this.previewClick();
+      }else{
+         this.SHOW_TOAST('请输入必填项');
+      }
     }
   },
   methods: {
@@ -116,26 +115,15 @@ export default {
         this.isMove = true;
       }
     },
-    // 保存预检单
-    async saveOrder() {
-      // 他们出选择  预检单保存成功  是否进入车辆检查
-      await this.$util.showLoading('正在保存...');
-      await this.$sleep(1000);
-      await this.$util.hideLoading();
-      const [err, res] = await this.$util.showModal({
-        content: '预检单保存成功，是否进入车辆检查。'
-      });
-      console.log([err, res]);
-      if (res.confirm) {
-        console.log('点击 确定');
-        await uni.navigateTo({
-          url: '/pages/vehicle-inspection/vehicle-detail'
-        });
-      } else if (res.cancel) {
-        console.log('点击 取消');
-        await uni.navigateBack();
+    previewClick(){
+      let params = {
+        ...this.$refs.customerInfo.formData
       }
+      uni.navigateTo({
+          url: '/pages/customer-reception/customer-save?previewOrder='+encodeURIComponent(JSON.stringify(params))
+        });
     },
+    
     //维修历史
     historyClick() {
       this.$refs.mPopup_history.open();

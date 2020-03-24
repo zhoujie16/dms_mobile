@@ -13,4 +13,4 @@ export const searchRoleByCode = params => Http.get(`${SERVER.DMSCLOUD_BASEDATA}/
 
 
 //根据车牌号查询客户信息
-export const queryCusInfoByLicense = params =>Http.get(`${SERVER.DMSCLOUD_REPAIR/VehiclePreviewController/queryCusInfoByLicense}`,params)
+export const queryCusInfoByLicense = params =>Http.get(`${SERVER.DMSCLOUD_REPAIR}/VehiclePreviewController/queryCusInfoByLicense`,params)
