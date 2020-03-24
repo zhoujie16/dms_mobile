@@ -1,7 +1,9 @@
 <template>
   <view class="m-lab-wrap">
     <view class="m-lab-inner" :class="{ 'm-lab-inner2': row > 1, border: border }">
-      <view class="m-lab-title" :class="{ 'm-required': required }">{{ label }}</view>
+      <view class="m-lab-title" :class="{ 'm-required': required }">
+      {{ label }}
+      </view>
       <view class="m-lab-content">
         <slot name="default"></slot>
         <slot name="after"></slot>

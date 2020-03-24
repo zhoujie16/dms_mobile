@@ -1,9 +1,9 @@
 <!-- 多选折叠面板 -->
 <template>
   <view class="m-check-box-panel-wrap">
-    <view class="m-check-box-panel-title">
+    <view v-if="label" class="m-check-box-panel-title">
       <MLabel :label="label" :border="false">
-        <text @click="foldingHandleClick" class="m-iconfont">
+        <text v-if="!isFold" @click="foldingHandleClick" class="m-iconfont">
           {{ isFolding ? '&#xe71c;' : '&#xe718;' }}
         </text>
       </MLabel>
@@ -44,11 +44,18 @@ export default {
     single: {
       type: Boolean,
       default: false
+    },
+    // 是否可折叠
+    isFold: {
+      type: Boolean,
+      default: true
     }
   },
+  computed: {},
   data() {
     return {
-      isFolding: false
+      // 是否折叠状态
+      isFolding: true
     };
   },
   methods: {
@@ -69,7 +76,7 @@ export default {
   .m-check-box-panel-title {
   }
   .m-check-box-panel-inner {
-    background-color: #FFFFFF;
+    background-color: #ffffff;
     height: 100rpx;
     overflow: hidden;
     &.active {

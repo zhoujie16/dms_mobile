@@ -32,14 +32,18 @@ export default {
   },
   computed: {
     tipInfo() {
-      if (!this.value || !this.formatAddress) {
-        return '请选择';
-      }
-      if (this.mode == 'address') {
+      if (this.mode == 'date' || this.mode == 'range') {
+        if (!this.value) {
+          return '请选择';
+        }
+        const str = this.value.join(',');
+        return str || '请选择';
+      } else if (this.mode == 'address') {
+        if (!this.formatAddress) {
+          return '请选择';
+        }
         return this.formatAddress;
       }
-      const str = this.value.join(',');
-      return str || '请选择';
     }
   },
   methods: {
