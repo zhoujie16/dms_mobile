@@ -2,9 +2,10 @@ import AppConfig from "@/config/config.js";
 import JSEncrypt from "wx-jsencrypt";
 import * as types from "@/common/auth/type.js";
 import {
-  searchRoleByCode
+  searchRoleByCode,
+  getWxlxSelect
 } from "@/api/util/index.js";
-
+  
 const ENCRYPT_KEY =
   "MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQC+qyoKFVePsvGQ9/RJJC9FT9FYF6kxuJ1l53P8GHMzTU9Jbbk2k///Hf5cpX8iP6laV24OT1KGLab/kUuUlT+1BSR4OsAUshASqYQbvzqSHn8DWJ9owovh3461Rksc1uS2xGABKzjcDi3nwHLkJ50bSLWpRxAKA+6TXo7mH0E4bQIDAQAB";
 
@@ -138,6 +139,16 @@ class Auth {
       text: x.employeeName
     }));
     return serviceAdvisorList;
+  }
+  
+  // 获取维修类型
+  async getRepairTypeList() {
+    const res = await getWxlxSelect();
+    const wxlxSelect = res[1].data.map(x => ({ 
+      value: x.REPAIR_TYPE_CODE, 
+      text: x.REPAIR_TYPE_NAME
+    }));
+    return wxlxSelect;
   }
   /**
    * @param {Object} code  列表code  //比如服务顾问code

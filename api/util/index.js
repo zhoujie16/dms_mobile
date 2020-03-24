@@ -11,6 +11,11 @@ export const searchRoleByCode = params => Http.get(`${SERVER.DMSCLOUD_BASEDATA}/
   params
 );
 
+// 维修类型 - 下拉框
+export const getWxlxSelect = params =>
+  Http.get(`${SERVER.DMSCLOUD_REPAIR}/basedataRepairtypes/findAllRepairType`, params, {
+    isLoading: true
+  });
 
 //根据车牌号查询客户信息
-export const queryCusInfoByLicense = params =>Http.get(`${SERVER.DMSCLOUD_REPAIR}/VehiclePreviewController/queryCusInfoByLicense`,params)
+export const queryCusInfoByLicense = params =>Http.get(`${SERVER.DMSCLOUD_REPAIR/VehiclePreviewController/queryCusInfoByLicense}`,params)

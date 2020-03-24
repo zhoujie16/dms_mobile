@@ -20,8 +20,9 @@
           </view>
           <view class="box">
             <view class="label">服务顾问</view>
-            <view>{{$auth.getRoleName(cell.serviceAdvisor,serviceAdvisorList)}}</view>
+            <view>{{$auth.getRoleName(cell.serviceAdvisor, serviceAdvisorList)}}</view>
           </view>
+          
           <view class="box">
             <view class="label">服务技师</view>
             <view>{{$auth.getRoleName(cell.chiefTechnician,serviceAdvisorList)}}</view>

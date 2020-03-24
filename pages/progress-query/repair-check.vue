@@ -30,7 +30,7 @@
        <view class="m-break-space"></view>
       <view class="operate">
         <view class="btn">
-          <m-button type="default" @click.native="checkClick">车辆检查</m-button>
+          <m-button type="default" @click.native="checkClick" v-if="completeTag">车辆检查</m-button>
         </view>
         <view class="btn">
           <m-button type="primary" v-if="roStatus === '80491003'">交车</m-button>
@@ -50,7 +50,8 @@ export default {
       telphoneNumber: '18583285531',
       repairOrderInfo: {},
       serviceAdvisorList: [],
-      roStatus: ''  // 工单状态
+      roStatus: '',  // 工单状态
+      completeTag: null
     };
   },
   onReady() {
@@ -61,6 +62,7 @@ export default {
     console.log(option,'option');
     // let roNo = option.orderNum;
     this.roStatus = option.roStatus;
+    this.completeTag = option.completeTag;
     this.findRepairOrderInfo(option.orderNum)
   },
   methods: {

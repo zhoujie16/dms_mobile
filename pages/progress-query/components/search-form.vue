@@ -1,81 +1,61 @@
 <template>
   <view>
-    <view class="form-demo-wrap" @touchmove.prevent>
+    <scroll-view class="scroll-view-h" :style="{ maxHeight: '900rpx' }" scroll-y>
       <!-- <MLicense label="车牌号"></MLicense> -->
-      <MLicense></MLicense>
-      <MPicker label="开单日期" mode="range" v-model="formData.value_date_2"></MPicker>
-      <MInput label="车主姓名" v-model="formData.name"></MInput>
-      <MInput label="车主编号" v-model="formData.roNo"></MInput>
+      <MLicense v-model="formData.license"></MLicense>
+      <MPicker label="开单日期" mode="range" v-model="formData.createdAt"></MPicker>
+      <MInput label="车主姓名" v-model="formData.ownerName"></MInput>
+      <MInput label="车主编号" v-model="formData.ownerNo"></MInput>
       <MCheckbox
         label="维修类型"
-        type="inner"
-        v-model="formData.value_2"
-        :itemList="itemList"
+        type="popup"
+        v-model="formData.repairTypeList"
+        :itemList="wxlxSelect"
         single
       ></MCheckbox>
-      <!-- <MInput v-model="cph" label="车牌号"></MInput> -->
-     <!-- <MCheckbox label="服务顾问" v-model="fwgw" :itemList="itemList_fwgw" :type="'popup'" single></MCheckbox> -->
-     <!-- <MCheckboxPanel
-       label="服务顾问"
-       type="inner"
-       v-model="fwgw"
-       :itemList="itemList_fwgw"
-     ></MCheckboxPanel>
-      <MDatePicker label="开单日期" v-model="dateTest"></MDatePicker> -->
-     
-    </view>
-    <view class="check-box">
-      <MCheckboxPanel
-        label="服务顾问"
-        type="inner"
-        v-model="formData.value_22"
-        :itemList="service_itemList"
-      ></MCheckboxPanel>
-      <MCheckboxPanel
-        label="服务技师"
-        type="inner"
-        v-model="formData.value_22"
-        :itemList="service_itemList"
-      ></MCheckboxPanel>
-      <MCheckboxPanel
-        label="服务组织"
-        type="inner"
-        v-model="formData.value_22"
-        :itemList="service_itemList"
-      ></MCheckboxPanel>
-    </view>
+        <MCheckbox
+          label="服务顾问"
+          type="popup"
+          v-model="formData.serviceAdvisor"
+          :itemList="serviceAdvisorList"
+          single
+        ></MCheckbox>
+        <MCheckbox
+          label="服务技师"
+          type="popup"
+          v-model="formData.technicianList"
+          :itemList="technicianList"
+        ></MCheckbox>
+    </scroll-view>
+      <MFormBottom @confirm="formConfirm" @reset="formReset"></MFormBottom>
   </view>
 </template>
 <script>
+  import  { getWxlxSelect } from '@/api/progress-query/index.js';
 export default {
   components: {},
+  props: {
+    serviceAdvisorList: {
+      type: Array
+    },
+    wxlxSelect: {
+      type: Array
+    },
+    technicianList: {
+      type: Array
+    },
+  },
   data() {
     return {
       formData: {
-        name: '',
-        roNo: '',
-        value_2: [],
-        value_22: [],
-        value_3: false,
-        value_date_1: ['2020-01-06'],
-        value_date_2: ['2018-01-06', '2020-01-06']
+        license: '',  // 车牌号
+        ownerName: '',  // 车主姓名
+        ownerNo: '',   // 车主编号
+        repairTypeList: [],  // 维修类型
+        serviceAdvisor: [], // 服务顾问
+        technicianList: [],  // 指定技师
+        createdAt: ['2018-01-06', '2020-01-06']
       },
-      itemList: [
-        { text: '机电', value: 1 }, 
-        { text: '钣喷', value: 2 }
-      ],
-      service_itemList: [
-        { text: '顾问1', value: 1 },
-        { text: '顾问2', value: 2 },
-        { text: '顾问3', value: 3 },
-        { text: '顾问4', value: 4 },
-        { text: '顾问5', value: 5 },
-        { text: '顾问6', value: 6 },
-        { text: '顾问7', value: 7 },
-        { text: '顾问8', value: 8 },
-        { text: '顾问9', value: 9 },
-        { text: '顾问10', value: 10 }
-      ]
     };
   },
   watch: {
@@ -83,13 +63,38 @@ export default {
       console.log('dateTest change', dateTest);
     }
   },
+  mounted() {
+    // 备份初始值 用于重置
+    this.formData_reset = { ...this.formData };
+    console.log(this.repaiTypeList,'this.repaiTypeList')
+  },
   methods: {
+    
     // 查询按钮事件
     formSubmit() {
       console.log('formSubmit');
       this.$emit('confirm');
-    }
-  }
+    },
+    //重置表单
+    formReset() {
+      this.formData = { ...this.formData_reset };
+    },
+    //确认查询
+    formConfirm() {
+      let params = {
+        license: this.formData.license.trim(),
+        ownerName: this.formData.ownerName.trim(),
+        ownerNo: this.formData.ownerNo.trim(),
+        serviceAdvisor: this.formData.serviceAdvisor[0],
+        repairTypeList: this.formData.repairTypeList[0],
+        technicianList: this.formData.technicianList[0],
+        roCreateDateBegin: this.formData.createdAt[0],
+        roCreateDateEnd: this.formData.createdAt[1]
+      };
+      console.log(params,'params')
+      this.$emit('confirm', params);
+    },
+ }
 };
 </script>
 

@@ -18,4 +18,3 @@ export const findRepairOrderInfoByRoNo = orderNum =>
   Http.get(`${SERVER.DMSCLOUD_REPAIR}/assistant/repair/progress/findRepairOrderInfoByRoNo/${orderNum}`, {
     isLoading: true
   });
-  // /assistant/repair/progress/findRepairOrderInfoByRoNo/{orderNum}

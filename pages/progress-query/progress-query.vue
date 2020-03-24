@@ -16,7 +16,12 @@
         </view>
       </view>
       <view slot="form">
-        <SearchForm></SearchForm>
+        <SearchForm 
+          :wxlxSelect="wxlxSelect" 
+          :serviceAdvisorList="serviceAdvisorList"
+          :technicianList="technicianList"
+          @confirm="conformSearch">
+        </SearchForm>
       </view>
     </search-filter>
     <!-- <view class="refresh">已为您刷新。。。条信息</view> -->
@@ -51,7 +56,8 @@
 import { progressQueryAll, findSubmitCarStatus } from '@/api/progress-query/index.js';
 import SearchForm from '@/pages/progress-query/components/search-form.vue';
 import ScrollCell from '@/pages/progress-query/components/scroll-cell.vue';
-import { dictionary } from '@/common/dictMixin.js';
+// import { dictionary } from '@/common/dictMixin.js';
+import dictCode from '@/common/dictCode.js';
 
 export default {
   components: {
@@ -83,21 +89,42 @@ export default {
         
       },
       dataSource: [],
-      serviceAdvisorList: []
+      wxlxSelect: [],  // 维修类型列表
+      serviceAdvisorList: [],  // 服务顾问
+      technicianList: [],   // 指定技师
     };
   },
-  onLoad() {
+  onReady() {
     this.getServiceAdvisorList();
-    this.queryStatusCount()
+    this.queryStatusCount();
+    this.getRepairTypeList()
   },
   methods: {
     //获取列表
     async getServiceAdvisorList() {
       //服务顾问
-      let consultant = { role: dictCode.SERVICE_CONSULTANT , companyId: this.$auth.getCompanyId()};
+      let consultant = { role: dictCode.SERVICE_CONSULTANT, companyId: this.$auth.getCompanyId() };
+      this.serviceAdvisorList = await this.$auth.queryServiceAdvisor(consultant);
+      // console.log(this.serviceAdvisorList,'this.serviceAdvisorList')
       //服务技师
       let technician = { role: dictCode.TECHNICIAN , companyId: this.$auth.getCompanyId()};
-      this.serviceAdvisorList = await this.$auth.queryServiceAdvisor(consultant);   
+      // console.log(technician,'technician')
+      this.technicianList = await this.$auth.queryServiceAdvisor(technician);
+     },
+     
+     // 获取维修类型
+     async getRepairTypeList() {
+       this.wxlxSelect = await this.$auth.getRepairTypeList()
+     },
+     
+     
+     conformSearch(params){
+       this.fetchParams = {
+         ...params,
+         t: new Date().getTime()
+       };
+       this.$refs.searchFilter.close();
+       this.queryStatusCount();
      },
      
      //统计数量
@@ -125,7 +152,7 @@ export default {
     scrollCellClick(data){
       // this.$emit('click')
       uni.navigateTo({
-        url: `/pages/progress-query/repair-check?orderNum=${data.roNo}&activeindex=${this.activeindex}&roStatus=${data.roStatus}`
+        url: `/pages/progress-query/repair-check?orderNum=${data.roNo}&activeindex=${this.activeindex}&roStatus=${data.roStatus}&completeTag=${data.completeTag}`
       })
     }
   }
