@@ -1,19 +1,19 @@
 <template>
   <!-- 客户信息 -->
   <view class="panel-wrap">
-    <MLicense label="车牌号" :value="formData.license"></MLicense>
-    <MInput label="VIN" :required="true">
+    <MLicense label="车牌号" v-model ="formData.license"></MLicense>
+    <MInput label="VIN" :required="true" v-model ="formData.vin">
       <view slot="after"><text @click="searchClick" class="m-iconfont screen">&#xe732;</text></view>
     </MInput>
-    <MInput label="车型" readonly="true" :value="formData.model"></MInput>
-    <MInput label="车主姓名" readonly="true" :value="formData.ownerName"></MInput>
-    <MInput label="手机号" readonly="true" :value="formData.phone"></MInput>
-    <MInput label="邮箱" :value="formData.eMail"></MInput>
+    <MInput label="车型" readonly="true" v-model ="formData.model"></MInput>
+    <MInput label="车主姓名" readonly="true" v-model ="formData.ownerName"></MInput>
+    <MInput label="手机号" readonly="true" v-model ="formData.phone"></MInput>
+    <MInput label="邮箱" v-model ="formData.eMail"></MInput>
     <MInput label="送修人"></MInput>
-    <MInput label="送修人手机号" :required="true" :value="formData.contactorPhone">
+    <MInput label="送修人手机号" :required="true" v-model ="formData.contactorPhone">
       <view slot="after" class="phoneWrap">
         <image
-          @click.native="callClick(formData.contactorPhone)"
+          @click="callClick(formData.contactorPhone)"
           src="/static/image/dianhua2.svg"
           mode="scaleToFill"
           class="img"
@@ -29,8 +29,8 @@
     ></MCheckbox>
     <MInput label="里程(KM)" :required="true"></MInput>
     <MInput label="进厂时间"></MInput>
-    <MInput label="销售日期" readonly="true" :value="formData.salesDate"></MInput>
-    <MInput label="地址"></MInput>
+    <MInput label="销售日期" readonly="true" v-model="formData.salesDate"></MInput>
+    <MInput label="地址" v-model="formData.address" ></MInput>
   </view>
 </template>
 
@@ -57,6 +57,11 @@ export default {
       },
       serviceAdvisorList: []
     };
+  },
+  watch:{
+    formData(val){
+      console.log(val,'2333')
+    }
   },
   mounted() {
     this.getServiceAdvisorList();

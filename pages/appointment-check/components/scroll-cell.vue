@@ -26,7 +26,7 @@
           <view>{{ cell.contactorPhone }}</view>
         </view>
         <view class="phone">
-          <image @click.native="callClick(cell.contactorPhone)" src="/static/image/dianhua2.svg" mode="scaleToFill" class="img"></image>
+          <image @click.stop="callClick(cell.contactorPhone)" src="/static/image/dianhua2.svg" mode="scaleToFill" class="img"></image>
         </view>
       </view>
     </view>

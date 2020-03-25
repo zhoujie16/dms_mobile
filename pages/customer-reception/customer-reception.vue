@@ -1,9 +1,11 @@
 <template>
   <MPage ref="MPage" type="primary">
     <SearchFilter ref="searchFilter" :isShow="false">
-      <view slot="form"><searchForm :serviceAdvisorList="serviceAdvisorList" @confirm="conformSearch"></searchForm></view>
+      <view slot="form">
+        <searchForm :serviceAdvisorList="serviceAdvisorList" @confirm="conformSearch"></searchForm>
+      </view>
     </SearchFilter>
-    
+
     <BaseScroll
       :top="100"
       :fetchApi="fetchApi"
@@ -16,23 +18,23 @@
     >
       <view slot="scroll" style="padding: 20rpx;">
         <view v-for="(data, i) in dataSource" :key="i">
-         <!-- <scrollCell @click="scrollCellClick(data)"></scrollCell> -->
-         <view class="cell-pad">
-           <MSwipeCell
+          <!-- <scrollCell @click="scrollCellClick(data)"></scrollCell> -->
+          <view class="cell-pad">
+            <MSwipeCell
               :disabled="false"
               :options="[{ text: '删除', type: 'warn' }]"
-              @optionClick="optionClick(data)"
+              @optionClick="optionClick($event,data)"
               @change="swipeChange"
             >
               <template v-slot:cell>
-                <scrollCell @click="scrollCellClick(data)"></scrollCell>
+                <scrollCell @click="scrollCellClick(data)" :cell="data"></scrollCell>
               </template>
             </MSwipeCell>
-         </view>
+          </view>
         </view>
       </view>
     </BaseScroll>
-<!-- <MSwipeCell
+    <!-- <MSwipeCell
    :disabled="false"
    :options="[{ text: '删除', type: 'warn' }]"
    @optionClick="optionClick(data)"
@@ -55,7 +57,7 @@
 </template>
 
 <script>
-import { queryAllPreview, deletePreview } from '@/api/customer-reception/index.js'; 
+import { queryAllPreview, deletePreview } from '@/api/customer-reception/index.js';
 import searchForm from '@/pages/customer-reception/components/search-form.vue';
 import scrollCell from '@/pages/customer-reception/components/scroll-cell.vue';
 import dictCode from '@/common/dictCode.js';
@@ -87,7 +89,7 @@ export default {
     scrollCellClick(cell) {
       console.log('cellClick', cell);
       uni.navigateTo({
-        url: '/pages/customer-reception/customer-detail'
+        url: `/pages/customer-reception/customer-detail?fromPage=detail&yjNo=${cell.yjNo}`
       });
     },
     // 表单查询
@@ -97,7 +99,7 @@ export default {
         ...params,
         t: new Date().getTime()
       };
-      this.$refs.searchFilter.hideDrawer();
+      this.$refs.searchFilter.close();
       this.fetchParams = { t: new Date().getTime() };
     },
     // 新增客户接待
@@ -107,14 +109,40 @@ export default {
       });
     },
     //左滑删除
-    optionClick({ text, index }) {
-      console.log('点击滑动区域按钮', { text, index });
-      this.SHOW_TOAST(text);
+    async optionClick(e,data) {
+      console.log("111",data)
+      console.log('点击滑动区域按钮',e);
+      if(e.index==0){
+        const res = await this.SHOW_MODAL({
+          title: '确认删除吗？',
+          content: '',
+          showCancel: true, // 是否显示取消按钮，默认为 true
+          cancelText: '取消', // 取消按钮的文字，默认为"取消"，最多 4 个字符
+          confirmText: '确定' // 确定按钮的文字，默认为"确定"，最多 4 个字符
+        });
+        if( res=='confirm'){
+          //// 交互结果 确认
+          console.log(9999,data.yjNo)
+          let params ={
+            yjNo:data.yjNo
+          }
+          let res1 = await deletePreview(params);
+          this.dataSource=[];
+          this.fetchParams = {
+            ...this.fetchParams,
+          };
+        }
+        
+        console.log('showModal_res', res=='confirm');
+       
+      }
+      // console.log('点击滑动区域按钮', { text, index });
+      // this.SHOW_TOAST(text);
     },
     swipeChange(state) {
-      console.log('状态', state);
+      // console.log('状态', state);
     },
-    
+
     //服务顾问列表
     async getServiceAdvisorList() {
       //服务顾问

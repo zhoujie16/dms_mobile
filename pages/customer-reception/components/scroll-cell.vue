@@ -3,23 +3,23 @@
       <view class="list-cell-wrap-inner" @click="cellClick">
         <view class="list-cell-title">
           <view class="left">
-            <text class="vin">谢宝宝</text>
-            <text class="name">沪1000001</text>
+            <text class="vin">{{cell.ownerName?cell.ownerName:'未知'}}</text>
+            <text class="name">{{cell.license}}</text>
           </view>
-          <view class="right">2020-01-09 10:23</view>
+          <view class="right">{{cell.createdAt}}</view>
         </view>
         <view class="list-cell-content">
           <view class="box">
             <view class="label">预检单号</view>
-            <view >YO202001090001</view>
+            <view >{{cell.yjNo}}</view>
           </view>
           <view class="box">
             <view class="label">工单编号</view>
-            <view>RO202001090002</view>
+            <view>{{cell.roNo?cell.roNo:'无'}}</view>
           </view>
           <view class="box">
             <view class="label">服务顾问</view>
-            <view>陆小鹏</view>
+            <view>{{cell.serviceAdvisor?cell.serviceAdvisor:'无'}}</view>
           </view>
         </view>
       </view>

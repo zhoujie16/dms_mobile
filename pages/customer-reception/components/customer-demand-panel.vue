@@ -1,15 +1,15 @@
 <template>
   <!-- 客户需求 -->
   <view class="panel-wrap">
-   <MCheckboxPanel
+    <MCheckboxPanel
       label="选择类型"
       type="inner"
-      v-model="formData.value1"
+      v-model="formData.inReason"
       :itemList="itemList"
       single
     ></MCheckboxPanel>
     <view class="m-break-space"></view>
-     <MTextArea label="故障描述" v-model="formData.value_1"></MTextArea>
+    <MTextArea label="故障描述" v-model="formData.remark2"></MTextArea>
   </view>
 </template>
 
@@ -27,7 +27,8 @@ export default {
         { text: '故障维修', value: '5' }
       ],
       formData: {
-        value1: ''
+        inReason: '',
+        remark2: ''
       }
     };
   },

@@ -38,7 +38,7 @@
       >
         <view slot="scroll">
           <view v-for="(item, index) in itemListLicense" :key="index">
-            <view class="itemBox" @click.native="licenseClick(item)">{{ item.license }}</view>
+            <view class="itemBox" @click="licenseClick(item)">{{ item.license }}</view>
           </view>
         </view>
       </BaseScroll>

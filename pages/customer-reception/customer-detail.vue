@@ -2,74 +2,110 @@
 <template>
   <MPage ref="MPage">
     <view class="page-body">
-      <view class="title-panel">
-        <view class="title-panel-inner">
-          <view class="customer-info">{{previewInfoData.license}}</view>
-          <view class="car-info">
-            预检单号
-            <text class="value">{{previewInfoData.yjNo}}</text>
+      <view class="header-fixed">
+        <view class="title-panel">
+          <view class="title-panel-inner">
+            <view class="customer-info">{{ previewInfoData.license }}</view>
+            <view class="car-info">
+              预检单号
+              <text class="value">
+                {{ previewInfoData.yjNo ? previewInfoData.yjNo : '—— 未生成 ——' }}
+              </text>
+            </view>
+            <view class="car-info">
+              工单号
+              <text class="value">
+                {{ previewInfoData.roNo ? previewInfoData.roNo : '—— 未生成 ——' }}
+              </text>
+            </view>
           </view>
-          <view class="car-info">
-            工单号
-            <text class="value">{{previewInfoData.roNo}}</text>
-          </view>
+          <view class="title-panel-bg"></view>
         </view>
-        <view class="title-panel-bg"></view>
       </view>
-      <CollapsePanel title="客户信息">
-        <template slot="default">
-          <MLabel label="vin">{{previewInfoData.vin}}</MLabel>
-          <MLabel label="车主姓名">{{previewInfoData.ownerName}}</MLabel>
-          <MLabel label="手机号">{{previewInfoData.mobile}}</MLabel>
-          <MLabel label="送修人">{{previewInfoData.contactorName}}</MLabel>
-          <MLabel label="送修人手机号">{{previewInfoData.contactorPhone}}</MLabel>
-          <MLabel label="送修人邮箱">{{previewInfoData.contactorEMail	}}</MLabel>
-          <MLabel label="里程(KM)">{{previewInfoData.inMileage}}</MLabel>
-          <MLabel label="服务顾问">{{previewInfoData.serviceAdvisor}}</MLabel>
-        </template>
-      </CollapsePanel>
-      <CollapsePanel title="客户需求">
-        <template slot="default">
-          <MLabel label="需求类型">召回</MLabel>
-          <MLabel label="故障描述">普通维修</MLabel>
-        </template>
-      </CollapsePanel>
-      <CollapsePanel title="故障记录点">
-        <template slot="default">
-          <MLabel label="暂无记录"></MLabel>
-        </template>
-      </CollapsePanel>
-      <CollapsePanel title="物品清单">
-        <template slot="default">
-          <MCheckboxPanel
-            label="其他备注"
-            type="inner"
-            v-model="value_1"
-            :itemList="itemList_1"
-          ></MCheckboxPanel>
-        </template>
-      </CollapsePanel>
-      <view class="operate">
-        <view class="btn">
-          <m-button type="default">删除</m-button>
-        </view>
-        <view class="btn">
-          <m-button type="primary">存为预检单</m-button>
+      <view class="content-warp">
+        <CollapsePanel title="客户信息">
+          <template slot="default">
+            <MLabel label="vin">{{ previewInfoData.vin }}</MLabel>
+            <MLabel label="车主姓名">{{ previewInfoData.ownerName }}</MLabel>
+            <MLabel label="手机号">{{ previewInfoData.mobile }}</MLabel>
+            <MLabel label="送修人">{{ previewInfoData.contactorName }}</MLabel>
+            <MLabel label="送修人手机号">{{ previewInfoData.contactorPhone }}</MLabel>
+            <MLabel label="送修人邮箱">{{ previewInfoData.contactorEMail }}</MLabel>
+            <MLabel label="里程(KM)">{{ previewInfoData.inMileage }}</MLabel>
+            <MLabel label="服务顾问">{{ previewInfoData.serviceAdvisor }}</MLabel>
+          </template>
+        </CollapsePanel>
+        <CollapsePanel title="客户需求">
+          <template slot="default">
+            <MLabel label="需求类型">召回</MLabel>
+            <MLabel label="故障描述">普通维修</MLabel>
+          </template>
+        </CollapsePanel>
+        <CollapsePanel title="故障记录点">
+          <template slot="default">
+            <MLabel label="暂无记录"></MLabel>
+          </template>
+        </CollapsePanel>
+        <CollapsePanel title="物品清单">
+          <template slot="default">
+            <MCheckboxPanel
+              label="其他备注"
+              type="inner"
+              v-model="value_1"
+              :itemList="itemList_1"
+            ></MCheckboxPanel>
+          </template>
+        </CollapsePanel>
+      </view>
+      <view class="operate" v-if="fromPage == 'detail'">
+        <view class="m-break-space"></view>
+        <view class="btn-box">
+          <view class="btn"><m-button type="primary">车辆检查</m-button></view>
         </view>
       </view>
     </view>
+    <!-- 签名信息 -->
+    <MPopup ref="mPopup_sign" type="bottom" title="客户签名">
+      <view class="sign-warp">
+        <m-button type="primary" size="mini" @click.native="saveSign">保存签名</m-button>
+        
+      </view>
+    </MPopup>
   </MPage>
 </template>
 
 <script>
-// import AmonitorInfo from './components/monitor-info.vue';
+import { savePreview, queryPreviewDetail } from '@/api/customer-reception/index.js';
 export default {
   components: {
     // AmonitorInfo
   },
+  onLoad(option) {
+    if (option.fromPage == 'preview') {
+      this.previewInfoData = JSON.parse(decodeURIComponent(option.previewOrder));
+      console.log('999', this.previewInfoData);
+    } else {
+      const webView = this.$mp.page.$getAppWebview();
+      webView.setTitleNViewButtonStyle(0, {
+        width: '0px'
+      });
+      console.log('预检单号', option.yjNo);
+      this.getOrderInfo(option.yjNo);
+    }
+    this.fromPage = option.fromPage;
+  },
+  onNavigationBarButtonTap(e) {
+    console.log(e);
+    if (e.index == 0) {
+      //保存
+      this.openSign();
+    }
+  },
+
   data() {
     return {
-      previewInfoData:{},
+      previewInfoData: {},
+      fromPage: 'detail',
       value_1: [1, 3, 6],
       itemList_1: [
         { text: '客户在厂', value: 1 },
@@ -88,12 +124,51 @@ export default {
       uni.navigateBack({
         delta: 1
       });
+    },
+    //通过预检单号查看详情
+    async getOrderInfo(yjNo) {
+      const params = {
+        yjNo
+      };
+      let [status, res] = await queryPreviewDetail(params);
+      console.log(res, '预约检查详情信息');
+      this.previewInfoData = res.data;
+    },
+    openSign() {
+      this.$refs.mPopup_sign.open();
+    },
+    async saveSign() {
+      // 他们出选择  预检单保存成功  是否进入车辆检查
+      await this.$util.showLoading('正在保存...');
+      await this.$sleep(1000);
+      await savePreview(this.previewInfoData);
+      await this.$util.hideLoading();
+      const [err, res] = await this.$util.showModal({
+        content: '预检单保存成功，是否进入车辆检查。'
+      });
+      console.log([err, res]);
+      if (res.confirm) {
+        console.log('点击 确定');
+        await uni.navigateTo({
+          url: '/pages/vehicle-inspection/vehicle-detail'
+        });
+      } else if (res.cancel) {
+        console.log('点击 取消');
+        await uni.navigateBack();
+      }
     }
   }
 };
 </script>
 
 <style lang="scss" scoped>
+.header-fixed {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 99;
+}
 .title-panel {
   position: relative;
   height: 260rpx;
@@ -101,7 +176,7 @@ export default {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: $uni-m-color-cwhite;
+  background-color: $uni-m-color-white-pressed;
   .title-panel-bg {
     position: absolute;
     top: 0;
@@ -142,14 +217,32 @@ export default {
   // height: calc(100vh - 128rpx);
   height: 100vh;
   overflow: auto;
-}
-.operate{
-  display: flex;
-  background: $uni-m-color-cwhite;
-  padding: 20rpx 30rpx;
-  .btn{
-    flex: 1;
-    padding: 0 20rpx;
+  .content-warp {
+    margin-top: 260rpx;
+    margin-bottom: 160rpx;
   }
+}
+.operate {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+
+  .btn-box {
+    display: flex;
+    background: $uni-m-color-cwhite;
+    padding: 20rpx 30rpx;
+    .btn {
+      flex: 1;
+      padding: 0 20rpx;
+    }
+  }
+}
+.sign-warp{
+  position: absolute;
+  bottom: 20rpx;
+  width: 100%;
+  text-align: center;
 }
 </style>

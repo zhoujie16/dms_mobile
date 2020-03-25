@@ -27,7 +27,7 @@ export default {
       formData: {
         license: '',
         serviceAdvisor: [],
-        createdAt: ['2018-01-06', '2020-01-06']
+        createdAt: ['', '']
       }
     };
   },

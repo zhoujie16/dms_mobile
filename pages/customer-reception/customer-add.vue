@@ -19,17 +19,11 @@
               <VehicleFacePanel></VehicleFacePanel>
             </scroll-view>
           </swiper-item>
-          <!-- <swiper-item>
-          <scroll-view class="swiper-scroll-wrap" scroll-y="true">
-            <DetailPreviewPanel></DetailPreviewPanel>
-          </scroll-view>
-        </swiper-item> -->
         </swiper>
       </SwiperTab>
       <view class="uni-flex uni-row v-footer">
         <view class="flex-item v-border" @click="historyClick">维修历史</view>
         <view class="flex-item v-border" @click="activityClick">服务活动</view>
-
         <view class="flex-item " @click="amonitorClick">监控信息</view>
       </view>
     </view>
@@ -52,7 +46,6 @@
 import CustomerInfoPanel from './components/customer-info-panel.vue';
 import CustomerDemandPanel from './components/customer-demand-panel.vue';
 import VehicleFacePanel from './components/vehicle-face-panel.vue';
-// import DetailPreviewPanel from './components/detail-preview-panel.vue'; //预览页面
 import AmonitorInfo from '@/pages/customer-reception/components/monitor-info.vue'; //监控信息
 import HistoryModel from '@/pages/customer-reception/components/history-model.vue'; //维修历史
 import ServiceActivity from '@/pages/customer-reception/components/service-activity.vue'; //维修历史
@@ -81,10 +74,26 @@ export default {
       isPreview:true, //是否预览
     };
   },
-  watch: {},
+  onLoad() {
+    const webView = this.$mp.page.$getAppWebview();
+    webView.setTitleNViewButtonStyle(0, {
+      width:'0px'
+    })
+  },
+  watch: {
+	  curIndex(val){
+		  if(val==2){
+			  const webView = this.$mp.page.$getAppWebview();
+			  webView.setTitleNViewButtonStyle(0, {
+			    width:'50px'
+			  })
+		  }
+	  }
+  },
   // 监听导航栏删选事件
   onNavigationBarButtonTap(e) {
-    if (e.float == 'right') {
+    console.log(e)
+    if (e.index == 0) {
       // 预览
       if(this.isPreview){
         this.previewClick();
@@ -117,11 +126,23 @@ export default {
     },
     previewClick(){
       let params = {
-        ...this.$refs.customerInfo.formData
+        license: this.$refs.customerInfo.formData.license,
+        vin: this.$refs.customerInfo.formData.vin,
+        model: this.$refs.customerInfo.formData.model,
+        ownerName:this.$refs.customerInfo.formData.model,
+        phone: this.$refs.customerInfo.formData.phone,
+        eMail:this.$refs.customerInfo.formData.eMail,
+        contactorName: this.$refs.customerInfo.formData.contactorName,
+        contactorPhone: this.$refs.customerInfo.formData.contactorPhone,
+        mileage: this.$refs.customerInfo.formData.mileage,
+        firstInDate:this.$refs.customerInfo.formData.firstInDate,
+        salesDate:this.$refs.customerInfo.formData.salesDate,
+        address: this.$refs.customerInfo.formData.address,
+        serviceAdvisor: this.$refs.customerInfo.formData.serviceAdvisor[0]
       }
       uni.navigateTo({
-          url: '/pages/customer-reception/customer-save?previewOrder='+encodeURIComponent(JSON.stringify(params))
-        });
+        url:`/pages/customer-reception/customer-detail?previewOrder=${encodeURIComponent(JSON.stringify(params))}&fromPage=preview`
+      });
     },
     
     //维修历史

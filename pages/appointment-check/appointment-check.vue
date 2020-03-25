@@ -116,11 +116,11 @@ export default {
     },
     //统计数量
     async queryStatusCount() {
-      let res = await queryStatusNum(this.fetchParams);
-      console.log(res[1], '统计数量');
-      this.itemList[0].count=res[1].data.unEnter;
-      this.itemList[1].count=res[1].data.entered;
-      this.itemList[2].count=res[1].data.cancelled;
+      let [status,res] = await queryStatusNum(this.fetchParams);
+      console.log(res, '统计数量');
+      this.itemList[0].count=res.data.unEnter;
+      this.itemList[1].count=res.data.entered;
+      this.itemList[2].count=res.data.cancelled;
     },
     changeIndex(item, index) {
       this.activeindex = index;

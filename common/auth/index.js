@@ -133,8 +133,8 @@ class Auth {
   }
   // 获取服务顾问列表
   async queryServiceAdvisor(params) {
-    const res = await searchRoleByCode(params);
-    const serviceAdvisorList = res[1].data.map(x => ({
+    const [status,res] = await searchRoleByCode(params);
+    const serviceAdvisorList = res.data.map(x => ({
       value: x.userId,
       text: x.employeeName
     }));
@@ -143,8 +143,8 @@ class Auth {
   
   // 获取维修类型
   async getRepairTypeList() {
-    const res = await getWxlxSelect();
-    const wxlxSelect = res[1].data.map(x => ({ 
+    const [status,res] = await getWxlxSelect();
+    const wxlxSelect = res.data.map(x => ({ 
       value: x.REPAIR_TYPE_CODE, 
       text: x.REPAIR_TYPE_NAME
     }));

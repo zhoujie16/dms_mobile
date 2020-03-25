@@ -204,7 +204,15 @@
           "titleNView": {
             "titleText": "接待详情",
             "backgroundColor": "#1676F8",
-            "titleColor": "#FFFFFF"
+            "titleColor": "#FFFFFF",
+            "buttons": [{
+              "type": "none",
+              "text": "保存",
+              "width": "40px",
+              "fontSize": "14px",
+              "float": "right",
+              "color": "#FFFFFF"
+            }]
           }
         }
       }
@@ -283,23 +291,6 @@
             "buttons": [{
               "type": "none",
               "text": "预览",
-              "width": "40px",
-              "fontSize": "14px",
-              "float": "right",
-              "color": "#1371f7"
-            }]
-          }
-        }
-      }
-    }, {
-      "path": "pages/customer-reception/customer-save",
-      "style": {
-        "app-plus": {
-          "titleNView": {
-            "titleText": "保存预检单",
-            "buttons": [{
-              "type": "none",
-              "text": "保存",
               "width": "40px",
               "fontSize": "14px",
               "float": "right",
