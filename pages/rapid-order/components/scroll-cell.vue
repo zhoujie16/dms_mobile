@@ -1,5 +1,6 @@
 <template>
   <view class="list-cell-wrap">
+    <!-- 车主名称、车牌号、工单的开单日期、工单号、服务顾问、服务技师 -->
     <view class="list-cell-wrap-inner" @click="cellClick">
       <view class="list-cell-title">
         <view class="left">
@@ -10,8 +11,12 @@
       </view>
       <view class="list-cell-content">
         <view class="box">
-          <view class="label">工单编号</view>
+          <view class="label">工单号</view>
           <view >YO202001090001</view>
+        </view>
+        <view class="box">
+          <view class="label">开单日期</view>
+          <view >2020-03-27 11:23:00</view>
         </view>
         <view class="box">
           <view class="label">服务顾问</view>

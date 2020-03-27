@@ -28,7 +28,7 @@
             <view>{{$auth.getRoleName(cell.chiefTechnician,serviceAdvisorList)}}</view>
           </view>
         </view>
-        <view class="phone" @click.native="phoneClick">
+        <view class="phone" @click.stop="phoneClick">
           <image src="../../../../../static/image/dianhua2.svg" class="img"></image>
         </view>
       </view>
