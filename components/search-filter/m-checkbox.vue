@@ -1,6 +1,6 @@
 <template>
   <view class="">
-    <MLabel :label="label">
+    <MLabel :label="label" :border="border">
       <!-- 内联选择用 -->
       <view class="m-checkbox-inner" v-if="type == 'inner'">
         <MCheckboxInner
@@ -52,6 +52,10 @@ export default {
     single: {
       type: Boolean,
       default: false
+    },
+    border: {
+      type: Boolean,
+      default: true
     }
   },
   mounted() {

@@ -3,7 +3,7 @@
     <view v-if="singleLine" class="m-checkbox-inner-inner">
       <view
         class="m-col"
-        :style="{ padding: '0 0 0 20rpx' }"
+        :style="{ padding: '0 0 0 10rpx' }"
         v-for="(item, i) in itemList_1"
         :key="i"
       >

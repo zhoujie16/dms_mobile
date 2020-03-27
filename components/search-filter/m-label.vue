@@ -64,7 +64,7 @@ export default {
 
 .m-lab-title {
   position: relative;
-  flex: 1;
+  flex: 0 0 200rpx;
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
