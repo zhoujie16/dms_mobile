@@ -22,16 +22,19 @@
         <view class="title-panel-bg"></view>
       </view>
       <CollapsePanel title="基本信息">
+        <!-- 车主姓名、送修人、送修人邮箱、里程（KM）、服务顾问、预约单号、预检单号（车主编号、品牌后台存储、前台不存） -->
         <template slot="default">
           <MLabel label="车主">王大锤</MLabel>
-          <MLabel label="车主编号">xxxxxxxxxx</MLabel>
+          <MLabel label="送修人">xxxxx</MLabel>
+          <!-- <MLabel label="车主编号">xxxxxxxxxx</MLabel> -->
           <MLabel label="VIN">xxxxxxxxxxxxxxxxx</MLabel>
-          <MLabel label="品牌">测试品牌</MLabel>
-          <MLabel label="送修人">王尼玛</MLabel>
+          <!-- <MLabel label="品牌">测试品牌</MLabel>/ -->
+          <!-- <MLabel label="送修人">王尼玛</MLabel> -->
           <MLabel label="送修人邮箱">xxxxxxxxx@xxx.com</MLabel>
-          <MLabel label="进厂里程">100000km</MLabel>
+          <MLabel label="里程（KM）">100000</MLabel>
           <MLabel label="服务顾问">张全蛋</MLabel>
           <MLabel label="预约单号">xxxxxxxxxx</MLabel>
+          <MLabel label="预检单号">xxxxxxxxxx</MLabel>
         </template>
       </CollapsePanel>
       <CollapsePanel title="工单信息">
@@ -70,28 +73,32 @@
                 <text class="r">￥10,000.00</text>
               </view>
               <view class="price-cell">
-                <text class="l">维修材料</text>
+                <text class="l">维修材料费</text>
                 <text class="r">￥1,000.00</text>
               </view>
               <view class="price-cell">
+                <text class="l">附加项目费</text>
+                <text class="r">￥2,000.00</text>
+              </view>
+              <!-- <view class="price-cell">
                 <text class="l">销售材料</text>
                 <text class="r">￥2,000.00</text>
               </view>
               <view class="price-cell">
                 <text class="l">辅助管理</text>
                 <text class="r">￥3,000.00</text>
-              </view>
+              </view> -->
             </view>
           </view>
         </template>
       </CollapsePanel>
-      <CollapsePanel title="时间中断">
+      <!-- <CollapsePanel title="时间中断">
         <template slot="default">
           <MTextArea v-model="value_4" label="午间中断"></MTextArea>
           <view class="m-break-space"></view>
           <MTextArea v-model="value_4" label="午间中断"></MTextArea>
         </template>
-      </CollapsePanel>
+      </CollapsePanel> -->
       <CollapsePanel title="预计交车时间">
         <template slot="default">
           <MCheckboxPanel
@@ -101,6 +108,7 @@
             :itemList="itemList_3"
           ></MCheckboxPanel>
           <MLabel label="下次保养日期">2020-0202 20:20:20</MLabel>
+          <MLabel label="下次保养里程(KM)">2020</MLabel>
           <MLabel label="其他备注">2020-0202 20:20:20</MLabel>
           <MCheckboxPanel
             label="其他备注"
@@ -111,6 +119,8 @@
           <MLabel label="预计交车时间">2020-0202 20:20:20</MLabel>
         </template>
       </CollapsePanel>
+      
+      <m-button type="primary" @click.native="addRepairBtn" style="width: 400rpx;">添加维修项目</m-button>
     </view>
     <!-- 监控信息 -->
 	<MPopup ref="mPopup_amonitor_info" type="bottom" title="监控信息">
@@ -142,7 +152,7 @@ export default {
         { text: '带走旧件', value: 5 },
         { text: '曾秀保养', value: 6 },
         { text: '不要积分', value: 7 },
-        { text: '三日电访', value: 8 }
+        // { text: '三日电访', value: 8 }
       ],
       value_2: [],
       itemList_2: [{ text: '100', value: 100 }, { text: '200', value: 200 }],
@@ -170,6 +180,13 @@ export default {
     // 维修历史
     historyClick(){
       this.$refs.mPopup_history.open();
+    },
+    addRepairBtn(){
+      console.log('添加维修项目')
+      uni.navigateTo({
+        url: "/pages/rapid-order/components/repair-group"
+        // url: '/pages/repid-order/components/edit-repair'
+      })
     }
   }
 };

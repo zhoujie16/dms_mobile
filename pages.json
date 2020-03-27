@@ -640,7 +640,18 @@
           }
         }
       }
-    }
+    },{
+            "path" : "pages/rapid-order/components/repair-group",
+            "style" : {
+              "app-plus": {
+                "titleNView": {
+                  "titleText": "修改维修项目",
+                  "titleColor": "#FFFFFF",
+                  "backgroundColor": "#41c5ff"
+                }
+              }
+            }
+        }
   ],
   // "tabBar": {
   //   "color": "#333333",
