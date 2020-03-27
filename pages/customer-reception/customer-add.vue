@@ -16,7 +16,7 @@
           </swiper-item>
           <swiper-item>
             <scroll-view class="swiper-scroll-wrap" scroll-y="true">
-              <VehicleFacePanel></VehicleFacePanel>
+              <VehicleFacePanel ref="vehicleFace"></VehicleFacePanel>
             </scroll-view>
           </swiper-item>
         </swiper>
@@ -70,41 +70,45 @@ export default {
     return {
       tabs: ['客户信息', '客户需求', '车身外观'],
       curIndex: 0, // 当前tab的下标
-      isMove:false,
-      isPreview:true, //是否预览
+      isMove: false,
+      isPreview: true //是否预览
     };
   },
   onLoad() {
     const webView = this.$mp.page.$getAppWebview();
     webView.setTitleNViewButtonStyle(0, {
-      width:'0px'
-    })
+      width: '0px'
+    });
   },
   watch: {
-	  curIndex(val){
-		  if(val==2){
-			  const webView = this.$mp.page.$getAppWebview();
-			  webView.setTitleNViewButtonStyle(0, {
-			    width:'50px'
-			  })
-		  }
-	  }
+    curIndex(val) {
+      const webView = this.$mp.page.$getAppWebview();
+      if (val == 2) {
+        webView.setTitleNViewButtonStyle(0, {
+          width: '50px'
+        });
+      } else {
+        webView.setTitleNViewButtonStyle(0, {
+          width: '0px'
+        });
+      }
+    }
   },
   // 监听导航栏删选事件
   onNavigationBarButtonTap(e) {
-    console.log(e)
+    console.log(e);
     if (e.index == 0) {
       // 预览
-      if(this.isPreview){
+      if (this.isPreview) {
         this.previewClick();
-      }else{
-         this.SHOW_TOAST('请输入必填项');
+      } else {
+        this.SHOW_TOAST('请输入必填项');
       }
     }
   },
   methods: {
-    stoptouchMove(){
-      return this.isMove
+    stoptouchMove() {
+      return this.isMove;
     },
     // 轮播菜单
     swiperChange(e) {
@@ -116,35 +120,40 @@ export default {
     // 切换菜单
     changeTab(i) {
       // this.curIndex = i;
-      console.log("-----",this.$refs.customerInfo.formData.license);
-      if(this.$refs.customerInfo.formData.license){
+      console.log('-----', this.$refs.customerInfo.formData.license);
+      if (this.$refs.customerInfo.formData.license) {
         this.curIndex = i;
         this.isMove = false;
-      }else{
+      } else {
         this.isMove = true;
       }
     },
-    previewClick(){
+    previewClick() {
       let params = {
         license: this.$refs.customerInfo.formData.license,
         vin: this.$refs.customerInfo.formData.vin,
-        model: this.$refs.customerInfo.formData.model,
-        ownerName:this.$refs.customerInfo.formData.model,
+        model: this.$refs.customerInfo.formData.model[0],
+        ownerName: this.$refs.customerInfo.formData.ownerName,
         phone: this.$refs.customerInfo.formData.phone,
-        eMail:this.$refs.customerInfo.formData.eMail,
+        eMail: this.$refs.customerInfo.formData.eMail,
         contactorName: this.$refs.customerInfo.formData.contactorName,
         contactorPhone: this.$refs.customerInfo.formData.contactorPhone,
-        mileage: this.$refs.customerInfo.formData.mileage,
-        firstInDate:this.$refs.customerInfo.formData.firstInDate,
-        salesDate:this.$refs.customerInfo.formData.salesDate,
+        inMileage: this.$refs.customerInfo.formData.inMileage,
+        firstInDate: this.$refs.customerInfo.formData.firstInDate,
+        salesDate: this.$refs.customerInfo.formData.salesDate,
         address: this.$refs.customerInfo.formData.address,
-        serviceAdvisor: this.$refs.customerInfo.formData.serviceAdvisor[0]
-      }
+        serviceAdvisor: this.$refs.customerInfo.formData.serviceAdvisor[0],
+        remark2:this.$refs.customerDemand.formData.remark2,
+        inReason:this.$refs.customerDemand.formData.inReason[0],
+        contentCodes:this.$refs.vehicleFace.formData.contentCodes
+      };
       uni.navigateTo({
-        url:`/pages/customer-reception/customer-detail?previewOrder=${encodeURIComponent(JSON.stringify(params))}&fromPage=preview`
+        url: `/pages/customer-reception/customer-detail?previewOrder=${encodeURIComponent(
+          JSON.stringify(params)
+        )}&fromPage=preview`
       });
     },
-    
+
     //维修历史
     historyClick() {
       this.$refs.mPopup_history.open();

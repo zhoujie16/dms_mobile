@@ -83,11 +83,11 @@ export default {
     async loginHandleClick() {
       const [err, res] = await loginHttp({
         appId: 'cyx',
-        // username: this.username,
-        // password: this.$auth.jsEncrypt(this.password)
+        username: this.username,
+        password: this.$auth.jsEncrypt(this.password)
 
-        username: 'FYH35',
-        password: this.$auth.jsEncrypt('a12345678')
+        // username: 'FYH35',
+        // password: this.$auth.jsEncrypt('a12345678')
       });
       // console.log('登录结果', res);
       if (err) {

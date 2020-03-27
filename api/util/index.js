@@ -17,12 +17,9 @@ export const getWxlxSelect = params =>
     isLoading: true
   });
 
-//根据车牌号查询客户信息
-export const queryCusInfoByLicense = params =>Http.get(`${SERVER.DMSCLOUD_REPAIR/VehiclePreviewController/queryCusInfoByLicense}`,params)
 
+// 查询全部车系
+export const getSeries = params => Http.get(`${SERVER.DMSCLOUD_REPAIR}/baseData/basicData/series`, { params });
 
-
-
-
-
-
+// 获取全部车型
+export const getModel = params => Http.get(`${SERVER.DMSCLOUD_REPAIR}/baseData/basicData/model`, { params });

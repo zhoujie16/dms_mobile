@@ -1,7 +1,7 @@
 <template>
   <view>
     <scroll-view class="scroll-view-h" :style="{ maxHeight: '900rpx' }" scroll-y>
-      <MLicense label="车牌号" :value="formData.license"></MLicense>
+      <MLicense label="车牌号" :value="formData.license" searchType="scan"></MLicense>
       <MCheckbox
         label="服务顾问"
         type="popup"

@@ -19,15 +19,9 @@ export default {
   components: {},
   data() {
     return {
-      itemList: [
-        { text: '保养', value: '1' },
-        { text: '召回', value: '2' },
-        { text: '故障检测', value: '3' },
-        { text: '维修', value: '4' },
-        { text: '故障维修', value: '5' }
-      ],
+      itemList: this.$commonDict.CHOOSE_TYPE_LIST,
       formData: {
-        inReason: '',
+        inReason: [],
         remark2: ''
       }
     };

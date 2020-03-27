@@ -23,31 +23,15 @@
       </view>
     </view>
     <MPopup ref="mPopup" type="center" title="查询到的车牌">
-      <!-- <view v-for="(item, index) in itemListLicense" :key="index">
+      <view v-for="(item, index) in itemListLicense" :key="index">
         <view class="itemBox" @click="licenseClick(item)">{{ item.license }}</view>
-      </view> -->
-      <BaseScroll
-        :top="100"
-        :fetchApi="fetchApi"
-        :fetchParams="fetchParams"
-        @listChange="
-          arr => {
-            this.itemListLicense = arr;
-          }
-        "
-      >
-        <view slot="scroll">
-          <view v-for="(item, index) in itemListLicense" :key="index">
-            <view class="itemBox" @click="licenseClick(item)">{{ item.license }}</view>
-          </view>
-        </view>
-      </BaseScroll>
+      </view>
     </MPopup>
   </view>
 </template>
 
 <script>
-import { queryCusInfoByLicense } from '@/api/util/index.js';
+import { queryCusInfoByLicense } from '@/api/customer-reception/index.js';
 
 export default {
   name: 'm-license',
@@ -72,22 +56,9 @@ export default {
         { id: 6, value: '', isActive: false },
         { id: 7, value: '', isActive: false }
       ],
-      itemListLicense: [
-        {
-          id: 1,
-          license: '沪001001'
-        },
-        {
-          id: 2,
-          license: '沪001001'
-        },
-        {
-          id: 3,
-          license: '沪001001'
-        }
-      ],
-      fetchApi: queryCusInfoByLicense,
-      fetchParams: {}
+      itemListLicense: []
+      // fetchApi: queryCusInfoByLicense,
+      // fetchParams: {}
     };
   },
   watch: {
@@ -204,24 +175,31 @@ export default {
     async foldingHandleClick() {
       console.log(this._value, '车牌号');
       if (this._value.trim()) {
-        this.fetchParams = {
-          license: this._value.trim()
+        let params = {
+          license: this._value.trim(),
+          flag: 2
         };
-
-        this.$refs.mPopup.open(); // 打开
+        let [status, res] = await queryCusInfoByLicense(params);
+        if(res.data.length==0){
+           this.SHOW_TOAST('没有查到相关车牌!');
+        }else{
+          this.itemListLicense = res.data;
+          this.$refs.mPopup.open(); // 打开
+        }
       } else {
         this.SHOW_TOAST('请输入车牌号');
       }
     },
     //点击车牌号，将数据传给父级
     licenseClick(item) {
-      console.log('2222', item);
       this.$emit('list', item);
-
       this.$refs.mPopup.close();
     },
     //扫描车牌号
-    scanClick() {}
+    scanClick() {},
+    testClick() {
+      console.log(111);
+    }
   }
 };
 </script>

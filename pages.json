@@ -631,6 +631,16 @@
       "style": {}
     }
 
+    , {
+      "path": "pages/customer-reception/damaged-add",
+      "style": {
+        "app-plus": {
+          "titleNView": {
+            "titleText": "故障记录"
+          }
+        }
+      }
+    }
   ],
   // "tabBar": {
   //   "color": "#333333",

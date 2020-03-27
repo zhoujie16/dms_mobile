@@ -1,19 +1,23 @@
 <template>
   <!-- 车辆外观 -->
   <view class="panel-wrap">
-    <InfoPanel></InfoPanel>
-    <CollapsePanel title="故障点记录"><template slot="default"></template></CollapsePanel>
-    <CollapsePanel title="物品清点">
-      <template slot="default">
-        <MSwitch label="贵重物品"></MSwitch>
-        <MSwitch label="保养手册"></MSwitch>
-        <MSwitch label="备胎"></MSwitch>
-        <MSwitch label="行驶证"></MSwitch>
-        <MSwitch label="千斤顶"></MSwitch>
-        <MSwitch label="灭火器"></MSwitch>
-        <MSwitch label="三脚架"></MSwitch>
-      </template>
-    </CollapsePanel>
+    <!-- <CollapsePanel title="故障点记录"><template slot="default"></template></CollapsePanel> -->
+    <MLabel label="故障点记录" :border="false"></MLabel>
+    <view class="hitch-warp">
+      <view class="single"></view>
+      <view class="single"></view>
+      <view class="single"></view>
+      <view class="single add-font" @click="addClick">
+        <text>继续添加</text>
+      </view>
+      </view>
+    <view class="m-break-space"></view>
+    <MCheckboxPanel
+      label="物品清点"
+      type="inner"
+      v-model="formData.contentCodes"
+      :itemList="itemList"
+    ></MCheckboxPanel>
   </view>
 </template>
 
@@ -22,14 +26,49 @@ export default {
   name: '',
   components: {},
   data() {
-    return {};
+    return {
+      formData: {
+        contentCodes: []
+      },
+      itemList: this.$commonDict.ITEM_LIST
+    };
   },
-  methods: {}
+  watch: {},
+  methods: {
+    addClick(){
+      // 
+      uni.navigateTo({
+        url: `/pages/customer-reception/damaged-add`
+      });
+    }
+  }
 };
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .panel-wrap {
   padding: 30rpx 0;
+  .hitch-warp {
+    background-color: $uni-m-color-cwhite;
+    color: $uni-m-color-c17;
+    padding: 0 30rpx;
+    display: flex;
+    flex-flow: row wrap;
+    align-content: flex-start;
+    .single {
+      box-sizing: border-box;
+      background-color: white;
+      flex: 0 0 47%;
+      height: 160rpx;
+      margin-bottom: 20rpx;
+      background-color: $uni-m-color-c5;
+      text-align: center;
+      line-height: 160rpx;
+      font-size: $uni-m-font-size-f5;
+    }
+    .single:nth-child(n+1){
+      margin-right: 3%;
+    }
+  }
 }
 </style>

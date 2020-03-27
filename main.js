@@ -20,6 +20,9 @@ Vue.prototype.$speech = Speech;
 import Dict from '@/common/dict/index.js';
 Vue.prototype.$dict = Dict;
 
+import CommonDict from '@/common/dict/commonDict.js';
+Vue.prototype.$commonDict = CommonDict;
+
 Vue.config.productionTip = false;
 
 Vue.prototype.$sleep = timeout => {

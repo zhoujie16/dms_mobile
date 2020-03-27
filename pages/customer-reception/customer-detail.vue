@@ -32,13 +32,13 @@
             <MLabel label="送修人手机号">{{ previewInfoData.contactorPhone }}</MLabel>
             <MLabel label="送修人邮箱">{{ previewInfoData.contactorEMail }}</MLabel>
             <MLabel label="里程(KM)">{{ previewInfoData.inMileage }}</MLabel>
-            <MLabel label="服务顾问">{{ previewInfoData.serviceAdvisor }}</MLabel>
+            <MLabel label="服务顾问">{{$auth.getRoleName(previewInfoData.serviceAdvisor,serviceAdvisorList) }} </MLabel>
           </template>
         </CollapsePanel>
         <CollapsePanel title="客户需求">
           <template slot="default">
-            <MLabel label="需求类型">召回</MLabel>
-            <MLabel label="故障描述">普通维修</MLabel>
+            <MLabel label="需求类型">{{previewInfoData.inReason}}</MLabel>
+            <MLabel label="故障描述">{{previewInfoData.remark2}}</MLabel>
           </template>
         </CollapsePanel>
         <CollapsePanel title="故障记录点">
@@ -51,7 +51,7 @@
             <MCheckboxPanel
               label="其他备注"
               type="inner"
-              v-model="value_1"
+              v-model="previewInfoData.contentCodes"
               :itemList="itemList_1"
             ></MCheckboxPanel>
           </template>
@@ -76,6 +76,7 @@
 
 <script>
 import { savePreview, queryPreviewDetail } from '@/api/customer-reception/index.js';
+import dictCode from '@/common/dictCode.js';
 export default {
   components: {
     // AmonitorInfo
@@ -101,22 +102,16 @@ export default {
       this.openSign();
     }
   },
-
+  mounted() {
+    this.getServiceAdvisorList();
+  },
   data() {
     return {
       previewInfoData: {},
       fromPage: 'detail',
       value_1: [1, 3, 6],
-      itemList_1: [
-        { text: '客户在厂', value: 1 },
-        { text: '需要洗车', value: 2 },
-        { text: '需要路试', value: 3 },
-        { text: '需要质检', value: 4 },
-        { text: '带走旧件', value: 5 },
-        { text: '曾秀保养', value: 6 },
-        { text: '不要积分', value: 7 },
-        { text: '三日电访', value: 8 }
-      ]
+      itemList_1: this.$commonDict.ITEM_LIST,
+      serviceAdvisorList:[]
     };
   },
   methods: {
@@ -140,22 +135,36 @@ export default {
     async saveSign() {
       // 他们出选择  预检单保存成功  是否进入车辆检查
       await this.$util.showLoading('正在保存...');
-      await this.$sleep(1000);
       await savePreview(this.previewInfoData);
+      await this.$sleep(1000);
+      
       await this.$util.hideLoading();
-      const [err, res] = await this.$util.showModal({
-        content: '预检单保存成功，是否进入车辆检查。'
-      });
-      console.log([err, res]);
-      if (res.confirm) {
+       const res = await this.SHOW_MODAL({
+         title: '',
+         content: '预检单保存成功，是否进入车辆检查。',
+         showCancel: '取消', // 是否显示取消按钮，默认为 true
+         confirmText: '确定' // 确定按钮的文字，默认为"确定"，最多 4 个字符
+       });
+       console.log(res)
+      
+      if (res=='confirm') {
         console.log('点击 确定');
         await uni.navigateTo({
           url: '/pages/vehicle-inspection/vehicle-detail'
         });
-      } else if (res.cancel) {
+      } else  {
         console.log('点击 取消');
-        await uni.navigateBack();
+        // await uni.navigateBack();
+        await uni.navigateTo({
+          url: '/pages/customer-reception/customer-reception'
+        });
       }
+    },
+    //服务顾问列表
+    async getServiceAdvisorList() {
+      //服务顾问
+      let consultant = { role: dictCode.SERVICE_CONSULTANT, companyId: this.$auth.getCompanyId() };
+      this.serviceAdvisorList = await this.$auth.queryServiceAdvisor(consultant);
     }
   }
 };

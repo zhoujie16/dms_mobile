@@ -110,8 +110,7 @@ export default {
     },
     //左滑删除
     async optionClick(e,data) {
-      console.log("111",data)
-      console.log('点击滑动区域按钮',e);
+      
       if(e.index==0){
         const res = await this.SHOW_MODAL({
           title: '确认删除吗？',
@@ -122,12 +121,10 @@ export default {
         });
         if( res=='confirm'){
           //// 交互结果 确认
-          console.log(9999,data.yjNo)
           let params ={
             yjNo:data.yjNo
           }
           let res1 = await deletePreview(params);
-          this.dataSource=[];
           this.fetchParams = {
             ...this.fetchParams,
           };
