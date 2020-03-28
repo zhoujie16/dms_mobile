@@ -1,4 +1,4 @@
-{
+export const dictMock = {
   "resultCode": 200,
   "errMsg": null,
   "elapsedMilliseconds": 0,

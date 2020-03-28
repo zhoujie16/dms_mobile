@@ -1,9 +1,22 @@
 import Http from "@/common/http.js";
 import SERVER from '../server.js';
+import AppConfig from "@/config/config.js";
+
 //查询字典
-export const queryDict = () => Http.get(`${SERVER.DMSCLOUD_BASEDATA}/dicts`, {}, {
-  isLoading: true
-});
+export const queryDict = () => {
+  if (AppConfig.requsetUrl.indexOf('mock') === -1) {
+    return Http.get(`${SERVER.DMSCLOUD_BASEDATA}/dicts`, {}, {
+      isLoading: true
+    });
+  } else {
+    return new Promise(resolve => {
+      const {
+        dictMock
+      } = require('@/common/dict/test.js');
+      resolve([null, dictMock])
+    });
+  }
+}
 
 
 //查询服务顾问
@@ -19,7 +32,11 @@ export const getWxlxSelect = params =>
 
 
 // 查询全部车系
-export const getSeries = params => Http.get(`${SERVER.DMSCLOUD_REPAIR}/baseData/basicData/series`, { params });
+export const getSeries = params => Http.get(`${SERVER.DMSCLOUD_REPAIR}/baseData/basicData/series`, {
+  params
+});
 
 // 获取全部车型
-export const getModel = params => Http.get(`${SERVER.DMSCLOUD_REPAIR}/baseData/basicData/model`, { params });
+export const getModel = params => Http.get(`${SERVER.DMSCLOUD_REPAIR}/baseData/basicData/model`, {
+  params
+});

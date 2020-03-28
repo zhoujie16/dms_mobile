@@ -66,7 +66,7 @@ class Http {
     const resultCode = res.data.resultCode;
     if (resultCode !== 200) {
       if (config.showError) {
-        const errMsg = res.data.errMsg || res.data.message;
+        const errMsg = res.data.errMsg || res.data.message ||  res.data.error;
         uni.showToast({
           title: errMsg,
           position: 'bottom',

@@ -145,7 +145,6 @@ export default {
       const dict = res_dict.data.dict;
       const region = res_dict.data.region;
       this.$dict.initDict({ dict, region });
-      console.log('createDictRegion', this.$dict.createDictRegion());
     },
     gridItemClick(item) {
       console.log('gridItemClick');

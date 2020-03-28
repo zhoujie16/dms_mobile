@@ -25,14 +25,33 @@
       </text>
     </view>
     <MTextArea label="故障描述" v-model="remark2"></MTextArea>
+    <view class="m-break-space"></view>
   </view>
 </template>
 
 <script>
 export default {
+  props: {
+    name: {
+      type: String
+    },
+    issueType: {
+      type: String
+    },
+    photoList: {
+      type: Array
+    },
+    num: {
+      type: Number
+    }
+  },
+  computed: {
+    label() {
+      return `${this.num}. ${this.name}`;
+    }
+  },
   data() {
     return {
-      label: '1、左前门',
       issueStatus: [],
       remark2: '',
       image: '',
@@ -60,23 +79,22 @@ export default {
     },
     //上传
     async getPhotoWays(index) {
-      console.log(index)
+      console.log(index);
       if (index == 1) {
         // 拍照
         await this.takePhoto(['camera']);
       } else if (index == 2) {
         //从相册中选取
         await this.takePhoto(['album']);
-      }  else {
+      } else {
         return;
       }
     },
     //编辑
-    async editPhotoWays(index){
+    async editPhotoWays(index) {
       if (index == 1) {
         //编辑
       } else if (index == 2) {
-       
         //删除
         const res = await this.SHOW_MODAL({
           title: '确认删除？',
