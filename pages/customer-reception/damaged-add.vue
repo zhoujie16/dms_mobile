@@ -52,16 +52,12 @@
       </SwiperTab>
       <!-- 故障点列表 -->
       <view class="m-break-space"></view>
-      <CollapsePanel title="故障记录点">
-        <ScrollIssue
-          v-for="(point, i) in points"
-          :key="i"
-          :num="point.num"
-          :name="point.name"
-          :issueType="point.issueType"
-          :photoList="point.photoList"
-        ></ScrollIssue>
-      </CollapsePanel>
+      <ScrollIssue
+        v-for="(point, i) in points"
+        :key="i"
+        :point="point"
+        @deletePoint="deletePoint"
+      ></ScrollIssue>
     </view>
   </MPage>
 </template>
@@ -99,7 +95,20 @@ export default {
     },
     // 添加一个点
     addPoint(point) {
-      this.points.push(point);
+      this.points.unshift(point);
+    },
+    async deletePoint(point) {
+      const res = await this.SHOW_MODAL({
+        title: '确认删除',
+        // content: '提示的内容',
+        showCancel: true,
+        cancelText: '取消',
+        confirmText: '确定'
+      });
+      if (res === 'confirm') {
+        const index = this.points.findIndex(x => x === point);
+        this.points.splice(index, 1);
+      }
     }
   }
 };

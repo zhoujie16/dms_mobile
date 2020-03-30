@@ -1,6 +1,14 @@
 <template>
   <view>
-    <MLabel :label="label" :border="false"></MLabel>
+    <view class="scroll-issue-label-wrap">
+      <view class="scroll-issue-label">{{ label }}</view>
+      <image
+        class="close-btn"
+        @click="deleteBtnHandleClick"
+        src="/static/image/close-btn.svg"
+        mode="scaleToFill"
+      ></image>
+    </view>
     <MCheckbox
       label="损伤情况"
       type="inner"
@@ -32,22 +40,13 @@
 <script>
 export default {
   props: {
-    name: {
-      type: String
-    },
-    issueType: {
-      type: String
-    },
-    photoList: {
-      type: Array
-    },
-    num: {
-      type: Number
+    point: {
+      type: Object
     }
   },
   computed: {
     label() {
-      return `${this.num}. ${this.name}`;
+      return `${this.point.num}. ${this.point.name}`;
     }
   },
   data() {
@@ -64,6 +63,9 @@ export default {
     };
   },
   methods: {
+    async deleteBtnHandleClick() {
+      this.$emit('deletePoint', this.point);
+    },
     async uploadPhoto() {
       if (this.photoText == '上传故障图片') {
         const res = await this.SHOW_ACTION_SHEET({
@@ -182,6 +184,23 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.scroll-issue-label-wrap {
+  display: flex;
+  height: 100rpx;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #ffffff;
+  font-size: 34rpx;
+  padding: 0 30rpx;
+  color: #17212e;
+  font-weight: 500;
+  .scroll-issue-label {
+  }
+  .close-btn {
+    width: 48rpx;
+    height: 48rpx;
+  }
+}
 .image-warp {
   margin: 0 30rpx;
   background-color: $uni-m-color-c5;

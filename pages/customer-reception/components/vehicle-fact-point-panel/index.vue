@@ -102,7 +102,7 @@ export default {
               return;
             }
             const point = {
-              num: this.points.length + 1,
+              num: this.points.length ? this.points[0].num + 1 : 1,
               position, // 位置: TOP LEFT ...
               id: part.ID, // id: 9010 9011 ...
               name: part.NAME, // 部位名称: 前保险杠 发动机盖子
