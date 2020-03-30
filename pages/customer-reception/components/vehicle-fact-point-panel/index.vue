@@ -16,7 +16,7 @@
             mode="widthFix"
           >
             <FailPoint
-              v-for="(point, i) in points"
+              v-for="(point, i) in filterPoints"
               :num="point.num"
               :key="i"
               :x="point.x"
@@ -25,18 +25,6 @@
           </image>
         </view>
       </view>
-      <!-- 故障点列表 -->
-      <view class="m-break-space"></view>
-      <CollapsePanel title="故障记录点">
-        <ScrollIssue
-          v-for="(point, i) in points"
-          :key="i"
-          :num="point.num"
-          :name="point.name"
-          :issueType="point.issueType"
-          :photoList="point.photoList"
-        ></ScrollIssue>
-      </CollapsePanel>
     </scroll-view>
   </view>
 </template>
@@ -55,10 +43,19 @@ export default {
   },
   mounted() {
     console.log('this.partItem', this.partItem);
+    console.log('this.points', this.points);
   },
   props: {
     partItem: {
       type: Object
+    },
+    points: {
+      type: Array
+    }
+  },
+  computed: {
+    filterPoints() {
+      return this.points.filter(x => x.position === this.partItem.POSITION);
     }
   },
   data() {
@@ -68,8 +65,7 @@ export default {
         'img_' +
         Math.random()
           .toString(36)
-          .substr(2),
-      points: []
+          .substr(2)
     };
   },
   methods: {
@@ -81,7 +77,8 @@ export default {
         return;
       }
       console.log('生成一条故障点记录', JSON.stringify(point, null, 1));
-      this.points.push(point);
+      // this.points.push(point);
+      this.$emit('addPoint', point);
     },
     createPoint({ position, x, y }) {
       return new Promise(resolve => {
