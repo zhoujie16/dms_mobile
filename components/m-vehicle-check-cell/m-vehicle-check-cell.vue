@@ -35,7 +35,8 @@
         </view>
       </view>
       <view v-if="hasPhoto" class="m-check-camera" @click="cameraBtnClick">
-        <image class="camera-img" src="/static/image/camera.svg" mode="scaleToFill"></image>
+        <!-- <image class="camera-img" src="/static/image/camera.svg" mode="scaleToFill"></image> -->
+        <text class="m-iconfont" :class="image||vedio?'blue':'gray'">&#xe72b;</text>
       </view>
     </view>
     <uni-popup ref="popup">
@@ -59,7 +60,7 @@
               :src="vedio"
               :poster="vedio + '?vframe/jpg/offset/1'" preload="auto" controls
             ></video> -->
-            <image class="uImage" mode="scaleToFill" :src="vedioImage" />
+            <image v-if="vedio!==''" class="uImage" mode="scaleToFill" src="/static/image/vedio-bg.png" />
             <image
               class="choose-img"
               src="/static/image/video-choose.svg"
@@ -169,8 +170,7 @@ export default {
       	  sourceType: ['camera'],
       	  success: res => {
       	   console.log(res.tempFilePaths[0]);
-            this.image = res.tempFilePaths[0];
-            // this.$emit('changeImage', res.tempFilePaths[0], this.index);
+            // this.image = res.tempFilePaths[0];
       	    this.getTempFilePath(res.tempFilePaths[0], 'imageTempPath');
             this.photoText="编辑图片";
       	  },
@@ -213,6 +213,12 @@ export default {
   async getPhotoWays(index){
     if(index==1){
       //查看图片
+      let imageArr=[];
+      imageArr.push(this.image);
+      uni.previewImage({
+        urls:imageArr,
+        current: imageArr[0]
+      })
     }else if(index==2){
       //编辑图片
     }else if (index == 3){
@@ -227,6 +233,7 @@ export default {
       // 交互结果
       console.log('showModal_res', res);
       if(res=='confirm'){
+        this.$emit('changePhoto', '', this.index);
         this.image="";
         this.photoText="上传图片"
       }
@@ -242,9 +249,7 @@ export default {
 		  sourceType: ['camera'],
 		  success: res => {
 		    console.log(res.tempFilePath);
-		    this.vedio = res.tempFilePath;
-        this.vedioImage= res.tempFilePath + '?vframe/jpg/offset/1'
-        console.log(this.vedioImage,'image图片')
+		    // this.vedio = res.tempFilePath;
 		    this.getTempFilePath(res.tempFilePath, 'videoTempPath');
         this.vedioText="编辑视频";
 		  },
@@ -272,10 +277,17 @@ export default {
 		});
 	},
 	getTempFilePath(url, types) {
+    console.log(url,'路径地址')
 	  // 如果已经下载本地路径，那么直接储存
 	  let obj = {
 	    filePath: url,
 	    success: () => {
+        if(types === 'videoTempPath'){
+          this.vedio = url;
+        }else{
+           this.image = url;
+        }
+        this.$emit('changePhoto', url, this.index);
 	      console.log('save success');
 	      uni.showModal({
 	        content: '保存成功',
@@ -304,7 +316,7 @@ export default {
 };
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .m-check-cell-wrap {
   background-color: #ffffff;
   padding: 0 30rpx;
@@ -449,5 +461,14 @@ export default {
     }
   }
   // }
+}
+.gray{
+  font-size: 52rpx;
+  color:  $uni-m-color-c3-2;
+ 
+}
+.blue {
+  font-size: 52rpx;
+  color: $uni-m-color-c11;
 }
 </style>

@@ -38,7 +38,9 @@
           </template>
         </CollapsePanel>
       </view>
-      <view class="content"><MTextArea label="发动机舱" v-model="value_1"></MTextArea></view>
+      <view class="content">
+        <MTextArea label="发动机舱" v-model="formData2[0].remark3"></MTextArea>
+      </view>
     </view>
   </view>
 </template>
@@ -46,49 +48,50 @@
 <script>
 export default {
   name: 'EngineNacelle',
-
+  props: {
+    vehicleCheckDetailResultVos2: Array
+  },
   data() {
     return {
       isshow: false,
-      value_1: '',
       formData: [
         {
-          fieldName: 'fdjjy',
+          fieldName: '7002',
           type: 'select',
           label: '发动机机油：',
-          itemList: [{ text: '正常', value: '14001001' }, { text: '观察', value: '14001002' }, { text: '异常', value: '14001003' }],
+          itemList: this.$commonDict.CHECK_LIST,
           value: ''
         },
         {
-          fieldName: 'blqxy',
+          fieldName: '7003',
           type: 'select',
           label: '玻璃清洗液：',
-          itemList: [{ text: '正常', value: '14001001' }, { text: '观察', value: '14001002' }, { text: '异常', value: '14001003' }],
+          itemList: this.$commonDict.CHECK_LIST,
           value: ''
         },
         {
-          fieldName: 'xdc',
+          fieldName: '7004',
           type: 'select',
           label: '蓄电池：',
-          itemList: [{ text: '正常', value: '14001001' }, { text: '观察', value: '14001002' }, { text: '异常', value: '14001003' }],
+          itemList: this.$commonDict.CHECK_LIST,
           value: ''
         },
         {
-          fieldName: 'fdy',
+          fieldName: '7005',
           type: 'select',
           label: '防冻液：',
-          itemList: [{ text: '正常', value: '14001001' }, { text: '观察', value: '14001002' }, { text: '异常', value: '14001003' }],
+          itemList: this.$commonDict.CHECK_LIST,
           value: ''
         },
         {
-          fieldName: 'zlzx',
+          fieldName: '7006',
           type: 'select',
           label: '助力转向：：',
-          itemList: [{ text: '正常', value: '14001001' }, { text: '观察', value: '14001002' }, { text: '异常', value: '14001003' }],
+          itemList: this.$commonDict.CHECK_LIST,
           value: ''
         },
         {
-          fieldName: 'zdy',
+          fieldName: '7007',
           type: 'input',
           label: '制动液',
           value: '',
@@ -97,61 +100,117 @@ export default {
           hasPhoto: false
         },
         {
-          fieldName: 'kqlqq',
+          fieldName: '7008',
           type: 'select',
           label: '空气滤清器：',
-          itemList: [{ text: '正常', value: '14001001' }, { text: '观察', value: '14001002' }, { text: '异常', value: '14001003' }],
+          itemList: this.$commonDict.CHECK_LIST,
           value: ''
         },
         {
-          fieldName: 'fdjpd',
+          fieldName: '7010',
           type: 'select',
           label: '发动机皮带：',
-          itemList: [{ text: '正常', value: '14001001' }, { text: '观察', value: '14001002' }, { text: '异常', value: '14001003' }],
+          itemList: this.$commonDict.CHECK_LIST,
           value: ''
         },
         {
-          fieldName: 'yl',
+          fieldName: '7011',
           type: 'select',
           label: '油路/管路/线路：',
-          itemList: [{ text: '正常', value: '14001001' }, { text: '观察', value: '14001002' }, { text: '异常', value: '14001003' }],
+          itemList: this.$commonDict.CHECK_LIST,
           value: ''
         }
       ],
       formData1: [
         {
-          fieldName: 'gydcaz',
+          fieldName: '7012',
           type: 'select',
           label: '高压电池安装：',
-          itemList: [{ text: '正常', value: '14001001' }, { text: '观察', value: '14001002' }, { text: '异常', value: '14001003' }],
+          itemList: this.$commonDict.CHECK_LIST,
           value: ''
         },
         {
-          fieldName: 'gywhkg',
+          fieldName: '7013',
           type: 'select',
           label: '高压维护开关：',
-          itemList: [{ text: '正常', value: '14001001' }, { text: '观察', value: '14001002' }, { text: '异常', value: '14001003' }],
+          itemList: this.$commonDict.CHECK_LIST,
           value: ''
         },
         {
-          fieldName: 'xs',
+          fieldName: '7014',
           type: 'select',
           label: '线束/接插件：',
-          itemList: [{ text: '正常', value: '14001001' }, { text: '观察', value: '14001002' }, { text: '异常', value: '14001003' }],
+          itemList: this.$commonDict.CHECK_LIST,
           value: ''
         },
         {
-          fieldName: 'nbq',
+          fieldName: '7016',
           type: 'select',
           label: '逆变器冷却液：',
-          itemList: [{ text: '正常', value: '14001001' }, { text: '观察', value: '14001002' }, { text: '异常', value: '14001003' }],
+          itemList: this.$commonDict.CHECK_LIST,
           value: ''
+        }
+      ],
+      formData2: [
+        {
+          fieldName: '7001',
+          remark3: ''
         }
       ]
     };
   },
-  mounted() {},
+  mounted() {
+    this.getDetailData();
+  },
   methods: {
+    //查询明细并显示
+    getDetailData(){
+      if(this.vehicleCheckDetailResultVos2.length!==0){
+        this.vehicleCheckDetailResultVos.forEach(x=>{
+          this.formData.forEach(y=>{
+            if(x.contentCode==y.fieldName){
+              if(x.remark3){
+                y.remark3 = x.remark3
+              }else{
+                y.value = x.statusCode;
+                y.photoPath = x.fileBaseUrl;
+                y.videoUrl = x.videoUrl;
+              }
+             
+            }
+          })
+        });
+        this.vehicleCheckDetailResultVos2.forEach(x=>{
+          this.formData1.forEach(y=>{
+            if(x.contentCode==y.fieldName){
+              if(x.remark3){
+                y.remark3 = x.remark3
+              }else{
+                y.value = x.statusCode;
+                y.photoPath = x.fileBaseUrl;
+                y.videoUrl = x.videoUrl;
+              }
+             
+            }
+          })
+        });
+        this.vehicleCheckDetailResultVos2.forEach(x=>{
+          this.formData2.forEach(y=>{
+            if(x.contentCode==y.fieldName){
+              if(x.remark3){
+                y.remark3 = x.remark3
+              }else{
+                y.value = x.statusCode;
+                y.photoPath = x.fileBaseUrl;
+                y.videoUrl = x.videoUrl;
+              }
+             
+            }
+          })
+        });
+      }
+      
+    },
     // 值改变事件
     async formItemChange(data, index) {
       console.log('修改了', data, index);

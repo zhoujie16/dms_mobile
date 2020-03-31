@@ -1,5 +1,5 @@
 <template>
-  <!-- 发动机舱 -->
+  <!-- 底盘四轮 -->
   <view class="page-wrap">
     <view class="container">
       <view class="content">
@@ -58,11 +58,7 @@
           </template>
         </CollapsePanel>
       </view>
-      <view class="content">
-        <MTextArea label="底盘四轮" v-model="value_1">
-         
-        </MTextArea>
-      </view>
+      <view class="content"><MTextArea label="底盘四轮" v-model="formData3[0].remark3"></MTextArea></view>
     </view>
   </view>
 </template>
@@ -74,82 +70,62 @@ export default {
   components: {
     VChoose
   },
+  props:{
+      vehicleCheckDetailResultVos3:Array
+    },
   data() {
     return {
-      isshow1: 'arrowdown',
-      isshow2: 'arrowdown',
-      value_1: '',
       formData: [
         {
-          fieldName: 'jylqq',
+          fieldName: '8002',
           type: 'select',
           label: '机油滤清器：',
-          itemList: [
-            { text: '正常', value: '14001001' },
-            { text: '观察', value: '14001002' },
-            { text: '异常', value: '14001003' }
-          ],
+          itemList: this.$commonDict.CHECK_LIST,
+          fileBaseUrl:'',
+          videoUrl:'',
           value: ''
         },
         {
-          fieldName: 'rylqq',
+          fieldName: '8003',
           type: 'select',
           label: '燃油滤清器：',
-          itemList: [
-            { text: '正常', value: '14001001' },
-            { text: '观察', value: '14001002' },
-            { text: '异常', value: '14001003' }
-          ],
+          itemList: this.$commonDict.CHECK_LIST,
+          fileBaseUrl:'',
+          videoUrl:'',
           value: ''
         },
         {
-          fieldName: 'bsxy',
+          fieldName: '8004',
           type: 'select',
           label: '变速箱油（泄漏）：',
-          itemList: [
-            { text: '正常', value: '14001001' },
-            { text: '观察', value: '14001002' },
-            { text: '异常', value: '14001003' }
-          ],
+          itemList: this.$commonDict.CHECK_LIST,
           value: ''
         },
         {
-          fieldName: 'jzq',
+          fieldName: '8005',
           type: 'select',
           label: '减震器/撑杆/半轴及其他悬挂组件：',
-          itemList: [
-            { text: '正常', value: '14001001' },
-            { text: '观察', value: '14001002' },
-            { text: '异常', value: '14001003' }
-          ],
+          itemList: this.$commonDict.CHECK_LIST,
           value: ''
         },
         {
-          fieldName: 'pqg',
+          fieldName: '8006',
           type: 'select',
           label: '排气管：',
-          itemList: [
-            { text: '正常', value: '14001001' },
-            { text: '观察', value: '14001002' },
-            { text: '异常', value: '14001003' }
-          ],
+          itemList: this.$commonDict.CHECK_LIST,
           value: ''
         }
       ],
       formData1: [
         {
-          fieldName: 'pqg',
+          fieldName: '8027',
           type: 'select',
           label: '状态：',
-          itemList: [
-            { text: '正常', value: '14001001' },
-            { text: '观察', value: '14001002' },
-            { text: '异常', value: '14001003' }
-          ],
+          itemList: this.$commonDict.CHECK_LIST,
           value: ''
         },
         {
-          fieldName: 'twzq',
+          fieldName: '8011',
           type: 'input',
           label: '胎纹左前',
           value: '',
@@ -157,7 +133,7 @@ export default {
           placeholder: '胎纹'
         },
         {
-          fieldName: 'twzh',
+          fieldName: '8013',
           type: 'input',
           label: '胎纹左后',
           value: '',
@@ -165,7 +141,7 @@ export default {
           placeholder: '胎纹'
         },
         {
-          fieldName: 'twyq',
+          fieldName: '8012',
           type: 'input',
           label: '胎纹右前',
           value: '',
@@ -173,7 +149,7 @@ export default {
           placeholder: '胎纹'
         },
         {
-          fieldName: 'twyh',
+          fieldName: '8014',
           type: 'input',
           label: '胎纹右后',
           value: '',
@@ -181,88 +157,68 @@ export default {
           placeholder: '胎纹'
         },
         {
-          fieldName: 'tlzq',
+          fieldName: '8007',
           type: 'date',
           label: '胎龄左前',
           value: ''
         },
         {
-          fieldName: 'tlzh',
+          fieldName: '8009',
           type: 'date',
           label: '胎龄左后',
           value: ''
         },
         {
-          fieldName: 'tlyq',
+          fieldName: '8008',
           type: 'date',
           label: '胎龄右前',
           value: ''
         },
         {
-          fieldName: 'tlyh',
+          fieldName: '8010',
           type: 'date',
           label: '胎龄右后',
           value: ''
         },
         {
-          fieldName: 'tyzq',
+          fieldName: '8015',
           type: 'select',
           label: '胎压左前：',
-          itemList: [
-            { text: '正常', value: '14001001' },
-            { text: '观察', value: '14001002' },
-            { text: '异常', value: '14001003' }
-          ],
+          itemList: this.$commonDict.CHECK_LIST,
           value: ''
         },
         {
-          fieldName: 'tyzh',
+          fieldName: '8017',
           type: 'select',
           label: '胎压左后：',
-          itemList: [
-            { text: '正常', value: '14001001' },
-            { text: '观察', value: '14001002' },
-            { text: '异常', value: '14001003' }
-          ],
+          itemList: this.$commonDict.CHECK_LIST,
           value: ''
         },
         {
-          fieldName: 'tyyq',
+          fieldName: '8016',
           type: 'select',
           label: '胎压右前：',
-          itemList: [
-            { text: '正常', value: '14001001' },
-            { text: '观察', value: '14001002' },
-            { text: '异常', value: '14001003' }
-          ],
+          itemList: this.$commonDict.CHECK_LIST,
           value: ''
         },
         {
-          fieldName: 'tyyh',
+          fieldName: '8018',
           type: 'select',
           label: '胎压右后：',
-          itemList: [
-            { text: '正常', value: '14001001' },
-            { text: '观察', value: '14001002' },
-            { text: '异常', value: '14001003' }
-          ],
+          itemList: this.$commonDict.CHECK_LIST,
           value: ''
         }
       ],
       formData2: [
         {
-          fieldName: 'pqg',
+          fieldName: '8026',
           type: 'select',
           label: '状态：',
-          itemList: [
-            { text: '正常', value: '14001001' },
-            { text: '观察', value: '14001002' },
-            { text: '异常', value: '14001003' }
-          ],
+          itemList: this.$commonDict.CHECK_LIST,
           value: ''
         },
         {
-          fieldName: 'scpzq',
+          fieldName: '8019',
           type: 'input',
           label: '刹车片左前',
           value: '',
@@ -270,7 +226,7 @@ export default {
           placeholder: '胎纹'
         },
         {
-          fieldName: 'scpyq',
+          fieldName: '8020',
           type: 'input',
           label: '刹车片右前',
           value: '',
@@ -278,7 +234,7 @@ export default {
           placeholder: '胎纹'
         },
         {
-          fieldName: 'scpzh',
+          fieldName: '8021',
           type: 'input',
           label: '刹车片左后',
           value: '',
@@ -286,20 +242,87 @@ export default {
           placeholder: '胎纹'
         },
         {
-          fieldName: 'scpyh',
+          fieldName: '8022',
           type: 'input',
           label: '刹车片右后',
           value: '',
           unit: 'mm',
           placeholder: '胎纹'
         }
+      ],
+      formData3:[{
+        fieldName: '8001',
+        remark3:'',
+      }
       ]
     };
   },
   mounted() {
-    
+    this.getDetailData();
   },
   methods: {
+    //查询明细并显示
+    getDetailData(){
+      if(this.vehicleCheckDetailResultVos3.length!==0){
+        this.vehicleCheckDetailResultVos.forEach(x=>{
+          this.formData.forEach(y=>{
+            if(x.contentCode==y.fieldName){
+              if(x.remark3){
+                y.remark3 = x.remark3
+              }else{
+                y.value = x.statusCode;
+                y.photoPath = x.fileBaseUrl;
+                y.videoUrl = x.videoUrl;
+              }
+             
+            }
+          })
+        });
+        this.vehicleCheckDetailResultVos3.forEach(x=>{
+          this.formData1.forEach(y=>{
+            if(x.contentCode==y.fieldName){
+              if(x.remark3){
+                y.remark3 = x.remark3
+              }else{
+                y.value = x.statusCode;
+                y.photoPath = x.fileBaseUrl;
+                y.videoUrl = x.videoUrl;
+              }
+             
+            }
+          })
+        });
+        this.vehicleCheckDetailResultVos3.forEach(x=>{
+          this.formData2.forEach(y=>{
+            if(x.contentCode==y.fieldName){
+              if(x.remark3){
+                y.remark3 = x.remark3
+              }else{
+                y.value = x.statusCode;
+                y.photoPath = x.fileBaseUrl;
+                y.videoUrl = x.videoUrl;
+              }
+             
+            }
+          })
+        });
+        this.vehicleCheckDetailResultVos3.forEach(x=>{
+          this.formData3.forEach(y=>{
+            if(x.contentCode==y.fieldName){
+              if(x.remark3){
+                y.remark3 = x.remark3
+              }else{
+                y.value = x.statusCode;
+                y.photoPath = x.fileBaseUrl;
+                y.videoUrl = x.videoUrl;
+              }
+             
+            }
+          })
+        });
+      }
+      
+    },
     // 值改变事件
     async formItemChange(data, index) {
       console.log('修改了', data, index);
@@ -314,7 +337,7 @@ export default {
     async formItemChange2(data, index) {
       console.log('修改了', data, index);
       this.formData2[index].value = data;
-    },
+    }
   }
 };
 </script>

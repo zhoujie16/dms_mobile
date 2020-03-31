@@ -1,65 +1,94 @@
 <template>
   <view>
     <scroll-view class="scroll-view-h" :style="{ maxHeight: '900rpx' }" scroll-y>
-      <MInput v-model="cph" label="车牌号"></MInput>
-      <MInput v-model="khmc" label="车主名称"></MInput>
-      <MInput v-model="gdbh" label="工单号"></MInput>
-      <MCheckbox label="是否录入" v-model="sflr" :itemList="itemList_sflr" single></MCheckbox>
-      <MCheckbox label="服务顾问" v-model="fwgw" :itemList="itemList_fwgw" single></MCheckbox>
-
-      <MCheckbox label="技师名称" v-model="jsmc" :itemList="itemList_jsmc" single></MCheckbox>
-      <MCheckbox label="服务组织" v-model="fwzz" :itemList="itemList_fwzz"></MCheckbox>
-      <MDatePicker label="开单日期" v-model="dateTest"></MDatePicker>
+      <MLicense label="车牌号" v-model="formData.license" searchType="scan"></MLicense>
+      <MInput v-model="formData.ownerName" label="车主名称"></MInput>
+      <MInput v-model="formData.roNo" label="工单号"></MInput>
+      <MCheckbox
+        label="是否录入"
+        type="popup"
+        v-model="formData.isInput"
+        :itemList="recordList"
+        single
+      ></MCheckbox>
+      <MCheckbox
+        label="服务顾问"
+        type="popup"
+        v-model="formData.serviceAdvisor"
+        :itemList="serviceAdvisorList"
+        single
+      ></MCheckbox>
+      <MCheckbox
+        label="指定技师"
+        type="popup"
+        v-model="formData.chiefTechnician"
+        :itemList="technicianList"
+        single
+      ></MCheckbox>
+      <MPicker label="开单日期" mode="range" v-model="formData.createdAt"></MPicker>
     </scroll-view>
-    <button @click="formSubmit" type="primary" class="submit-btn">查询</button>
+    <MFormBottom @confirm="formConfirm" @reset="formReset"></MFormBottom>
   </view>
 </template>
 <script>
+  import dictCode from '@/common/dictCode.js';
 export default {
   components: {},
+
   data() {
     return {
-      cph: '',
-      khmc: '',
-      gdbh: '',
-      //
-      jsmc: [],
-      fwzz: [],
-      fwgw: [],
-      sflr: [],
-      itemList_jsmc: [
-        { text: '王大锤', value: '1' },
-        { text: '张全蛋', value: '2' },
-        { text: '赵铁柱', value: '3' }
-      ],
-      itemList_fwzz: [
-        { text: '组织1', value: '1' },
-        { text: '组织2', value: '2' },
-        { text: '组织3', value: '3' }
-      ],
-      itemList_fwgw: [
-        { text: '王大锤', value: '1' },
-        { text: '张全蛋', value: '2' },
-        { text: '赵铁柱', value: '3' }
-      ],
-      itemList_sflr: [
-        { text: '未录入', value: '1' },
-        { text: '已录入', value: '2' },
-        { text: '全部', value: '3' }
-      ],
-      dateTest: ['']
+      formData: {
+        license: '',
+        ownerName:'',
+        roNo:'',
+        serviceAdvisor: [],
+        isInput: [],
+        chiefTechnician:[],
+        createdAt: []
+      },
+      serviceAdvisorList:[],
+      technicianList:[],
+      recordList:this.$commonDict.RECORD_LIST
+
     };
   },
-  watch: {
-    dateTest(dateTest) {
-      console.log('dateTest change', dateTest);
-    }
-  },
+ mounted() {
+   this.getServiceAdvisorList();
+   this.getTechnicianList();
+   // 备份初始值 用于重置
+   this.formData_reset = { ...this.formData };
+ },
   methods: {
-    // 查询按钮事件
-    formSubmit() {
-      console.log('formSubmit');
-      this.$emit('confirm');
+    //重置表单
+    formReset() {
+      this.formData = { ...this.formData_reset };
+    },
+    //确认查询
+    formConfirm() {
+      console.log(this.formData.license)
+      let params = {
+        license: this.formData.license.trim(),
+        ownerName:this.formData.ownerName,
+        roNo:this.formData.roNo,
+        serviceAdvisor:this.$auth.isEmpty(this.formData.serviceAdvisor[0]),
+        isInput:this.$auth.isEmpty(this.formData.isInput[0]),
+        chiefTechnician:this.$auth.isEmpty(this.formData.chiefTechnician[0]),
+        beginCreatedAt:this.$auth.isEmpty(this.formData.createdAt[0]) ,
+        endCreatedAt:this.$auth.isEmpty(this.formData.createdAt[1]) 
+      };
+      this.$emit('confirm', params);
+    },
+    //服务顾问列表
+    async getServiceAdvisorList() {
+      //服务顾问
+      let consultant = { role: dictCode.SERVICE_CONSULTANT, companyId: this.$auth.getCompanyId() };
+      this.serviceAdvisorList = await this.$auth.queryServiceAdvisor(consultant);
+    },
+    //服务技师列表
+    async getTechnicianList() {
+      //服务技师
+      let technician = { role: dictCode.TECHNICIAN , companyId: this.$auth.getCompanyId()};
+      this.technicianList = await this.$auth.queryServiceAdvisor(technician);
     }
   }
 };

@@ -3,27 +3,31 @@
       <view class="list-cell-wrap-inner" @click="cellClick">
         <view class="list-cell-title">
           <view class="left">
-            <text class="state">在修</text>
-            <text class="vin">谢宝宝</text>
+            <text class="state">{{cell.roStatus?cell.roStatus:'无'}}</text>
+            <text class="vin">{{cell.ownerName?cell.ownerName:'未知'}}</text>
           </view>
-          <view class="right">2020-01-09 10:23</view>
+          <view class="right">{{cell.endTimeSupposed}}</view>
         </view>
         <view class="list-cell-content">
           <view class="box">
             <view class="label">车牌号码</view>
-            <view >沪A10001</view>
+            <view >{{cell.license}}</view>
           </view>
           <view class="box">
             <view class="label">工单编号</view>
-            <view >YO202001090001</view>
+            <view >{{cell.roNo}}</view>
           </view>
           <view class="box">
             <view class="label">服务顾问</view>
-            <view>糖糖</view>
+            <view>{{cell.serviceAdvisor}}</view>
           </view>
           <view class="box">
             <view class="label">服务技师</view>
-            <view>陆小鹏</view>
+            <view>{{cell.chiefTechnician}}</view>
+          </view>
+          <view class="box">
+            <view class="font-color">车辆检查数据是否录入</view>
+            <view :class="cell.isInput=='12781001'?'record':'record-red'">{{cell.isInput?cell.isInput:'无'}}</view>
           </view>
         </view>
       </view>
@@ -88,6 +92,7 @@ export default {
       font-weight: 800;
       font-size: $uni-m-font-size-f2;
     }
+    
   }
   .right{
     color: $uni-m-color-c12;
@@ -104,6 +109,19 @@ export default {
     .label{
       flex:0 0 130rpx;
       color:$uni-m-color-c2;
+    }
+    .font-color{
+      color:$uni-m-color-c2;
+    }
+    .record{
+      display: inline-block;
+      margin-left: 20rpx;
+      color: $uni-m-color-c15;
+    }
+    .record-red{
+      display: inline-block;
+      margin-left: 20rpx;
+      color: $uni-m-color-c14-pressed;
     }
   }
   

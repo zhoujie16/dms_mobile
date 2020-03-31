@@ -47,5 +47,42 @@ export default {
       text: '三角架',
       value: '4008'
     }
+  ],
+  // 是否录入
+  RECORD_LIST:[
+    {
+      text: '已录入',
+      value: '12781001'
+    },
+    {
+      text: '未录入',
+      value: '12781002'
+    }
+  ],
+  //车辆检查的状态  正常  观察  异常
+  CHECK_LIST:[
+    {
+      text: '正常',
+      value: '18001001'
+    },
+    {
+      text: '观察',
+      value: '18001002'
+    },
+    {
+      text: '异常',
+      value: '18001003'
+    }
+  ],
+  //车辆检查的状态  正常   异常
+  CHECK_LIST_TWO:[
+    {
+      text: '正常',
+      value: '18001001'
+    },
+    {
+      text: '异常',
+      value: '18001003'
+    }
   ]
 }

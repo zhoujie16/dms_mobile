@@ -193,5 +193,9 @@ class Auth {
     }));
     return seriesList;
   }
+  //判断undefined 置空
+  isEmpty(event){
+    return event==undefined?'':event;
+  }
 }
 export default new Auth();

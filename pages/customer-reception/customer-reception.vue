@@ -94,13 +94,11 @@ export default {
     },
     // 表单查询
     conformSearch(params) {
-      console.log('conformSearch');
-      this.fetchParams = {
-        ...params,
-        t: new Date().getTime()
-      };
+     this.fetchParams = {
+       ...params,
+       t: new Date().getTime()
+     };
       this.$refs.searchFilter.close();
-      this.fetchParams = { t: new Date().getTime() };
     },
     // 新增客户接待
     async addBtnClick() {

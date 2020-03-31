@@ -1,3 +1,6 @@
+/**
+ * 预约检查
+ */
 import Http from "@/common/http.js";
 import SERVER from '../server.js';
 

@@ -1,9 +1,11 @@
 <template>
   <MPage ref="MPage" type="primary">
     <SearchFilter ref="searchFilter" :isShow="false">
-      <view slot="form"><searchForm @confirm="searchFormConfirm"></searchForm></view>
+      <view slot="form">
+        <searchForm  @confirm="searchFormConfirm"></searchForm>
+      </view>
     </SearchFilter>
-  <!--  <BaseScroll
+   <BaseScroll
       :height="scrollHeight"
       :fetchApi="fetchApi"
       :fetchParams="fetchParams"
@@ -15,18 +17,19 @@
     >
       <view slot="scroll" style="padding: 20rpx;">
         <view v-for="(data, i) in dataSource" :key="i">
-          <scrollCell @click="scrollCellClick(data)"></scrollCell>
+          <scrollCell :cell="data" @click="scrollCellClick(data)"></scrollCell>
         </view>
       </view>
-    </BaseScroll> -->
-    <scrollCell @click="scrollCellClick(1)"></scrollCell>
+    </BaseScroll>
+   <!-- <scrollCell @click="scrollCellClick(1)"></scrollCell> -->
   </MPage>
 </template>
 
 <script>
+import { queryVehicleCheckList } from '@/api/vehicle-inspection/index.js';
+  
 import searchForm from '@/pages/vehicle-inspection/components/search-form.vue';
 import scrollCell from '@/pages/vehicle-inspection/components/scroll-cell.vue';
-import { AjaxScrollData } from '@/api/test/index.js';
 export default {
   components: {
     searchForm,
@@ -34,7 +37,7 @@ export default {
   },
   data() {
     return {
-      fetchApi: AjaxScrollData,
+      fetchApi: queryVehicleCheckList,
       fetchParams: {},
       dataSource: []
     };
@@ -46,16 +49,19 @@ export default {
     }
   },
   methods: {
-    scrollCellClick(i) {
+    scrollCellClick(item) {
       uni.navigateTo({
-        url: `/pages/vehicle-inspection/vehicle-detail`
+        url: `/pages/vehicle-inspection/vehicle-detail?roNo=${item.roNo}&yjNo=${item.yjNo}`
       });
     },
     // 表单查询
-    searchFormConfirm() {
-      console.log('searchFormConfirm');
-      this.$refs.searchFilter.hideDrawer();
-      this.fetchParams = { t: new Date().getTime() };
+    searchFormConfirm(params) {
+      this.fetchParams = {
+        ...params,
+        t: new Date().getTime()
+      };
+      this.$refs.searchFilter.close();
+      // this.fetchParams = { t: new Date().getTime() };
     }
   }
 };

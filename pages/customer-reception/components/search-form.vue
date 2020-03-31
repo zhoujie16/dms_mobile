@@ -1,7 +1,7 @@
 <template>
   <view>
     <scroll-view class="scroll-view-h" :style="{ maxHeight: '900rpx' }" scroll-y>
-      <MLicense label="车牌号" :value="formData.license" searchType="scan"></MLicense>
+      <MLicense label="车牌号" v-model="formData.license" searchType="scan"></MLicense>
       <MCheckbox
         label="服务顾问"
         type="popup"
@@ -17,9 +17,9 @@
         single
       ></MCheckbox>
 
-      <MInput label="车主名称" :value="formData.ownerName"></MInput>
-      <MInput label="预检单号" :value="formData.yjNo"></MInput>
-      <MInput label="工单号" :value="formData.roNo"></MInput>
+      <MInput label="车主名称" v-model="formData.ownerName"></MInput>
+      <MInput label="预检单号" v-model="formData.yjNo"></MInput>
+      <MInput label="工单号" v-model="formData.roNo"></MInput>
       <MPicker label="开单日期" mode="range" v-model="formData.createdAt"></MPicker>
     </scroll-view>
     <MFormBottom @confirm="formConfirm" @reset="formReset"></MFormBottom>
@@ -60,13 +60,13 @@ export default {
     formConfirm() {
       let params = {
         license: this.formData.license.trim(),
-        serviceAdvisor: this.formData.serviceAdvisor[0],
-        deliveryTag: this.formData.deliveryTag[0],
+        serviceAdvisor: this.formData.serviceAdvisor[0]==undefined?'':this.formData.serviceAdvisor[0],
+        deliveryTag: this.formData.deliveryTag[0]==undefined?'':this.formData.deliveryTag[0],
         ownerName: this.formData.ownerName,
         yjNo: this.formData.yjNo,
         roNo: this.formData.roNo,
-        beginCreatedAt: this.formData.createdAt[0],
-        endCreatedAt: this.formData.createdAt[1]
+        beginCreatedAt: this.formData.createdAt[0]==undefined?'':this.formData.createdAt[0],
+        endCreatedAt: this.formData.createdAt[1]==undefined?'':this.formData.createdAt[1]
       };
       this.$emit('confirm', params);
     }

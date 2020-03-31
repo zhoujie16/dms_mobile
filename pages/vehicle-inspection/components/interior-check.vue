@@ -1,4 +1,5 @@
 <template>
+  <!-- 内饰检查 -->
   <view class="page-wrap">
     <view class="container">
       <view class="content">
@@ -15,21 +16,21 @@
             :unit="item.unit"
             :hasPhoto="item.hasPhoto"
             @change="formItemChange"
+            @changePhoto="formImageChange"
           ></MVehicleCheckCell>
         </view>
       </view>
-      <view class="content">
-         <MTextArea label="内饰检查" v-model="value_1">
-         </MTextArea>
-      </view>
+      <view class="content"><MTextArea label="内饰检查" v-model="formData1[0].remark3"></MTextArea></view>
     </view>
   </view>
 </template>
 
 <script>
-
 export default {
   name: 'InteriorCheck',
+  props:{
+    vehicleCheckDetailResultVos:Array
+  },
   data() {
     return {
       /**
@@ -46,147 +47,163 @@ export default {
        */
       formData: [
         {
-          fieldName: 'dg',
+          fieldName: '6002',
           type: 'select',
           label: '灯光',
-          itemList: [
-            { text: '正常', value: '14001001' },
-            { text: '观察', value: '14001002' },
-            { text: '异常', value: '14001003' }
-          ],
+          itemList: this.$commonDict.CHECK_LIST,
           value: '',
-          photoPath:''
+          videoUrl:'',
+          photoPath: ''
         },
         {
-          fieldName: 'smsj',
+          fieldName: '6003',
           type: 'select',
           label: '四门升降',
-          itemList: [
-            { text: '正常', value: '14001001' },
-            { text: '观察', value: '14001002' },
-            { text: '异常', value: '14001003' }
-          ],
-          value: ''
+          itemList: this.$commonDict.CHECK_LIST,
+          value: '',
+          videoUrl:'',
+          photoPath: ''
         },
         {
-          fieldName: 'ybzsd',
+          fieldName: '6004',
           type: 'select',
           label: '仪表/指示灯：',
-          itemList: [
-            { text: '正常', value: '14001001' },
-            { text: '观察', value: '14001002' },
-            { text: '异常', value: '14001003' }
-          ],
-          value: ''
+          itemList: this.$commonDict.CHECK_LIST,
+          value: '',
+          videoUrl:'',
+          photoPath: ''
         },
         {
-          fieldName: 'yg',
+          fieldName: '6005',
           type: 'select',
           label: '雨刮：',
-          itemList: [
-            { text: '正常', value: '14001001' },
-            // { text: '观察', value: '14001002' },
-            { text: '异常', value: '14001003' }
-          ],
-          value: ''
+          itemList: this.$commonDict.CHECK_LIST_TWO,
+          value: '',
+          videoUrl:'',
+          photoPath: ''
         },
         {
-          fieldName: 'kt',
+          fieldName: '6006',
           type: 'select',
           label: '空调：',
-          itemList: [
-            { text: '正常', value: '14001001' },
-            { text: '观察', value: '14001002' },
-            { text: '异常', value: '14001003' }
-          ],
-          value: ''
+          itemList: this.$commonDict.CHECK_LIST,
+          value: '',
+          videoUrl:'',
+          photoPath: ''
         },
         {
-          fieldName: 'yx',
+          fieldName: '6007',
           type: 'select',
           label: '音响：',
-          itemList: [
-            { text: '正常', value: '14001001' },
-            { text: '观察', value: '14001002' },
-            { text: '异常', value: '14001003' }
-          ],
-          value: ''
+          itemList: this.$commonDict.CHECK_LIST,
+          value: '',
+          videoUrl:'',
+          photoPath: ''
         },
         {
-          fieldName: 'ss',
+          fieldName: '6008',
           type: 'select',
           label: '手刹：',
-          itemList: [
-            { text: '正常', value: '14001001' },
-            { text: '观察', value: '14001002' },
-            { text: '异常', value: '14001003' }
-          ],
-          value: ''
+          itemList: this.$commonDict.CHECK_LIST,
+          value: '',
+          videoUrl:'',
+          photoPath: ''
         },
         {
-          fieldName: 'tc',
+          fieldName: '6009',
           type: 'select',
           label: '天窗：',
-          itemList: [
-            { text: '正常', value: '14001001' },
-            { text: '观察', value: '14001002' },
-            { text: '异常', value: '14001003' }
-          ],
-          value: ''
+          itemList: this.$commonDict.CHECK_LIST,
+          value: '',
+          videoUrl:'',
+          photoPath: ''
         },
         {
-          fieldName: 'hsj',
+          fieldName: '6010',
           type: 'select',
           label: '后视镜：',
-          itemList: [
-            { text: '正常', value: '14001001' },
-            { text: '观察', value: '14001002' },
-            { text: '异常', value: '14001003' }
-          ],
-          value: ''
+          itemList: this.$commonDict.CHECK_LIST,
+          value: '',
+          videoUrl:'',
+          photoPath: ''
         },
         {
-          fieldName: 'zy',
+          fieldName: '6011',
           type: 'select',
           label: '座椅/座椅套：',
-          itemList: [
-            { text: '正常', value: '14001001' },
-            { text: '观察', value: '14001002' },
-            { text: '异常', value: '14001003' }
-          ],
-          value: ''
+          itemList: this.$commonDict.CHECK_LIST,
+          value: '',
+          videoUrl:'',
+          photoPath: ''
         },
         {
-          fieldName: 'aqd',
+          fieldName: '6012',
           type: 'select',
           label: '安全带：',
-          itemList: [
-            { text: '正常', value: '14001001' },
-            { text: '观察', value: '14001002' },
-            { text: '异常', value: '14001003' }
-          ],
-          value: ''
+          itemList: this.$commonDict.CHECK_LIST,
+          value: '',
+          videoUrl:'',
+          photoPath: ''
         }
       ],
-      value_1:''
+      formData1:[{
+         fieldName: '6001',
+         remark3:''
+      }]
+      
+      
     };
   },
   mounted() {
-   
+    this.getDetailData();
   },
   methods: {
+    //查询明细并显示
+    getDetailData(){
+      if(this.vehicleCheckDetailResultVos.length!==0){
+        this.vehicleCheckDetailResultVos.forEach(x=>{
+          this.formData.forEach(y=>{
+            if(x.contentCode==y.fieldName){
+              if(x.remark3){
+                y.remark3 = x.remark3
+              }else{
+                y.value = x.statusCode;
+                y.photoPath = x.fileBaseUrl;
+                y.videoUrl = x.videoUrl;
+              }
+             
+            }
+          })
+        });
+        this.vehicleCheckDetailResultVos.forEach(x=>{
+          this.formData1.forEach(y=>{
+            if(x.contentCode==y.fieldName){
+              if(x.remark3){
+                y.remark3 = x.remark3
+              }else{
+                y.value = x.statusCode;
+                y.photoPath = x.fileBaseUrl;
+                y.videoUrl = x.videoUrl;
+              }
+             
+            }
+          })
+        });
+      }
+      
+    },
+   
     // 值改变事件
     async formItemChange(data, index) {
       console.log('修改了', data, index);
       this.formData[index].value = data;
+      // this.vehicleCheckDetailRes[]
     },
     //图片改变事件
-    async formImageChange(data, index){
-      console.log()
-       this.formData[index].photoPath = data;
-    },
-    
-    
+    async formImageChange(data, index) {
+      console.log('------');
+      this.formData[index].photoPath = data;
+    }
   }
 };
 </script>

@@ -50,9 +50,9 @@ export default {
     formConfirm() {
       let params = {
         license: this.formData.license.trim(),
-        serviceAdvisor: this.formData.serviceAdvisor[0],
-        beginCreatedAt: this.formData.createdAt[0],
-        endCreatedAt: this.formData.createdAt[1]
+        serviceAdvisor: this.formData.serviceAdvisor[0]==undefined?'':this.formData.serviceAdvisor[0],
+        beginCreatedAt: this.formData.createdAt[0]==undefined?'':this.formData.createdAt[0],
+        endCreatedAt: this.formData.createdAt[1]==undefined?'':this.formData.createdAt[1]
       };
       this.$emit('confirm', params);
     },

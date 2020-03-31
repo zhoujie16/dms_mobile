@@ -11,17 +11,26 @@
           </swiper-item> -->
           <swiper-item>
             <scroll-view class="swiper-scroll-wrap" scroll-y="true">
-              <InteriorCheck></InteriorCheck>
+              <InteriorCheck
+                ref="interiorCheck"
+                :vehicleCheckDetailResultVos="vehicleCheckDetailResultVos"
+              ></InteriorCheck>
             </scroll-view>
           </swiper-item>
           <swiper-item>
             <scroll-view class="swiper-scroll-wrap" scroll-y="true">
-              <EngineNacelle></EngineNacelle>
+              <EngineNacelle
+                ref="engineNacelle"
+                :vehicleCheckDetailResultVos2="vehicleCheckDetailResultVos2"
+              ></EngineNacelle>
             </scroll-view>
           </swiper-item>
           <swiper-item>
             <scroll-view class="swiper-scroll-wrap" scroll-y="true">
-              <ChassisRound></ChassisRound>
+              <ChassisRound
+                ref="chassisRound"
+                :vehicleCheckDetailResultVos3="vehicleCheckDetailResultVos3"
+              ></ChassisRound>
             </scroll-view>
           </swiper-item>
         </swiper>
@@ -48,7 +57,7 @@
           <text class="title">预检单</text>
         </view>
         <view class="flex-item btn1 v-border" @click="previewClick">暂存</view>
-        <view class="flex-item btn2">保存</view>
+        <view class="flex-item btn2" @click="saveClick">保存</view>
       </view>
       <!-- 维修历史 -->
       <MPopup ref="mPopup_history" type="bottom" title="维修历史">
@@ -58,18 +67,19 @@
       <MPopup ref="mPopup_amonitor_info" type="bottom" title="监控信息">
         <AmonitorInfo></AmonitorInfo>
       </MPopup>
-      
     </view>
   </MPage>
 </template>
 
 <script>
+import { saveVehicleCheckDetail, queryVehicleCheckDetail } from '@/api/vehicle-inspection/index.js';
+
 import VehiclePreview from './components/vehicle-preview.vue';
 import InteriorCheck from './components/interior-check.vue';
 import EngineNacelle from './components/engine-nacelle.vue';
 import ChassisRound from './components/chassis-round.vue';
 import AmonitorInfo from '@/pages/customer-reception/components/monitor-info.vue'; //监控信息
-import HistoryModel from '@/pages/customer-reception/components/history-model.vue';  //维修历史
+import HistoryModel from '@/pages/customer-reception/components/history-model.vue'; //维修历史
 export default {
   components: {
     VehiclePreview,
@@ -83,14 +93,32 @@ export default {
     this.swiperTabHeight = uni.getSystemInfoSync().windowHeight - 40 + 'px';
     return {
       tabs: ['内饰检查', '发动机舱', '底盘四轮'],
-      curIndex: 0 // 当前tab的下标
+      curIndex: 0, // 当前tab的下标
+      roNo: '',
+      yjNo: '',
+      vehicleCheckDetailResultVos: [],
+      vehicleCheckDetailResultVos2: [],
+      vehicleCheckDetailResultVos3: []
     };
   },
+  onLoad: function(option) {
+    this.roNo = option.roNo;
+    this.yjNo = option.yjNo;
+    this.queryCheckDetail();
+  },
   methods: {
-    async back() {
-      uni.navigateBack({
-        delta: 1
-      });
+    //根据工单号或者预约单号查询数据
+    async queryCheckDetail() {
+      let params = {
+        roNo: this.roNo,
+        yjNo: this.yjNo
+      };
+      let [status, res] = await queryVehicleCheckDetail(params);
+      console.log(res.data, '查询数据');
+      this.vehicleCheckDetailResultVos = res.data.vehicleCheckDetailResultVos;
+      this.vehicleCheckDetailResultVos2 = res.data.vehicleCheckDetailResultVos2;
+      this.vehicleCheckDetailResultVos3 = res.data.vehicleCheckDetailResultVos3;
+      
     },
     // 轮播菜单
     swiperChange(e) {
@@ -99,6 +127,93 @@ export default {
     // 切换菜单
     changeTab(i) {
       this.curIndex = i;
+    },
+    //保存
+    async saveClick() {
+      // contentCode fileBaseUrl  remark3 statusCode videoUrl
+      let bodyAppearanceInfoList = [];
+      //内饰检查组合数据
+      bodyAppearanceInfoList = this.makeUpWays(
+        this.$refs.interiorCheck.formData,
+        bodyAppearanceInfoList
+      );
+      bodyAppearanceInfoList = this.makeUpWays(
+        this.$refs.interiorCheck.formData1,
+        bodyAppearanceInfoList
+      );
+
+      //发动机舱组合数据
+      bodyAppearanceInfoList = this.makeUpWays(
+        this.$refs.engineNacelle.formData,
+        bodyAppearanceInfoList
+      );
+      bodyAppearanceInfoList = this.makeUpWays(
+        this.$refs.engineNacelle.formData1,
+        bodyAppearanceInfoList
+      );
+      bodyAppearanceInfoList = this.makeUpWays(
+        this.$refs.engineNacelle.formData2,
+        bodyAppearanceInfoList
+      );
+      //底盘四轮组合数据
+      bodyAppearanceInfoList = this.makeUpWays(
+        this.$refs.chassisRound.formData,
+        bodyAppearanceInfoList
+      );
+      bodyAppearanceInfoList = this.makeUpWays(
+        this.$refs.chassisRound.formData1,
+        bodyAppearanceInfoList
+      );
+      bodyAppearanceInfoList = this.makeUpWays(
+        this.$refs.chassisRound.formData2,
+        bodyAppearanceInfoList
+      );
+      bodyAppearanceInfoList = this.makeUpWays(
+        this.$refs.chassisRound.formData3,
+        bodyAppearanceInfoList
+      );
+      
+      //请求后台
+      let params = {
+        bodyAppearanceInfoList: bodyAppearanceInfoList,
+        roNo: this.roNo,
+        yjNo: this.yjNo
+      };
+      console.log('---11---', params);
+      let [status, res] = await saveVehicleCheckDetail(params);
+      const res1 = await this.SHOW_MODAL({
+        title: '保存成功',
+        content: '',
+        showCancel: false, // 是否显示取消按钮，默认为 true
+        confirmText: '确定' // 确定按钮的文字，默认为"确定"，最多 4 个字符
+      });
+      console.log(res1);
+      // console.log(JSON.stringify(bodyAppearanceInfoList))
+    },
+    //组合后台数据
+    makeUpWays(oldArr, newArr) {
+      oldArr.forEach(x => {
+        if (x.value) {
+          newArr.push({
+            contentCode: x.fieldName,
+            fileBaseUrl: x.photoPath,
+            remark3: '',
+            statusCode: x.value,
+            videoUrl: x.videoUrl
+          });
+        } else {
+          if (x.remark3) {
+            newArr.push({
+              contentCode: x.fieldName,
+              fileBaseUrl: '',
+              remark3: x.remark3,
+              statusCode: '',
+              videoUrl: ''
+            });
+          }
+        }
+      });
+      return newArr;
     },
     // 建议
     adviseClick() {
@@ -114,14 +229,14 @@ export default {
     },
     // 关键信息
     amonitorClick() {
-       this.$refs.mPopup_amonitor_info.open();
+      this.$refs.mPopup_amonitor_info.open();
     },
-   
+
     // 维修历史
     historyClick() {
-       this.$refs.mPopup_history.open();
+      this.$refs.mPopup_history.open();
     },
-    
+
     //增修提醒
     remindClick() {
       uni.navigateTo({
@@ -144,7 +259,7 @@ export default {
     .r-box {
       width: 100rpx;
       height: 100rpx;
-      background:$uni-m-color-c11;
+      background: $uni-m-color-c11;
       color: #fff;
       align-items: right;
       margin-bottom: 20rpx;
