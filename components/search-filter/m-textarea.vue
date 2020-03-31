@@ -3,7 +3,9 @@
   <view class="m-textarea-wrap">
     <view class="m-textarea-title">
       <MLabel :label="label" :required="required">
-        <text v-if="!(disabled || readonly)" @click="speechBtnClick" class="m-iconfont speech-btn">&#xe729;</text>
+        <text v-if="showSpeech" @click="speechBtnClick" class="m-iconfont speech-btn">
+          &#xe729;
+        </text>
       </MLabel>
     </view>
     <view class="m-textarea-inner">
@@ -11,10 +13,10 @@
         :value="value"
         @input="inputHandle"
         class="m-textarea"
-        :placeholder="placeholder"
+        :placeholder="placeholderText"
         placeholder-style="font-size: 30rpx;color: #c3c3c3;"
-				:maxlength="maxlength"
-				:disabled="disabled || readonly"
+        :maxlength="maxlength"
+        :disabled="disabled || readonly"
       />
     </view>
   </view>
@@ -36,25 +38,39 @@ export default {
       type: String
     },
     placeholder: {
-      type: String,
-      default: '请输入内容（最多200字）'
+      type: String
+    },
+    speech: {
+      type: Boolean,
+      default: false
     },
     required: {
       type: Boolean,
       default: false
     },
-		disabled: {
-		  type: Boolean,
-		  default: false
-		},
-		readonly: {
-		  type: Boolean,
-		  default: false
-		},
-		maxlength: {
-		  type: Number,
-		  default: 140
-		},
+    disabled: {
+      type: Boolean,
+      default: false
+    },
+    readonly: {
+      type: Boolean,
+      default: false
+    },
+    maxlength: {
+      type: Number,
+      default: 200
+    }
+  },
+  computed: {
+    showSpeech() {
+      if (!this.speech) return false;
+      if (this.disabled || this.readonly) return false;
+      return true;
+    },
+    placeholderText() {
+      if (!this.placeholder) return `请输入内容（最多${this.maxlength}字）`;
+      return this.placeholder;
+    }
   },
   data() {
     return {};
@@ -95,8 +111,8 @@ export default {
 .m-textarea-wrap {
   .m-textarea-title {
     .speech-btn {
-      color:$uni-m-color-c11;
-      font-size:  52rpx;
+      color: $uni-m-color-c11;
+      font-size: 52rpx;
     }
   }
   .m-textarea-inner {

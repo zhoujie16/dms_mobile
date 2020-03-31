@@ -2,7 +2,7 @@
 <template>
   <view class="m-check-box-panel-wrap">
     <view v-if="label" class="m-check-box-panel-title">
-      <MLabel :label="label" :border="false">
+      <MLabel :label="label" :required="required" :border="false">
         <text v-if="!isFold" @click="foldingHandleClick" class="m-iconfont">
           {{ isFolding ? '&#xe71c;' : '&#xe718;' }}
         </text>
@@ -14,6 +14,7 @@
         :itemList="itemList"
         :single="single"
         :singleLine="false"
+        :readonly="readonly"
         @input="input"
       ></MCheckboxInner>
     </view>
@@ -49,7 +50,15 @@ export default {
     isFold: {
       type: Boolean,
       default: true
-    }
+    },
+    required: {
+      type: Boolean,
+      default: false
+    },
+    readonly: {
+      type: Boolean,
+      default: false
+    },
   },
   computed: {},
   data() {

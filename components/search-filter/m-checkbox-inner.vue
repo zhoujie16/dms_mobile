@@ -56,6 +56,10 @@ export default {
     },
     single: {
       type: Boolean
+    },
+    readonly: {
+      type: Boolean,
+      default: false
     }
   },
   data() {
@@ -83,6 +87,9 @@ export default {
   },
   methods: {
     checkbosItemClick(item) {
+      if (this.readonly) {
+        return;
+      }
       console.log('选项点击', item);
       if (this.single) {
         let _val = this.value;

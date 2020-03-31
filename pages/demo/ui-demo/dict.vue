@@ -1,9 +1,9 @@
 <template>
   <MPage ref="MPage" style="padding: 20rpx">
-    <MButton class="demo-btn" @click.native="test_createDictList">test_createDictList</MButton>
-    <MButton class="demo-btn" @click.native="test_createDictText">test_createDictText</MButton>
-    <MButton class="demo-btn" @click.native="test_createDictRegion">test_createDictRegion</MButton>
-    <MButton class="demo-btn" @click.native="test_addressClisk">地址选择</MButton>
+    <MButton class="demo-btn" block @click.native="test_createDictList">test_createDictList</MButton>
+    <MButton class="demo-btn" block @click.native="test_createDictText">test_createDictText</MButton>
+    <MButton class="demo-btn" block @click.native="test_createDictRegion">test_createDictRegion</MButton>
+    <MButton class="demo-btn" block @click.native="test_addressClisk">地址选择</MButton>
     <MPicker label="地址选择" mode="address" v-model="formData.address"></MPicker>
     <MCheckbox
       label="单选 popup"

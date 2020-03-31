@@ -2,9 +2,10 @@
 <template>
   <view class="m-license-wrap">
     <view class="m-license-inner">
-      <MLabel label="车牌号" :border="false">
+      <MLabel :required="required" label="车牌号" :border="false">
         <view slot="default">
-          <text v-if="searchType == 'search'" @click="foldingHandleClick" class="m-iconfont screen">
+          <text v-if="readonly"></text>
+          <text v-else-if="searchType == 'search'" @click="foldingHandleClick" class="m-iconfont screen">
             &#xe732;
           </text>
           <text v-else @click="scanClick" class="m-iconfont screen">&#xe72a;</text>
@@ -42,7 +43,15 @@ export default {
     searchType: {
       type: String,
       default: 'search'
-    }
+    },
+    required: {
+      type: Boolean,
+      default: false
+    },
+    readonly: {
+      type: Boolean,
+      default: false
+    },
   },
   data() {
     return {
@@ -98,6 +107,9 @@ export default {
   },
   methods: {
     itemClick(item) {
+      if (this.readonly) {
+        return;
+      }
       this.setItemActive(item.id);
       this.$root.$refs.MPage.MKeyboard.open({
         keyDown: key => {
@@ -180,9 +192,9 @@ export default {
           flag: 2
         };
         let [status, res] = await queryCusInfoByLicense(params);
-        if(res.data.length==0){
-           this.SHOW_TOAST('没有查到相关车牌!');
-        }else{
+        if (res.data.length == 0) {
+          this.SHOW_TOAST('没有查到相关车牌!');
+        } else {
           this.itemListLicense = res.data;
           this.$refs.mPopup.open(); // 打开
         }

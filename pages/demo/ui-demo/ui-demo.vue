@@ -7,7 +7,6 @@
         :key="item.title"
         @click.native="btnHandleClick(item)"
         class="demo-btn"
-        type="primary"
       >
         {{ item.title }}
       </m-button>
@@ -22,22 +21,6 @@ export default {
     return {
       btnList: [
         {
-          title: 'style',
-          clickFn: async () => {
-            const [err, res] = await uni.navigateTo({
-              url: '/pages/demo/ui-demo/style'
-            });
-          }
-        },
-        {
-          title: '头部表单',
-          clickFn: async () => {
-            const [err, res] = await uni.navigateTo({
-              url: '/pages/demo/ui-demo/search-filter'
-            });
-          }
-        },
-        {
           title: '按钮',
           clickFn: async () => {
             const [err, res] = await uni.navigateTo({
@@ -46,7 +29,7 @@ export default {
           }
         },
         {
-          title: '表单',
+          title: '输入框',
           clickFn: async () => {
             const [err, res] = await uni.navigateTo({
               url: '/pages/demo/ui-demo/form'
@@ -54,10 +37,50 @@ export default {
           }
         },
         {
-          title: 'list',
+          title: '选择',
           clickFn: async () => {
             const [err, res] = await uni.navigateTo({
-              url: '/pages/demo/ui-demo/list'
+              url: '/pages/demo/ui-demo/select'
+            });
+          }
+        },
+        {
+          title: '字典Demo',
+          clickFn: async () => {
+            const [err, res] = await uni.navigateTo({
+              url: '/pages/demo/ui-demo/dict'
+            });
+          }
+        },
+        {
+          title: '日期时间选择',
+          clickFn: async () => {
+            const [err, res] = await uni.navigateTo({
+              url: '/pages/demo/ui-demo/date-time-select'
+            });
+          }
+        },
+        {
+          title: '虚拟键盘',
+          clickFn: async () => {
+            const [err, res] = await uni.navigateTo({
+              url: '/pages/demo/ui-demo/keyboard'
+            });
+          }
+        },
+        // {
+        //   title: 'list',
+        //   clickFn: async () => {
+        //     const [err, res] = await uni.navigateTo({
+        //       url: '/pages/demo/ui-demo/list'
+        //     });
+        //   }
+        // },
+        {
+          title: '头部表单筛选',
+          clickFn: async () => {
+            const [err, res] = await uni.navigateTo({
+              url: '/pages/demo/ui-demo/search-filter'
             });
           }
         },
@@ -110,30 +133,21 @@ export default {
           }
         },
         {
-          title: '虚拟键盘',
-          clickFn: async () => {
-            const [err, res] = await uni.navigateTo({
-              url: '/pages/demo/ui-demo/keyboard'
-            });
-          }
-        },
-        {
           title: '车辆检查项',
           clickFn: async () => {
             const [err, res] = await uni.navigateTo({
               url: '/pages/demo/ui-demo/check-item'
             });
           }
-        },
-        // pages/demo/ui-demo/dict
-        {
-          title: '字典Demo',
-          clickFn: async () => {
-            const [err, res] = await uni.navigateTo({
-              url: '/pages/demo/ui-demo/dict'
-            });
-          }
-        },
+        }
+        // {
+        //   title: 'Cell 单元格',
+        //   clickFn: async () => {
+        //     const [err, res] = await uni.navigateTo({
+        //       url: '/pages/demo/ui-demo/cell'
+        //     });
+        //   }
+        // }
       ]
     };
   },

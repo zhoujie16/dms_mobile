@@ -1,6 +1,6 @@
 <template>
   <view class="">
-    <MLabel :label="label" :row="2">
+    <MLabel :label="label" :required="required" :row="2">
       <view class="m-picker-inner m-flex m-justify-end">
         <view @click="showPopupClick">{{ tipInfo }}</view>
       </view>
@@ -23,6 +23,14 @@ export default {
     },
     value: {
       type: Array
+    },
+    required: {
+      type: Boolean,
+      default: false
+    },
+    readonly: {
+      type: Boolean,
+      default: false
     }
   },
   data() {
@@ -49,9 +57,15 @@ export default {
   methods: {
     emitInput(value) {
       console.log('m-picker input', this.$util.typeOf(value), value);
+      if (value === 'cancel') {
+        return;
+      }
       this.$emit('input', value);
     },
     showPopupClick() {
+      if (this.readonly) {
+        return;
+      }
       const mode = this.mode;
       if (mode == 'date') {
         this.showPopupDate();
@@ -107,4 +121,3 @@ export default {
   width: 100%;
 }
 </style>
-yle>

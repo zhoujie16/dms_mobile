@@ -1,6 +1,6 @@
 <template>
   <view class="">
-    <MLabel :label="label" :border="border">
+    <MLabel :label="label" :required="required" :border="border">
       <!-- 内联选择用 -->
       <view class="m-checkbox-inner" v-if="type == 'inner'">
         <MCheckboxInner
@@ -9,6 +9,7 @@
           :itemList="itemList"
           :single="single"
           :singleLine="true"
+          :readonly="readonly"
           @input="input"
         ></MCheckboxInner>
       </view>
@@ -56,6 +57,14 @@ export default {
     border: {
       type: Boolean,
       default: true
+    },
+    required: {
+      type: Boolean,
+      default: false
+    },
+    readonly: {
+      type: Boolean,
+      default: false
     }
   },
   mounted() {
@@ -80,6 +89,9 @@ export default {
       this.$emit('input', value);
     },
     async showPopupClick() {
+      if (this.readonly) {
+        return;
+      }
       const res = await this.SHOW_PICKER({
         single: true,
         itemList: this.itemList,
