@@ -23,8 +23,8 @@
       </template>
     </search-filter>
     <!-- 数据列表 -->
-    <view>
-      <BaseScroll
+    <view class="wrap">
+      <!-- <BaseScroll
         :height="scrollHeight"
         :fetchApi="fetchApi"
         :fetchParams="fetchParams"
@@ -41,7 +41,12 @@
             :key="i"
           ></ScrollCell>
         </view>
-      </BaseScroll>
+      </BaseScroll> -->
+      <ScrollCell
+        @click.native="scrollCellClick(data)"
+        v-for="(data, i) in dataSource"
+        :key="i"
+      ></ScrollCell>
       <!--  <view class="" style="padding: 20rpx;"><ScrollCell></ScrollCell></view> -->
     </view>
     <!-- 弹窗内容 -->
@@ -51,7 +56,8 @@
       </view>
       <MPopup ref="mPopup_addorder" type="bottom" title="新建工单">
         <view class="order-box">
-          <OrderCell v-for="item in [1, 2]" :key="item" @click.native="orderCellClick"></OrderCell> 
+          <!-- <serviceActivities v-for="item in [1, 2]" :key="item"></serviceActivities> -->
+          <OrderCell v-for="item in [1, 2]" :key="item" @click.native="orderCellClick"></OrderCell>
         </view>
       </MPopup>
     </view>
@@ -62,6 +68,7 @@
 import { AjaxScrollData } from '@/api/test/index.js';
 import ScrollCell from './components/scroll-cell.vue';
 import OrderCell from './components/order-cell.vue';
+import serviceActivities from './components/service-activities.vue';
 import SearchForm from './components/search-form.vue';
 export default {
   components: {
@@ -74,11 +81,11 @@ export default {
     return {
       fetchApi: AjaxScrollData,
       fetchParams: {},
-      dataSource: [],
+      dataSource: [2],
       activeindex: 0,
       itemList: [
         {
-          title: '为交车',
+          title: '未交车',
           count: 0
         },
         {
@@ -151,6 +158,9 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+  .wrap {
+    margin-top: 84rpx;
+  }
 .panel-box {
   display: flex;
   flex: 3;

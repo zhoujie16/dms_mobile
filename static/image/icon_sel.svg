@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="20px" height="20px" viewBox="0 0 20 20" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 63.1 (92452) - https://sketch.com -->
+    <title>icon_sel</title>
+    <desc>Created with Sketch.</desc>
+    <g id="快速工单" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="修改维修项目" transform="translate(-32.000000, -247.000000)">
+            <g id="icon/icon_right_sel" transform="translate(32.000000, 247.000000)">
+                <g id="分组-3">
+                    <circle id="Oval" fill="#1371F7" cx="10" cy="10" r="9.8245614"></circle>
+                    <path d="M8.49511216,11.2928902 L13.811496,7.02714518 C13.811496,7.02714518 14.2525364,6.6694602 14.637237,6.94868998 C14.7518072,7.03293141 14.8840724,7.27097536 14.5859995,7.64377023 L8.98039739,13.6722433 C8.98039739,13.6722433 8.45412216,14.311849 7.82980635,13.6652063 L4.86987061,10.1120068 C4.86987061,10.1120068 4.5184851,9.6311686 4.95789109,9.3426278 C5.10623112,9.24596745 5.44341794,9.09527282 5.85651586,9.42439303 L8.49511216,11.2928902 Z" id="Fill-1" fill="#FFFFFF"></path>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
