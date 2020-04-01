@@ -32,13 +32,12 @@ export default {
   methods: {
     // 轮播菜单
     swiperChange(e) {
-      let current = e.detail.current;
+      const current = e.detail.current;
       this.changeTab(current);
       // curIndex = 2 的页面不允许进入
-      if (current === 2) {
-        current -= 1;
+      if (current === 2) { 
         this.$nextTick(() => {
-          this.changeTab(current);
+          this.changeTab(current - 1);
         });
       }
     },
