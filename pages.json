@@ -670,6 +670,10 @@
     {
       "path": "pages/demo/ui-demo/date-time-select",
       "style": {}
+    },
+    {
+      "path": "pages/demo/ui-demo/validator",
+      "style": {}
     }
   ],
   // "tabBar": {

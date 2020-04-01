@@ -61,6 +61,14 @@ export default {
           }
         },
         {
+          title: '参数校验',
+          clickFn: async () => {
+            const [err, res] = await uni.navigateTo({
+              url: '/pages/demo/ui-demo/validator'
+            });
+          }
+        },
+        {
           title: '虚拟键盘',
           clickFn: async () => {
             const [err, res] = await uni.navigateTo({

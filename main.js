@@ -44,8 +44,8 @@ import moment from "moment";
 Vue.prototype.$moment = moment;
 
 // 绑定数据校验
-import Validate from "@/common/validate.js";
-Vue.prototype.$validate = Validate;
+import validator from '@/common/validator/index.js'
+Vue.prototype.$validator = validator;
 
 // 绑定数据存储方法
 import Localforage from "@/common/localforage.js";
