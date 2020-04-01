@@ -6,6 +6,7 @@
   "author": "zhoujie <zhoujie16m@163.com>",
   "license": "MIT",
   "dependencies": {
+    "async-validator": "^3.2.4",
     "crypto-js": "^3.1.9-1",
     "moment": "^2.24.0",
     "wx-jsencrypt": "^3.0.0-rc.1.4"
