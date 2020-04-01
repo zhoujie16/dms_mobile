@@ -59,7 +59,7 @@ export default {
 
       if (validErr) {
         console.log('校验未通过', validErr);
-        this.SHOW_TOAST(validErr.errors[0].message);
+        this.SHOW_TOAST(validErr.message);
         return;
       }
       console.log('校验通过');

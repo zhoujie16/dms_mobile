@@ -18,6 +18,7 @@ class Validate {
       validator.validate(formData, options, (errors, fields) => {
         if (errors) {
           reslove([{
+            message: errors[0].message,
             errors,
             fields
           }]);
