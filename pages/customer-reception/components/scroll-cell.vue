@@ -19,7 +19,7 @@
           </view>
           <view class="box">
             <view class="label">服务顾问</view>
-            <view>{{cell.serviceAdvisor?cell.serviceAdvisor:'无'}}</view>
+            <view>{{$auth.getRoleName(cell.serviceAdvisor, serviceAdvisorList)}}</view>
           </view>
         </view>
       </view>
@@ -31,7 +31,8 @@ export default {
   components: {},
   name: 'list-cell-wrap',
   props: {
-    cell: Object
+    cell: Object,
+    serviceAdvisorList:Array
   },
   mounted() {
     console.log('list-cell-wrap', 'mounted');

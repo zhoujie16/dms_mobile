@@ -25,7 +25,7 @@
       <view class="content-warp">
         <CollapsePanel title="客户信息">
           <template slot="default">
-            <MLabel label="vin">{{ previewInfoData.vin }}</MLabel>
+            <MLabel label="VIN">{{ previewInfoData.vin }}</MLabel>
             <MLabel label="车主姓名">{{ previewInfoData.ownerName }}</MLabel>
             <MLabel label="手机号">{{ previewInfoData.mobile }}</MLabel>
             <MLabel label="送修人">{{ previewInfoData.contactorName }}</MLabel>
@@ -60,7 +60,9 @@
       <view class="operate" v-if="fromPage == 'detail'">
         <view class="m-break-space"></view>
         <view class="btn-box">
-          <view class="btn"><m-button type="primary">车辆检查</m-button></view>
+          <view class="btn"><m-button type="primary" @click.native="vehicleClick">车辆检查</m-button></view>
+          <view class="btn"><m-button type="primary" @click.native="deleteClick">删除预检单</m-button></view>
+          
         </view>
       </view>
     </view>
@@ -75,7 +77,7 @@
 </template>
 
 <script>
-import { savePreview, queryPreviewDetail } from '@/api/customer-reception/index.js';
+import { savePreview, queryPreviewDetail,deletePreview } from '@/api/customer-reception/index.js';
 import dictCode from '@/common/dictCode.js';
 export default {
   components: {
@@ -92,6 +94,7 @@ export default {
       });
       console.log('预检单号', option.yjNo);
       this.getOrderInfo(option.yjNo);
+      this.yjNo = option.yjNo;
     }
     this.fromPage = option.fromPage;
   },
@@ -111,7 +114,8 @@ export default {
       fromPage: 'detail',
       value_1: [1, 3, 6],
       itemList_1: this.$commonDict.ITEM_LIST,
-      serviceAdvisorList:[]
+      serviceAdvisorList:[],
+      yjNo:'',//预约单号
     };
   },
   methods: {
@@ -132,6 +136,7 @@ export default {
     openSign() {
       this.$refs.mPopup_sign.open();
     },
+    //保存预检单
     async saveSign() {
       // 他们出选择  预检单保存成功  是否进入车辆检查
       await this.$util.showLoading('正在保存...');
@@ -159,6 +164,24 @@ export default {
           url: '/pages/customer-reception/customer-reception'
         });
       }
+    },
+    // 删除预检单
+    async deleteClick() {
+      let params ={
+        yjNo:this.yjNo
+      }
+      let [status,res] = await deletePreview(params);
+      if(res.resultCode==200){
+        await uni.navigateTo({
+          url: '/pages/customer-reception/customer-reception'
+        });
+      }
+    },
+    //跳转到车辆检查页面
+    vehicleClick(){
+      uni.navigateTo({
+        url: `/pages/vehicle-inspection/vehicle-detail?roNo=${this.previewInfoData.roNo}&yjNo=${this.yjNo}`
+      });
     },
     //服务顾问列表
     async getServiceAdvisorList() {

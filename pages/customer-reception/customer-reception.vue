@@ -20,7 +20,8 @@
         <view v-for="(data, i) in dataSource" :key="i">
           <!-- <scrollCell @click="scrollCellClick(data)"></scrollCell> -->
           <view class="cell-pad">
-            <MSwipeCell
+            <scrollCell @click="scrollCellClick(data)" :serviceAdvisorList="serviceAdvisorList" :cell="data"></scrollCell>
+           <!-- <MSwipeCell
               :disabled="false"
               :options="[{ text: '删除', type: 'warn' }]"
               @optionClick="optionClick($event,data)"
@@ -29,7 +30,7 @@
               <template v-slot:cell>
                 <scrollCell @click="scrollCellClick(data)" :cell="data"></scrollCell>
               </template>
-            </MSwipeCell>
+            </MSwipeCell> -->
           </view>
         </view>
       </view>

@@ -118,7 +118,6 @@ export default {
       this.vehicleCheckDetailResultVos = res.data.vehicleCheckDetailResultVos;
       this.vehicleCheckDetailResultVos2 = res.data.vehicleCheckDetailResultVos2;
       this.vehicleCheckDetailResultVos3 = res.data.vehicleCheckDetailResultVos3;
-      
     },
     // 轮播菜单
     swiperChange(e) {
@@ -172,7 +171,7 @@ export default {
         this.$refs.chassisRound.formData3,
         bodyAppearanceInfoList
       );
-      
+
       //请求后台
       let params = {
         bodyAppearanceInfoList: bodyAppearanceInfoList,
@@ -181,13 +180,16 @@ export default {
       };
       console.log('---11---', params);
       let [status, res] = await saveVehicleCheckDetail(params);
-      const res1 = await this.SHOW_MODAL({
-        title: '保存成功',
-        content: '',
-        showCancel: false, // 是否显示取消按钮，默认为 true
-        confirmText: '确定' // 确定按钮的文字，默认为"确定"，最多 4 个字符
-      });
-      console.log(res1);
+      if (res.resultCode == 200) {
+        const res1 = await this.SHOW_MODAL({
+          title: '保存成功',
+          content: '',
+          showCancel: false, // 是否显示取消按钮，默认为 true
+          confirmText: '确定' // 确定按钮的文字，默认为"确定"，最多 4 个字符
+        });
+        console.log(res1);
+      }
+
       // console.log(JSON.stringify(bodyAppearanceInfoList))
     },
     //组合后台数据
@@ -217,9 +219,16 @@ export default {
     },
     // 建议
     adviseClick() {
-      uni.navigateTo({
-        url: `/pages/vehicle-inspection/components/advise`
-      });
+      console.log("预约单号",this.yjNo)
+      if(this.yjNo){
+        uni.navigateTo({
+          url: `/pages/customer-reception/customer-detail?yjNo=${this.yjNo}`
+        });
+      }
+      
+      // uni.navigateTo({
+      //   url: `/pages/vehicle-inspection/components/advise`
+      // });
     },
     // 预览
     previewClick() {
@@ -240,7 +249,7 @@ export default {
     //增修提醒
     remindClick() {
       uni.navigateTo({
-        url: `/pages/vehicle-inspection/components/service-remind`
+        url: `/pages/vehicle-inspection/service-remind?roNo=${this.roNo}&&yjNo=${this.yjNo}`
       });
     }
   }

@@ -17,7 +17,7 @@
     >
       <view slot="scroll" style="padding: 20rpx;">
         <view v-for="(data, i) in dataSource" :key="i">
-          <scrollCell :cell="data" @click="scrollCellClick(data)"></scrollCell>
+          <scrollCell :cell="data" @click="scrollCellClick(data)" :serviceAdvisorList="serviceAdvisorList" :technicianList="technicianList"></scrollCell>
         </view>
       </view>
     </BaseScroll>
@@ -27,7 +27,7 @@
 
 <script>
 import { queryVehicleCheckList } from '@/api/vehicle-inspection/index.js';
-  
+  import dictCode from '@/common/dictCode.js';
 import searchForm from '@/pages/vehicle-inspection/components/search-form.vue';
 import scrollCell from '@/pages/vehicle-inspection/components/scroll-cell.vue';
 export default {
@@ -39,7 +39,9 @@ export default {
     return {
       fetchApi: queryVehicleCheckList,
       fetchParams: {},
-      dataSource: []
+      dataSource: [],
+      serviceAdvisorList:[],//服务顾问
+      technicianList:[] //服务技师
     };
   },
   // 监听导航栏删选事件
@@ -47,6 +49,10 @@ export default {
     if (e.float == 'right') {
       this.$refs.searchFilter.open();
     }
+  },
+  mounted() {
+    this.getServiceAdvisorList();
+    this.getTechnicianList();
   },
   methods: {
     scrollCellClick(item) {
@@ -62,6 +68,18 @@ export default {
       };
       this.$refs.searchFilter.close();
       // this.fetchParams = { t: new Date().getTime() };
+    },
+    //服务顾问列表
+    async getServiceAdvisorList() {
+      //服务顾问
+      let consultant = { role: dictCode.SERVICE_CONSULTANT, companyId: this.$auth.getCompanyId() };
+      this.serviceAdvisorList = await this.$auth.queryServiceAdvisor(consultant);
+    },
+    //服务技师列表
+    async getTechnicianList() {
+      //服务技师
+      let technician = { role: dictCode.TECHNICIAN, companyId: this.$auth.getCompanyId() };
+      this.technicianList = await this.$auth.queryServiceAdvisor(technician);
     }
   }
 };

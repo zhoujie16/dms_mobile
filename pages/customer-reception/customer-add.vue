@@ -4,7 +4,7 @@
       <SwiperTab :height="swiperTabHeight" :tabs="tabs" :curIndex="curIndex" @change="changeTab">
         <swiper class="swiper-wrap" :current="curIndex" @change="swiperChange">
           <!--全部 -->
-          <swiper-item @touchmove.stop="stoptouchMove">
+          <swiper-item >
             <scroll-view class="swiper-scroll-wrap" scroll-y="true">
               <CustomerInfoPanel ref="customerInfo"></CustomerInfoPanel>
             </scroll-view>
@@ -107,26 +107,30 @@ export default {
     }
   },
   methods: {
-    stoptouchMove() {
-      return this.isMove;
-    },
     // 轮播菜单
     swiperChange(e) {
-      this.curIndex = e.detail.current;
-      // if(this.$refs.customerInfo.formData.license){
-      //   this.curIndex = e.detail.current;
-      // }
+      const current = e.detail.current;
+      this.changeTab(current);
+      if(this.isMove){
+        if (current === 1) {
+          this.$nextTick(() => {
+            this.changeTab(current - 1);
+          });
+        }
+      }
+    
     },
     // 切换菜单
     changeTab(i) {
       // this.curIndex = i;
       console.log('-----', this.$refs.customerInfo.formData.license);
-      if (this.$refs.customerInfo.formData.license) {
-        this.curIndex = i;
+      if (this.$refs.customerInfo.formData.license.trim()) {
         this.isMove = false;
       } else {
         this.isMove = true;
       }
+      this.curIndex = i;
+      
     },
     previewClick() {
       let params = {

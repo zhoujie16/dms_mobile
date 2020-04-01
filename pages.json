@@ -210,7 +210,7 @@
       "style": {
         "app-plus": {
           "titleNView": {
-            "titleText": "接待详情",
+            "titleText": "预检单详情",
             "backgroundColor": "#1676F8",
             "titleColor": "#FFFFFF",
             "buttons": [
@@ -465,11 +465,13 @@
       }
     },
     {
-      "path": "pages/vehicle-inspection/components/service-remind",
+      "path": "pages/vehicle-inspection/service-remind",
       "style": {
         "app-plus": {
           "titleNView": {
-            "titleText": "增修提醒"
+            "titleText": "增修提醒",
+            "titleColor": "#FFFFFF",
+            "backgroundColor": "#41c5ff"
           }
         }
       }

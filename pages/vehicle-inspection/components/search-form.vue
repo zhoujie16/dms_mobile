@@ -31,7 +31,7 @@
   </view>
 </template>
 <script>
-  import dictCode from '@/common/dictCode.js';
+import dictCode from '@/common/dictCode.js';
 export default {
   components: {},
 
@@ -39,25 +39,24 @@ export default {
     return {
       formData: {
         license: '',
-        ownerName:'',
-        roNo:'',
+        ownerName: '',
+        roNo: '',
         serviceAdvisor: [],
         isInput: [],
-        chiefTechnician:[],
+        chiefTechnician: [],
         createdAt: []
       },
-      serviceAdvisorList:[],
-      technicianList:[],
-      recordList:this.$commonDict.RECORD_LIST
-
+      serviceAdvisorList: [],
+      technicianList: [],
+      recordList: this.$commonDict.RECORD_LIST
     };
   },
- mounted() {
-   this.getServiceAdvisorList();
-   this.getTechnicianList();
-   // 备份初始值 用于重置
-   this.formData_reset = { ...this.formData };
- },
+  mounted() {
+    this.getServiceAdvisorList();
+    this.getTechnicianList();
+    // 备份初始值 用于重置
+    this.formData_reset = { ...this.formData };
+  },
   methods: {
     //重置表单
     formReset() {
@@ -65,16 +64,16 @@ export default {
     },
     //确认查询
     formConfirm() {
-      console.log(this.formData.license)
+      console.log(this.formData.license);
       let params = {
         license: this.formData.license.trim(),
-        ownerName:this.formData.ownerName,
-        roNo:this.formData.roNo,
-        serviceAdvisor:this.$auth.isEmpty(this.formData.serviceAdvisor[0]),
-        isInput:this.$auth.isEmpty(this.formData.isInput[0]),
-        chiefTechnician:this.$auth.isEmpty(this.formData.chiefTechnician[0]),
-        beginCreatedAt:this.$auth.isEmpty(this.formData.createdAt[0]) ,
-        endCreatedAt:this.$auth.isEmpty(this.formData.createdAt[1]) 
+        ownerName: this.formData.ownerName,
+        roNo: this.formData.roNo,
+        serviceAdvisor: this.$auth.isEmpty(this.formData.serviceAdvisor[0]),
+        isInput: this.$auth.isEmpty(this.formData.isInput[0]),
+        chiefTechnician: this.$auth.isEmpty(this.formData.chiefTechnician[0]),
+        beginCreatedAt: this.$auth.isEmpty(this.formData.createdAt[0]),
+        endCreatedAt: this.$auth.isEmpty(this.formData.createdAt[1])
       };
       this.$emit('confirm', params);
     },
@@ -87,7 +86,7 @@ export default {
     //服务技师列表
     async getTechnicianList() {
       //服务技师
-      let technician = { role: dictCode.TECHNICIAN , companyId: this.$auth.getCompanyId()};
+      let technician = { role: dictCode.TECHNICIAN, companyId: this.$auth.getCompanyId() };
       this.technicianList = await this.$auth.queryServiceAdvisor(technician);
     }
   }
