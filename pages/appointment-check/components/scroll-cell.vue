@@ -2,11 +2,17 @@
   <view class="list-cell-wrap">
     <view class="list-cell-wrap-inner">
       <view class="list-cell-title">
-        <view class="left">
-          <text class="vin">{{ cell.license }}</text>
-          <text class="name">{{ cell.ownerName ? cell.ownerName : '未知' }}</text>
-        </view>
-        <view class="right">{{ cell.bookingComeTime }}</view>
+		  <view class="licence-box">
+			  <view class="left">
+			    <text class="vin">{{ cell.license }}</text>
+			  </view>
+			  <view class="right">{{ cell.bookingComeTime }}</view>
+		  </view>
+		  <view class="name-box">
+			  <text >{{ cell.ownerName ? cell.ownerName : '未知' }}</text>
+			  
+		  </view>
+        
       </view>
       <view class="list-cell-content">
         <view class="box">
@@ -91,28 +97,37 @@ export default {
   margin: 20rpx;
 }
 .list-cell-title {
-  display: flex;
+ 
   border-bottom: 1rpx solid $uni-m-color-c4-2;
-  .left {
-    flex: 1;
-    margin-bottom: 20rpx;
-    .vin {
-      font-weight: 800;
-      font-size: $uni-m-font-size-f2;
-    }
-    .name {
-      display: inline-block;
-      margin-left: 20rpx;
-      border: 2rpx dashed $uni-m-color-c3;
-      background-color: $uni-m-color-c4;
-      padding: 0 20rpx;
-      font-size: $uni-m-font-size-f4;
-    }
+  .licence-box{
+	   display: flex;
+	   .left {
+	     flex: 1;
+	     margin-bottom: 5rpx;
+	     .vin {
+	       font-weight: 800;
+	       font-size: $uni-m-font-size-f2;
+	     }
+	     // .name {
+	     //   display: inline-block;
+	     //   margin-left: 20rpx;
+	     //   border: 2rpx dashed $uni-m-color-c3;
+	     //   background-color: $uni-m-color-c4;
+	     //   padding: 0 20rpx;
+	     //   font-size: $uni-m-font-size-f4;
+	     // }
+	   }
+	   .right {
+	     color: $uni-m-color-c12;
+	     margin-bottom: 5rpx;
+	   }
   }
-  .right {
-    color: $uni-m-color-c12;
+  .name-box{
+    color: $uni-m-color-c3-2;
+	  font-size: $uni-m-font-size-f4;
     margin-bottom: 20rpx;
   }
+  
 }
 .list-cell-content {
   margin-top: 10rpx;

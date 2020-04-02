@@ -54,7 +54,7 @@ import { queryAllAppointment, queryStatusNum } from '@/api/appointment-check/ind
 import SearchForm from '@/pages/appointment-check/components/search-form.vue';
 import ScrollCell from '@/pages/appointment-check/components/scroll-cell.vue';
 // import { dictionary } from '@/common/dictMixin.js';
-import dictCode from '@/common/dictCode.js';
+import dictCode from '@/common/dict/dictCode.js';
 import { searchRoleByCode } from '@/api/util/index.js';
 // import commonDict from '@/common/commonDIct.js'
 export default {

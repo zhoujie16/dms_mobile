@@ -1,25 +1,25 @@
 <template>
   <MPage ref="MPage">
     <view class="page-body">
-      <!-- <view class="title-panel">
-        <view class="title-panel-inner">
-          <view class="info-panel">
-            <view class="customer-info">王大锤 - 沪AFH865</view>
-            <view class="car-info">13322111234</view>
+      <view class="header-fixed">
+        <view class="title-panel">
+          <view class="title-panel-inner">
+            <view class="info-panel">
+              <view class="customer-info">
+                王大锤 - 沪ADC520 -
+                沪ADC520
+              </view>
+              <view class="car-info">皮蛋卡丁车 1.5L AT</view>
+            </view>
+           <!-- <view class="phone" @click="phoneClick(appointmentInfo.contactorPhone)">
+              <image src="/static/image/dianhua2.svg" mode="scaleToFill" class="img"></image>
+            </view> -->
           </view>
-          <view class="phone" @click="phoneClick">
-            <image src="/static/image/dianhua2.svg" mode="scaleToFill" class="img" ></image>
-          </view>
+          <view class="title-panel-bg"></view>
         </view>
-        <view class="title-panel-bg"></view>
-      </view> -->
-      <view class="title-panel">
-        <view class="title-panel-inner">
-          <view class="customer-info">王大锤 - 沪ADC520</view>
-          <view class="car-info">皮蛋卡丁车 1.5L AT</view>
-        </view>
-        <view class="title-panel-bg"></view>
       </view>
+     
+       <view class="content-warp">
       <CollapsePanel title="客户信息">
         <template slot="default">
           <MLabel label="客户姓名">税启隆</MLabel>
@@ -422,7 +422,7 @@
        </view>
        <MtelephoneCall ref='phone' type="bottom">13322111234</MtelephoneCall>
     </view>
-    
+      </view>
   </MPage>
   
   
@@ -476,52 +476,72 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.title-panel {
-  position: relative;
-  height: 200rpx;
-  height: 200rpx;
-  padding: 10rpx 30rpx 30rpx 30rpx;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: #ffffff;
-  .title-panel-bg{
-    position: absolute;
+  .header-fixed {
+    position: fixed;
     top: 0;
-    right: 0;
-    bottom: 110rpx;
     left: 0;
-    background: linear-gradient(to right, #41c5ff, #1371f7);
-    z-index: 0;
+    right: 0;
+    z-index: 99;
   }
-  .title-panel-inner {
-    width: 100%;
-    height: 160rpx;
-    background-color: #ffffff;
+  .title-panel {
+    position: relative;
+    padding: 10rpx 30rpx 30rpx 30rpx;
     display: flex;
-    flex-direction: column;
     justify-content: center;
-    padding: 0 30rpx;
-    border-radius: 10rpx;
-    z-index: 1;
-    box-shadow: 0px 2px 5px #eeeeee;
-    .customer-info {
-      font-size: 34rpx;
-      height: 60rpx;
-      line-height: 60rpx;
+    align-items: center;
+    background-color: $uni-m-color-white-pressed;
+    .title-panel-bg {
+      position: absolute;
+      top: 0;
+      right: 0;
+      left: 0;
+      height: 100rpx;
+      background: linear-gradient(to right, #41c5ff, #1371f7);
+      z-index: 0;
     }
-    .car-info {
-      font-size: 30rpx;
-      height: 60rpx;
-      line-height: 60rpx;
-      color: #70767f;
+    .title-panel-inner {
+      width: 100%;
+      background-color: #ffffff;
+      padding: 0 30rpx;
+      border-radius: 10rpx;
+      z-index: 1;
+      box-shadow: 0px 2px 5px $uni-m-color-c4;
+      position: relative;
+      .info-panel {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        border-bottom: solid 1px #efefef;
+        padding-top: 12rpx;
+        .customer-info {
+          font-size: 34rpx;
+          height: 80rpx;
+          line-height: 80rpx;
+        }
+        .car-info {
+          font-size: 30rpx;
+          height: 80rpx;
+          line-height: 80rpx;
+          color: #70767f;
+        }
+      }
+      .phone {
+        position: absolute;
+        top: 30rpx;
+        right: 40rpx;
+        width: 70rpx;
+        height: 70rpx;
+        .img {
+          width: 70rpx;
+          height: 70rpx;
+        }
+      }
     }
   }
-} 
-// .page-body {
-//   height: 100vh;
-//   overflow: auto;
-// }
+.content-warp{
+  margin-top: 220rpx;
+  margin-bottom: 160rpx;
+}
 .noneContent {
   height: 100rpx;
   width: 100%;

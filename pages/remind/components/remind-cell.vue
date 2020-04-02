@@ -18,11 +18,11 @@
         </view>
       </view>
       <view class="main-box">
-        <view class="left">
+       <!-- <view class="left">
           <view class="image">
             <text class="m-iconfont font">&#xe723;</text>
           </view>
-        </view>
+        </view> -->
         <view class="right">
           <text class="title"> 完工信息</text>
           <text class="text">车辆沪9999已超出退车时间，请及时跟进....</text>
@@ -53,9 +53,10 @@ export default {
   // background-color: $uni-bg-color-page;
   padding: 5rpx 8rpx;
   position: relative;
+  margin-top: 20rpx;
   .content {
     background-color: #ffffff;
-    margin: 15rpx;
+    margin:0 15rpx;
     border-radius: $uni-m-border-radius-b2;
     padding: 10rpx 20rpx;
     .content-border {
@@ -71,19 +72,19 @@ export default {
     }
     .main-box{
       display: flex;
-      padding:10rpx 60rpx;
-      .left{
-        flex: 0 0 120rpx;
-        .image{ 
-          width: 100%;
-          background: $uni-m-color-c4;
-          text-align: center;
-          height: 130rpx;
-          .font{
-            font-size: 132rpx;
-          }
-        }
-      }
+      padding:10rpx 40rpx;
+      // .left{
+      //   flex: 0 0 120rpx;
+      //   .image{ 
+      //     width: 100%;
+      //     background: $uni-m-color-c4;
+      //     text-align: center;
+      //     height: 130rpx;
+      //     .font{
+      //       font-size: 132rpx;
+      //     }
+      //   }
+      // }
       .right{
         margin-left: 20rpx;
         flex: 1;

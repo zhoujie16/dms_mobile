@@ -116,7 +116,9 @@
       "style": {
         "app-plus": {
           "titleNView": {
-            "titleText": "预约检查"
+            "titleText": "预约检查",
+             "titleColor": "#FFFFFF",
+            "backgroundImage":"linear-gradient(to right, #41c5ff, #1371f7)" 
           }
         }
       }
@@ -127,7 +129,7 @@
         "app-plus": {
           "titleNView": {
             "titleText": "预约检查详情",
-            "backgroundColor": "#1676F8",
+            "backgroundImage":"linear-gradient(to right, #41c5ff, #1371f7)", // 渐变
             "titleColor": "#FFFFFF"
           }
         }
@@ -211,7 +213,7 @@
         "app-plus": {
           "titleNView": {
             "titleText": "预检单详情",
-            "backgroundColor": "#1676F8",
+            "backgroundImage":"linear-gradient(to right, #41c5ff, #1371f7)", // 渐变
             "titleColor": "#FFFFFF",
             "buttons": [
               {
@@ -244,7 +246,7 @@
           "titleNView": {
             "titleText": "工单信息",
             "titleColor": "#FFFFFF",
-            "backgroundColor": "#41c5ff"
+            "backgroundImage":"linear-gradient(to right, #41c5ff, #1371f7)" 
           }
         }
       }
@@ -402,7 +404,7 @@
           "titleNView": {
             "titleText": "维修检查",
             "titleColor": "#FFFFFF",
-            "backgroundColor": "#41c5ff"
+            "backgroundImage":"linear-gradient(to right, #41c5ff, #1371f7)" 
           }
         }
       }
@@ -418,7 +420,7 @@
           "titleNView": {
             "titleText": "交车详情",
             "titleColor": "#FFFFFF",
-            "backgroundColor": "#41c5ff"
+           "backgroundImage":"linear-gradient(to right, #41c5ff, #1371f7)" 
           }
         }
       }
@@ -470,7 +472,7 @@
           "titleNView": {
             "titleText": "增修提醒",
             "titleColor": "#FFFFFF",
-            "backgroundColor": "#41c5ff"
+            "backgroundImage":"linear-gradient(to right, #41c5ff, #1371f7)" 
           }
         }
       }
@@ -654,7 +656,7 @@
           "titleNView": {
             "titleText": "修改维修项目",
             "titleColor": "#FFFFFF",
-            "backgroundColor": "#41c5ff"
+           "backgroundImage":"linear-gradient(to right, #41c5ff, #1371f7)" 
           }
         }
       }

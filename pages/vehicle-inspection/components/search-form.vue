@@ -31,7 +31,7 @@
   </view>
 </template>
 <script>
-import dictCode from '@/common/dictCode.js';
+import dictCode from '@/common/dict/dictCode.js';
 export default {
   components: {},
 

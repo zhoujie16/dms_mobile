@@ -61,7 +61,7 @@
 import { queryAllPreview, deletePreview } from '@/api/customer-reception/index.js';
 import searchForm from '@/pages/customer-reception/components/search-form.vue';
 import scrollCell from '@/pages/customer-reception/components/scroll-cell.vue';
-import dictCode from '@/common/dictCode.js';
+import dictCode from '@/common/dict/dictCode.js';
 export default {
   components: {
     scrollCell,

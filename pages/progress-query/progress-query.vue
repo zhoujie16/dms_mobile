@@ -57,7 +57,7 @@ import { progressQueryAll, findSubmitCarStatus } from '@/api/progress-query/inde
 import SearchForm from '@/pages/progress-query/components/search-form.vue';
 import ScrollCell from '@/pages/progress-query/components/scroll-cell.vue';
 // import { dictionary } from '@/common/dictMixin.js';
-import dictCode from '@/common/dictCode.js';
+import dictCode from '@/common/dict/dictCode.js';
 
 export default {
   components: {

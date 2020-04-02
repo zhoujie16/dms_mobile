@@ -61,7 +61,7 @@
 
 <script>
 import { queryCusInfoByLicense } from '@/api/customer-reception/index.js';
-import dictCode from '@/common/dictCode.js';
+import dictCode from '@/common/dict/dictCode.js';
 export default {
   name: 'customer-info-add',
   data() {

@@ -3,15 +3,15 @@
     <view class="list-cell-wrap-inner" @click="cellClick">
       <view class="list-cell-title">
         <view class="left">
-          <text class="state">{{ cell.roStatus ? cell.roStatus : '无' }}</text>
-          <text class="vin">{{ cell.ownerName ? cell.ownerName : '未知' }}</text>
+          <text class="state">{{ cell.roStatus ? $auth.getRoleName(cell.roStatus,$dict.createDictList('8049'))  : '无' }}</text>
+          <text class="vin">{{ cell.license ? cell.license : '未知' }}</text>
         </view>
         <view class="right">{{ cell.endTimeSupposed }}</view>
       </view>
       <view class="list-cell-content">
         <view class="box">
-          <view class="label">车牌号码</view>
-          <view>{{ cell.license }}</view>
+          <view class="label">车主名称</view>
+          <view>{{ cell.ownerName ? cell.ownerName : '未知' }}</view>
         </view>
         <view class="box">
           <view class="label">工单编号</view>

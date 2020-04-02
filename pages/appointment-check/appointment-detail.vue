@@ -7,7 +7,7 @@
           <view class="title-panel-inner">
             <view class="info-panel">
               <view class="customer-info">
-                {{ appointmentInfo.ownerName ? appointmentInfo.ownerName : '未知' }} -
+                {{ appointmentInfo.contactorName ? appointmentInfo.contactorName : '未知' }} -
                 {{ appointmentInfo.license }}
               </view>
               <view class="car-info">{{ appointmentInfo.contactorPhone }}</view>
@@ -22,7 +22,7 @@
 
       <view class="content-warp">
         <MLabel label="预约进厂时间">{{ appointmentInfo.bookingComeTime }}</MLabel>
-
+        <MLabel label="车主姓名">{{ appointmentInfo.ownerName }}</MLabel>
         <MLabel label="预约单号">{{ appointmentInfo.bookingOrderNo }}</MLabel>
         <MLabel label="VIN">{{ appointmentInfo.vin }}</MLabel>
         <MLabel label="车型">{{ appointmentInfo.model }}</MLabel>
@@ -32,7 +32,11 @@
 
         <MLabel label="客户需求">{{ appointmentInfo.customerDesc }}</MLabel>
         <view class="m-break-space"></view>
-        <MTextArea readonly label="备注" v-model="appointmentInfo.remark==null?'':appointmentInfo.remark"></MTextArea>
+        <MTextArea
+          readonly
+          label="备注"
+          v-model="appointmentInfo.remark == null ? '' : appointmentInfo.remark"
+        ></MTextArea>
       </view>
       <view class="m-break-space"></view>
       <view class="operate" v-if="activeindex != 2">
@@ -100,14 +104,14 @@ export default {
   methods: {
     //根据预约单号查询信息
     async getOrderInfo(roNo) {
-      let [status,res] = await queryAppointmentDetail(roNo);
+      let [status, res] = await queryAppointmentDetail(roNo);
       console.log(res, '预约检查详情信息');
       this.appointmentInfo = res.data;
     },
     phoneClick(phone) {
       // this.$refs.phone.open();
       uni.makePhoneCall({
-        phoneNumber: phone, 
+        phoneNumber: phone
       });
     },
 

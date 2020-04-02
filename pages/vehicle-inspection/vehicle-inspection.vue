@@ -27,7 +27,7 @@
 
 <script>
 import { queryVehicleCheckList } from '@/api/vehicle-inspection/index.js';
-  import dictCode from '@/common/dictCode.js';
+  import dictCode from '@/common/dict/dictCode.js';
 import searchForm from '@/pages/vehicle-inspection/components/search-form.vue';
 import scrollCell from '@/pages/vehicle-inspection/components/scroll-cell.vue';
 export default {

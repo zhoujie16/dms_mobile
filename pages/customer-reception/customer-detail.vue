@@ -78,7 +78,7 @@
 
 <script>
 import { savePreview, queryPreviewDetail,deletePreview } from '@/api/customer-reception/index.js';
-import dictCode from '@/common/dictCode.js';
+import dictCode from '@/common/dict/dictCode.js';
 export default {
   components: {
     // AmonitorInfo

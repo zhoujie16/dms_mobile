@@ -542,6 +542,9 @@ export default {
     color: #1371F7;
   }
 }
+.menu-wrap{
+  margin-top: 40rpx;
+}
 .flex-item {
   width: 50%;
   height: 310rpx;

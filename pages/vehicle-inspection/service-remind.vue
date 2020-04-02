@@ -6,50 +6,52 @@
         <view class="list-cell-content">
           <view class="box">
             <view class="label">车牌号码:</view>
-            <view></view>
+            <view>{{formData.license}}</view>
           </view>
           <view class="box">
             <view class="label">工单号:</view>
-            <view></view>
+            <view>{{formData.roNo}}</view>
           </view>
           <view class="box">
             <view class="label">预检单号:</view>
-            <view></view>
+            <view>{{formData.yjNo}}</view>
           </view>
           <view class="box">
             <view class="label">服务顾问:</view>
-            <view></view>
+            <view>{{formData.serviceAdvisor}}</view>
           </view>
           <view class="box">
             <view class="label">创建人:</view>
-            <view></view>
+            <view>{{formData.createdBy}}</view>
           </view>
         </view>
       </view>
       <view class="content-warp">
         <MLabel label="内饰检查异常项"></MLabel>
         <view>
-          <view class="item">
-            <view class="left">
-              <uni-icons
-                 :type="isSelect ? 'circle-filled' : 'circle'"
-                 :color="isSelect ? '#1371F7' : ''"
-                 size="21"
-                 @click="changeSelect"
-               ></uni-icons>
-              <text class="label-pad">雨刷</text>
+          <view v-for="(item,index) in formData.bodyAppearanceInfoList" :key="index">
+            <view class="item">
+              <view class="left">
+                <uni-icons
+                   :type="isSelect ? 'circle-filled' : 'circle'"
+                   :color="isSelect ? '#1371F7' : ''"
+                   size="21"
+                   @click="changeSelect"
+                 ></uni-icons>
+                <text class="label-pad">雨刷</text>
+              </view>
+              <view class="right">
+                <image class="img" src="../../hybrid/html/favicon.ico"></image>
+              </view>
             </view>
-            <view class="right">
-              <image class="img" src="../../hybrid/html/favicon.ico"></image>
-            </view>
-            
           </view>
+        
         </view>
         </view>
       <view class="content-warp"><MLabel label="发动机异常项"></MLabel></view>
       <view class="content-warp"><MLabel label="底盘四轮异常项"></MLabel></view>
       <view class="content-warp">
-        <MTextArea label="故障描述" speech="true" v-model="formData.remark"></MTextArea>
+        <MTextArea label="故障描述" speech="true" v-model="formData1.remark"></MTextArea>
       </view>
     </view>
 
@@ -65,7 +67,8 @@ export default {
   components: {},
   data() {
     return {
-      formData: {
+      formData:{},
+      formData1: {
         remark: ''
       },
       isSelect: true,
@@ -90,6 +93,7 @@ export default {
         roNo:this.roNo
       }
       let [status, res] = await queryAdditionalTraining(params);
+      this.formData = res.data;
       console.log(res,'---')
     }
   }

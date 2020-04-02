@@ -13,7 +13,7 @@
         <m-button type="primary" size="mini">删除</m-button>
       </view>
     </view>
-    <BaseScroll
+    <!-- <BaseScroll
       :height="scrollHeight"
       :fetchApi="fetchApi"
       :fetchParams="fetchParams"
@@ -26,7 +26,8 @@
       <view slot="scroll" style="padding: 20rpx;">
         <view v-for="(data, i) in dataSource" :key="i"><RemindCell :cell="data"></RemindCell></view>
       </view>
-    </BaseScroll>
+    </BaseScroll> -->
+	  <view v-for="(data, i) in dataSource" :key="i"><RemindCell :cell="data"></RemindCell></view>
   </MPage>
 </template>
 
@@ -43,7 +44,7 @@ export default {
     return {
       fetchApi: AjaxScrollData,
       fetchParams: {},
-      dataSource: [],
+      dataSource: [1,2],
       isSelect:true,
     };
   },

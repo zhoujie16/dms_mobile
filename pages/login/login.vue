@@ -1,6 +1,11 @@
 <template>
   <view class="page-wrap m-page-fixed">
-    <image class="bg-img" src="../../static/image/bg_login.svg" mode="aspectFill"></image>
+    <view class="bg-warp">
+      <image class="bg-img" src="../../static/image/bg_login.png" mode="aspectFill"></image>
+      <image class="logo-img" src="../../static/image/logo-login.png"></image>
+      <view class="bg-title"><text>服务助手</text></view>
+    </view>
+    
     <view class="verification_code_login">验证码登录</view>
     <view class="container">
       <view class="lg_inner">
@@ -139,13 +144,40 @@ export default {
 <style lang="scss">
 .page-wrap {
   position: relative;
-  .bg-img {
-    // position: fixed;
-    // z-index: -1;
+  .bg-warp{
+    position: relative;
     width: 100vw;
     height: 456rpx;
-    will-change: transform;
+    .bg-img {
+      // position: fixed;
+      // z-index: -1;
+      position: absolute;
+      top: 0;
+      width: 100vw;
+      height: 456rpx;
+      will-change: transform;
+    }
+    .logo-img{
+      position: absolute;
+      width: 144rpx;
+      height: 104rpx;
+      top: 220rpx;
+      left:50%;
+      transform: translate(-50%,-50%);
+    }
+    .bg-title{
+      width: 100%;
+      position: absolute;
+      top: 280rpx;
+      font-size: 36rpx;
+      font-weight: bold;
+      z-index: 99;
+      text-align: center;
+      color: $uni-m-color-cwhite;
+    }
   }
+
+ 
   .verification_code_login {
     width: 150rpx;
     height: 30rpx;
