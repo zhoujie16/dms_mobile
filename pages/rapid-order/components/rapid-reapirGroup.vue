@@ -2,8 +2,8 @@
   <view class="cell-wrap">
     <view class="left">
       <uni-icons
-        :type="cell.isSelect&&currentIndex==selectIndex ? 'circle-filled' : 'circle'"
-        :color="cell.isSelect&&currentIndex==selectIndex ? '#1371F7' : ''"
+        :type="cell.isSelect&&currentIndex1==selectIndex ? 'circle-filled' : 'circle'"
+        :color="cell.isSelect&&currentIndex1==selectIndex ? '#1371F7' : ''"
         size="21"
         @click="changeSelect"
         class="service-image"
@@ -33,7 +33,7 @@ export default {
       type: Number,
       default: 0
     },
-    currentIndex:{
+    currentIndex1:{
       type:Number,
       default: 0
     },

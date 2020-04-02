@@ -43,7 +43,7 @@
         <view class="service-box">
           <view class="service-operating">
             <view class="service-none"></view>
-            <view class="service-btn"><button type="primary" :disabled="cell.isSelect">查看</button></view>
+            <view class="service-btn"><button type="primary" :disabled="this.isSelectService">查看</button></view>
           </view>
           <serviceActivities
             v-for="(item, index) in serviceActivitiesList"
@@ -62,15 +62,15 @@
           <view class="group-operating">
             <view class="service-text1"></view>
             <view>
-              <button type="primary" style="width: 100rpx;" :disabled="cell.isSelect">编辑</button>
+              <button type="primary" style="width: 100rpx;" :disabled="this.isSelectGroup">编辑</button>
             </view>
-            <view><button type="warn" :disabled="cell.isSelect">删除</button></view>
+            <view><button type="warn" :disabled="this.isSelectGroup">删除</button></view>
           </view>
           <reapirGroup 
             v-for="(item, index) in serviceActivitiesList"
             :key="index"
             :selectIndex="index"
-            :currentIndex="currentIndex"
+            :currentIndex1="currentIndex1"
             :cell="item"
             @emitChangeSelect="groupChangeSelect"
           ></reapirGroup>
@@ -122,6 +122,9 @@ export default {
       isDelFlag: true,
       isViewFlag: true, // 维修建议查看
       currentIndex: 0,
+      currentIndex1: 0,
+      isSelectService: true,
+      isSelectGroup: true
     };
   },
   components: {
@@ -137,15 +140,17 @@ export default {
         x.isSelect = false;
       })
       this.serviceActivitiesList[index].isSelect = !cell.isSelect
+      this.isSelectService = !cell.isSelect;
       // console.log(params,'params=====');
       // this.isViewFlag = params;
     },
     groupChangeSelect(index,cell){
-      this.currentIndex = index;
+      this.currentIndex1 = index;
       this.serviceActivitiesList.forEach(x=>{
         x.isSelect = false;
       })
-      this.serviceActivitiesList[index].isSelect = !cell.isSelect
+      this.serviceActivitiesList[index].isSelect = !cell.isSelect;
+      this.isSelectGroup = !cell.isSelect;
     },
     // 维修建议
     async repairSuggestClick() {
