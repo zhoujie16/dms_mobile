@@ -1,4 +1,4 @@
-import AppConfig from "./../config/config.js";
+import AppConfig from "@/config/config.js";
 import Auth from "@/common/auth/index.js";
 
 class Http {
@@ -66,9 +66,9 @@ class Http {
     const resultCode = res.data.resultCode;
     if (resultCode !== 200) {
       if (config.showError) {
-        const errMsg = res.data.errMsg || res.data.message ||  res.data.error;
+        const errMsg = res.data.errMsg || res.data.message || res.data.error || res.data.errcode;
         uni.showToast({
-          title: errMsg,
+          title: String(errMsg),
           position: 'bottom',
           icon: 'none'
         });

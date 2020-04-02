@@ -37,7 +37,7 @@ import Auth from "@/common/auth/index.js";
 Vue.prototype.$auth = Auth;
 
 // 绑定公共方法
-import Util from "@/common/util.js";
+import Util from "@/common/util/index.js";
 Vue.prototype.$util = Util;
 
 import moment from "moment";
@@ -46,10 +46,6 @@ Vue.prototype.$moment = moment;
 // 绑定数据校验
 import validator from '@/common/validator/index.js'
 Vue.prototype.$validator = validator;
-
-// 绑定数据存储方法
-import Localforage from "@/common/localforage.js";
-Vue.prototype.$localforage = Localforage;
 
 /** 注册 uni-ui 拓展组件 S */
 import UniBadge from "@/libs/uni-ui/uni-badge/uni-badge.vue";

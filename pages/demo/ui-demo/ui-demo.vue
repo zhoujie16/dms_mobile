@@ -147,7 +147,23 @@ export default {
               url: '/pages/demo/ui-demo/check-item'
             });
           }
-        }
+        },
+        {
+          title: 'e-charts-H5',
+          clickFn: async () => {
+            this.$util.openLocalWeb({
+              url: '/hybrid/html/index.html#/e-charts-demo'
+            });
+          }
+        },
+        {
+          title: 'e-charts-renderjs',
+          clickFn: async () => {
+            uni.navigateTo({
+              url: '/pages/demo/ui-demo/e-charts-demo'
+            })
+          }
+        },
         // {
         //   title: 'Cell 单元格',
         //   clickFn: async () => {
