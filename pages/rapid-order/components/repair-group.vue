@@ -93,8 +93,8 @@
       <view class="order-box"></view>
     </MPopup>
     <!-- 服务活动 -->
-    <MPopup ref="mPopup_serviceActivities" type="bottom" title="维修建议">
-      <view class="order-box"></view>
+    <MPopup ref="mPopup_serviceActivities" type="bottom" title="服务活动">
+      <view class="order-box"><addServiceActivities></addServiceActivities></view>
     </MPopup>
     <!-- 维修组合 -->
     <MPopup ref="mPopup_repairGroup" type="bottom" title="维修组合">
@@ -108,6 +108,7 @@
 import serviceActivities from './service-activities.vue';
 import reapirGroup from './rapid-reapirGroup.vue';
 import searchGroup from './search-group.vue';
+import addServiceActivities from './add-service-activities.vue';
 export default {
   data() {
     return {
@@ -130,7 +131,8 @@ export default {
   components: {
     serviceActivities, //  服务活动
     reapirGroup, //  维修组合
-    searchGroup
+    searchGroup,  // 查询添加维修组合
+    addServiceActivities,  // 查询添加服务活动
   },
   methods: {
     emitChangeSelect(index,cell){

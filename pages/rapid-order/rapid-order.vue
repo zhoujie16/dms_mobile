@@ -43,6 +43,7 @@
         </view>
       </BaseScroll> -->
       <ScrollCell
+        :top="100"
         @click.native="scrollCellClick(data)"
         v-for="(data, i) in dataSource"
         :key="i"
@@ -159,7 +160,7 @@ export default {
 
 <style lang="scss" scoped>
   .wrap {
-    margin-top: 84rpx;
+    margin-top: 104rpx;
   }
 .panel-box {
   display: flex;

@@ -12,11 +12,11 @@
       <view class="list-cell-content">
         <view class="box">
           <view class="label">工单号</view>
-          <view >YO202001090001</view>
+          <view>YO202001090001</view>
         </view>
         <view class="box">
           <view class="label">开单日期</view>
-          <view >2020-03-27 11:23:00</view>
+          <view>2020-03-27 11:23:00</view>
         </view>
         <view class="box">
           <view class="label">服务顾问</view>
@@ -27,7 +27,6 @@
           <view>陆小鹏</view>
         </view>
       </view>
-    
     </view>
   </view>
 </template>
@@ -52,8 +51,8 @@ export default {
     cellTitleClick() {
       this.isShowDetail = !this.isShowDetail;
     },
-    cellClick(){
-      this.$emit('click')
+    cellClick() {
+      this.$emit('click');
     }
   }
 };
@@ -61,6 +60,7 @@ export default {
 
 <style lang="scss">
 .list-cell-wrap {
+  // margin-top: 20rpx;
 }
 
 .list-cell-wrap-inner {
@@ -68,7 +68,7 @@ export default {
   border-radius: $uni-m-border-radius-b2;
   overflow: hidden;
   background-color: #ffffff;
-  padding:26rpx 30rpx;
+  padding: 26rpx 30rpx;
   margin: 20rpx;
 }
 .list-cell-title {
@@ -77,11 +77,11 @@ export default {
   .left {
     flex: 1;
     margin-bottom: 20rpx;
-    .vin{
+    .vin {
       font-weight: 800;
       font-size: $uni-m-font-size-f2;
     }
-    .name{
+    .name {
       display: inline-block;
       margin-left: 20rpx;
       border: 2rpx dashed $uni-m-color-c3;
@@ -90,23 +90,22 @@ export default {
       font-size: $uni-m-font-size-f4;
     }
   }
-  .right{
+  .right {
     color: $uni-m-color-c12;
     margin-bottom: 20rpx;
   }
 }
-.list-cell-content{
+.list-cell-content {
   margin-top: 10rpx;
   position: relative;
-  .box{
+  .box {
     display: flex;
     height: 60rpx;
     line-height: 60rpx;
-    .label{
-      flex:0 0 130rpx;
-      color:$uni-m-color-c2;
+    .label {
+      flex: 0 0 130rpx;
+      color: $uni-m-color-c2;
     }
   }
-  
 }
 </style>
