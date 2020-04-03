@@ -26,7 +26,7 @@
           </view>
         </view>
       </view>
-      <view class="content-warp" >
+      <view class="content-warp" v-if="formData.bodyAppearanceInfoList.length!==0">
         <MLabel label="内饰检查异常项"></MLabel>
         <view v-for="(item, index) in formData.bodyAppearanceInfoList" :key="index">
           <view class="item">
@@ -48,7 +48,7 @@
           </view>
         </view>
       </view>
-      <view class="content-warp" >
+      <view class="content-warp" v-if="formData.bodyAppearanceInfoList2.length!==0">
         <MLabel label="发动机异常项"></MLabel>
         <view v-for="(item, index) in formData.bodyAppearanceInfoList2" :key="index">
           <view class="item">
@@ -70,7 +70,7 @@
           </view>
         </view>
       </view>
-      <view class="content-warp" >
+      <view class="content-warp" v-if="formData.bodyAppearanceInfoList3.length!==0">
         <MLabel label="底盘四轮异常项"></MLabel>
         <view v-for="(item, index) in formData.bodyAppearanceInfoList3" :key="index">
           <view class="item">
@@ -109,7 +109,11 @@ export default {
   components: {},
   data() {
     return {
-      formData: {},
+      formData: {
+        bodyAppearanceInfoList:[],
+        bodyAppearanceInfoList2:[],
+        bodyAppearanceInfoList3:[]
+      },
       formData1: {
         remark: ''
       },
@@ -201,5 +205,8 @@ export default {
       }
     }
   }
+}
+.isShow{
+  display: none;
 }
 </style>

@@ -29,7 +29,7 @@
     </view>
     <!-- 维修历史 -->
     <MPopup ref="mPopup_history" type="bottom" title="维修历史">
-      <HistoryModel></HistoryModel>
+      <HistoryModel :vin="vin"></HistoryModel>
     </MPopup>
     <!-- 服务活动 -->
     <MPopup ref="mPopup_activity" type="bottom" title="服务活动">
@@ -71,7 +71,8 @@ export default {
       tabs: ['客户信息', '客户需求', '车身外观'],
       curIndex: 0, // 当前tab的下标
       isMove: false,
-      isPreview: true //是否预览
+      isPreview: true, //是否预览
+      vin:''
     };
   },
   onLoad() {
@@ -160,7 +161,13 @@ export default {
 
     //维修历史
     historyClick() {
-      this.$refs.mPopup_history.open();
+      this.vin = this.$refs.customerInfo.formData.vin;
+      if(this.vin){
+        this.$refs.mPopup_history.open();
+      }else{
+        this.SHOW_TOAST('请输入VIN号');
+      }
+      
     },
     //监控信息
     amonitorClick() {

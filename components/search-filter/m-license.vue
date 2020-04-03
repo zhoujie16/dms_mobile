@@ -5,7 +5,11 @@
       <MLabel :required="required" label="车牌号" :border="false">
         <view slot="default">
           <text v-if="readonly"></text>
-          <text v-else-if="searchType == 'search'" @click="foldingHandleClick" class="m-iconfont screen">
+          <text
+            v-else-if="searchType == 'search'"
+            @click="foldingHandleClick"
+            class="m-iconfont screen"
+          >
             &#xe732;
           </text>
           <text v-else @click="scanClick" class="m-iconfont screen">&#xe72a;</text>
@@ -24,9 +28,11 @@
       </view>
     </view>
     <MPopup ref="mPopup" type="center" title="查询到的车牌">
-      <view v-for="(item, index) in itemListLicense" :key="index">
-        <view class="itemBox" @click="licenseClick(item)">{{ item.license }}</view>
-      </view>
+      <scroll-view class="scroll-view-h" :style="{ maxHeight: '900rpx' }" scroll-y>
+        <view v-for="(item, index) in itemListLicense" :key="index">
+          <view class="itemBox" @click="licenseClick(item)">{{ item.license }}</view>
+        </view>
+      </scroll-view>
     </MPopup>
   </view>
 </template>
@@ -51,7 +57,7 @@ export default {
     readonly: {
       type: Boolean,
       default: false
-    },
+    }
   },
   data() {
     return {

@@ -22,3 +22,8 @@ export const deletePreview  = params =>Http.get(`${SERVER.DMSCLOUD_REPAIR}/Vehic
 
 //根据车牌号查询客户信息  flag=1  查唯一  ;flag = 2 模糊查询
 export const queryCusInfoByLicense = params =>Http.get(`${SERVER.DMSCLOUD_REPAIR}/VehiclePreviewController/queryCusInfoByLicense`,params)  
+
+
+//维修历史
+export const queryRepairHistory  = params =>Http.get(`${SERVER.DMSCLOUD_REPAIR}/AssistantCommonController/queryRepairHistory`,params);
+

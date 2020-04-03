@@ -101,7 +101,7 @@ export default {
     };
   },
   onLoad: function(option) {
-    this.roNo = option.roNo;
+    this.roNo = option.roNo=="null"?'':option.roNo;
     this.yjNo = option.yjNo;
     this.queryCheckDetail();
   },
