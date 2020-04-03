@@ -2,7 +2,7 @@
   <!-- 客户信息 -->
   <view class="panel-wrap">
     <MLicense label="车牌号" v-model="formData.license" @list="changeItem"></MLicense>
-    <MInput label="VIN" required="true" placeholder="" v-model="formData.vin">
+    <MInput label="VIN" :required="true" placeholder="" v-model="formData.vin">
       <view slot="after"><text @click="searchClick" class="m-iconfont screen">&#xe732;</text></view>
     </MInput>
     <!-- <MInput label="车型" readonly="true" placeholder=""  v-model="formData.model"></MInput> -->
@@ -13,8 +13,8 @@
       :itemList="modelList"
       single
     ></MCheckbox>
-    <MInput label="车主姓名" readonly="true" placeholder="" v-model="formData.ownerName"></MInput>
-    <MInput label="手机号" readonly="true" placeholder="" v-model="formData.phone">
+    <MInput label="车主姓名" :readonly="true" placeholder="" v-model="formData.ownerName"></MInput>
+    <MInput label="手机号" :readonly="true" placeholder="" v-model="formData.phone">
       <view slot="after" class="phoneWrap">
         <image
           @click="callClick(formData.phone)"
@@ -45,11 +45,11 @@
       :itemList="serviceAdvisorList"
       single
     ></MCheckbox>
-    <MInput label="里程(KM)" required="true" v-model="formData.mileage"></MInput>
-    <MInput label="进厂时间" readonly="true" placeholder="" v-model="formData.firstInDate"></MInput>
+    <MInput label="里程(KM)" :required="true" v-model="formData.mileage"></MInput>
+    <MInput label="进厂时间" :readonly="true" placeholder="" v-model="formData.firstInDate"></MInput>
 
-    <MInput label="销售日期" readonly="true" placeholder="" v-model="formData.salesDate"></MInput>
-    <MTextArea label="地址" readonly="true" placeholder="" v-model="formData.address"></MTextArea>
+    <MInput label="销售日期" :readonly="true" placeholder="" v-model="formData.salesDate"></MInput>
+    <MTextArea label="地址" :readonly="true" placeholder="" v-model="formData.address"></MTextArea>
 
     <MPopup ref="mPopup" type="center" title="查询到的车牌">
       <view v-for="(item, index) in itemListLicense" :key="index">

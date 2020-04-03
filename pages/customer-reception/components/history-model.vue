@@ -1,25 +1,37 @@
 <template>
   <!-- 维修历史 -->
-	<view class="wrap">
-		<view class="container">
-      <view class="uni-flex uni-row">
-        <view class="flex-item1">服务顾问：</view>
-        <view class="flex-item2">赵凤</view>
-      </view>
-      <view class="uni-flex uni-row">
-        <view class="flex-item1">工单日期：</view>
-        <view class="flex-item2">2019-08-06 08:46:15</view>
-      </view>
-      <view class="uni-flex uni-row">
-        <view class="flex-item1">维修项目：</view>
-        <view class="flex-item2">前杠修复；前杠喷漆。左大灯抛光前杠修复；前杠喷漆。左大灯抛光前杠修复；前杠喷漆。左大灯抛光</view>
-      </view>
-      <view class="uni-flex uni-row">
-        <view class="flex-item3">里程：70342</view>
-        <view class="flex-item3">金额：1300</view>
+  <view class="content-warp">
+    <view class="m-break-space"></view>
+    <view class="item-warp">
+    	<view class="wx-warp">
+        <view class="box">
+          <view class="wx-label">服务顾问:</view>
+          <view class="wx-data">小小</view>
+        </view>
+        <view class="box">
+          <view class="wx-label">工单日期:</view>
+          <view class="wx-data">2020:01:09</view>
+        </view>
+        <view class="box">
+          <view class="wx-label">维修项目:</view>
+          <view class="wx-data">哈哈哈哈回家啊还是拒绝回家啊还是家哈就睡觉回家啊还是拒绝</view>
+        </view>
+        <view class="box">
+          <view class="left">
+            <view class="wx-label"><text class="red">*</text>里程:</view>
+            <view class="wx-data">98989</view>
+          </view>
+          <view class="right">
+            <view class="wx-label"><text class="red">*</text>金额:</view>
+            <view class="wx-data">98989</view>
+          </view>
+          
+        </view>
+        
       </view>
     </view>
-	</view>
+  </view>
+	
 </template>
 
 <script>
@@ -30,47 +42,50 @@
 			}
 		},
 		methods: {
-			close(){
-        this.$emit('close')
-      }
+			
 		}
 	}
 </script>
 
 <style lang="scss" scoped>
-  .wrap{
-    width: 100vw;
-    height: 100vh;
-    background: #fff;
-    .h-title{
-      height: 100rpx;
-      background: $uni-bg-color-page;
-      position: relative;
-      color: #fff;
-      padding: 0 10rpx;
-      line-height: 100rpx ;
-      margin-bottom: 20rpx ;
-      .close {
-        position: absolute;
-        right: 10rpx;
-      }
+  .content-warp{
+   
+    height: 70vh;
+    background: $uni-m-color-cwhite;
+    .item-warp{
+       padding: 30rpx;
+       .wx-warp{
+         padding: 20rpx;
+         background: $uni-m-color-c4-2;
+         border-radius: $uni-m-border-radius-b2;
+         .box{
+          display: flex;
+         
+           .left{
+             flex: 1;
+             display: flex;
+           }
+           .right{
+             flex:1;
+             display: flex;
+           }
+         }
+       }
     }
-    .container{
-      border-top: 2rpx solid #ccc;
-      border-bottom: 2rpx solid #ccc;
-      padding: 20rpx;
-      margin-bottom: 20rpx;
-      .flex-item1{
-        width: 20%;
-      }
-      .flex-item2{
-        width: 80%;
-      }
-      .flex-item3{
-        width: 50%;
-        color: #007AFF;
-      }
-    }
+  
   }
-
+  .wx-label{
+             color: $uni-m-color-c3-2;
+             flex: 0 0 130rpx;
+             line-height: 50rpx;
+             text-align: right;
+             .red{
+               color: $uni-m-color-c14-pressed;
+             }
+           }
+           .wx-data{
+             flex: 1;
+             line-height: 50rpx;
+             padding: 0 10rpx;
+           }
 </style>
