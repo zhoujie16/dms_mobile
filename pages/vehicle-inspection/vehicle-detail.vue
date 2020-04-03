@@ -74,7 +74,7 @@
 <script>
 import { saveVehicleCheckDetail, queryVehicleCheckDetail } from '@/api/vehicle-inspection/index.js';
 
-import VehiclePreview from './components/vehicle-preview.vue';
+// import VehiclePreview from './components/vehicle-preview.vue';
 import InteriorCheck from './components/interior-check.vue';
 import EngineNacelle from './components/engine-nacelle.vue';
 import ChassisRound from './components/chassis-round.vue';
@@ -82,7 +82,6 @@ import AmonitorInfo from '@/pages/customer-reception/components/monitor-info.vue
 import HistoryModel from '@/pages/customer-reception/components/history-model.vue'; //维修历史
 export default {
   components: {
-    VehiclePreview,
     InteriorCheck,
     EngineNacelle,
     ChassisRound,

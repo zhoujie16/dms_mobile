@@ -140,7 +140,8 @@ export default {
     async saveSign() {
       // 他们出选择  预检单保存成功  是否进入车辆检查
       await this.$util.showLoading('正在保存...');
-      await savePreview(this.previewInfoData);
+      let [status, res1]= await savePreview(this.previewInfoData);
+      // this.yjNo = res1.data;
       await this.$sleep(1000);
       
       await this.$util.hideLoading();
@@ -155,7 +156,7 @@ export default {
       if (res=='confirm') {
         console.log('点击 确定');
         await uni.navigateTo({
-          url: '/pages/vehicle-inspection/vehicle-detail'
+          url: `/pages/vehicle-inspection/vehicle-detail?yjNo=${res1.data}`
         });
       } else  {
         console.log('点击 取消');

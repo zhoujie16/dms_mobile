@@ -160,13 +160,14 @@ export default {
     };
   },
   mounted() {
+    console.log(this.vehicleCheckDetailResultVos2)
     this.getDetailData();
   },
   methods: {
     //查询明细并显示
     getDetailData(){
       if(this.vehicleCheckDetailResultVos2.length!==0){
-        this.vehicleCheckDetailResultVos.forEach(x=>{
+        this.vehicleCheckDetailResultVos2.forEach(x=>{
           this.formData.forEach(y=>{
             if(x.contentCode==y.fieldName){
               if(x.remark3){

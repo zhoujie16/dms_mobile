@@ -4,7 +4,6 @@
     <view class="container">
       <view class="content">
         <view class="subContent">
-          <!-- <VChoose :rowData="formData" @change="(val)=>{ this.formData = val }"></VChoose>-->
           <MVehicleCheckCell
             v-for="(item, i) in formData"
             :key="item.fieldName"
@@ -64,12 +63,9 @@
 </template>
 
 <script>
-import VChoose from './v-choose.vue';
 export default {
   name: 'ChassisRound',
-  components: {
-    VChoose
-  },
+  
   props:{
       vehicleCheckDetailResultVos3:Array
     },
@@ -264,7 +260,7 @@ export default {
     //查询明细并显示
     getDetailData(){
       if(this.vehicleCheckDetailResultVos3.length!==0){
-        this.vehicleCheckDetailResultVos.forEach(x=>{
+        this.vehicleCheckDetailResultVos3.forEach(x=>{
           this.formData.forEach(y=>{
             if(x.contentCode==y.fieldName){
               if(x.remark3){
