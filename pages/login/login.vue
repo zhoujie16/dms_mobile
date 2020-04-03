@@ -129,7 +129,7 @@ export default {
     // 重定向到主页
     async goMenuPage() {
       await uni.reLaunch({
-        url: '/pages/tabBar/tabPage1/tabPage1'
+        url: '/pages/home/home'
       });
     },
     forgetPassword() {

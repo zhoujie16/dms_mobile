@@ -74,7 +74,7 @@ export default {
   methods: {
     tabUrl(val) {
       uni.navigateTo({
-        url: `/pages/tabBar/tabPage3/report-detail?type=${val}`
+        url: `/pages/report-after/report-detail?type=${val}`
       });
     }
   }

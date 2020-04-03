@@ -6,7 +6,7 @@
 </template>
 
 <script>
-  import DocCell from './components/doc-cell.vue'
+  import DocCell from './../components/doc-cell.vue'
   
 export default {
   components: {

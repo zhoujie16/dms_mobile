@@ -164,6 +164,22 @@ export default {
             })
           }
         },
+        {
+          title: '打开本地网页',
+          clickFn: async () => {
+            this.$util.openLocalWeb({
+              url: '/hybrid/html/index.html#/about'
+            });
+          }
+        },
+        {
+          title: '文档阅读器',
+          clickFn: async () => {
+            const [err, res] = await uni.navigateTo({
+              url: '/pages/demo/ui-demo/doc-reader'
+            });
+          }
+        },
         // {
         //   title: 'Cell 单元格',
         //   clickFn: async () => {

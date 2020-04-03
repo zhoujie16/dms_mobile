@@ -28,7 +28,7 @@ import { queryDict } from '@/api/util/index.js';
 import uniGrid from '@/libs/uni-ui/uni-grid/uni-grid.vue';
 import uniGridItem from '@/libs/uni-ui/uni-grid-item/uni-grid-item.vue';
 import uniNoticeBar from '@/libs/uni-ui/uni-notice-bar/uni-notice-bar.vue';
-import MenuItem from '../components/menu-item.vue';
+import MenuItem from './components/menu-item.vue';
 import UniDrawer from '@/libs/uni-ui/uni-drawer/uni-drawer.vue';
 import HomeHeader from './components/home-header.vue';
 
@@ -99,7 +99,7 @@ export default {
         {
           image: '/static/image/shouhoubaobiao.svg',
           text: '售后报表',
-          path: '/pages/tabBar/tabPage3/tabPage3'
+          path: '/pages/report-after/report-after'
         },
         {
           image: '/static/image/xiaoxitixing.svg',
@@ -107,17 +107,7 @@ export default {
           path: '/pages/remind/remind'
         },
         {
-          image: '../../../static/image/yuyuejiancha.svg',
-          text: 'Demo',
-          path: '/pages/demo/base-demo'
-        },
-        {
-          image: '../../../static/image/yuyuejiancha.svg',
-          text: 'Demo2',
-          path: '/pages/demo/base-demo2'
-        },
-        {
-          image: '../../../static/image/yuyuejiancha.svg',
+          image: '/static/image/yuyuejiancha.svg',
           text: 'UI-DEMO',
           path: '/pages/demo/ui-demo/ui-demo'
         }

@@ -19,84 +19,34 @@
       }
     },
     {
-      "path": "pages/tabBar/tabPage1/tabPage1",
+      "path": "pages/home/home",
       "text": "首页",
       "style": {
-        "navigationBarTitleText": "首页",
         "app-plus": {
           "titleNView": {
-            "buttons": [
-              {
-                "type": "menu",
-                "float": "left"
-              }
-            ]
+            "titleText": "首页",
+            "buttons": [{
+              "type": "menu",
+              "float": "left"
+            }]
           },
-          "subNVues": [
-            {
-              "id": "drawer",
-              "type": "popup",
-              "path": "pages/tabBar/components/drawer-left.nvue",
-              "style": {
-                "width": "80%"
-              }
+          "subNVues": [{
+            "id": "drawer",
+            "type": "popup",
+            "path": "pages/home/components/drawer-left.nvue",
+            "style": {
+              "width": "80%"
             }
-          ]
+          }]
         }
-      }
-    },
-    {
-      "path": "pages/tabBar/tabPage2/tabPage2",
-      "text": "文档",
-      "style": {
-        "navigationBarTitleText": "文档"
-      }
-    },
-    {
-      "path": "pages/tabBar/tabPage3/tabPage3",
-      "text": "报表",
-      "style": {
-        "navigationBarTitleText": "报表"
-      }
-    },
-    {
-      "path": "pages/tabBar/tabPage4/tabPage4",
-      "text": "提醒",
-      "style": {
-        "navigationBarTitleText": "提醒"
       }
     },
     {
       "path": "pages/remind/remind",
       "style": {
-        "navigationBarTitleText": "提醒"
-        // "app-plus": {
-        //   "titleNView": {
-        //     "buttons": [{
-        //         "type": "none",
-        //         "text": "全选",
-        //         "width": "40px",
-        //         "fontSize": "16px",
-        //         "float": "right"
-        //       },
-        //       {
-        //         "type": "none",
-        //         "text": "删除",
-        //         "width": "40px",
-        //         "fontSize": "16px",
-        //         "float": "right"
-        //       }
-        //     ]
-        //   }
-        // }
-      }
-    },
-    {
-      "path": "pages/demo/base-demo",
-      "style": {
         "app-plus": {
           "titleNView": {
-            "titleText": "概览页面"
+            "titleText": "提醒"
           }
         }
       }
@@ -117,8 +67,8 @@
         "app-plus": {
           "titleNView": {
             "titleText": "预约检查",
-             "titleColor": "#FFFFFF",
-            "backgroundImage":"linear-gradient(to right, #41c5ff, #1371f7)" 
+            "titleColor": "#FFFFFF",
+            "backgroundImage": "linear-gradient(to right, #41c5ff, #1371f7)"
           }
         }
       }
@@ -129,7 +79,7 @@
         "app-plus": {
           "titleNView": {
             "titleText": "预约检查详情",
-            "backgroundImage":"linear-gradient(to right, #41c5ff, #1371f7)", // 渐变
+            "backgroundImage": "linear-gradient(to right, #41c5ff, #1371f7)", // 渐变
             "titleColor": "#FFFFFF"
           }
         }
@@ -141,17 +91,15 @@
         "app-plus": {
           "titleNView": {
             "titleText": "车辆预检",
-            "buttons": [
-              {
-                // button 按钮可以用字体图标 也可以用图片
-                "fontSrc": "/static/fonts/iconfont.ttf",
-                "type": "none",
-                "text": "\ue721",
-                "width": "50px",
-                "fontSize": "22px",
-                "float": "right"
-              }
-            ]
+            "buttons": [{
+              // button 按钮可以用字体图标 也可以用图片
+              "fontSrc": "/static/fonts/iconfont.ttf",
+              "type": "none",
+              "text": "\ue721",
+              "width": "50px",
+              "fontSize": "22px",
+              "float": "right"
+            }]
           }
         }
       }
@@ -182,17 +130,15 @@
         "app-plus": {
           "titleNView": {
             "titleText": "车辆检查",
-            "buttons": [
-              {
-                // button 按钮可以用字体图标 也可以用图片
-                "fontSrc": "/static/fonts/iconfont.ttf",
-                "type": "none",
-                "text": "\ue721",
-                "width": "50px",
-                "fontSize": "22px",
-                "float": "right"
-              }
-            ]
+            "buttons": [{
+              // button 按钮可以用字体图标 也可以用图片
+              "fontSrc": "/static/fonts/iconfont.ttf",
+              "type": "none",
+              "text": "\ue721",
+              "width": "50px",
+              "fontSize": "22px",
+              "float": "right"
+            }]
           }
         }
       }
@@ -213,28 +159,16 @@
         "app-plus": {
           "titleNView": {
             "titleText": "预检单详情",
-            "backgroundImage":"linear-gradient(to right, #41c5ff, #1371f7)", // 渐变
+            "backgroundImage": "linear-gradient(to right, #41c5ff, #1371f7)", // 渐变
             "titleColor": "#FFFFFF",
-            "buttons": [
-              {
-                "type": "none",
-                "text": "保存",
-                "width": "40px",
-                "fontSize": "14px",
-                "float": "right",
-                "color": "#FFFFFF"
-              }
-            ]
-          }
-        }
-      }
-    },
-    {
-      "path": "pages/demo/base-demo2",
-      "style": {
-        "app-plus": {
-          "titleNView": {
-            "titleText": "demo2"
+            "buttons": [{
+              "type": "none",
+              "text": "保存",
+              "width": "40px",
+              "fontSize": "14px",
+              "float": "right",
+              "color": "#FFFFFF"
+            }]
           }
         }
       }
@@ -246,7 +180,7 @@
           "titleNView": {
             "titleText": "工单信息",
             "titleColor": "#FFFFFF",
-            "backgroundImage":"linear-gradient(to right, #41c5ff, #1371f7)" 
+            "backgroundImage": "linear-gradient(to right, #41c5ff, #1371f7)"
           }
         }
       }
@@ -258,17 +192,7 @@
           "titleNView": {
             "titleText": "新建工单",
             "titleColor": "#FFFFFF",
-            "backgroundImage":"linear-gradient(to right, #41c5ff, #1371f7)" // 渐变
-          }
-        }
-      }
-    },
-    {
-      "path": "pages/tabBar/tabPage3/report-detail",
-      "style": {
-        "app-plus": {
-          "titleNView": {
-            "titleText": "服务报表"
+            "backgroundImage": "linear-gradient(to right, #41c5ff, #1371f7)" // 渐变
           }
         }
       }
@@ -299,16 +223,14 @@
         "app-plus": {
           "titleNView": {
             "titleText": "新增预检单",
-            "buttons": [
-              {
-                "type": "none",
-                "text": "预览",
-                "width": "40px",
-                "fontSize": "14px",
-                "float": "right",
-                "color": "#1371f7"
-              }
-            ]
+            "buttons": [{
+              "type": "none",
+              "text": "预览",
+              "width": "40px",
+              "fontSize": "14px",
+              "float": "right",
+              "color": "#1371f7"
+            }]
           }
         }
       }
@@ -404,7 +326,7 @@
           "titleNView": {
             "titleText": "维修检查",
             "titleColor": "#FFFFFF",
-            "backgroundImage":"linear-gradient(to right, #41c5ff, #1371f7)" 
+            "backgroundImage": "linear-gradient(to right, #41c5ff, #1371f7)"
           }
         }
       }
@@ -420,7 +342,7 @@
           "titleNView": {
             "titleText": "交车详情",
             "titleColor": "#FFFFFF",
-           "backgroundImage":"linear-gradient(to right, #41c5ff, #1371f7)" 
+            "backgroundImage": "linear-gradient(to right, #41c5ff, #1371f7)"
           }
         }
       }
@@ -440,22 +362,6 @@
       "style": {}
     },
     {
-      "path": "pages/demo/scroll-demo",
-      "style": {}
-    },
-    {
-      "path": "pages/demo/swiper-tab-demo",
-      "style": {}
-    },
-    {
-      "path": "pages/demo/recording",
-      "style": {}
-    },
-    {
-      "path": "pages/demo/camera",
-      "style": {}
-    },
-    {
       "path": "pages/login/editPassword",
       "style": {
         "app-plus": {
@@ -472,7 +378,7 @@
           "titleNView": {
             "titleText": "增修提醒",
             "titleColor": "#FFFFFF",
-            "backgroundImage":"linear-gradient(to right, #41c5ff, #1371f7)" 
+            "backgroundImage": "linear-gradient(to right, #41c5ff, #1371f7)"
           }
         }
       }
@@ -554,18 +460,16 @@
           "titleNView": {
             "titleText": "原生导航",
             "titleColor": "#FFFFFF",
-            "backgroundImage":"linear-gradient(to right, #41c5ff, #1371f7)", // 渐变
-            "buttons": [
-              {
-                // button 按钮可以用字体图标 也可以用图片
-                "fontSrc": "/static/fonts/iconfont.ttf",
-                "type": "none",
-                "text": "\ue721",
-                "width": "50px",
-                "fontSize": "22px",
-                "float": "right"
-              }
-            ]
+            "backgroundImage": "linear-gradient(to right, #41c5ff, #1371f7)", // 渐变
+            "buttons": [{
+              // button 按钮可以用字体图标 也可以用图片
+              "fontSrc": "/static/fonts/iconfont.ttf",
+              "type": "none",
+              "text": "\ue721",
+              "width": "50px",
+              "fontSize": "22px",
+              "float": "right"
+            }]
           }
         }
       }
@@ -583,15 +487,13 @@
       "style": {
         "app-plus": {
           "titleNView": {
-            "buttons": [
-              {
-                "type": "none",
-                "text": "筛选",
-                "width": "50px",
-                "fontSize": "16px",
-                "float": "right"
-              }
-            ]
+            "buttons": [{
+              "type": "none",
+              "text": "筛选",
+              "width": "50px",
+              "fontSize": "16px",
+              "float": "right"
+            }]
           }
         }
       }
@@ -656,7 +558,7 @@
           "titleNView": {
             "titleText": "修改维修项目",
             "titleColor": "#FFFFFF",
-           "backgroundImage":"linear-gradient(to right, #41c5ff, #1371f7)" 
+            "backgroundImage": "linear-gradient(to right, #41c5ff, #1371f7)"
           }
         }
       }
@@ -676,35 +578,20 @@
     {
       "path": "pages/demo/ui-demo/validator",
       "style": {}
+    },
+    {
+      "path": "pages/demo/ui-demo/doc-reader",
+      "style": {}
+    },
+    {
+      "path": "pages/report-after/report-after",
+      "style": {}
+    },
+    {
+      "path": "pages/report-after/report-detail",
+      "style": {}
     }
   ],
-  // "tabBar": {
-  //   "color": "#333333",
-  //   "selectedColor": "#333333",
-  //   "backgroundColor": "#ffffff",
-  //   "list": [{
-  //       "pagePath": "pages/tabBar/tabPage1/tabPage1",
-  //       "text": "首页",
-  //       "iconPath": "static/tabBar/homepage.png",
-  //       "selectedIconPath": "static/tabBar/homepage_fill.png",
-  //       "style": {}
-  //     },
-  //     {
-  //       "pagePath": "pages/customer-reception/customer-reception",
-  //       "text": "预检",
-  //       "iconPath": "static/tabBar/document.png",
-  //       "selectedIconPath": "static/tabBar/document_fill.png",
-  //       "style": {}
-  //     },
-  //     {
-  //       "pagePath": "pages/tabBar/tabPage3/tabPage3",
-  //       "text": "售后报表",
-  //       "iconPath": "static/tabBar/dynamic.png",
-  //       "selectedIconPath": "static/tabBar/dynamic_fill.png",
-  //       "style": {}
-  //     }
-  //   ]
-  // },
   "globalStyle": {
     "navigationBarTextStyle": "black",
     "navigationBarTitleText": "服务助手",

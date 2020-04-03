@@ -68,13 +68,13 @@
             },
             "icons" : {
                 "android" : {
-                    "hdpi" : "static/logo1.png",
-                    "xhdpi" : "static/logo1.png",
-                    "xxhdpi" : "static/logo1.png",
-                    "xxxhdpi" : "static/logo1.png"
+                    "hdpi" : "unpackage/res/icons/72x72.png",
+                    "xhdpi" : "unpackage/res/icons/96x96.png",
+                    "xxhdpi" : "unpackage/res/icons/144x144.png",
+                    "xxxhdpi" : "unpackage/res/icons/192x192.png"
                 },
                 "ios" : {
-                    "appstore" : "static/logo1.png",
+                    "appstore" : "unpackage/res/icons/1024x1024.png",
                     "ipad" : {
                         "app" : "unpackage/res/icons/76x76.png",
                         "app@2x" : "unpackage/res/icons/152x152.png",
