@@ -57,59 +57,58 @@ export default {
       list: [
         {
           image: '/static/image/yuyuejiancha.svg',
+          text: '基础案例',
+          path: '/pages/demo/ui-demo/ui-demo'
+        },
+        {
+          image: '/static/image/yuyuejiancha.svg',
           text: '预约检查',
-          path: '/pages/appointment-check/appointment-check'
+          path: '/pages/index/index'
         },
         {
           image: '/static/image/waiguanjiancha.svg',
-          text: '车辆预检',
-          // path: '/pages/demo/base-demo'
-          path: '/pages/customer-reception/customer-reception'
+          text: '车辆预检', 
+          path: '/pages/index/index'
         },
         {
           image: '/static/image/kuaisugongdan.svg',
           text: '快速工单',
-          path: '/pages/rapid-order/rapid-order'
+          path: '/pages/index/index'
         },
         {
           image: '/static/image/jinduchaxun.svg',
           text: '进度查询',
-          path: '/pages/progress-query/progress-query'
+          path: '/pages/index/index'
         },
         {
           image: '/static/image/neishijiancha.svg',
           text: '车辆检查',
-          path: '/pages/vehicle-inspection/vehicle-inspection'
+          path: '/pages/index/index'
         },
         {
           image: '/static/image/jiaoche.svg',
           text: '交车',
-          path: '/pages/vehicles-delivery/vehicles-delivery'
+          path: '/pages/index/index'
         },
         {
           image: '/static/image/fuwugongju.svg',
           text: '服务工具',
-          path: '/pages/services-tools/index'
+          path: '/pages/index/index'
         },
         {
           image: '/static/image/fuwubaobiao.svg',
           text: '服务报表',
-          path: '/pages/qcReport/qcReport'
+          path: '/pages/index/index'
         },
         {
           image: '/static/image/shouhoubaobiao.svg',
           text: '售后报表',
-          path: '/pages/report-after/report-after'
+          path: '/pages/index/index'
         },
         {
           image: '/static/image/xiaoxitixing.svg',
           text: '消息提醒',
-          path: '/pages/remind/remind'
-        },
-        {
-          image: '/static/image/yuyuejiancha.svg',
-          text: 'UI-DEMO',
-          path: '/pages/demo/ui-demo/ui-demo'
+          path: '/pages/index/index'
         }
       ]
     };
