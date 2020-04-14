@@ -1,8 +1,8 @@
 <template>
-  <view class="">
-    <MLabel :label="label" :required="required" :border="border">
+  <view class="m-checkbox">
+    <MLabel :label="label" :required="required" :border="border" :isLink="type == 'popup'">
       <!-- 内联选择用 -->
-      <view class="m-checkbox-inner" v-if="type == 'inner'">
+      <view class="m-checkbox__inner" v-if="type == 'inner'">
         <MCheckboxInner
           v-if="type == 'inner'"
           :value="value"
@@ -14,14 +14,11 @@
         ></MCheckboxInner>
       </view>
       <!-- 弹窗选择用 -->
-      <view class="m-checkbox-inner" v-if="type == 'popup'">
-        <view @click="showPopupClick" size="mini" type="default" class="m-checkbox-text">
+      <view class="m-checkbox__inner" v-if="type == 'popup'">
+        <view @click="showPopupClick" class="m-checkbox__value">
           {{ tipInfo }}
         </view>
       </view>
-      <template v-if="type == 'popup'" v-slot:after>
-        <text class="m-label-after m-iconfont">&#xe71a;</text>
-      </template>
     </MLabel>
   </view>
 </template>
@@ -115,11 +112,13 @@ export default {
 </script>
 
 <style lang="scss">
-.m-checkbox-inner {
+.m-checkbox {
+}
+.m-checkbox__inner {
   width: 100%;
   display: flex;
   justify-content: flex-end;
-  .m-checkbox-text {
+  .m-checkbox__value {
   }
 }
 </style>

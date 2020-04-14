@@ -1,14 +1,14 @@
 <!-- 多选折叠面板 -->
 <template>
-  <view class="m-check-box-panel-wrap">
-    <view v-if="label" class="m-check-box-panel-title">
+  <view class="m-check-box-panel">
+    <view v-if="label" class="m-check-box-panel__title">
       <MLabel :label="label" :required="required" :border="false">
         <text v-if="!isFold" @click="foldingHandleClick" class="m-iconfont">
           {{ isFolding ? '&#xe71c;' : '&#xe718;' }}
         </text>
       </MLabel>
     </view>
-    <view class="m-check-box-panel-inner" :class="{ active: isFolding }">
+    <view class="m-check-box-panel__inner" :class="{ active: isFolding }">
       <MCheckboxInner
         :value="value"
         :itemList="itemList"
@@ -58,7 +58,7 @@ export default {
     readonly: {
       type: Boolean,
       default: false
-    },
+    }
   },
   computed: {},
   data() {
@@ -81,10 +81,10 @@ export default {
 </script>
 
 <style lang="scss">
-.m-check-box-panel-wrap {
-  .m-check-box-panel-title {
+.m-check-box-panel {
+  .m-check-box-panel__title {
   }
-  .m-check-box-panel-inner {
+  .m-check-box-panel__inner {
     background-color: #ffffff;
     height: 100rpx;
     overflow: hidden;

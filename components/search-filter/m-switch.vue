@@ -1,7 +1,9 @@
 <template>
   <view>
     <MLabel :label="label">
-      <view><switch :checked="value" type="switch" @change="switch1Change" /></view>
+      <view>
+        <switch :checked="value" type="switch" @change="switch1Change" />
+      </view>
     </MLabel>
   </view>
 </template>

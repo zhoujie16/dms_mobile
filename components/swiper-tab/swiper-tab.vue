@@ -1,24 +1,24 @@
 <template>
-  <view class="swiper-tab-wrap">
-    <view class="top-warp">
+  <view class="m-swiper-tab">
+    <view class="m-swiper-tab__top">
       <view
-        class="tab-slide"
+        class="m-swiper-tab__slide"
         v-for="(tab, i) in tabs"
         :key="i"
-        :class="{ active: curIndex === i }"
+        :class="{ 'm-swiper-tab__slide--active': curIndex === i }"
         @click="$emit('change', i)"
       >
-        <view class="tab-text">{{ tab }}</view>
-        <view class="tab-bottom"></view>
+        <view class="m-swiper-tab__slide-text">{{ tab }}</view>
+        <view class="m-swiper-tab__slide-bottom"></view>
       </view>
     </view>
-    <view :style="{ height: height }" class="swiper-content"><slot></slot></view>
+    <view :style="{ height: height }" class="m-swiper-tab__content"><slot></slot></view>
   </view>
 </template>
 
 <script>
 export default {
-  name: 'swiper-tab-wrap',
+  name: 'm-swiper-tab',
   mounted() {},
   props: {
     tabs: {
@@ -40,11 +40,7 @@ export default {
 </script>
 
 <style lang="scss">
-.swiper-page-wrap {
-  position: relative;
-}
-
-.top-warp {
+.m-swiper-tab__top {
   display: flex;
   justify-content: center;
   z-index: 10;
@@ -52,7 +48,7 @@ export default {
   height: 88rpx;
   background-color: #ffffff;
   color: #70767f;
-  .tab-slide {
+  .m-swiper-tab__slide {
     position: relative;
     height: 88rpx;
     font-size: 30rpx;
@@ -62,30 +58,30 @@ export default {
     justify-content: center;
     align-items: center;
     padding-top: 5rpx;
-    .tab-text{ 
+    .m-swiper-tab__slide-text {
       flex: 1;
       display: flex;
       justify-content: center;
       align-items: center;
     }
-    .tab-bottom {
-      display: none; 
-      flex: 0 0 10rpx; 
+    .m-swiper-tab__slide-bottom {
+      display: none;
+      flex: 0 0 10rpx;
       width: 20%;
       border-radius: 6rpx;
       background-color: #1371f7;
     }
-  }
-  .tab-slide.active {
-    font-size: 36rpx;
-    color: #2f2f2f;
-    font-weight:500;
-    .tab-bottom {
-      display: initial;
+    &.m-swiper-tab__slide--active {
+      font-size: 36rpx;
+      color: #2f2f2f;
+      font-weight: 500;
+      .m-swiper-tab__slide-bottom {
+        display: initial;
+      }
     }
   }
 }
-.swiper-content {
+.m-swiper-tab__content {
   position: relative;
   /* #ifdef H5 */
   height: calc(100vh - 168rpx);

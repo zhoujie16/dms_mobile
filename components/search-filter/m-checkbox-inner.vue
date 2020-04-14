@@ -1,14 +1,15 @@
 <template>
-  <view class="">
-    <view v-if="singleLine" class="m-checkbox-inner-inner">
+  <!-- 选择 选项 切换组件 -->
+  <view class="m-checkbox-inner">
+    <view v-if="singleLine" class="m-checkbox-inner__inner">
       <view
-        class="m-col"
+        class="m-checkbox__row"
         :style="{ padding: '0 0 0 10rpx' }"
         v-for="(item, i) in itemList_1"
         :key="i"
       >
         <view
-          class="m-checkbox-item"
+          class="m-checkbox__item"
           :class="{ active: item.isSelect }"
           @click="checkbosItemClick(item)"
         >
@@ -16,15 +17,15 @@
         </view>
       </view>
     </view>
-    <view v-else class="m-checkbox-inner-inner">
+    <view v-else class="m-checkbox-inner__inner">
       <view
-        class="m-col"
+        class="m-checkbox__row"
         :style="{ width: itemWrapWidth }"
         v-for="(item, i) in itemList_1"
         :key="i"
       >
         <view
-          class="m-checkbox-item"
+          class="m-checkbox__item"
           :class="{ active: item.isSelect }"
           @click="checkbosItemClick(item)"
         >
@@ -117,30 +118,32 @@ export default {
 </script>
 
 <style lang="scss">
-.m-checkbox-inner-inner {
-  position: relative;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: flex-start;
-}
-.m-col {
-  height: 100rpx;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-.m-checkbox-item {
-  color: $uni-color-primary;
-  font-size: 22rpx;
-  height: 60rpx;
-  line-height: 60rpx;
-  padding: 0 40rpx;
-  border-radius: 8rpx;
-  background-color: #f9f9f9;
-  color: $uni-text-color-info;
-  &.active {
-    background-color: #f0f3ff;
-    color: #1371f7;
+.m-checkbox-inner {
+  .m-checkbox-inner__inner {
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    .m-checkbox__row {
+      height: 100rpx;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      .m-checkbox__item {
+        color: $uni-color-primary;
+        font-size: 22rpx;
+        height: 60rpx;
+        line-height: 60rpx;
+        padding: 0 40rpx;
+        border-radius: 8rpx;
+        background-color: #f9f9f9;
+        color: $uni-text-color-info;
+        &.active {
+          background-color: #f0f3ff;
+          color: #1371f7;
+        }
+      }
+    }
   }
 }
 </style>

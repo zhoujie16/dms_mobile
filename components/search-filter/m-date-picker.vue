@@ -1,6 +1,6 @@
 <template>
   <view class="">
-    <MLabel :label="label" :row="2">
+    <MLabel :label="label"
       <button @click="showPopupClick" size="mini" type="default" class="submit-btn">
         {{ tipInfo }}
       </button>

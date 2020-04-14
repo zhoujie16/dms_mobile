@@ -1,5 +1,5 @@
 <template>
-  <!-- 单选 多选  弹窗选择 组件 -->
+  <!-- 日期 复杂 弹窗选择 组件 (暂时不用) -->
   <view class="m-date-picker-popup-wrap">
     <!-- 中间弹出层 -->
     <uni-popup ref="popup" type="center">

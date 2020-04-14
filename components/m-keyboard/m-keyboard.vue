@@ -1,19 +1,19 @@
 <template>
-  <view class="m-key-board-wrap">
+  <view class="m-license-keyboard">
     <uni-popup ref="popup" type="bottom" @change="change">
       <!-- 键盘头部 -->
-      <view class="m-key-board-header">车牌号专用键盘</view>
+      <view class="m-license-keyboard__header">车牌号专用键盘</view>
       <!-- 车牌键盘 -->
-      <view class="license-key-board-wrap">
+      <view class="m-license-keyboard__content">
         <!-- 省会简称 -->
-        <view v-if="boardType === 'provice'" class="license-key-board-inner provice">
-          <view v-for="(provice_arr, i) in provices" class="key-wrap provice" :key="i">
+        <view v-if="boardType === 'provice'" class="m-license-keyboard__inner">
+          <view v-for="(provice_arr, i) in provices" class="m-license-keyboard__box" :key="i">
             <view
               v-for="(item, j) in provice_arr"
-              class="key"
+              class="m-license-keyboard__key"
               :key="item"
               @click="keyDown(item)"
-              hover-class="active"
+              hover-class="m-license-keyboard__key--active"
               :hover-start-time="0"
               :hover-stay-time="5"
             >
@@ -22,14 +22,14 @@
           </view>
         </view>
         <!-- 车牌号码 -->
-        <view v-if="boardType === 'letter'" class="license-key-board-inner letter">
-          <view v-for="(letter_arr, i) in letters" class="key-wrap letter" :key="i">
+        <view v-if="boardType === 'letter'" class="m-license-keyboard__inner">
+          <view v-for="(letter_arr, i) in letters" class="m-license-keyboard__box" :key="i">
             <view
               v-for="(item, j) in letter_arr"
-              class="key"
+              class="m-license-keyboard__key"
               :key="item"
               @click="keyDown(item)"
-              hover-class="active"
+              hover-class="m-license-keyboard__key--active"
               :hover-start-time="0"
               :hover-stay-time="5"
             >
@@ -38,9 +38,9 @@
           </view>
         </view>
         <view
-          class="key del"
+          class="m-license-keyboard__key m-license-keyboard__key--del"
           @click="keyDown(-1)"
-          hover-class="active"
+          hover-class="m-license-keyboard__key--active"
           :hover-start-time="0"
           :hover-stay-time="5"
         >
@@ -99,11 +99,11 @@ export default {
 </script>
 
 <style lang="scss">
-.m-key-board-wrap {
+.m-license-keyboard {
   /deep/ .uni-popup .uni-popup-mask {
     background-color: rgba(0, 0, 0, 0) !important;
   }
-  .m-key-board-header {
+  .m-license-keyboard__header {
     height: 70rpx;
     padding-top: 10rpx;
     display: flex;
@@ -117,16 +117,16 @@ export default {
     letter-spacing: 1px;
   }
 }
-.license-key-board-wrap {
+.m-license-keyboard__content {
   position: relative;
-  .license-key-board-inner {
+  .m-license-keyboard__inner {
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
     width: 100vw;
     padding-bottom: 20rpx;
     background-color: #f7f7f7;
-    .key-wrap {
+    .m-license-keyboard__box {
       height: 100rpx;
       display: flex;
       justify-content: center;
@@ -134,7 +134,7 @@ export default {
       font-size: 30rpx;
     }
   }
-  .key {
+  .m-license-keyboard__key {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -145,12 +145,12 @@ export default {
     border-radius: 8rpx;
     color: #70767f;
     font-weight: 700;
-    &.del {
+    &.m-license-keyboard__key--del {
       position: absolute;
       right: 8rpx;
       bottom: 24rpx;
     }
-    &.active {
+    &.m-license-keyboard__key--active {
       background-color: #d1d1d1;
     }
   }

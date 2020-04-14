@@ -1,18 +1,18 @@
 <!-- 文本域 -->
 <template>
   <view class="m-textarea-wrap">
-    <view class="m-textarea-title">
+    <view class="m-textarea__title">
       <MLabel :label="label" :required="required">
-        <text v-if="showSpeech" @click="speechBtnClick" class="m-iconfont speech-btn">
+        <text v-if="showSpeech" @click="speechBtnClick" class="m-iconfont m-textarea__speech-btn">
           &#xe729;
         </text>
       </MLabel>
     </view>
-    <view class="m-textarea-inner">
+    <view class="m-textarea__inner">
       <textarea
         :value="value"
         @input="inputHandle"
-        class="m-textarea"
+        class="m-textarea__textarea"
         :placeholder="placeholderText"
         placeholder-style="font-size: 30rpx;color: #c3c3c3;"
         :maxlength="maxlength"
@@ -109,16 +109,16 @@ export default {
 
 <style lang="scss">
 .m-textarea-wrap {
-  .m-textarea-title {
-    .speech-btn {
+  .m-textarea__title {
+    .m-textarea__speech-btn {
       color: $uni-m-color-c11;
       font-size: 52rpx;
     }
   }
-  .m-textarea-inner {
+  .m-textarea__inner {
     background-color: #ffffff;
     padding: 30rpx;
-    .m-textarea {
+    .m-textarea__textarea {
       width: 100%;
       height: 200rpx;
       color: #70767f;

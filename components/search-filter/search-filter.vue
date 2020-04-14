@@ -1,15 +1,15 @@
 <template>
-  <view class="">
-    <view class="m-search-top" v-show="isShow">
-      <view class="left"><slot name="panel"></slot></view>
-      <view class="right" @click="open">
+  <view class="m-search-filter">
+    <view class="m-search-filter__search-top" v-show="isShow">
+      <view class="m-search-filter__search-top-left"><slot name="panel"></slot></view>
+      <view class="m-search-filter__search-top-right" @click="open">
         筛选
         <text class="m-iconfont">&#xe721;</text>
       </view>
     </view>
     <uni-popup ref="searchPopup" type="top" @change="change">
-      <view class="m-search-dialog-wrap">
-        <view class="m-search-dialog-inner">
+      <view class="m-search-dialog">
+        <view class="m-search-dialog__inner">
           <slot name="form"></slot>
         </view>
       </view>
@@ -59,7 +59,7 @@ export default {
 </script>
 
 <style lang="scss">
-.m-search-top {
+.m-search-filter__search-top {
   background-color: #ffffff;
   display: flex;
   height: 84rpx;
@@ -68,11 +68,11 @@ export default {
   left: 0;
   top: 0;
   z-index: 99;
-  .left {
+  .m-search-filter__search-top-left {
     flex: 1;
     height: 100%;
   }
-  .right {
+  .m-search-filter__search-top-right {
     flex: 0 0 140rpx;
     height: 100%;
     display: flex;
@@ -80,9 +80,9 @@ export default {
     align-items: center;
   }
 }
-.m-search-dialog-wrap {
+.m-search-dialog {
   background-color: #ffffff;
-  .m-search-dialog-inner {
+  .m-search-dialog__inner {
     
   }
 }

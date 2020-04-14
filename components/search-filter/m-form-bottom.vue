@@ -1,4 +1,5 @@
 <template>
+  <!-- 筛选组件 底部按钮组 -->
   <view class="m-form-bottom-button">
     <view @click="resetBtnClick" class="reset">重置</view>
     <view @click="confirmBtnClick" class="submit">确定</view>

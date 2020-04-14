@@ -37,6 +37,14 @@ export default {
           }
         },
         {
+          title: 'Cell 单元格',
+          clickFn: async () => {
+            const [err, res] = await uni.navigateTo({
+              url: '/pages/demo/ui-demo/cell'
+            });
+          }
+        },
+        {
           title: '选择',
           clickFn: async () => {
             const [err, res] = await uni.navigateTo({
@@ -179,15 +187,7 @@ export default {
               url: '/pages/demo/ui-demo/doc-reader'
             });
           }
-        },
-        // {
-        //   title: 'Cell 单元格',
-        //   clickFn: async () => {
-        //     const [err, res] = await uni.navigateTo({
-        //       url: '/pages/demo/ui-demo/cell'
-        //     });
-        //   }
-        // }
+        }
       ]
     };
   },

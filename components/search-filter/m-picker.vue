@@ -1,6 +1,6 @@
 <template>
   <view class="">
-    <MLabel :label="label" :required="required" :row="2">
+    <MLabel :label="label" :required="required">
       <view class="m-picker-inner m-flex m-justify-end">
         <view @click="showPopupClick">{{ tipInfo }}</view>
       </view>

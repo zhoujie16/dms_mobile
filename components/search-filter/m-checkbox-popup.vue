@@ -1,5 +1,5 @@
 <template>
-  <!-- 单选 多选  弹窗选择 组件 -->
+  <!-- 单选 多选  弹窗选择 组件 (暂时不用) -->
   <view class="">
     <uni-popup ref="popup" type="bottom">
       <view v-if="isSHowPopup" class="select-popup-wrap">

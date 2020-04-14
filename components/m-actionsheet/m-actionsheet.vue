@@ -1,14 +1,14 @@
 <template>
   <!-- m-actionsheet -->
   <uni-popup ref="popup" type="bottom" :maskClick="false">
-    <view v-if="isShowPopup" class="m-actionsheet-wrap">
-      <view class="m-actionsheet-inner">
+    <view v-if="isShowPopup" class="m-actionsheet">
+      <view class="m-actionsheet__inner">
         <view
           @click="confirmHandleClick(item)"
           v-for="item in itemList"
           :key="item.value"
-          class="m-actionsheet-cell"
-          hover-class="hover"
+          class="m-actionsheet__cell"
+          hover-class="m-actionsheet__cell--hover"
           hover-stay-time="50"
         >
           {{ item.text }}
@@ -17,10 +17,10 @@
       <!-- 按钮 -->
       <view class="m-break-space"></view>
       <view
-        hover-class="hover"
+        hover-class="m-actionsheet__cell--hover"
         hover-stay-time="50"
         @click="cancelHandleClick"
-        class="m-actionsheet-bottom"
+        class="m-actionsheet__bottom"
       >
         取消
       </view>
@@ -65,16 +65,16 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.m-actionsheet-wrap {
+.m-actionsheet {
   background-color: #ffffff;
   overflow: hidden;
-  .m-actionsheet-inner {
+  .m-actionsheet__inner {
     border-bottom: solid 1rpx #efefef;
     color: #17212e;
     font-size: 34rpx;
     max-height: 80vh;
     overflow: auto;
-    .m-actionsheet-cell {
+    .m-actionsheet__cell {
       height: 100rpx;
       display: flex;
       justify-content: center;
@@ -82,13 +82,13 @@ export default {
       border-bottom: solid 1rpx #efefef;
     }
   }
-  .m-actionsheet-bottom {
+  .m-actionsheet__bottom {
     height: 100rpx;
     display: flex;
     justify-content: center;
     align-items: center;
   }
-  .hover {
+  .m-actionsheet__cell--hover {
     background-color: #f1f1f1;
   }
 }

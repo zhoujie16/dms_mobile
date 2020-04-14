@@ -1,4 +1,5 @@
 <template>
+  <!-- 底部弹窗 选择 组件 -->
   <view class="m-picker-wrap">
     <!-- 单选 -->
     <view v-if="mode === 'selector'">

@@ -1,7 +1,7 @@
 <!-- 车牌号 -->
 <template>
-  <view class="m-license-wrap">
-    <view class="m-license-inner">
+  <view class="m-license">
+    <view class="m-license__inner">
       <MLabel :required="required" label="车牌号" :border="false">
         <view slot="default">
           <text v-if="readonly"></text>
@@ -15,11 +15,11 @@
           <text v-else @click="scanClick" class="m-iconfont screen">&#xe72a;</text>
         </view>
       </MLabel>
-      <view class="m-license-content">
+      <view class="m-license__content">
         <view
           v-for="(item, i) in itemList"
           :key="item.id"
-          class="m-license-item"
+          class="m-license__item"
           :class="{ active: item.isActive }"
           @click="itemClick(item)"
         >
@@ -223,14 +223,14 @@ export default {
 </script>
 
 <style lang="scss">
-.m-license-content {
+.m-license__content {
   display: flex;
   height: 100rpx;
   justify-content: center;
   align-items: flex-start;
   background-color: #ffffff;
   padding: 0 20rpx;
-  .m-license-item {
+  .m-license__item {
     width: 86rpx;
     height: 86rpx;
     display: flex;
