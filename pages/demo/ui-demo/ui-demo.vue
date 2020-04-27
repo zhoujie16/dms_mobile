@@ -21,10 +21,135 @@ export default {
     return {
       btnList: [
         {
-          title: '按钮',
+          title: 'm-page',
           clickFn: async () => {
             const [err, res] = await uni.navigateTo({
-              url: '/pages/demo/ui-demo/button'
+              url: '/pages/demo/ui-demo/m-page'
+            });
+          }
+        },
+        {
+          title: 'm-button',
+          clickFn: async () => {
+            const [err, res] = await uni.navigateTo({
+              url: '/pages/demo/ui-demo/m-button'
+            });
+          }
+        },
+        //m-license
+        {
+          title: 'm-license',
+          clickFn: async () => {
+            const [err, res] = await uni.navigateTo({
+              url: '/pages/demo/ui-demo/m-license'
+            });
+          }
+        },
+        // search-filter
+        {
+          title: 'search-filter',
+          clickFn: async () => {
+            const [err, res] = await uni.navigateTo({
+              url: '/pages/demo/ui-demo/search-filter'
+            });
+          }
+        },
+        // m-label
+        {
+          title: 'm-label',
+          clickFn: async () => {
+            const [err, res] = await uni.navigateTo({
+              url: '/pages/demo/ui-demo/m-label'
+            });
+          }
+        },
+        // m-textarea
+        {
+          title: 'm-textarea',
+          clickFn: async () => {
+            const [err, res] = await uni.navigateTo({
+              url: '/pages/demo/ui-demo/m-textarea'
+            });
+          }
+        },
+        // m-checkbox
+        {
+          title: 'm-checkbox',
+          clickFn: async () => {
+            const [err, res] = await uni.navigateTo({
+              url: '/pages/demo/ui-demo/m-checkbox'
+            });
+          }
+        },
+        // m-checkbox-panel
+        {
+          title: 'm-checkbox-panel',
+          clickFn: async () => {
+            const [err, res] = await uni.navigateTo({
+              url: '/pages/demo/ui-demo/m-checkbox-panel'
+            });
+          }
+        },
+        // m-picker
+        {
+          title: 'm-picker',
+          clickFn: async () => {
+            const [err, res] = await uni.navigateTo({
+              url: '/pages/demo/ui-demo/m-picker'
+            });
+          }
+        },
+        // validator
+        {
+          title: 'validator',
+          clickFn: async () => {
+            const [err, res] = await uni.navigateTo({
+              url: '/pages/demo/ui-demo/validator'
+            });
+          }
+        },
+        // m-swipe-cell
+        {
+          title: 'm-swipe-cell',
+          clickFn: async () => {
+            const [err, res] = await uni.navigateTo({
+              url: '/pages/demo/ui-demo/m-swipe-cell'
+            });
+          }
+        },
+        // m-dialog
+        {
+          title: 'm-dialog',
+          clickFn: async () => {
+            const [err, res] = await uni.navigateTo({
+              url: '/pages/demo/ui-demo/m-dialog'
+            });
+          }
+        },
+        // swiper-tab
+        {
+          title: 'swiper-tab',
+          clickFn: async () => {
+            const [err, res] = await uni.navigateTo({
+              url: '/pages/demo/ui-demo/swiper-tab'
+            });
+          }
+        },
+        // m-vehicle-check-cell
+        {
+          title: 'm-vehicle-check-cell',
+          clickFn: async () => {
+            const [err, res] = await uni.navigateTo({
+              url: '/pages/demo/ui-demo/m-vehicle-check-cell'
+            });
+          }
+        },
+        // doc-reader
+        {
+          title: 'doc-reader',
+          clickFn: async () => {
+            const [err, res] = await uni.navigateTo({
+              url: '/pages/demo/ui-demo/doc-reader'
             });
           }
         },
