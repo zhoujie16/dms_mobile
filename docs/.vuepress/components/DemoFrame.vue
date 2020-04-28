@@ -13,11 +13,11 @@
 
 <script>
 export default {
-  name: "DemoFrame",
+  name: 'DemoFrame',
   props: {
     src: {
       type: String,
-      default: "/ui-demo"
+      default: '/ui-demo'
     }
   },
   computed: {
@@ -28,8 +28,7 @@ export default {
   mounted() {},
   data() {
     return {
-      // baseUrl: "http://dms-mob-demo.zhoujie16.cn/#/pages/demo/ui-demo",
-      baseUrl: "http://127.0.0.1:8081/#/pages/demo/ui-demo"
+      baseUrl: 'http://dms-mob-demo.zhoujie16.cn/#/pages/demo/ui-demo'
     };
   },
   methods: {}

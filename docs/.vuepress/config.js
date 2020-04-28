@@ -1,7 +1,10 @@
 module.exports = {
   title: "DMS Mobile 开发文档",
   description: "网站的描述",
-  head: [["script", { src: "/js/jquery.min.js" }]],
+  head: [
+    ["script", { src: "/js/jquery.min.js" }],
+    ["script", { src: "/js/bd.js" }],
+  ],
   themeConfig: {
     navbar: true,
     displayAllHeaders: false,
@@ -9,7 +12,7 @@ module.exports = {
       {
         title: "开发指南",
         collapsable: false,
-        children: [["/guide/", "开发指南"]]
+        children: [["/guide/", "开发指南"]],
       },
       {
         title: "基础组件",
@@ -27,8 +30,8 @@ module.exports = {
           ["/markdown/m-swipe-cell.md", "滑动单元格"],
           ["/markdown/m-dialog.md", "弹窗交互"],
           ["/markdown/swiper-tab.md", "选项卡"],
-          ["/markdown/navbar.md", "导航栏"]
-        ]
+          ["/markdown/navbar.md", "导航栏"],
+        ],
       },
       {
         title: "业务组件",
@@ -38,12 +41,12 @@ module.exports = {
           ["/markdown/search-filter.md", "查询"],
           ["/markdown/m-vehicle-check-cell.md", "车辆检查项"],
           ["/markdown/dict.md", "数据字典"],
-          ["/markdown/doc-reader.md", "文档阅读器"]
-        ]
-      }
-    ]
+          ["/markdown/doc-reader.md", "文档阅读器"],
+        ],
+      },
+    ],
   },
   lastUpdated: "Last Updated",
   host: "127.0.0.1",
-  port: 8001
+  port: 8001,
 };
