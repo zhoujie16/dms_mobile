@@ -1,0 +1,33 @@
+.theme-container .sidebar {
+  width: 15rem;
+}
+
+.theme-container .theme-default-content:not(.custom) {
+  max-width: 900px;
+}
+
+.theme-container .page {
+  padding-left: 15rem;
+}
+
+.theme-container.demo-page .page {
+  padding-right: 375px;
+}
+
+@media (max-width: 750px) {
+  .theme-container .sidebar {
+    width: initial;
+  }
+
+  .theme-container .theme-default-content:not(.custom) {
+    max-width: 80vw;
+  }
+
+  .theme-container .page {
+    padding-left: initial;
+  }
+
+  .theme-container.demo-page .page {
+    padding-right: initial;
+  }
+}

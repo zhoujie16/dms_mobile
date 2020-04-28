@@ -11,3 +11,4 @@ unpackage/dist/
 .DS_Store
 *.sw*
 *.un~
+docs/.vuepress/dist/
