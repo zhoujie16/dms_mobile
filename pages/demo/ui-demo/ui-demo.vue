@@ -312,7 +312,16 @@ export default {
               url: '/pages/demo/ui-demo/doc-reader'
             });
           }
-        }
+        },
+        // 文件上传 pages/demo/ui-demo/upload-file
+        {
+          title: '文件上传',
+          clickFn: async () => {
+            const [err, res] = await uni.navigateTo({
+              url: '/pages/demo/ui-demo/upload-file'
+            });
+          }
+        },
       ]
     };
   },

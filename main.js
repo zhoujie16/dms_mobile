@@ -17,6 +17,9 @@ Vue.prototype.$appConfig = AppConfig;
 import Speech from '@/common/speech/index.js';
 Vue.prototype.$speech = Speech;
 
+import Upload from '@/common/upload/index.js';
+Vue.prototype.$upload = Upload;
+
 import Dict from '@/common/dict/index.js';
 Vue.prototype.$dict = Dict;
 

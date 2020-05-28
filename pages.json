@@ -300,6 +300,10 @@
             "path" : "pages/demo/ui-demo/m-vehicle-check-cell",
             "style" : {}
         }
+        ,{
+            "path" : "pages/demo/ui-demo/upload-file",
+            "style" : {}
+        }
     ],
   "globalStyle": {
     "navigationBarTextStyle": "black",
