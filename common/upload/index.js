@@ -18,10 +18,19 @@ class Upload {
       return [err_choose]
     }
     const fileUrl = [];
+    // await uni.showLoading({
+    //   title: '上传中...',
+    //   mask: true
+    // });
     for (let file of tempFiles) {
       const [err_upload, res_upload] = await this.uploadFile(file);
+      if(err_upload){
+        // await uni.hideLoading()
+        return [err_upload]
+      }
       fileUrl.push(res_upload.url);
     }
+    // await uni.hideLoading()
     console.log('上传的图', fileUrl);
     return [null, fileUrl];
   }
@@ -41,10 +50,11 @@ class Upload {
   }
   // 上传单个文件
   async uploadFile(file) {
-    console.log('uploadFile 1') 
+    console.log('uploadFile 1')
     const [err_upload, res_upload] = await uni.uploadFile({
       url: this.baseUrl,
-      file: file,
+      // file: file,
+      filePath: file.path,
       name: 'file'
     });
     console.log('uploadFile 2')
@@ -61,18 +71,22 @@ class Upload {
       statusCode,
       data
     })
+    if(statusCode != 200){
+      return [new Error(500)];
+    }
+    const _data = JSON.parse(data);
     const {
+      returnCode,
+      returnMessage,
       name,
       response,
       uid,
       url
-    } = JSON.parse(data);
-    return [null, {
-      name,
-      response,
-      uid,
-      url
-    }];
+    } = _data
+    if (returnCode === "ERROR") {
+      return [new Error(returnMessage)];
+    }
+    return [null, _data];
   }
 }
 
