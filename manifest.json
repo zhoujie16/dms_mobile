@@ -124,7 +124,7 @@
         "title" : "服务助手",
         "domain" : "dms-mob-demo.zhoujie16.cn",
         "router" : {
-            "base" : "/"
+            "base" : "/dms-mob-demo/"
         }
     }
 }

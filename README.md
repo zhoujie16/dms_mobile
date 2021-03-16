@@ -1,6 +1,6 @@
 # dms_service_mob
 ```
-git地址：https://gitcyx.yycsy.com/dms/dms_service_mob
+文档地址：http://dmsmob.zhoujie16.cn
 ```
 
 #### 介绍

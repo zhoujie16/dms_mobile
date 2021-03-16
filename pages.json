@@ -244,67 +244,50 @@
       "style": {}
     }
     // DEMO 页面 E
-      ,{
-            "path" : "pages/demo/ui-demo/m-page",
-            "style" : {}
-        }
-        ,{
-            "path" : "pages/demo/ui-demo/m-button",
-            "style" : {}
-        }
-        ,{
-            "path" : "pages/demo/ui-demo/m-license",
-            "style" : {}
-        }
-        ,{
-            "path" : "pages/demo/ui-demo/search-filter",
-            "style" : {}
-        }
-        ,{
-            "path" : "pages/demo/ui-demo/m-label",
-            "style" : {}
-        }
-        ,{
-            "path" : "pages/demo/ui-demo/m-input",
-            "style" : {}
-        }
-        ,{
-            "path" : "pages/demo/ui-demo/m-textarea",
-            "style" : {}
-        }
-        ,{
-            "path" : "pages/demo/ui-demo/m-checkbox",
-            "style" : {}
-        }
-        ,{
-            "path" : "pages/demo/ui-demo/m-checkbox-panel",
-            "style" : {}
-        }
-        ,{
-            "path" : "pages/demo/ui-demo/m-picker",
-            "style" : {}
-        }
-        ,{
-            "path" : "pages/demo/ui-demo/m-swipe-cell",
-            "style" : {}
-        }
-        ,{
-            "path" : "pages/demo/ui-demo/m-dialog",
-            "style" : {}
-        }
-        ,{
-            "path" : "pages/demo/ui-demo/swiper-tab",
-            "style" : {}
-        }
-        ,{
-            "path" : "pages/demo/ui-demo/m-vehicle-check-cell",
-            "style" : {}
-        }
-        ,{
-            "path" : "pages/demo/ui-demo/upload-file",
-            "style" : {}
-        }
-    ],
+    , {
+      "path": "pages/demo/ui-demo/m-page",
+      "style": {}
+    }, {
+      "path": "pages/demo/ui-demo/m-button",
+      "style": {}
+    }, {
+      "path": "pages/demo/ui-demo/m-license",
+      "style": {}
+    }, {
+      "path": "pages/demo/ui-demo/m-label",
+      "style": {}
+    }, {
+      "path": "pages/demo/ui-demo/m-input",
+      "style": {}
+    }, {
+      "path": "pages/demo/ui-demo/m-textarea",
+      "style": {}
+    }, {
+      "path": "pages/demo/ui-demo/m-checkbox",
+      "style": {}
+    }, {
+      "path": "pages/demo/ui-demo/m-checkbox-panel",
+      "style": {}
+    }, {
+      "path": "pages/demo/ui-demo/m-picker",
+      "style": {}
+    }, {
+      "path": "pages/demo/ui-demo/m-swipe-cell",
+      "style": {}
+    }, {
+      "path": "pages/demo/ui-demo/m-dialog",
+      "style": {}
+    }, {
+      "path": "pages/demo/ui-demo/swiper-tab",
+      "style": {}
+    }, {
+      "path": "pages/demo/ui-demo/m-vehicle-check-cell",
+      "style": {}
+    }, {
+      "path": "pages/demo/ui-demo/upload-file",
+      "style": {}
+    }
+  ],
   "globalStyle": {
     "navigationBarTextStyle": "black",
     "navigationBarTitleText": "服务助手",
